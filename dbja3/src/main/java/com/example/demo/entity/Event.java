@@ -10,9 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
-
-@Entity
 @Data
+@Entity
 @Table(name="event")
 public class Event {
 	@Id
@@ -24,6 +23,7 @@ public class Event {
 	private String eventPlace;
 	private String eventStart;
 	private String eventEnd;
+	private String eventContent;
 	private String eventLong;
 	private String eventLat;
 	private int eventHit;
@@ -34,12 +34,12 @@ public class Event {
 	private int eventState;
 	private String parkPlace;
 	
-	
+	/*
 	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<ReviewBoard> reviewBoards;
 	
 	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<WishList> wishLists;
-	
+	*/
 	
 }
