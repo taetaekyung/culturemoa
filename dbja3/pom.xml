@@ -108,6 +108,13 @@
 		<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
+		<!--jpa -->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+		<groupId>com.zaxxer</groupId>
+		<artifactId>HikariCP</artifactId>
+		</dependency>
+		
 		<!-- JSOUP-->
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
