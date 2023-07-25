@@ -36,9 +36,7 @@ public class ApiService {
 
 			// 데이터 분해
 			JSONObject parseResponse = (JSONObject) jsonObj.get("response");
-			System.out.println("parseResponse: " + parseResponse);
 			JSONObject parseBody = (JSONObject) parseResponse.get("body");
-			System.out.println("parseBody: " + parseBody);
 
 			// response 내부의 body에 데이터가 있음
 			JSONArray array = (JSONArray) parseBody.get("items");
@@ -46,22 +44,23 @@ public class ApiService {
 
 			
 			  for(int i=0; i<array.size(); i++) { // array의 size만큼 반복문돌며 data를 하나하나 추출함
-			  jObj = (JSONObject) array.get(i); FestivalVO f = new FestivalVO();
-			  f.setEventNm((String)jObj.get("eventNm"));
-			  f.setOpar((String)jObj.get("opar"));
-			  
-			  String eventCo = (String) jObj.get("eventCo")+" 할인정보: "+(String)
-			  jObj.get("dscntInfo") +" 유의사항: "+(String) jObj.get("atpn");
-			  
-			  f.setEventCo((String) jObj.get("eventCo")); f.setEventStartDate((String)
-			  jObj.get("eventStartDate")); f.setEventEndDate((String)
-			  jObj.get("eventEndDate")); f.setPhoneNumber((String)
-			  jObj.get("phoneNumber")); f.setHomepageUrl((String) jObj.get("homepageUrl"));
-			  f.setAdvantkInfo((String) jObj.get("advantkInfo")); f.setPrkplceYn((String)
-			  jObj.get("prkplceYn")); f.setRdnmadr((String) jObj.get("rdnmadr"));
-			  f.setLatitude((String) jObj.get("latitude")); f.setLongitude((String)
-			  jObj.get("longitude")); // System.out.println(f); fdao.save(f); 
-			  //FestivalVO에 값을 넣어 insert 
+				  jObj = (JSONObject) array.get(i); 
+				  FestivalVO f = new FestivalVO();
+				  f.setEventNm((String)jObj.get("eventNm"));
+				  f.setOpar((String)jObj.get("opar"));			  
+				  f.setEventCo((String) jObj.get("eventCo")); 
+				  f.setEventStartDate((String)jObj.get("eventStartDate")); 
+				  f.setEventEndDate((String)jObj.get("eventEndDate")); 
+				  f.setPhoneNumber((String)jObj.get("phoneNumber")); 
+				  f.setHomepageUrl((String) jObj.get("homepageUrl"));
+				  f.setAdvantkInfo((String) jObj.get("advantkInfo")); 
+				  f.setPrkplceYn((String)jObj.get("prkplceYn")); 
+				  f.setRdnmadr((String) jObj.get("rdnmadr"));
+				  f.setLatitude((String) jObj.get("latitude")); 
+				  f.setLongitude((String)jObj.get("longitude")); 
+				  // System.out.println(f); 
+				  fdao.save(f); 
+				  //FestivalVO에 값을 넣어 insert 
 			  }
 			 
 
