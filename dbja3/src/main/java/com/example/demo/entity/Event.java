@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -21,6 +20,7 @@ public class Event {
 	private String eventName;
 	private String eventAddr;
 	private String eventPlace;
+	private String eventContent;
 	private String eventStart;
 	private String eventEnd;
 	private String eventContent;
