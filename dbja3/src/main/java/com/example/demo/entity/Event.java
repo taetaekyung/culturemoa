@@ -1,12 +1,8 @@
 package com.example.demo.entity;
 
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -15,31 +11,23 @@ import lombok.Data;
 @Table(name="event")
 public class Event {
 	@Id
-	private int eventno;
+	private int eventno; // 행사번호
 	
-	private int categoryno;
-	private String eventname;
-	private String eventaddr;
-	private String eventplace;
-	private String eventcontent;
-	private String eventstart;
-	private String eventend;
-	private String eventlong;
-	private String eventlat;
-	private int eventhit;
-	private String eventlink;
-	private String eventfname;
-	private String eventticket;
-	private int eventprice;
-	private int eventstate;
-	private String parkplace;
-	
-	/*
-	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<ReviewBoard> reviewBoards;
-	
-	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<WishList> wishLists;
-	
-	*/
+	private int categoryno; // 행사카테고리번호
+	private String eventname; // 행사이름
+	private String eventaddr; // 행사도로명주소
+	private String eventplace; // 행사장소명
+	private String eventcontent; // 행사내용
+	private String eventstart; // 행사시작일
+	private String eventend; // 행사종료일
+	private String eventlat; // 행사주소경도
+	private String eventlong; // 행사주소위도
+	private int eventhit; // 행사조회수
+	private String eventlink; // 행사링크
+	private String eventfname; // 행사사진
+	private String eventticket; // 행사티켓예매링크
+	private int eventprice; // 행사티켓가격
+	private int eventstate; // 행사진행상태
+	private String parkplace; // 주차장여부
+
 }

@@ -40,7 +40,6 @@ public class JsoupController {
 					if(title.indexOf("내한")!=-1) {
 						title=title.substring(0, title.indexOf("내한"));
 					}
-					System.out.println(title);
 					tlist.add(title);
 				}
 				
@@ -65,9 +64,7 @@ public class JsoupController {
 				}
 		}
 		//fname과 title을 짝지어 db에 넣기
-		System.out.println(tlist.size());
-		System.out.println(flist.size());
-		
+
 		for(int i=0;i<flist.size();i++) {
 			String addr=flist.get(i);
 			String eventName=tlist.get(i);
@@ -85,8 +82,8 @@ public class JsoupController {
 				event.setEventhit(1);
 				event.setCategoryno(2);
 				event.setEventname(eventName);
-				//event.setEventno(i+51);
-				//event_jpa.save(event);
+				event.setEventno(i+1);
+				event_jpa.save(event);
 				
 			} catch (Exception e) {
 				System.out.println("insert예외발생:"+e.getMessage());
