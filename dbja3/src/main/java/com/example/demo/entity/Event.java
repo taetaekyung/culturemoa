@@ -12,34 +12,34 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="EVENT")
+@Table(name="event")
 public class Event {
 	@Id
-	private int eventNo;
+	private int eventno;
 	
-	private int categoryNo;
-	private String eventName;
-	private String eventAddr;
-	private String eventPlace;
-	private String eventContent;
-	private String eventStart;
-	private String eventEnd;
-	private String eventLong;
-	private String eventLat;
-	private int eventHit;
-	private String eventLink;
-	private String eventFname;
-	private String eventTicket;
-	private int eventPrice;
-	private int eventState;
-	private String parkPlace;
+	private int categoryno;
+	private String eventname;
+	private String eventaddr;
+	private String eventplace;
+	private String eventcontent;
+	private String eventstart;
+	private String eventend;
+	private String eventlong;
+	private String eventlat;
+	private int eventhit;
+	private String eventlink;
+	private String eventfname;
+	private String eventticket;
+	private int eventprice;
+	private int eventstate;
+	private String parkplace;
 	
-	
+	/*
 	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<ReviewBoard> reviewBoards;
 	
 	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<WishList> wishLists;
 	
-	
+	*/
 }

@@ -81,9 +81,11 @@ public class JsoupController {
 				is.close();
 				fos.close();
 				Event event=new Event();
-				event.setEventFname(eventFname);
-				event.setEventName(eventName);
-				//event.setEventNo(i);
+				event.setEventfname(eventFname);
+				event.setEventhit(1);
+				event.setCategoryno(2);
+				event.setEventname(eventName);
+				//event.setEventno(i+51);
 				//event_jpa.save(event);
 				
 			} catch (Exception e) {
