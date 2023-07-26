@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Board {
 	
 	private Date regdate;
 	
-	@OneToMany(mappedBy = "board",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<Comments> comments;
+	@OneToMany(mappedBy = "board", cascade=CascadeType.REMOVE)
+	private List<Comments> comments = new ArrayList<>();
 	
 }

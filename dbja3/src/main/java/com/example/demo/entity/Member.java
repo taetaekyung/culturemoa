@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -25,19 +25,19 @@ public class Member {
 	private String gender;  //'남성', '여성'
 	private String role;    //'admin','user'
 	
-	@OneToMany(mappedBy = "member",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<Message> messages;
+	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
+	private List<Message> messages = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "member",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<Comments> comments;
+	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
+	private List<Comments> comments = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "member",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE )
-	private List<ReviewBoard> reviewBoards;
+	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
+	private List<ReviewBoard> reviewBoards = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "member",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE )
-	private List<ReviewComment> reviewComments;
+	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
+	private List<ReviewComment> reviewComments = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "member",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE )
-	private List<WishList> wishLists;
+	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
+	private List<WishList> wishLists = new ArrayList<>();
 	
 }
