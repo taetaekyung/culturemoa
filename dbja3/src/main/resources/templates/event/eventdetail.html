@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C600%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A600"/>
-  <link rel="stylesheet" href="./styles/eventdetail.css"/>
+    <link rel="stylesheet" th:href="@{/styles/eventdetail.css}"/>
 </head>
 <body>
 <div class="eventdetail-d3F">
@@ -22,7 +22,7 @@
     </p>
     <div class="searchbar-Nuw">
       <div class="searchicon-hhK">
-        <img class="iconsearch-1xu" src="./assets/iconsearch-JRo.png"/>
+        <img class="iconsearch-1xu" src="/assets/iconsearch-JRo.png"/>
       </div>
       <div class="searchtext-XRT">검색어를 입력하세요.</div>
       <div class="divsearch-Zsw">
@@ -38,11 +38,11 @@
     <div class="divfaq-jSy">FAQ</div>
     <div class="divmypage-S6V">마이페이지</div>
     <div class="divopentalk-LBs">
-      <img class="iconopentalk-qeR" src="./assets/iconopentalk-5i1.png"/>
+      <img class="iconopentalk-qeR" src="/assets/iconopentalk-5i1.png"/>
       <div class="opentalk-ac1">오픈톡</div>
     </div>
     <div class="divmessage-Viy">
-      <img class="iconmessage-DQ5" src="./assets/iconmessage-eTb.png"/>
+      <img class="iconmessage-DQ5" src="/assets/iconmessage-eTb.png"/>
       <div class="message-MWH">쪽지</div>
     </div>
   </div>
@@ -51,20 +51,20 @@
       <div class="framemainheader-uRK">
         <div class="framelocation-rrM">
           <div class="home-yAH">홈</div>
-          <img class="icon-HRs" src="./assets/icon-XG5.png"/>
+          <img class="icon-HRs" src="/assets/icon-XG5.png"/>
           <div class="event-pAu">행사소식</div>
-          <img class="icon-vzd" src="./assets/icon-FM3.png"/>
+          <img class="icon-vzd" src="/assets/icon-FM3.png"/>
           <div class="eventdetail-fhK">행사상세</div>
         </div>
         <div class="frameicon-bay">
-          <img class="bookmark-Z21" src="./assets/bookmark-C4y.png"/>
-          <img class="sharing-5m3" src="./assets/sharing-uEh.png"/>
+          <img class="bookmark-Z21" src="/assets/bookmark-C4y.png"/>
+          <img class="sharing-5m3" src="/assets/sharing-uEh.png"/>
         </div>
       </div>
     </div>
     <div class="maintitle-pTj">
       <div class="divhit-MTf">
-        <img class="iconhit-gVw" src="./assets/iconhit-5mb.png"/>
+        <img class="iconhit-gVw" src="/assets/iconhit-5mb.png"/>
         <div class="hit-oaZ">1958730</div>
       </div>
       <div class="divposter-wwf">
@@ -123,11 +123,11 @@
             <div class="divlocationinfo-3UD">위치 안내</div>
             <div class="divway-v2D">길찾기</div>
           </div>
-          <img class="divmap-Byj" src="./assets/divmap-nQh.png"/>
+          <img class="divmap-Byj" src="/assets/divmap-nQh.png"/>
         </div>
       </div>
       <div class="mainfooter-Kq3">
-        <img class="icongolist-UT3" src="./assets/icongolist-F6h.png"/>
+        <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
         <div class="golist-p17">목록으로</div>
       </div>
     </div>
