@@ -12,7 +12,7 @@ import lombok.Data;
 @Table(name="WishList")
 public class WishList {
 	@Id
-	private int wishNo;
+	private int wishno;
 	
 	@ManyToOne
 	@JoinColumn(name="id",insertable = true, updatable = true)
@@ -20,7 +20,7 @@ public class WishList {
 	
 
 	@ManyToOne
-	@JoinColumn(name="eventNo",insertable = true, updatable = true)
+	@JoinColumn(name="eventno",insertable = true, updatable = true)
 	private Event event;
 	
 }

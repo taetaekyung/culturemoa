@@ -18,10 +18,10 @@ import lombok.Data;
 @Table(name="reviewBoard")
 public class ReviewBoard {
 	@Id
-	private int reviewNo;
+	private int reviewno;
 	
-	private String reviewTitle;
-	private String reivewContent;
+	private String reviewtitle;
+	private String reivewcontent;
 	private int reviewhit;
 	
 	@ManyToOne
