@@ -12,17 +12,15 @@ import lombok.Data;
 @Table(name="ReviewComment")
 public class ReviewComment {
 	@Id
-	private int rcomNo;
+	private int rcomno;
 	
-	private String rcomContent;
+	private String rcomcontent;
 	
 	@ManyToOne
 	@JoinColumn(name="id",insertable = true, updatable = true)
 	private Member member;
 	
 	@ManyToOne
-	@JoinColumn(name="reviewNo",insertable = true, updatable = true)
-	private ReviewBoard reviewBoard;
-	
-	
+	@JoinColumn(name="reviewno",insertable = true, updatable = true)
+	private ReviewBoard reviewboard;
 }

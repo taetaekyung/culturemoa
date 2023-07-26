@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -19,6 +20,7 @@ public class Board {
 	@Id
 	private int boardno;
 	
+	private String bcategory;
 	private String boardtitle;
 	private String boardcontent;
 	private String boardfname;
@@ -28,7 +30,7 @@ public class Board {
 	@JoinColumn(name="id",insertable = true, updatable = true)
 	private Member member;
 	
-	private int bcno;
+	private Date regdate;
 	
 	@OneToMany(mappedBy = "board",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<Comments> comments;

@@ -10,8 +10,8 @@ import lombok.Data;
 @Table(name="FAQ")
 public class FAQ {
 	@Id
-	private int faqNo;
+	private int faqno;
 	
-	private String FAQtitle;
-	private String FAQcontent;
+	private String faqtitle;
+	private String faqcontent;
 }

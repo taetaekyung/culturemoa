@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,4 +26,5 @@ public class Comments {
 	@JoinColumn(name="boardno", insertable = true, updatable = true)
 	private Board board;
 	
+	private Date regdate;
 }
