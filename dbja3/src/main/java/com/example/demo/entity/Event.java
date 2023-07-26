@@ -1,8 +1,13 @@
 package com.example.demo.entity;
 
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,5 +34,11 @@ public class Event {
 	private int eventprice; // 행사티켓가격
 	private int eventstate; // 행사진행상태
 	private String parkplace; // 주차장여부
+	
+	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
+	private List<ReviewBoard> reviewBoards;
+	   
+	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
+	private List<WishList> wishLists;
 
 }
