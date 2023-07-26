@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>event_list</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+CJK+KR%3A400%2C500"/>
-    <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
+  <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
 </head>
 <body>
 <div class="eventlist-Xxu">
@@ -67,13 +69,30 @@
       </div>
     </div>
     <div class="eventlist-im7">
+	  <!-- 각 행 별로 반복 -->
+	  <div class="row1-dt5" th:each="row : ${rows}">
+		    <!-- 한 행에 4개의 열을 출력 -->
+		    <div class="divposter-At1" th:each="e : ${row}">
+		      <div class="posterimage-8K3">
+		        <img th:src="@{/images/__${e.eventfname}__}" alt="Event Poster">
+		      </div>
+		      <div class="eventtitle-Gw3">
+		        <div class="diveventcategory-dWh">공연 종류</div>
+		        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+    <!--<div class="eventlist-im7">
       <div class="row1-dt5">
-        <div class="divposter-At1">
+        <div class="divposter-At1" th:each="e:${list}">
           <div class="posterimage-8K3">
+			  <img src="/images/${e.eventfname }">
           </div>
           <div class="eventtitle-Gw3">
             <div class="diveventcategory-dWh">공연 종류</div>
-            <div class="eventname-i2M">공연 이름</div>
+            <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
           </div>
         </div>
         <div class="divposter-RhT">
@@ -203,7 +222,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="paging-ycM">
       <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
       <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
