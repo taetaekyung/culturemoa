@@ -36,6 +36,6 @@ public class ReviewBoard {
 	
 	private Date regdate;
 	
-	@OneToMany(mappedBy = "reviewBoard",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "reviewboard",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<ReviewComment> reviewcomments;
 }
