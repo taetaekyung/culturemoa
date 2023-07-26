@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -35,10 +36,10 @@ public class Event {
 	private int eventstate; // 행사진행상태
 	private String parkplace; // 주차장여부
 	
-	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<ReviewBoard> reviewBoards;
+	@OneToMany(mappedBy = "event", cascade=CascadeType.REMOVE)
+	private List<ReviewBoard> reviewBoards = new ArrayList<>();
 	   
-	@OneToMany(mappedBy = "event",fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	private List<WishList> wishLists;
+	@OneToMany(mappedBy = "event", cascade=CascadeType.REMOVE)
+	private List<WishList> wishLists = new ArrayList<>();
 
 }
