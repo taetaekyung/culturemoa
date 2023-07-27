@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.example.demo.dao.EventDAO_jpa;
 import com.example.demo.dao.EventDAO_mb;
@@ -30,11 +29,11 @@ public class EventController {
 	@Autowired
 	private EventDAO_mb eventdao_mb;
 	
-	@GetMapping("/event/eventlist")
+	@GetMapping("/event/koreaconcertlist")
 	public void eventList(Model model, @RequestParam(defaultValue = "0") int page) {
 	    int pageSize = 16; // 한 페이지에 보여줄 개수 (4열 4행이므로 16개씩)
 	    Pageable pageable = PageRequest.of(page, pageSize, Sort.by("eventno").descending());
-	    Page<Event> eventPage = eventdao_jpa.findAll(pageable);
+	    Page<Event> eventPage = eventdao_jpa.findByCategoryno(2, pageable); // categoryno가 2인 데이터만 가져오도록 변경
 	    List<List<Event>> rows = new ArrayList<>();
 	    List<Event> currentRow = null;
 
