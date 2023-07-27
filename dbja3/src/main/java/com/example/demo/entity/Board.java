@@ -26,6 +26,7 @@ public class Board {
 	private String boardcontent;
 	private String boardfname;
 	private int boardhit;
+	private int boardlikes;
 	
 	@ManyToOne
 	@JoinColumn(name="id",insertable = true, updatable = true)
@@ -35,5 +36,4 @@ public class Board {
 	
 	@OneToMany(mappedBy = "board", cascade=CascadeType.REMOVE)
 	private List<Comments> comments = new ArrayList<>();
-	
 }

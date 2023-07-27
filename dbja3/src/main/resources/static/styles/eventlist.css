@@ -54,7 +54,7 @@ body {
   line-height: 3.15;
   letter-spacing: -0.1rem;
   color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -69,7 +69,7 @@ body {
   line-height: 3.15;
   letter-spacing: -0.1rem;
   color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -84,7 +84,7 @@ body {
   line-height: 3.15;
   letter-spacing: -0.1rem;
   color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -99,7 +99,7 @@ body {
   line-height: 3.15;
   letter-spacing: -0.1rem;
   color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -114,7 +114,7 @@ body {
   line-height: 3.15;
   letter-spacing: -0.1rem;
   color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -145,7 +145,7 @@ body {
   font-weight: 400;
   line-height: 2.1428571429;
   color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -174,7 +174,7 @@ body {
   font-weight: 400;
   line-height: 2.1428571429;
   color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -194,7 +194,7 @@ body {
   font-weight: 500;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Gmarket Sans, 'Source Sans Pro';
+  font-family: 'Gmarket Sans', 'Source Sans 3', sans-serif;
 }
 .eventlist-Xxu .main-Ji5 {
   margin: 0rem 36rem 0rem 37rem;
@@ -223,7 +223,7 @@ body {
   line-height: 1.5;
   letter-spacing: -0.16rem;
   color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -263,7 +263,7 @@ body {
   font-weight: 400;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -294,7 +294,7 @@ body {
   font-weight: 400;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -325,7 +325,7 @@ body {
   font-weight: 400;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -374,7 +374,7 @@ body {
   line-height: 2.1666666667;
   letter-spacing: -0.1rem;
   color: #c0c0c0;
-  font-family: Noto Sans KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   background-color: #ffffff;
   border-radius: 1rem 0 0 1rem;
@@ -435,7 +435,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -448,7 +448,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row1-dt5 .divposter-RhT {
@@ -474,7 +474,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -487,7 +487,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row1-dt5 .divposter-vnd {
@@ -513,7 +513,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -526,7 +526,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row1-dt5 .divposter-cYy {
@@ -552,7 +552,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -565,7 +565,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row2-6sT {
@@ -602,7 +602,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -615,7 +615,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row2-6sT .divposter-vzu {
@@ -641,7 +641,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -654,7 +654,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row2-6sT .divposter-e3j {
@@ -680,7 +680,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -693,7 +693,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row2-6sT .divposter-m1s {
@@ -719,7 +719,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -732,7 +732,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row3-Fr9 {
@@ -769,7 +769,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -782,7 +782,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row3-Fr9 .divposter-71B {
@@ -808,7 +808,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -821,7 +821,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row3-Fr9 .divposter-mjw {
@@ -847,7 +847,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -860,7 +860,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row3-Fr9 .divposter-ex9 {
@@ -886,7 +886,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -899,7 +899,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row4-U41 {
@@ -935,7 +935,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -948,7 +948,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row4-U41 .divposter-tmw {
@@ -974,7 +974,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -987,7 +987,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row4-U41 .divposter-nF3 {
@@ -1013,7 +1013,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -1026,7 +1026,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 .row4-U41 .divposter-fy3 {
@@ -1052,7 +1052,7 @@ body {
   font-weight: 400;
   line-height: 1.2575;
   color: #ffffff;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -1065,7 +1065,7 @@ body {
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
-  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
 .eventlist-Xxu .main-Ji5 .paging-ycM {

@@ -20,11 +20,14 @@
 </head>
 <body>
 	<h2>메인</h2>
-	<a th:href="@{/boards/board/freelist}" th:text="자유게시판"></a>
-	<a th:href="@{/event/eventlist}" th:text="행사목록"></a>
+	<a th:href="@{/event/koreaconcertlist}" th:text="내한공연행사목록"></a>
 	<a th:href="@{/event/eventdetail}" th:text="행사상세"></a>
-	<!--<a th:href="@{/opentalk}" th:text="오픈톡"></a>-->
+
 	
 	<button onclick="opentalk()">오픈톡</button>
+
+	<a th:href="@{/boards/board/freelist/1}" th:text="자유게시판"></a>
+	<a th:href="@{/opentalk}" th:text="오픈톡"></a>
+
 </body>
 </html>
