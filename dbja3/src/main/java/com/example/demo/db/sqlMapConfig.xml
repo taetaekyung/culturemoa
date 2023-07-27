@@ -5,17 +5,20 @@
 <configuration>
   <properties resource="com/example/demo/db/db.properties"/>
   <typeAliases>
-
-  	<typeAlias type="com.example.demo.entity.Message" alias="messageVO"/>
-	<typeAlias type="com.example.demo.entity.Member" alias="memberVO"/>
-	<typeAlias type="com.example.demo.entity.WishList" alias="wishListVO"/>
-	<typeAlias type="com.example.demo.entity.Event" alias="eventVO"/>
-	<typeAlias type="com.example.demo.entity.ReviewBoard" alias="reviewBoardVO"/>
-	<typeAlias type="com.example.demo.entity.ReviewComment" alias="reviewCommentVO"/>
-	<typeAlias type="com.example.demo.entity.Board" alias="boardVO"/>
-	<typeAlias type="com.example.demo.entity.Comments" alias="commentsVO"/>
-	<typeAlias type="com.example.demo.entity.FAQ" alias="faqVO"/>
-
+	<!-- entity -->
+  	<typeAlias type="com.example.demo.entity.Message" alias="message"/>
+	<typeAlias type="com.example.demo.entity.Member" alias="member"/>
+	<typeAlias type="com.example.demo.entity.WishList" alias="wishList"/>
+	<typeAlias type="com.example.demo.entity.Event" alias="event"/>
+	<typeAlias type="com.example.demo.entity.ReviewBoard" alias="reviewBoard"/>
+	<typeAlias type="com.example.demo.entity.ReviewComment" alias="reviewComment"/>
+	<typeAlias type="com.example.demo.entity.Board" alias="board"/>
+	<typeAlias type="com.example.demo.entity.Comments" alias="comments"/>
+	<typeAlias type="com.example.demo.entity.FAQ" alias="faq"/>
+	<typeAlias type="com.example.demo.entity.Opentalk" alias="opentalk"/>
+	<!-- vo -->
+	<typeAlias type="com.example.demo.vo.OpentalkVO" alias="opentalkVO"/>
+	
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -39,6 +42,7 @@
     <mapper resource="com/example/demo/db/reviewCommentMapper.xml"/>
 	<mapper resource="com/example/demo/db/messageMapper.xml"/>
 	<mapper resource="com/example/demo/db/wishListMapper.xml"/>
+	<mapper resource="com/example/demo/db/opentalkMapper.xml"/>
 
   </mappers>
 </configuration>

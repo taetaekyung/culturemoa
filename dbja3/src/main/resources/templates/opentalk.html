@@ -1,42 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>opentalk</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="./styles/opentalk.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
+  <link rel="stylesheet" th:href="@{/styles/opentalk.css}"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	function checkNo(){
+		var now=$("#now").val();
+		$.ajax({
+			url:"updateTalk",
+			data:{now:now},
+			success:function(data){
+				if(data.length!=0){
+					now = parseInt(now); // 
+					now = now + data.length; // 50 + 1 = 51
+					$("#now").val(now);
+					for(var i=0;i<data.length;i++){
+						var div=$("<div></div>").addClass("talk1-N2D");
+						var pro_div=$("<div></div>").addClass("profile-Vcd");
+						if(data[i].gender=="여성"){
+							src="./assets/icon_여성.png";
+						}else{
+							src="./assets/icon_남성.png";
+						}
+						var img=$("<img></img>").addClass("ellipse-8-26m").attr("src",src);
+						var img2=$("<img></img>").addClass("iconprofile-xFK").attr("src","./assets/iconprofile-m69.png");
+						var id=$("<div></div>").addClass("name-VFF").html(data[i].id);
+						pro_div.append(img).append(img2).append(id);
+  						
+  						var content_div=$("<div></div>").addClass("talkcontent-Npq").html(data[i].talkcontent);
+
+						div.append(pro_div).append(content_div);
+						
+						$(".opentalk-d4d").append(div);
+					}
+				}
+				
+			}
+		});
+	} 
+	  
+	// 1초마다 updateTalk 함수 호출
+    setInterval(checkNo, 1000);
+    
+	//----------------------------채팅입력 및 전송
+	function insertTalk(){
+		var talk = $("#myInput").val().replace(/\n/g, "<br>");
+		var id=$("#id").val();
+		console.log(id);
+		if(!id){
+			alert("로그인이 필요합니다");
+		}else{
+			$.ajax({
+				url:"insertTalk",
+				data:{talk:talk},
+				success:function(){
+					location.reload();
+				}
+			});
+		}
+	}
+	
+	//-----------------------텍스트 창 스크롤이 항상 맨 밑에 위치
+	// 스크롤 맨 아래로 이동하는 함수
+	function scrollToBottom() {
+	  const scrollableDiv = document.getElementById("scrollableDiv");
+	  scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+	}
+	
+	// DOM이 로드되면 스크롤 가능한 div가 맨 아래로 스크롤되도록 함수를 호출합니다.
+	document.addEventListener("DOMContentLoaded", scrollToBottom);
+	
+	// 스크롤 이벤트를 감지하여 스크롤이 변경되어도 스크롤 가능한 div가 맨 아래에 위치하도록 함수를 호출합니다.
+	document.getElementById("scrollableDiv").addEventListener("scroll", scrollToBottom);
+	
+	//--------------------엔터쳤을때 텍스트가 전송	
+	var isShiftKeyPressed = false;
+	
+	function handleKeyDown(event) {
+	  if (event.keyCode === 16) {
+	    // Shift 키를 눌렀을 때 isShiftKeyPressed를 true로 설정합니다.
+	    isShiftKeyPressed = true;
+	  } else if (event.keyCode === 13) {
+	    if (isShiftKeyPressed) {
+	      // Shift 키를 누른 상태에서 Enter 키를 누르면 다음 줄로 이동합니다.
+	      isShiftKeyPressed = false; // Shift 키 상태 초기화
+	    } else {
+	      // Shift 키를 누르지 않고 Enter 키를 누르면 insertTalk() 함수를 호출합니다.
+	      insertTalk();
+	      event.preventDefault(); // Enter 키의 기본 동작(새 줄 생성)을 방지합니다.
+	    }
+	  }
+	}
+	 
+
+ </script>
 </head>
+
 <body>
+<!--id  -->
+<input type="hidden" id="id" th:value="${id}">
+<!--now no -->
+<input type="hidden" id="now" th:value="${now}">
 <div class="opentalk-vXb">
+  <!-- 오픈톡 타이틀-->
   <div class="opentalktitle-RUM">오픈톡</div>
-  <div class="frameopentalk-hgm">
+  
+  <!-- 오픈톡 프레임 -->
+  <div class="frameopentalk-hgm" id="scrollableDiv">
+	<!-- 톡이 올라오는 div -->
     <div class="opentalk-d4d">
-      <div class="talk1-N2D">
+		
+	<!--talk1 -->
+      <div th:each="t:${talk}" class="talk1-N2D">
+		<!--talk icon-->
         <div class="profile-Vcd">
-          <img class="ellipse-8-26m" src="./assets/ellipse-8-cDF.png"/>
+		  <img class="ellipse-8-26m"  th:src="@{'./assets/icon_' + (${t.gender} eq '여성' ? '여성' : '남성') + '.png'}" />
           <img class="iconprofile-xFK" src="./assets/iconprofile-m69.png"/>
-          <div class="name-VFF">name</div>
+          <!--talk 아이디 -->
+          <div class="name-VFF" th:text="${t.id != null ? t.id : 'Unknown'}"></div>
         </div>
-        <div class="talkcontent-Npq">Lorem ipsum dolor sit amet consectetur. Porttitor nibh ullamcorper adipiscing tellus. In nibh sociis rhoncus nunc.</div>
+        <!--talk 내용-->
+		<div class="talkcontent-Npq" th:utext="${t.talkcontent}"></div>
+
       </div>
-      <div class="talk2-toB">
-        <div class="profile-2uP">
-          <img class="ellipse-8-Mgm" src="./assets/ellipse-8-zd7.png"/>
-          <img class="iconprofile-JM7" src="./assets/iconprofile-iuF.png"/>
-          <div class="name-SiD">name</div>
-        </div>
-        <div class="talkcontent-YFT">Lorem ipsum dolor sit amet consectetur. Porttitor nibh ullamcorper adipiscing tellus. In nibh sociis rhoncus nunc.</div>
-      </div>
+      
     </div>
   </div>
+  <!--채팅 입력 div -->
   <div class="divinputtalk-F9s">
+	<!--프로필 이미지 -->
     <img class="profile-zdF" src="./assets/profile-nXB.png"/>
-    <div class="inputtalk-vmo">내용을 입력하세요.</div>
+  	 <div class="inputtalk-vmo">
+		 <!--채팅 입력 -->
+   		 <textarea id="myInput" placeholder="내용을 입력하세요" onkeydown="handleKeyDown(event)"></textarea>
+ 	 </div>
+ 	<!--전송 버튼 -->
+	<button class="insertBtn" onclick="insertTalk()">전송 </button>
+   
+    <!--
     <img class="iconheart-eho" src="./assets/iconheart-twb.png"/>
+    -->
   </div>
+
 </div>
 </body>

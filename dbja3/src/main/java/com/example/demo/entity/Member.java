@@ -9,11 +9,15 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name="member")
+@AllArgsConstructor
+@NoArgsConstructor  
 public class Member {
 	@Id
 	private String id;
@@ -39,5 +43,9 @@ public class Member {
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
 	private List<WishList> wishLists = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
+	private List<Opentalk> opentalks=new ArrayList<>();
+	
 	
 }

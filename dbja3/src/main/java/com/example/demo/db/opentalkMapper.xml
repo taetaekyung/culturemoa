@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="talk">
+	<select id="findAllTalk" resultType="opentalkVO" >
+	 SELECT talkno, talkcontent, o.id , gender, regdate FROM opentalk o JOIN member m ON o.id = m.id order by talkno
+	</select>
+	
+	<select id="findByNo" resultType="opentalkVO">
+		 SELECT talkno, talkcontent, o.id , gender, regdate FROM opentalk o JOIN member m ON o.id = m.id 
+		 where talkno between #{start} and #{end}
+		 order by talkno
+	
+	</select>
+</mapper>

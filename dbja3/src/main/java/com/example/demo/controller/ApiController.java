@@ -34,7 +34,7 @@ public class ApiController {
 			// service에서 선언한 80번 반복
 			StringBuilder result = new StringBuilder();
 			String urlStr = "http://api.data.go.kr/openapi/tn_pubr_public_pblprfr_event_info_api?"
-					+ "serviceKey=본인서비스키&"
+					+ "serviceKey=VWjrKOplh6WKUDOtjAXJg%2B4VF%2Fyy8ff2zTj7s6lpqB6aESRmFWR6LDKoK0M%2FyWcOBXEP0taEu3im95J47VQ%2BfA%3D%3D&"
 					+ "pageNo="+i+"&numOfRows=100&type=json";
 			// 페이지번호를 바꿔주며 값 가져오기
 			URL url = new URL(urlStr);
