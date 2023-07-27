@@ -24,7 +24,7 @@ public class JsoupController {
 	private EventDAO_jpa event_jpa;
 	
 	@GetMapping("/img")
-	public void newBook(){
+	public void newEvent(){
 		ArrayList<String>tlist=new ArrayList<>();
 		ArrayList<String> flist=new ArrayList<>();
 		ArrayList<Event> arr=new ArrayList<>();
