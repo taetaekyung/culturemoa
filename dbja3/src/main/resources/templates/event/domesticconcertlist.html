@@ -69,13 +69,15 @@
       </div>
     </div>
     <div class="eventlist-im7">
-	  <!-- 각 행 별로 반복 -->
+<!-- 각 행 별로 반복 -->
 <div class="row1-dt5" th:each="row : ${rows}">
   <!-- 한 행에 4개의 열을 출력 -->
   <div class="divposter-At1" th:each="e : ${row}">
     <div class="posterimage-8K3">
       <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
-      <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
+        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+      </a>
     </div>
     <div class="eventtitle-Gw3">
       <div class="diveventcategory-dWh">공연 종료</div>
@@ -86,6 +88,7 @@
     </div>
   </div>
 </div>
+
 
 	</div>
 	<!-- 이전 버튼 -->
