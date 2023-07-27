@@ -20,8 +20,12 @@
 </head>
 <body>
 	<h2>메인</h2>
-	<a th:href="@{/event/koreaconcertlist}" th:text="내한공연행사목록"></a>
-	<a th:href="@{/event/eventdetail}" th:text="행사상세"></a>
+	<a th:href="@{/event/domesticconcertlist}" th:text="국내공연목록"></a><br />
+	<a th:href="@{/event/koreaconcertlist}" th:text="내한공연목록"></a><br />
+	<a th:href="@{/event/musicallist}" th:text="뮤지컬목록"></a><br />
+	<a th:href="@{/event/playlist}" th:text="연극목록"></a><br />
+	<a th:href="@{/event/festivallist}" th:text="페스티벌목록"></a><br />
+	<hr />
 
 	
 	<button onclick="opentalk()">오픈톡</button>

@@ -68,8 +68,9 @@
         <div class="hit-oaZ">1958730</div>
       </div>
       <div class="divposter-wwf">
-        <div class="postertitle-uNh">브루노마스 내한 공연</div>
+        <div class="postertitle-uNh" th:text="${event.eventname}"></div>
         <div class="poster-pVf">
+			<img th:src="${event.eventfname == null ? '/images/togetready.png' : '/images/' + event.eventfname}" alt="행사 이미지" class="poster-pVf"/>
         </div>
       </div>
     </div>

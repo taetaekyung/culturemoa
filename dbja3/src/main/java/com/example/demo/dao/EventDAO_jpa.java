@@ -20,4 +20,7 @@ public interface EventDAO_jpa extends JpaRepository<Event, Integer> {
 	int getEventNo();	
 	
 	Page<Event> findByCategoryno(int categoryno, Pageable pageable);
+	
+	// 이벤트 번호로 이벤트를 조회하는 메소드 추가
+    Event findByEventno(int eventno);
 }

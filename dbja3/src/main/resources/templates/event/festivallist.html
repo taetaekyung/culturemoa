@@ -1,10 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>event_list</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
+  <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
 </head>
 <body>
+<div class="eventlist-Xxu">
+  <div class="auto-group-gtsh-Tbf">
+    <div class="gnb-bhs">
+      <div class="divintro-5sw">소개</div>
+      <div class="divevent-Nc9">행사소식</div>
+      <div class="divcommunity-5mT">커뮤니티</div>
+      <div class="divfaq-z7j">FAQ</div>
+      <div class="divmypage-hXw">마이페이지</div>
+      <div class="divopentalk-QBT">
+        <img class="iconopentalk-u8D" src="/assets/iconopentalk-w9B.png"/>
+        <div class="opentalk-EgH">오픈톡</div>
+      </div>
+      <div class="divmessage-MF7">
+        <img class="iconmessage-TZ3" src="/assets/iconmessage-9Bo.png"/>
+        <div class="message-Bjw">쪽지</div>
+      </div>
+    </div>
+    <div class="header-54d">
+      <p class="logo-PLD">
+      컬쳐
+      <br/>
+      모아
+      </p>
+    </div>
+  </div>
+  <div class="main-Ji5">
+    <div class="auto-group-cavd-39s">
+      <div class="maintitle-n7T">페스티벌</div>
+      <div class="searchbar-UFB">
+        <div class="auto-group-mh4m-ccH">
+          <div class="divaddr-weZ">
+            <div class="addr-GB3">지역</div>
+            <img class="click-yLM" src="/assets/click-Rpu.png"/>
+          </div>
+          <div class="divdate-4ch">
+            <div class="date-Pus">날짜</div>
+            <img class="click-v97" src="/assets/click-JXj.png"/>
+          </div>
+          <div class="diveventstate-cXj">
+            <div class="eventstate-wK7">공연중 / 공연 예정</div>
+            <img class="click-Fqb" src="/assets/click-ktR.png"/>
+          </div>
+        </div>
+        <div class="divsearch-ABs">
+          <div class="iconsearch-uv9">
+            <img class="search-q37" src="/assets/search-ybw.png"/>
+          </div>
+          <div class="searchtext-x7j">검색어를 입력하세요.</div>
+          <div class="search-QVX">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eventlist-im7">
+	  <!-- 각 행 별로 반복 -->
+	  <div class="row1-dt5" th:each="row : ${rows}">
+	    <!-- 한 행에 4개의 열을 출력 -->
+	    <div class="divposter-At1" th:each="e : ${row}">
+		<div class="posterimage-8K3">
+		  <img th:src="@{/images/} + ${e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+		</div>
 
+	      <div class="eventtitle-Gw3">
+	        <div class="diveventcategory-dWh">공연 종료</div>
+	        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 이전 버튼 -->
+	<a th:if="${currentPage > 0}" th:href="@{/event/festivallist(page=0)}">
+	  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
+	</a>
+	<a th:if="${currentPage > 0}" th:href="@{/event/festivallist(page=${currentPage - 1})}">
+	  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
+	</a>
+	<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
+	<div th:if="${totalPages > 1}">
+	  <th:block th:with="startPage=${currentPage > 5 ? currentPage - 5 : 0}">
+	    <th:block th:with="endPage=${startPage + 9 > totalPages ? totalPages - 1 : startPage + 9}">
+	      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}" th:if="${pageNum < totalPages}">
+	        <a th:href="@{/event/festivallist(page=${pageNum})}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+	          <span th:text="${pageNum + 1}"></span>
+	        </a>
+	      </th:block>
+	    </th:block>
+	  </th:block>
+	</div>
+	<!-- 다음 버튼 -->
+	<a th:if="${currentPage < totalPages - 1}" th:href="@{/event/festivallist(page=${currentPage + 1})}">
+	  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
+	</a>
+	<a th:if="${currentPage < totalPages - 1}" th:href="@{/event/festivallist(page=${totalPages - 1})}">
+	  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
+	</a>
+  </div>
+</div>
 </body>
-</html>
