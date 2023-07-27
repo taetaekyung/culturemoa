@@ -1,139 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>자유게시판</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A400"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
-  <link rel="stylesheet" href="../../../static/styles/boardlist.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
 </head>
 <body>
-<div class="boardlist-Lfb">
-  <div class="header-TVK">
-    <p class="logo-Aed">
+<!--freelist div 시작-->
+<div class="freelist">
+  <!-- header_top div 시작 -->
+  <div class="header_top">
+	<!--logo p 시작-->
+    <p class="logo">
     컬쳐
     <br/>
     모아
     </p>
-    <div class="searchbar-U9X">
-      <div class="searchicon-BJq">
-        <img class="iconsearch-tj3" src="../../../static/assets/iconsearch-wow.png"/>
+    <!--logo p 끝-->
+    
+    <!--searchbar div 시작-->
+    <div class="searchbar">
+	  <!-- searchicon div 시작 -->
+      <div class="searchicon">
+        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
       </div>
-      <div class="searchtext-ob7">검색어를 입력하세요.</div>
-      <div class="divsearch-3VT">
-      </div>
+      <!-- searchicon div 끝 -->
+      
+      <div class="searchtext">검색어를 입력하세요.</div>
+      
     </div>
-    <div class="divlogin-xMX">로그인</div>
-    <div class="divsignup-osw">회원가입</div>
+    <!--searchbar div 끝-->
+    
+    <div class="div_login">로그인</div>
+    <div class="div_signup">회원가입</div>
+    
   </div>
-  <div class="gnb-GmX">
-    <div class="divintro-Bdb">소개</div>
-    <div class="divevent-5ys">행사소식</div>
-    <div class="divcommunity-zb3">커뮤니티</div>
-    <div class="divfaq-7Qm">FAQ</div>
-    <div class="divmypage-EEV">마이페이지</div>
-    <div class="divopentalk-ivM">
-      <img class="iconopentalk-Edo" src="../../../static/assets/iconopentalk-1ms.png"/>
-      <div class="opentalk-mNq">오픈톡</div>
+  <!-- header_top div 끝 -->
+  
+  
+  <!-- header_bottom div 시작 -->
+  <div class="header_bottom">
+	
+    <div class="div_intro">소개</div>
+    <div class="div_event">행사소식</div>
+    <div class="div_community">커뮤니티</div>
+    <div class="div_faq">FAQ</div>
+    <div class="div_mypage">마이페이지</div>
+    
+    <!-- opentalk div 시작-->
+    <div class="opentalk">
+      <img class="iconopentalk" src="/assets/iconopentalk-1ms.png"/>
+      <div class="textopentalk">오픈톡</div>
     </div>
-    <div class="divmessage-GqP">
-      <img class="iconmessage-P9K" src="../../../static/assets/iconmessage-wqB.png"/>
-      <div class="message-vf3">쪽지</div>
+    <!-- opentalk div 시작-->
+    
+    <!-- message div 시작-->
+    <div class="message">
+      <img class="iconmessage" src="/assets/iconmessage-wqB.png"/>
+      <div class="textmessage">쪽지</div>
     </div>
+    <!-- message div 시작-->
   </div>
-  <div class="main-cXs">
-    <div class="location-wq3">
-      <div class="home-gGq">홈</div>
-      <img class="icon-oMT" src="../../../static/assets/icon-YJu.png"/>
-      <div class="community-ijK">커뮤니티</div>
-      <img class="icon-FDT" src="../../../static/assets/icon-umT.png"/>
-      <div class="boardlist-amX">자유게시판</div>
+  <!-- header_bottom div 끝 -->
+  
+  <!-- main div 시작 -->
+  <div class="main">
+	
+	<!-- location div 시작 -->
+    <div class="location">
+      <div class="home">홈</div>
+      <img class="nexticon" src="/assets/icon-YJu.png"/>
+      <div class="community">커뮤니티</div>
+      <img class="nexticon2" src="/assets/icon-umT.png"/>
+      <div class="freelist_text">자유게시판</div>
     </div>
-    <div class="maincontent-uYu">
-      <div class="auto-group-kgvf-eWV">
-        <div class="title-aQ9">자유게시판</div>
-        <div class="searchbar-sPF">
-          <div class="diviconsearch-zim">
-            <img class="icon-uqj" src="../../../static/assets/icon-8J5.png"/>
+    <!-- location div 끝 -->
+    
+    <!-- main_content div 시작 -->
+    <div class="main_content">
+		
+	  <!-- main_content_top div 시작 -->
+      <div class="main_content_top">
+        <div class="title">자유게시판</div>
+        
+        <!-- main_searchbar div 시작 -->
+        <div class="main_searchbar">
+		  <!-- main_iconsearch div 시작 -->
+          <div class="main_iconsearch">
+            <img class="search_icon" src="/assets/icon-8J5.png"/>
           </div>
-          <div class="divsearchtext-DrR">검색어를 입력하세요.</div>
-          <div class="divsearch-tBs">
-          </div>
+          <!-- main_iconsearch div 끝 -->
+          <div class="main_searchtext">검색어를 입력하세요.</div>
         </div>
-        <div class="filter-cNm">
-          <div class="divregist-MbF">등록순</div>
-          <div class="middleline-4Em">
-          </div>
-          <div class="divpopular-PH3">인기순</div>
+        <!-- main_searchbar div 끝 -->
+        
+        <!-- filter div 시작 -->
+        <div class="filter">
+          <div class="register">등록순</div>
+          <div class="middleline"></div>
+          <div class="popular">인기순</div>
         </div>
+        <!-- filter div 끝 -->
       </div>
-      <div class="boardlist-UZP">
-        <div class="listth-RDj">
-          <div class="name-Nuf">
-            <div class="auto-group-kxjw-XGm">
-              <div class="item--GEM">글번호</div>
-              <div class="item--kQR">제목</div>
-              <div class="item--U5X">작성일</div>
-              <div class="id-yny">ID</div>
-              <div class="item--uRj">조회수</div>
-              <div class="item--QtH">좋아요</div>
+      <!-- main_content_top div 끝 -->
+      
+      <!-- main_content_middle div 시작 -->
+      <div class="main_content_middle">
+		  
+		<!-- list_title div 시작 -->
+        <div class="list_title">
+			
+		  <!-- div_names div 시작 -->
+          <div class="div_names">
+			<!-- names div 시작 -->
+            <div class="names">
+              <div class="dno_name">글번호</div>
+              <div class="title_name">제목</div>
+              <div class="regdate_name">작성일</div>
+              <div class="id_name">ID</div>
+              <div class="hit_name">조회수</div>
+              <div class="like_name">좋아요</div>
             </div>
+            <!-- names div 끝 -->
           </div>
+          <!-- div_names div 끝 -->
         </div>
-        <div class="listtable-721">
-          <div class="list1-bhs">
-            <div class="dno-x2d">0000</div>
-            <div class="title-UFs">제목</div>
-            <div class="regdate-oJ9">YYYY-MM-DD</div>
-            <div class="id-ury">ABCDE</div>
-            <div class="hit-S6D">0000</div>
-            <div class="wish-ksb">0000</div>
-          </div>
-          <div class="list2-5us">
-            <div class="dno-3bo">0000</div>
-            <div class="title-n3b">제목</div>
-            <div class="regdate-K3X">YYYY-MM-DD</div>
-            <div class="id-da1">ABCDE</div>
-            <div class="hit-kuX">0000</div>
-            <div class="wish-HeZ">0000</div>
-          </div>
-          <div class="list3-cwj">
-            <div class="dno-PBo">0000</div>
-            <div class="title-KLM">제목</div>
-            <div class="regdate-Sfs">YYYY-MM-DD</div>
-            <div class="id-Arm">ABCDE</div>
-            <div class="hit-tXs">0000</div>
-            <div class="wish-cim">0000</div>
-          </div>
+        <!-- list_title div 끝 -->
+        
+        
+        <!-- list div 시작 -->
+        <div class="list">
+		  <span th:each="b:${list}">
+			  <!-- div_list 시작 -->
+	          <div class="div_list">
+	            <div class="dno" th:text="${b.boardno}"></div>
+	            <div class="title" th:text="${b.boardtitle}"></div>
+	            <div class="regdate" th:text="${b.regdate}"></div>
+	            <div class="userid" th:text="${b.member.id}"></div>
+	            <div class="hit" th:text="${b.boardhit}"></div>
+	            <div class="likes" th:text="${b.boardlikes}"></div>
+	          </div>
+	          <!-- div_list 끝 -->
+	      </span>
         </div>
+        <!-- list div 끝 -->
       </div>
-      <div class="auto-group-pv77-vDf">
-        <div class="insertboardbtn-eQZ">
-          <img class="icon-yhj" src="./assets/icon-wLD.png"/>
-          <div class="insertboard-WSm">게시글작성</div>
+      <!-- main_content_middle div 끝 -->
+      
+      <!-- main_content_bottom div 시작 -->
+      <div class="main_content_bottom">
+		<!-- insertboardbtn div 시작 -->
+        <div class="insertboardbtn">
+          <img class="inserticon" src="/assets/icon-wLD.png"/>
+          <div class="insert_text">게시글작성</div>
         </div>
-        <div class="paging-S5X">
-          <img class="btndoubleprevious-NE5" src="../../../static/assets/btndoubleprevious-erm.png"/>
-          <img class="btnprevious-VJh" src="../../../static/assets/btnprevious-bzR.png"/>
-          <img class="item-1-1Xw" src="../../../static/assets/-f5j.png"/>
-          <img class="item-2-9e9" src="../../../static/assets/-tsb.png"/>
-          <img class="item-3-gPB" src="../../../static/assets/-or9.png"/>
-          <img class="item-4-1wF" src="../../../static/assets/-BcD.png"/>
-          <img class="item-5-mQd" src="../../../static/assets/-3C5.png"/>
-          <img class="item-6-JvM" src="../../../static/assets/-H5B.png"/>
-          <img class="item-7-ejK" src="../../../static/assets/-27s.png"/>
-          <img class="item-8-buT" src="../../../static/assets/-nQZ.png"/>
-          <img class="item-9-Y41" src="../../../static/assets/-569.png"/>
-          <img class="btnnext-gvu" src="../../../static/assets/btnnext-UfK.png"/>
-          <img class="btndoublenext-Dfw" src="../../../static/assets/btndoublenext-aoT.png"/>
+        <!-- insertboardbtn div 끝 -->
+        
+        <!-- paging div 시작 -->
+        <div class="paging">
+          <img class="btndoubleprevious" src="/assets/btndoubleprevious-erm.png"/>
+          <img class="btnprevious" src="/assets/btnprevious-bzR.png"/>
+          <img class="page1" src="/assets/-f5j.png"/>
+          <img class="page2" src="/assets/-tsb.png"/>
+          <img class="page3" src="/assets/-or9.png"/>
+          <img class="page4" src="/assets/-BcD.png"/>
+          <img class="page5" src="/assets/-3C5.png"/>
+          <img class="page6" src="/assets/-H5B.png"/>
+          <img class="page7" src="/assets/-27s.png"/>
+          <img class="page8" src="/assets/-nQZ.png"/>
+          <img class="page9" src="/assets/-569.png"/>
+          <img class="btnnext" src="/assets/btnnext-UfK.png"/>
+          <img class="btndoublenext" src="/assets/btndoublenext-aoT.png"/>
         </div>
+        <!-- paging div 끝 -->
       </div>
+      <!-- main_content_bottom div 끝 -->
     </div>
+    <!-- main_content div 끝 -->
   </div>
+  <!-- main div 끝 -->
 </div>
+<!--freelist div 끝-->
 </body>
