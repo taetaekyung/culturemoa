@@ -40,6 +40,7 @@ public class MainController {
 		nowNo=now;
 		List<OpentalkVO> list=null;
 		list=opentalkdao_mb.findAllTalk();
+		System.out.println(list);
 		model.addAttribute("talk", list);
 		model.addAttribute("id", id);
 		model.addAttribute("now", nowNo);
@@ -58,6 +59,7 @@ public class MainController {
 		o.setMemberId(id); 
 		opentalkdao_jpa.insert(o);
 	}
+	
 	//------------채팅창 업데이트
 	@GetMapping("main_updateTalk")
 	@ResponseBody
@@ -71,8 +73,7 @@ public class MainController {
 			map.put("start", start);
 			map.put("end", end);
 			list=opentalkdao_mb.findByNo(map);	
-		}
-			
+		}	
 		return list;
 		}
 			

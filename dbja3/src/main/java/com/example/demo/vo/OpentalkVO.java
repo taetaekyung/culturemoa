@@ -14,4 +14,8 @@ public class OpentalkVO {
 	
 	//member와의 mapping을 위해 member.gender
 	private String gender;
+	//시분
+	private String day; 
+	//fname
+	private String fname;
 }

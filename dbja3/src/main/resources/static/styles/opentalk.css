@@ -15,6 +15,16 @@ input {
 body {
   width: 78.3rem;
 }
+.textbox{
+	display: flex;
+}
+.datebox{
+	display: flex; 
+	align-items: flex-end;
+}
+.datetext{
+	display: block;
+}
 .opentalk-vXb {
   box-sizing: border-box;
   padding: 2.55rem 6rem 3.3rem 6rem;
@@ -118,6 +128,7 @@ body {
   color: #000000;
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   flex-shrink: 0;
+  margin-right: 2rem;
 }
 .opentalk-vXb .frameopentalk-hgm .opentalk-d4d .talk2-toB {
   margin-right: 1.4rem;

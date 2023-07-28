@@ -13,9 +13,63 @@ import com.example.demo.vo.OpentalkVO;
 public class opentalkDAO_mb {
 	
 	public List<OpentalkVO> findAllTalk(){
-		return DBManager.findAllTalk();
+		List<OpentalkVO> list=null;
+		list=DBManager.findAllTalk();
+		
+		for(OpentalkVO vo:list) {
+			String day=vo.getDay();
+			int hour=Integer.parseInt(day.substring(0, day.indexOf(":")));
+			int min=Integer.parseInt(day.substring(day.indexOf(":")+1,day.length()));
+			
+			if(hour>12) {
+				hour-=12;
+				day="오후"+hour+""+":"+min+"";
+			}else {
+				day="오전"+hour+""+":"+min+"";
+			}
+			//System.out.println(day);
+			vo.setDay(day);
+			
+			String fname=vo.getFname();
+			if(fname==null||fname.equals("")) {
+				if(vo.getGender().equals("여성")) {
+					fname="icon_girl.png";
+				}else {
+					fname="icon_boy.png";
+				}
+			}
+			vo.setFname(fname);
+		}
+		return list;
 	}
 	public List<OpentalkVO> findByNo(HashMap<String, Integer> map){
-		return DBManager.findByNo(map);
+		List<OpentalkVO> list=null;
+		list=DBManager.findByNo(map);
+		
+		for(OpentalkVO vo:list) {
+			String day=vo.getDay();
+			int hour=Integer.parseInt(day.substring(0, day.indexOf(":")));
+			int min=Integer.parseInt(day.substring(day.indexOf(":")+1,day.length()));
+			
+			if(hour>12) {
+				hour-=12;
+				day="오후"+hour+""+":"+min+"";
+			}else {
+				day="오전"+hour+""+":"+min+"";
+			}
+			//System.out.println(day);
+			vo.setDay(day);
+			String fname=vo.getFname();
+			if(fname==null||fname.equals("")) {
+				if(vo.getGender().equals("여성")) {
+					fname="icon_girl.png";
+				}else {
+					fname="icon_boy.png";
+				}
+			}
+			vo.setFname(fname);
+		}
+		System.out.println("list"+list);
+		return list;
 	}
 }

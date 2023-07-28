@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
   <link rel="stylesheet" th:href="@{/styles/opentalk.css}"/>
+   <link href="/your-path-to-uicons/css/uicons-[your-style].css" rel="stylesheet"> <!--load all styles -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script type="text/javascript">
 	function checkNo(){
@@ -28,19 +29,25 @@
 					for(var i=0;i<data.length;i++){
 						var div=$("<div></div>").addClass("talk1-N2D");
 						var pro_div=$("<div></div>").addClass("profile-Vcd");
-						if(data[i].gender=="여성"){
-							src="./assets/icon_여성.png";
-						}else{
-							src="./assets/icon_남성.png";
-						}
-						var img=$("<img></img>").addClass("ellipse-8-26m").attr("src",src);
-						var img2=$("<img></img>").addClass("iconprofile-xFK").attr("src","./assets/iconprofile-m69.png");
+						
+						var img=$("<img></img>").addClass("ellipse-8-26m").attr("src","./profileImage/"+data[i].fname);
+						
+						
 						var id=$("<div></div>").addClass("name-VFF").html(data[i].id);
-						pro_div.append(img).append(img2).append(id);
-  						
+						pro_div.append(img);
+						if(data[i].fname.includes("icon")){
+							var img2=$("<img></img>").addClass("iconprofile-xFK").attr("src","./profileImage/profile-12Z.png");
+							pro_div.append(img2);
+						}
+						pro_div.append(id);
+		
   						var content_div=$("<div></div>").addClass("talkcontent-Npq").html(data[i].talkcontent);
-
-						div.append(pro_div).append(content_div);
+						var textbox=$("<div></div>").addClass("textbox");
+						var datebox=$("<div></div>").addClass("datebox");
+						var datetext=$("<p></p>").addClass("datetext").html(data[i].day);
+						datebox.append(datetext);
+						textbox.append(content_div).append(datebox);
+						div.append(pro_div).append(textbox);
 						
 						$(".opentalk-d4d").append(div);
 					}
@@ -126,6 +133,7 @@
 		
 	<!--talk1 -->
       <div th:each="t:${talk}" class="talk1-N2D">
+		<input type="hidden" th:value="${t.talkno}">
 		<!--talk icon-->
         <div class="profile-Vcd">
 		  <img class="ellipse-8-26m"  th:src="@{'./assets/icon_' + (${t.gender} eq '여성' ? '여성' : '남성') + '.png'}" />
@@ -133,9 +141,13 @@
           <!--talk 아이디 -->
           <div class="name-VFF" th:text="${t.id != null ? t.id : 'Unknown'}"></div>
         </div>
+        <div class="textbox" style="display: flex;">
         <!--talk 내용-->
 		<div class="talkcontent-Npq" th:utext="${t.talkcontent}"></div>
-
+		<div  class="datebox" style="display: flex; align-items: flex-end;">
+		   <p class="datetext" th:text="${t.day}" style="display: block;"></p>
+	    </div>
+		</div>
       </div>
       
     </div>
