@@ -5,7 +5,7 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>event_list</title>
+  <title>내한공연 리스트</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
@@ -13,6 +13,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
   <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	$(function() {
+		$("#pages").click(function() {
+			// $("#page1").removeClass("selected_page");
+			alert($(this).text());
+		})
+	})	
+		
+  </script>
 </head>
 <body>
 <div class="eventlist-Xxu">
@@ -69,54 +80,63 @@
       </div>
     </div>
     <div class="eventlist-im7">
-<!-- 각 행 별로 반복 -->
-<div class="row1-dt5" th:each="row : ${rows}">
-  <!-- 한 행에 4개의 열을 출력 -->
-  <div class="divposter-At1" th:each="e : ${row}">
-    <div class="posterimage-8K3">
-      <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
-      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
-        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
-      </a>
-    </div>
-    <div class="eventtitle-Gw3">
-      <div class="diveventcategory-dWh">공연 종료</div>
-      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
-      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
-        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
-      </a>
-    </div>
-  </div>
-</div>
+	<!-- 각 행 별로 반복 -->
+	<div class="row1-dt5" th:each="row : ${rows}">
+	  <!-- 한 행에 4개의 열을 출력 -->
+	  <div class="divposter-At1" th:each="e : ${row}">
+	    <div class="posterimage-8K3">
+	      <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
+	      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
+	        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+	      </a>
+	    </div>
+	    <div class="eventtitle-Gw3">
+	      <div class="diveventcategory-dWh">공연 종료</div>
+	      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
+	      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
+	        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
+	      </a>
+	    </div>
+	  </div>
+	</div>
 
 
 	</div>
-	<!-- 이전 버튼 -->
-	<a th:if="${currentPage > 0}" th:href="@{/event/koreaconcertlist(page=0)}">
-	  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
-	</a>
-	<a th:if="${currentPage > 0}" th:href="@{/event/koreaconcertlist(page=${currentPage - 1})}">
-	  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
-	</a>
-	<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
-	<div th:if="${totalPages > 1}">
-	  <th:block th:with="startPage=${currentPage > 5 ? currentPage - 5 : 0}">
-	    <th:block th:with="endPage=${startPage + 9 > totalPages ? totalPages - 1 : startPage + 9}">
-	      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}" th:if="${pageNum < totalPages}">
-	        <a th:href="@{/event/koreaconcertlist(page=${pageNum})}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
-	          <span th:text="${pageNum + 1}"></span>
-	        </a>
-	      </th:block>
-	    </th:block>
-	  </th:block>
+
+	<!-- 페이징처리 시작 -->
+	<div class="paging">
+		<!-- 이전 버튼 -->
+		<a th:if="${currentPage > 1}" th:href="@{/event/koreaconcertlist(page=1)}">
+		  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
+		</a>
+		<a th:if="${currentPage > 1}" th:href="@{/event/koreaconcertlist(page=${currentPage - 1})}">
+		  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
+		</a>
+		<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
+		<div class="div_page" th:if="${totalPages > 1}">
+		  <th:block th:with="startPage=${(currentPage-1) / 10 * 10 + 1}">
+			  <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
+		      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
+		        <!-- 페이지 숫자를 답는 div -->
+		        <div class="page1">
+		        	<a class="pages" th:href="@{/event/koreaconcertlist(page=${pageNum})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+		        	</a>
+		        </div> 
+		      </th:block>
+		    </th:block>
+		  </th:block>
+		</div>
+		<!-- 다음 버튼 -->
+		<a th:if="${currentPage < totalPages}" th:href="@{/event/koreaconcertlist(page=${currentPage + 1})}">
+		  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
+		</a>
+		<a th:if="${currentPage < totalPages}" th:href="@{/event/koreaconcertlist(page=${totalPages})}">
+		  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
+		</a>
 	</div>
-	<!-- 다음 버튼 -->
-	<a th:if="${currentPage < totalPages - 1}" th:href="@{/event/koreaconcertlist(page=${currentPage + 1})}">
-	  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
-	</a>
-	<a th:if="${currentPage < totalPages - 1}" th:href="@{/event/koreaconcertlist(page=${totalPages - 1})}">
-	  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
-	</a>
+	
+	
+	
   </div>
 </div>
 </body>

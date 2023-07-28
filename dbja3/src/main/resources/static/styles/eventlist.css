@@ -6,6 +6,26 @@ html {
 	margin: 0;
 	padding: 0;
 }
+
+a {
+  text-decoration-line : none;
+}
+
+
+.pages {
+	color: #999999; 
+} 
+ 
+.selected {
+	font-weight: bold;
+	color: #000000;
+}
+
+.selected_anchor {
+	font-weight: bold;
+	color: #000000;
+}
+
 ul, li {
 	list-style: none;
 }
@@ -390,9 +410,8 @@ body {
   border-radius: 1rem;
 }
 .eventlist-Xxu .main-Ji5 .eventlist-im7 {
-  margin-bottom: 7rem;
   box-sizing: border-box;
-  padding: 0rem 2rem 2.6rem 2rem;
+  padding: 0rem 2rem 0rem 2rem;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -1068,113 +1087,135 @@ body {
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM {
-  margin: 0rem 44.778rem 0rem 43.6rem;
-  width: calc(100% - 88.3783rem);
+.eventlist-Xxu .main-Ji5 .paging {
+  width:100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .btndoubleprevious-gWm {
-  margin-right: 0.8314rem;
-  width: 0.8rem;
-  height: 0.8rem;
+.eventlist-Xxu .main-Ji5 .paging .btndoubleprevious-gWm {
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .btnprevious-pN5 {
-  margin-right: 2.5rem;
-  width: 0.4rem;
-  height: 0.8rem;
+.eventlist-Xxu .main-Ji5 .paging .btnprevious-pN5 {
+  margin: 0rem 2.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-1-kWd {
+
+.eventlist-Xxu .main-Ji5 .paging .div_page {
+  text-align: left;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 0.4rem;
+}
+
+
+.eventlist-Xxu .main-Ji5 .paging .div_page .page1 {
   margin-right: 2rem;
+  margin-bottom: 0.7rem;
+  width: 14px;
+  height: 14px;
+  font-size: 18px;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+
+
+.eventlist-Xxu .main-Ji5 .paging .item-2-HmT {
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
   width: 0.5516rem;
   height: 1.0248rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-2-HmT {
-  margin: 0rem 2rem 0rem 0rem;
-  width: 0.6412rem;
-  height: 1.043rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-3-RMs {
+.eventlist-Xxu .main-Ji5 .paging .item-3-RMs {
   margin-right: 2rem;
-  width: 0.6468rem;
-  height: 1.0626rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-4-N2D {
-  margin-right: 2rem;
-  width: 0.6972rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
   height: 1.0248rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-5-WeD {
-  margin: 0rem 2rem 0rem 0rem;
-  width: 0.6552rem;
-  height: 1.0444rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-6-Snm {
+.eventlist-Xxu .main-Ji5 .paging .item-4-N2D {
   margin-right: 2rem;
-  width: 0.6286rem;
-  height: 1.0626rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-7-PT7 {
-  margin-right: 2rem;
-  width: 0.6342rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
   height: 1.0248rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-8-XpD {
+.eventlist-Xxu .main-Ji5 .paging .item-5-WeD {
   margin-right: 2rem;
-  width: 0.6412rem;
-  height: 1.0584rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
+  height: 1.0248rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .item-9-UjT {
-  margin-right: 2.5rem;
-  width: 0.6286rem;
-  height: 1.0626rem;
+.eventlist-Xxu .main-Ji5 .paging .item-6-Snm {
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
+  height: 1.0248rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .btnnext-2W5 {
-  margin-right: 0.6657rem;
-  width: 0.4rem;
-  height: 0.8rem;
+.eventlist-Xxu .main-Ji5 .paging .item-7-PT7 {
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
+  height: 1.0248rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.eventlist-Xxu .main-Ji5 .paging-ycM .btndoublenext-ZW1 {
-  width: 0.8rem;
-  height: 0.8rem;
+.eventlist-Xxu .main-Ji5 .paging .item-8-XpD {
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
+  height: 1.0248rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.eventlist-Xxu .main-Ji5 .paging .item-9-UjT {
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
+  width: 0.5516rem;
+  height: 1.0248rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.eventlist-Xxu .main-Ji5 .paging .btnnext-2W5 {
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.eventlist-Xxu .main-Ji5 .paging .btndoublenext-ZW1 {
+  margin-bottom: 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;

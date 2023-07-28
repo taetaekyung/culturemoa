@@ -91,33 +91,40 @@
 
 
 	</div>
-	<!-- 이전 버튼 -->
-	<a th:if="${currentPage > 0}" th:href="@{/event/domesticconcertlist(page=0)}">
-	  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
-	</a>
-	<a th:if="${currentPage > 0}" th:href="@{/event/domesticconcertlist(page=${currentPage - 1})}">
-	  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
-	</a>
-<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
-<div th:if="${totalPages > 1}">
-  <th:block th:with="startPage=${currentPage / 10 * 10 + 1}">
-    <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
-      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
-        <a th:href="@{/event/domesticconcertlist(page=${pageNum - 1})}" th:classappend="${pageNum - 1 == currentPage} ? 'selected' : ''">
-          <span th:text="${pageNum}"></span>
-        </a>
-      </th:block>
-    </th:block>
-  </th:block>
-</div>
-
-	<!-- 다음 버튼 -->
-	<a th:if="${currentPage < totalPages - 1}" th:href="@{/event/domesticconcertlist(page=${currentPage + 1})}">
-	  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
-	</a>
-	<a th:if="${currentPage < totalPages - 1}" th:href="@{/event/domesticconcertlist(page=${totalPages - 1})}">
-	  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
-	</a>
+	
+	
+		<!-- 페이징처리 시작 -->
+	<div class="paging">
+		<!-- 이전 버튼 -->
+		<a th:if="${currentPage > 1}" th:href="@{/event/domesticconcertlist(page=1)}">
+		  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
+		</a>
+		<a th:if="${currentPage > 1}" th:href="@{/event/domesticconcertlist(page=${currentPage - 1})}">
+		  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
+		</a>
+		<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
+		<div class="div_page" th:if="${totalPages > 1}">
+		  <th:block th:with="startPage=${(currentPage-1) / 10 * 10 + 1}">
+			  <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
+		      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
+		        <!-- 페이지 숫자를 답는 div -->
+		        <div class="page1">
+		        	<a class="pages" th:href="@{/event/domesticconcertlist(page=${pageNum})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+		        	</a>
+		        </div> 
+		      </th:block>
+		    </th:block>
+		  </th:block>
+		</div>
+		<!-- 다음 버튼 -->
+		<a th:if="${currentPage < totalPages}" th:href="@{/event/domesticconcertlist(page=${currentPage + 1})}">
+		  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
+		</a>
+		<a th:if="${currentPage < totalPages}" th:href="@{/event/domesticconcertlist(page=${totalPages})}">
+		  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
+		</a>
+	</div>
+	
   </div>
 </div>
 </body>
