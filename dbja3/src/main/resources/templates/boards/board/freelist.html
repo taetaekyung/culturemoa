@@ -25,6 +25,14 @@
 			}
 			location.href = url;
 		})
+		
+		$("#register_anchor").click(function() {
+			$("#register_anchor").css("color", "black");
+		})
+		
+		$("#popular_anchor").click(function() {
+			$("#popular_anchor").css("color", "black");
+		})
 	})	
 		
   </script>
@@ -111,7 +119,7 @@
         <div class="main_searchbar">
 		  <!--main_searchtext div 시작-->
           <div class="main_searchtext">
-			  <input onkeyup="enterkey();" type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
+			  <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
 		  	  <!-- searchbtn button 시작 -->
 	          <button class="searchbtn" id="searchbtn">
 	            <img class="search_icon" src="/assets/icon-8J5.png"/>
@@ -125,11 +133,11 @@
         <!-- filter div 시작 -->
         <div class="filter">
           <div class="register">
-		  	  <a th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/regdate'}" th:text="등록순"></a>
+		  	  <a id="register_anchor" class="register_anchor" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/regdate'}" th:text="등록순"></a>
 		  </div>
           <div class="middleline"></div>
           <div class="popular">
-			  <a th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/boardhit'}" th:text="인기순"></a>
+			  <a id="popular_anchor" class="popular_anchor" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/boardhit'}" th:text="인기순"></a>
 		  </div>
         </div>
         <!-- filter div 끝 -->
@@ -183,12 +191,13 @@
       <div class="main_content_bottom">
 		<!-- insertboardbtn div 시작 -->
         <div class="insertboardbtn">
-          <img class="inserticon" src="/assets/icon-wLD.png"/>
-          <div class="insert_text">게시글작성</div>
+          <a href="#" class="insert_text">
+			<img class="inserticon" src="/assets/icon-wLD.png"/>게시글작성
+		  </a>
         </div>
         <!-- insertboardbtn div 끝 -->
         
-        <!-- paging div 시작 -->
+<!--         paging div 시작 
         <div class="paging">
           <img class="btndoubleprevious" src="/assets/btndoubleprevious-erm.png"/>
           <img class="btnprevious" src="/assets/btnprevious-bzR.png"/>
@@ -200,7 +209,43 @@
           <img class="btnnext" src="/assets/btnnext-UfK.png"/>
           <img class="btndoublenext" src="/assets/btndoublenext-aoT.png"/>
         </div>
-        <!-- paging div 끝 -->
+         paging div 끝 
+        -->
+        
+	    <!-- paging div 시작 -->
+		<div class="paging">
+			<!-- 이전 버튼 -->
+			<a th:if="${currentPage > 1}" th:href="@{/boards/board/freelist/1}">
+			  <img class="btndoubleprevious" src="/assets/btndoubleprevious-zc9.png"/>
+			</a>
+			<a th:if="${currentPage > 1}" th:href="@{'/boards/board/freelist/'+${currentPage-1}}">
+			  <img class="btnprevious" src="/assets/btnprevious-fUm.png"/>
+			</a>
+			<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
+			<div class="div_page" th:if="${totalPages > 1}">
+			  <th:block th:with="startPage=${(currentPage-1)/10*10+1}">
+				  <th:block th:with="endPage=${(startPage+9) < totalPages ? (startPage+9) : totalPages}">
+			      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
+			        <!-- 페이지 숫자를 답는 div -->
+			        <div class="page1">
+			        	<a class="pages" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${pageNum}+'/'+${session.orderby}}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+			        	</a>
+			        </div> 
+			      </th:block>
+			    </th:block>
+			  </th:block>
+			</div>
+			<!-- 다음 버튼 -->
+			<a th:if="${currentPage < totalPages}" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${currentPage+1}+'/'+${session.orderby}}">
+			  <img class="btnnext" src="/assets/btnnext-zrm.png"/>
+			</a>
+			<a th:if="${currentPage < totalPages}" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${totalPages}+'/'+${session.orderby}}">
+			  <img class="btndoublenext" src="/assets/btndoublenext-Y7s.png"/>
+			</a>
+		</div>
+	    <!-- paging div 끝 -->    
+	        
+        
       </div>
       <!-- main_content_bottom div 끝 -->
     </div>
