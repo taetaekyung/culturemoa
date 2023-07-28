@@ -40,6 +40,8 @@
 <body>
 <!--freelist div 시작-->
 <div class="freelist">
+	
+	
   <!-- header_top div 시작 -->
   <div class="header_top">
 	<!--logo p 시작-->
@@ -95,12 +97,16 @@
   </div>
   <!-- header_bottom div 끝 -->
   
+  
+  
+  
+  
   <!-- main div 시작 -->
   <div class="main">
 	
 	<!-- location div 시작 -->
     <div class="location">
-      <div class="home">홈</div>
+      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
       <img class="nexticon" src="/assets/icon-YJu.png"/>
       <div class="community">커뮤니티</div>
       <img class="nexticon2" src="/assets/icon-umT.png"/>
@@ -191,9 +197,8 @@
       <div class="main_content_bottom">
 		<!-- insertboardbtn div 시작 -->
         <div class="insertboardbtn">
-          <a href="#" class="insert_text">
-			<img class="inserticon" src="/assets/icon-wLD.png"/>게시글작성
-		  </a>
+		  <img class="inserticon" src="/assets/icon-wLD.png"/>
+          <a class="insert_text" th:text="게시글작성"></a>
         </div>
         <!-- insertboardbtn div 끝 -->
         
