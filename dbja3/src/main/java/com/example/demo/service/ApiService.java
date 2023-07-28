@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -70,8 +73,14 @@ public class ApiService {
 				  e.setEventplace((String)jObj.get("opar")); // 행사장소명
 				  e.setEventhit(1); // 행사조회수
 				  e.setEventcontent((String) jObj.get("eventCo"));  // 행사내용
-				  e.setEventstart((String) jObj.get("eventStartDate")); // 행사시작일
-				  e.setEventend((String)jObj.get("eventEndDate"));  // 행사종료일
+				  String eventstart =(String) jObj.get("eventStartDate"); // 행사시작일
+				  String eventend = (String)jObj.get("eventEndDate");  // 행사종료일
+			      // 포맷터
+			      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+			      e.setEventstart(formatter.parse(eventstart));
+			      e.setEventend(formatter.parse(eventend));
+			 
+				  
 				  String link = (String) jObj.get("homepageUrl");
 				  if(link == null || link.equals("")) {
 					  continue;

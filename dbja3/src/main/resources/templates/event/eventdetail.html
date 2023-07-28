@@ -50,9 +50,25 @@
     <div class="mainheader-NgH">
       <div class="framemainheader-uRK">
         <div class="framelocation-rrM">
-          <div class="home-yAH">홈</div>
+          <a th:href="@{/mainPage}">
+	        <div class="home-yAH">홈</div>
+	      </a>
           <img class="icon-HRs" src="/assets/icon-XG5.png"/>
-          <div class="event-pAu">행사소식</div>
+          <a th:if="${event.categoryno == 1}" th:href="@{/event/domesticconcertlist}">
+ 	       <div class="event-pAu">행사소식</div>
+	      </a>
+	      <a th:if="${event.categoryno == 2}" th:href="@{/event/koreaconcertlist}">
+	        <div class="event-pAu">행사소식</div>
+	      </a>
+	      <a th:if="${event.categoryno == 3}" th:href="@{/event/musicallist}">
+	        <div class="event-pAu">행사소식</div>
+	      </a>
+	      <a th:if="${event.categoryno == 4}" th:href="@{/event/playlist}">
+	        <div class="event-pAu">행사소식</div>
+	      </a>
+	      <a th:if="${event.categoryno == 5}" th:href="@{/event/festivallist}">
+	        <div class="event-pAu">행사소식</div>
+	      </a>
           <img class="icon-vzd" src="/assets/icon-FM3.png"/>
           <div class="eventdetail-fhK">행사상세</div>
         </div>
@@ -83,10 +99,12 @@
           </div>
           <div class="auto-group-gt2u-S3B">
             <div class="divdate-Z7o">공연기간</div>
-            <div class="date-TU5" th:text="${event.eventstart}+'~'+${event.eventend}">2023.06.17 ~2023.06.18</div>
+            <!-- 공연 기간 출력 -->
+            <div class="date-TU5" th:text="${event.eventstart}+'~'+${event.eventend}"></div>
           </div>
           <div class="auto-group-9dqs-zD7">
             <div class="divlocation-JUh">공연장소</div>
+            <!-- 공연 장소 출력 -->
             <div class="location-ax1" th:text="${event.eventplace}"></div>
           </div>
           <div class="content-J7K" th:text="${event.eventcontent}">
@@ -103,16 +121,27 @@
         </div>
       </div>
       <div class="mainfooter-Kq3">
-        <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
-        <div class="golist-p17">
-		  <a th:if="${event.categoryno == 1}" th:href="@{/event/domesticconcertlist}">목록으로</a>
-		  <a th:if="${event.categoryno == 2}" th:href="@{/event/koreaconcertlist}">목록으로</a>
-		  <a th:if="${event.categoryno == 3}" th:href="@{/event/musicallist}">목록으로</a>
-		  <a th:if="${event.categoryno == 4}" th:href="@{/event/playlist}">목록으로</a>
-		  <a th:if="${event.categoryno == 5}" th:href="@{/event/festivallist}">목록으로</a>
+		  <a th:if="${event.categoryno == 1}" th:href="@{/event/domesticconcertlist}">
+		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <div class="golist-p17">목록으로</div>
+		  </a>
+		  <a th:if="${event.categoryno == 2}" th:href="@{/event/koreaconcertlist}">
+		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <div class="golist-p17">목록으로</div>
+		  </a>
+		  <a th:if="${event.categoryno == 3}" th:href="@{/event/musicallist}">
+		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <div class="golist-p17">목록으로</div>
+		  </a>
+		  <a th:if="${event.categoryno == 4}" th:href="@{/event/playlist}">
+		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <div class="golist-p17">목록으로</div>
+		  </a>
+		  <a th:if="${event.categoryno == 5}" th:href="@{/event/festivallist}">
+		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <div class="golist-p17">목록으로</div>
+		  </a>
 		</div>
-
-      </div>
     </div>
   </div>
 </div>

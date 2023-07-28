@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -24,8 +25,8 @@ public class Event {
 	private String eventaddr; // 행사도로명주소
 	private String eventplace; // 행사장소명
 	private String eventcontent; // 행사내용
-	private String eventstart; // 행사시작일
-	private String eventend; // 행사종료일
+	private Date eventstart; // 행사시작일
+	private Date eventend; // 행사종료일
 	private String eventlat; // 행사주소경도
 	private String eventlong; // 행사주소위도
 	private int eventhit; // 행사조회수
