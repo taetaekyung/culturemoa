@@ -25,6 +25,8 @@ public class Member {
 	private String email;
 	private String gender;  //'남성', '여성'
 	private String role;    //'admin','user'
+	private String phone; // 숫자만
+	private String nickname;
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
 	private List<Message> messages = new ArrayList<>();
