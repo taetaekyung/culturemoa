@@ -26,7 +26,8 @@ public class Member {
 	private String gender;  //'남성', '여성'
 	private String role;    //'admin','user'
 	private String phone; // 숫자만
-	private String nickname;
+	private String nickname; // 6자 이하
+	private String fname; // id.jpg
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
 	private List<Message> messages = new ArrayList<>();
