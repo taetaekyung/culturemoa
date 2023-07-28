@@ -51,7 +51,7 @@
 	} 
 	  
 	// 1초마다 updateTalk 함수 호출
-    setInterval(checkNo, 1000);
+    setInterval(checkNo, 200);
     
 	//----------------------------채팅입력 및 전송
 	function insertTalk(){
@@ -65,7 +65,7 @@
 				url:"insertTalk",
 				data:{talk:talk},
 				success:function(){
-					location.reload();
+					$("#myInput").val("");
 				}
 			});
 		}
@@ -108,17 +108,20 @@
 </head>
 
 <body>
+	
 <!--id  -->
 <input type="hidden" id="id" th:value="${id}">
 <!--now no -->
 <input type="hidden" id="now" th:value="${now}">
+
+
 <div class="opentalk-vXb">
   <!-- 오픈톡 타이틀-->
   <div class="opentalktitle-RUM">오픈톡</div>
   
   <!-- 오픈톡 프레임 -->
   <div class="frameopentalk-hgm" id="scrollableDiv">
-	<!-- 톡이 올라오는 div -->
+	<!-- 채팅창 -->
     <div class="opentalk-d4d">
 		
 	<!--talk1 -->
@@ -147,10 +150,7 @@
  	 </div>
  	<!--전송 버튼 -->
 	<button class="insertBtn" onclick="insertTalk()">전송 </button>
-   
-    <!--
-    <img class="iconheart-eho" src="./assets/iconheart-twb.png"/>
-    -->
+	
   </div>
 
 </div>

@@ -32,7 +32,6 @@ public class OpentalkController {
 	public void talk(Model model) {
 		int now=opentalkdao_jpa.nextNo()-1;
 		nowNo=now;
-		System.out.println(now+"now");
 		List<OpentalkVO> list=null;
 		list=opentalkdao_mb.findAllTalk();
 		model.addAttribute("talk", list);
