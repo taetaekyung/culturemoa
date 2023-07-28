@@ -5,19 +5,16 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name="member")
-@AllArgsConstructor
-@NoArgsConstructor  
 public class Member {
 	@Id
 	private String id;
@@ -43,9 +40,5 @@ public class Member {
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
 	private List<WishList> wishLists = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
-	private List<Opentalk> opentalks=new ArrayList<>();
-	
 	
 }

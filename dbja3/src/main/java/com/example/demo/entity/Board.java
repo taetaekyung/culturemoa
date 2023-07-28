@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,26 +14,40 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name="board")
 public class Board {
 	@Id
 	private int boardno;
-	
 	private String bcategory;
 	private String boardtitle;
 	private String boardcontent;
 	private String boardfname;
 	private int boardhit;
-	private int boardlikes;
-	
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id",insertable = true, updatable = true)
 	private Member member;
 	
+	public void setMemberId(String memberId) {
+		if(this.member==null) {
+			this.member = new Member();
+		}
+		this.member.setId(memberId);
+	}
+	
+	public String getMemberId() {
+		return this.member.getId();
+	}
+	
 	private Date regdate;
+	private int boardlikes;
 	
 	@OneToMany(mappedBy = "board", cascade=CascadeType.REMOVE)
 	private List<Comments> comments = new ArrayList<>();

@@ -12,6 +12,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	$(function() {
+		$("#searchbtn").click(function() {
+			var keyword = $("#keyword").val();
+			if(keyword!=null && keyword!='') {
+				url = "/boards/board/freelist/"+keyword+"/1/regdate";
+			}
+			else {
+				url = "/boards/board/freelist/all/1/regdate";
+			}
+			location.href = url;
+		})
+	})	
+		
+  </script>
 </head>
 <body>
 <!--freelist div 시작-->
@@ -93,20 +109,28 @@
         
         <!-- main_searchbar div 시작 -->
         <div class="main_searchbar">
-		  <!-- main_iconsearch div 시작 -->
-          <div class="main_iconsearch">
-            <img class="search_icon" src="/assets/icon-8J5.png"/>
-          </div>
-          <!-- main_iconsearch div 끝 -->
-          <div class="main_searchtext">검색어를 입력하세요.</div>
+		  <!--main_searchtext div 시작-->
+          <div class="main_searchtext">
+			  <input onkeyup="enterkey();" type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
+		  	  <!-- searchbtn button 시작 -->
+	          <button class="searchbtn" id="searchbtn">
+	            <img class="search_icon" src="/assets/icon-8J5.png"/>
+	          </button>
+        	  <!-- searchbtn button 끝 -->
+		  </div>
+		  <!--main_searchtext div 끝-->
         </div>
         <!-- main_searchbar div 끝 -->
         
         <!-- filter div 시작 -->
         <div class="filter">
-          <div class="register">등록순</div>
+          <div class="register">
+		  	  <a th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/regdate'}" th:text="등록순"></a>
+		  </div>
           <div class="middleline"></div>
-          <div class="popular">인기순</div>
+          <div class="popular">
+			  <a th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/boardhit'}" th:text="인기순"></a>
+		  </div>
         </div>
         <!-- filter div 끝 -->
       </div>
@@ -168,15 +192,11 @@
         <div class="paging">
           <img class="btndoubleprevious" src="/assets/btndoubleprevious-erm.png"/>
           <img class="btnprevious" src="/assets/btnprevious-bzR.png"/>
-          <img class="page1" src="/assets/-f5j.png"/>
-          <img class="page2" src="/assets/-tsb.png"/>
-          <img class="page3" src="/assets/-or9.png"/>
-          <img class="page4" src="/assets/-BcD.png"/>
-          <img class="page5" src="/assets/-3C5.png"/>
-          <img class="page6" src="/assets/-H5B.png"/>
-          <img class="page7" src="/assets/-27s.png"/>
-          <img class="page8" src="/assets/-nQZ.png"/>
-          <img class="page9" src="/assets/-569.png"/>
+          <th:block th:each="i:${#numbers.sequence(startPage, endPage)}">
+	          <div class="page1">
+				  <a th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${i}+'/'+${session.orderby}}" th:text="${i}" class="pages"></a>
+			  </div>
+		  </th:block>
           <img class="btnnext" src="/assets/btnnext-UfK.png"/>
           <img class="btndoublenext" src="/assets/btndoublenext-aoT.png"/>
         </div>
