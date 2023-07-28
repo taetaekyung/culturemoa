@@ -41,9 +41,9 @@ public class EventController {
 	
 	//연극 행사리스트
 	@GetMapping("/event/playlist")
-	public void playlist(Model model, @RequestParam(defaultValue = "0") int page) {
+	public void playlist(Model model, @RequestParam(defaultValue = "1") int page) {
 	    int pageSize = 16; // 한 페이지에 보여줄 개수 (4열 4행이므로 16개씩)
-	    Pageable pageable = PageRequest.of(page, pageSize, Sort.by("eventno").descending());
+	    Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by("eventno").descending());
 	    Page<Event> eventPage = eventdao_jpa.findByCategoryno(4, pageable); // categoryno가 2인 데이터만 가져오도록 변경
 	    List<List<Event>> rows = new ArrayList<>();
 	    List<Event> currentRow = null;
@@ -63,9 +63,9 @@ public class EventController {
 	
 	//뮤지컬 행사리스트
 	@GetMapping("/event/musicallist")
-	public void musicallist(Model model, @RequestParam(defaultValue = "0") int page) {
+	public void musicallist(Model model, @RequestParam(defaultValue = "1") int page) {
 	    int pageSize = 16; // 한 페이지에 보여줄 개수 (4열 4행이므로 16개씩)
-	    Pageable pageable = PageRequest.of(page, pageSize, Sort.by("eventno").descending());
+	    Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by("eventno").descending());
 	    Page<Event> eventPage = eventdao_jpa.findByCategoryno(3, pageable); // categoryno가 2인 데이터만 가져오도록 변경
 	    List<List<Event>> rows = new ArrayList<>();
 	    List<Event> currentRow = null;
@@ -85,9 +85,9 @@ public class EventController {
 	
 	//페스티벌 행사리스트
 	@GetMapping("/event/festivallist")
-	public void festivallist(Model model, @RequestParam(defaultValue = "0") int page) {
+	public void festivallist(Model model, @RequestParam(defaultValue = "1") int page) {
 	    int pageSize = 16; // 한 페이지에 보여줄 개수 (4열 4행이므로 16개씩)
-	    Pageable pageable = PageRequest.of(page, pageSize, Sort.by("eventno").descending());
+	    Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by("eventno").descending());
 	    Page<Event> eventPage = eventdao_jpa.findByCategoryno(5, pageable); // categoryno가 2인 데이터만 가져오도록 변경
 	    List<List<Event>> rows = new ArrayList<>();
 	    List<Event> currentRow = null;
@@ -107,9 +107,9 @@ public class EventController {
 	
 	//국내공연 행사리스트
 	@GetMapping("/event/domesticconcertlist")
-	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "0") int page) {
+	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "1") int page) {
 	    int pageSize = 16; // 한 페이지에 보여줄 개수 (4열 4행이므로 16개씩)
-	    Pageable pageable = PageRequest.of(page, pageSize, Sort.by("eventno").descending());
+	    Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by("eventno").descending());
 	    Page<Event> eventPage = eventdao_jpa.findByCategoryno(1, pageable);
 	    List<List<Event>> rows = new ArrayList<>();
 	    List<Event> currentRow = null;
@@ -131,9 +131,9 @@ public class EventController {
 	
 	//내한공연 행사리스트
 	@GetMapping("/event/koreaconcertlist")
-	public void koreaconcertlist(Model model, @RequestParam(defaultValue = "0") int page) {
+	public void koreaconcertlist(Model model, @RequestParam(defaultValue = "1") int page) {
 	    int pageSize = 16; // 한 페이지에 보여줄 개수 (4열 4행이므로 16개씩)
-	    Pageable pageable = PageRequest.of(page, pageSize, Sort.by("eventno").descending());
+	    Pageable pageable = PageRequest.of(page-1, pageSize, Sort.by("eventno").descending());
 	    Page<Event> eventPage = eventdao_jpa.findByCategoryno(2, pageable); // categoryno가 2인 데이터만 가져오도록 변경
 	    List<List<Event>> rows = new ArrayList<>();
 	    List<Event> currentRow = null;
