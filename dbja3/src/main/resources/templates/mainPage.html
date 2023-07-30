@@ -57,7 +57,7 @@
 	function showDivs(n) {
 	  var i;
 	  var x = document.getElementsByClassName("myEvent");
-	  console.log(x);
+
 	  if (n > x.length) {slideIndex = 1}
 	  if (n < 1) {slideIndex = x.length}
 	  for (i = 0; i < x.length; i++) {
@@ -211,7 +211,6 @@
 	function insertTalk(){
 		var talk = $("#myInput").val().replace(/\n/g, "<br>");
 		var id=$("#id").val();
-		console.log(id);
 		if(!id){
 			alert("로그인이 필요합니다");
 		}else{
@@ -256,7 +255,18 @@
 	    }
 	  }
 	}
-   
+   //---------------------------------------------------
+   function selectArea(area){
+	   var column=area;
+	   console.log(column);
+	  $.ajax({
+		  url:"selectArea",
+		  data:{area:column},
+		  success:function(data){
+			console.log(data);  
+		  }
+	  });
+   }
 </script>
 </head>
 <body>
@@ -434,10 +444,10 @@
                 <div class="line-3-isT"></div>
                 
                <div class="drop" style="visibility: hidden;" onmouseleave="hideDrop()">
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">서울</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">부산</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('서울')">서울</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('부산')">부산</div>
                	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">대구</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">인천</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('인천')">인천</div>
                	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">광주</div>
                	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">대전</div>
                	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">울산</div>
@@ -467,7 +477,7 @@
 				<input type="hidden" value="${e.eventno}">
 				<!-- 행사 사진-->
                 <div class="imgposter-VfF"  >
-					<img class="imgposter" th:src="@{'./images/'+${e.eventfname}}"/>
+					<img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
 				  <!--공연 진행 여부 -->
@@ -483,7 +493,7 @@
 				<input type="hidden" value="${e.eventno}">  
 				<!-- 행사 사진-->
                 <div class="imgposter-VfF" >
-					<img class="imgposter" th:src="@{'./images/'+${e.eventfname}}"/>
+					<img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
 				  <!--공연 진행 여부 -->
@@ -499,7 +509,7 @@
 				<input type="hidden" value="${e.eventno}">
 				<!-- 행사 사진-->
                 <div class="imgposter-VfF">
-					<img class="imgposter" th:src="@{'./images/'+${e.eventfname}}"/>
+					<img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
 				  <!--공연 진행 여부 -->

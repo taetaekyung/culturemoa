@@ -9,4 +9,11 @@
 		WHERE eventend >= sysdate ORDER BY eventhit) a
 		WHERE a.rnum BETWEEN 1 AND 15
 	</select>
+	
+	<select id="findByArea" resultType="eventVO">
+		 SELECT a.* FROM (
+	    SELECT rownum as rnum, e.* FROM event e
+	    WHERE eventend >= sysdate and eventaddr like '%' || #{area} || '%' ORDER BY eventhit) a
+	    WHERE a.rnum BETWEEN 1 AND 15
+	</select>
 </mapper>

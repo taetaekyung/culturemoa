@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.example.demo.entity.Opentalk;
 import com.example.demo.vo.EventVO;
-import com.example.demo.vo.EventVO2;
 import com.example.demo.vo.OpentalkVO;
 
 
@@ -46,10 +45,18 @@ public class DBManager {
 	}
 	//----eventMapper
 	//전체 event top15
-	public static List<EventVO2> findTop(){
+	public static List<EventVO> findTop(){
 		SqlSession session=sqlSessionFactory.openSession();
-		List<EventVO2>list=null;
+		List<EventVO>list=null;
 		list=session.selectList("event.findTop");
+		session.close();
+		return list;
+	}
+	//행사 지역에 따른 top15
+	public static List<EventVO> findByArea(String area){
+		SqlSession session=sqlSessionFactory.openSession();
+		List<EventVO>list=null;
+		list=session.selectList("event.findByArea",area);
 		session.close();
 		return list;
 	}

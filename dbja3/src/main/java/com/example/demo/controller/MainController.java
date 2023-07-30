@@ -15,7 +15,6 @@ import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
 import com.example.demo.entity.Opentalk;
 import com.example.demo.vo.EventVO;
-import com.example.demo.vo.EventVO2;
 import com.example.demo.vo.OpentalkVO;
 
 @Controller
@@ -41,11 +40,11 @@ public class MainController {
 	@GetMapping("/mainPage")
 	public void mainPage(Model model) {
 		//주변행사소식 행사 리스트 출력
-		List<EventVO2> event=null;
+		List<EventVO> event=null;
 		event=eventdao_mb.findTop();
-		ArrayList<EventVO2> event1=new ArrayList<>();
-		ArrayList<EventVO2> event2=new ArrayList<>();
-		ArrayList<EventVO2> event3=new ArrayList<>();
+		ArrayList<EventVO> event1=new ArrayList<>();
+		ArrayList<EventVO> event2=new ArrayList<>();
+		ArrayList<EventVO> event3=new ArrayList<>();
 		
 		
 		for(int i=0;i<15;i++) {
@@ -71,6 +70,42 @@ public class MainController {
 		model.addAttribute("talk", list);
 		model.addAttribute("id", id);
 		model.addAttribute("now", nowNo);
+	}
+	
+	//주변행사지역 > 행사지역 선택했을 때
+	@GetMapping("selectArea")
+	@ResponseBody
+	public ArrayList<ArrayList<EventVO>> selectArea(String area){
+		System.out.println("area:"+area);
+		ArrayList<ArrayList<EventVO>> list=new ArrayList<>();
+		
+		List<EventVO> event=null;
+		event=eventdao_mb.findByArea(area);
+		ArrayList<EventVO> event1=new ArrayList<>();
+		ArrayList<EventVO> event2=new ArrayList<>();
+		ArrayList<EventVO> event3=new ArrayList<>();
+		for(int i=0;i<event.size();i++) {
+			if(i<5) {
+				event1.add(event.get(i));
+			}else if(i>=5 && i<10){
+				event2.add(event.get(i));
+			}else {
+				event3.add(event.get(i));
+			}
+		}
+		if(event1.size()!=0) {
+			list.add(event1);
+		}
+		if(event2.size()!=0) {
+			list.add(event2);
+		}
+		if(event3.size()!=0) {
+			list.add(event3);
+		}
+		
+		
+		
+		return list;
 	}
 	
 	
