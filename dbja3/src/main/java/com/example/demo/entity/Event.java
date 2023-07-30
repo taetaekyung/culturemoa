@@ -33,7 +33,6 @@ public class Event {
 	private String eventfname; // 행사사진
 	private String eventticket; // 행사티켓예매링크
 	private int eventprice; // 행사티켓가격
-	private int eventstate; // 행사진행상태
 	private String parkplace; // 주차장여부
 	
 	@OneToMany(mappedBy = "event", cascade=CascadeType.REMOVE)

@@ -22,33 +22,9 @@
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>
-	//-----주변행사 dropdown
-	function openDrop() {
-	  var drop = document.querySelector(".drop"); // Use querySelector to get the first element with the class "drop"
-	  if (drop) {
-	    // Check if the element with class "drop" exists
-	    drop.style.visibility = "visible";
-	  }
-	}
-	
-	//드롭다운에서 마우스 벗어나면 없어지기
-     function hideDrop() {
-         const dropdown = document.querySelector(".drop");
-         dropdown.style.visibility = 'hidden';
-     }
-     
-	//-----주변 행사 소식 : 지역 드롭다운 효과
-	function addHoverStyle(element) {
-	  element.classList.add("hover");
-	}
-	
-	function removeHoverStyle(element) {
-	  element.classList.remove("hover");
-	}
-	
-	//-----------주변행사 소식 배너
+	//-------------------------------------------------------
 	var slideIndex = 1;
-		showDivs(slideIndex);
+	showDivs(slideIndex);
 	
 	function plusDivs(n) {
 	  showDivs(slideIndex += n);
@@ -404,31 +380,12 @@
             <div class="dropdownarea-oMB">
 			<!-- 지역 선택 드롭다운-->
               <div class="component-20-MtV">
-                <div class="auto-group-rq2q-7cm" onclick="openDrop()">
+                <div class="auto-group-rq2q-7cm">
                   <div class="selectarea-GEm">지역을 선택하세요.</div>
                   <img class="vector-1-PaH" src="./assets/vector-1-GTB.png"/>
                 </div>
-                <div class="line-3-isT"></div>
-                
-               <div class="drop" style="visibility: hidden;" onmouseleave="hideDrop()">
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">서울</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">부산</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">대구</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">인천</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">광주</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">대전</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">울산</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">세종</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">강원</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">충청북도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">충청남도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">전라북도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">전라남도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">경상북도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">경상남도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)">제주</div>
-			   </div>
-			   
+                <div class="line-3-isT">
+                </div>
               </div>
             </div>
           </div>

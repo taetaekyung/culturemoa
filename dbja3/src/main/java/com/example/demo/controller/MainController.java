@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dao.EventDAO_mb;
 import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
 import com.example.demo.entity.Opentalk;
+import com.example.demo.vo.EventVO;
 import com.example.demo.vo.OpentalkVO;
 
 @Controller
@@ -25,6 +28,8 @@ public class MainController {
 	private opentalkDAO_jpa opentalkdao_jpa;
 	@Autowired
 	private opentalkDAO_mb opentalkdao_mb;	
+	@Autowired
+	private EventDAO_mb eventdao_mb;
 	
 	@GetMapping("/")
 	public String main() {
@@ -34,13 +39,34 @@ public class MainController {
 	//메인페이지를 열었을 때
 	@GetMapping("/mainPage")
 	public void mainPage(Model model) {
+		//주변행사소식 행사 리스트 출력
+		List<EventVO> event=null;
+		event=eventdao_mb.findTop();
+		ArrayList<EventVO> event1=new ArrayList<>();
+		ArrayList<EventVO> event2=new ArrayList<>();
+		ArrayList<EventVO> event3=new ArrayList<>();
+		
+		
+		for(int i=0;i<15;i++) {
+			if(i<5) {
+				event1.add(event.get(i));
+			}else if(i>=5 && i<10){
+				event2.add(event.get(i));
+			}else {
+				event3.add(event.get(i));
+			}
+		}
+		
+		model.addAttribute("event1",event1);
+		model.addAttribute("event2",event2);
+		model.addAttribute("event3",event3);
+		
 		
 		//--------------채팅창 로드
 		int now=opentalkdao_jpa.nextNo()-1;
 		nowNo=now;
 		List<OpentalkVO> list=null;
 		list=opentalkdao_mb.findAllTalk();
-		System.out.println(list);
 		model.addAttribute("talk", list);
 		model.addAttribute("id", id);
 		model.addAttribute("now", nowNo);
