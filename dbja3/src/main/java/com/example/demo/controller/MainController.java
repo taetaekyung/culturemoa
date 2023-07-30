@@ -15,6 +15,7 @@ import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
 import com.example.demo.entity.Opentalk;
 import com.example.demo.vo.EventVO;
+import com.example.demo.vo.EventVO2;
 import com.example.demo.vo.OpentalkVO;
 
 @Controller
@@ -40,11 +41,11 @@ public class MainController {
 	@GetMapping("/mainPage")
 	public void mainPage(Model model) {
 		//주변행사소식 행사 리스트 출력
-		List<EventVO> event=null;
+		List<EventVO2> event=null;
 		event=eventdao_mb.findTop();
-		ArrayList<EventVO> event1=new ArrayList<>();
-		ArrayList<EventVO> event2=new ArrayList<>();
-		ArrayList<EventVO> event3=new ArrayList<>();
+		ArrayList<EventVO2> event1=new ArrayList<>();
+		ArrayList<EventVO2> event2=new ArrayList<>();
+		ArrayList<EventVO2> event3=new ArrayList<>();
 		
 		
 		for(int i=0;i<15;i++) {

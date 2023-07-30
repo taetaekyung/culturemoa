@@ -11,17 +11,30 @@ a {
   text-decoration-line : none;
 }
 
-.none_pages {
-	color: #e0e0e0;
-}
 
 .pages {
 	color: #999999; 
 } 
  
-.select_page {
+.selected {
 	font-weight: bold;
 	color: #000000;
+}
+
+.selected_anchor{
+  margin-right: 1rem;
+  width: 4.8rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.8888888889;
+  letter-spacing: -0.1rem;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: #000000;
 }
 
 ul, li {
@@ -30,7 +43,7 @@ ul, li {
 input {
 	border: none;
 	width: 100%;
-	font-family: 'GmarketSans', 'Source Sans 3', sans-serif;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
 	border: #ffffff;
 	font-size: 16px; 
 }
@@ -462,6 +475,22 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
+
+.freelist .main .main_content .main_content_top .filter .register .register_anchor{
+  width: 4.8rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.8888888889;
+  letter-spacing: -0.1rem;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: #c0c0c0;
+}
+
 .freelist .main .main_content .main_content_top .filter .middleline {
   margin: 0.2rem 0.8rem 0rem 0rem;
   width: 0.2rem;
@@ -485,6 +514,24 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
+
+.freelist .main .main_content .main_content_top .filter .popular .popular_anchor{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 4.8rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.8888888889;
+  letter-spacing: -0.1rem;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: #c0c0c0;
+ }
+
 .freelist .main .main_content .main_content_middle {
   box-sizing: border-box;
   width: 100%;
@@ -702,24 +749,23 @@ body {
 }
 .freelist .main .main_content .main_content_bottom {
   box-sizing: border-box;
-  padding: 1.2rem 5.511rem 0rem 48.569rem;
-  width: 100%;
+  width: 1280px;
   align-items: center;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
 .freelist .main .main_content .main_content_bottom .insertboardbtn {
-  margin: 0rem 0rem 0.5rem 65.031rem;
-  width: calc(100% - 65.0313rem);
+  width: 100%;
   display: flex;
-  align-items: center;
+  text-align: right;
+  justify-content: right;
   flex-shrink: 0;
 }
 .freelist .main .main_content .main_content_bottom .insertboardbtn .inserticon {
-  margin: 0rem 1rem 0rem 0rem;
-  width: 0.8892rem;
-  height: 0.9288rem;
+  margin: 2.1rem 0.5rem 0rem 0rem;
+  width: 10px;
+  height: 10px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
@@ -739,12 +785,23 @@ body {
   margin-right: 43.2989rem;
   display: flex;
   align-items: center;
+  text-align: center;
+  justify-content: center;
   flex-shrink: 0;
+  margin: 0 auto;
 }
+
+.freelist .main .main_content .main_content_bottom .paging .div_page {
+  text-align: left;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 0.4rem;
+}
+
 .freelist .main .main_content .main_content_bottom .paging .btndoubleprevious {
-  margin: 0rem 0.831rem 0rem 0rem;
-  width: 0.8rem;
-  height: 0.8rem;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;
@@ -752,17 +809,18 @@ body {
 }
 .freelist .main .main_content .main_content_bottom .paging .btnprevious {
   margin: 0rem 2.5rem 0rem 0rem;
-  width: 0.4rem;
-  height: 0.8rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
 .freelist .main .main_content .main_content_bottom .paging .page1 {
   margin-right: 2rem;
-  margin-bottom: 0.5rem;
-  width: 0.5516rem;
-  height: 1.0248rem;
+  margin-bottom: 0.7rem;
+  width: 14px;
+  height: 14px;
+  font-size: 18px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
@@ -836,17 +894,17 @@ body {
 
 
 .freelist .main .main_content .main_content_bottom .paging .btnnext {
-  margin: 0rem 0.666rem 0rem 0rem;
-  width: 0.4rem;
-  height: 0.8rem;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
 .freelist .main .main_content .main_content_bottom .paging .btndoublenext {
   margin-bottom: 0rem;
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;

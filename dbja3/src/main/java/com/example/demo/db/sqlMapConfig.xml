@@ -18,7 +18,7 @@
 	<typeAlias type="com.example.demo.entity.Opentalk" alias="opentalk"/>
 	<!-- vo -->
 	<typeAlias type="com.example.demo.vo.OpentalkVO" alias="opentalkVO"/>
-	<typeAlias type="com.example.demo.vo.EventVO" alias="eventVO"/>
+	<typeAlias type="com.example.demo.vo.EventVO2" alias="eventVO"/>
 	
   </typeAliases>
   <environments default="development">

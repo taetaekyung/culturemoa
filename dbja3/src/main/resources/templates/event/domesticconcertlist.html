@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="eventlist-Xxu">
-  <div class="auto-group-gtsh-Tbf">
+  <div class="auto-group-9o4m-KFo">
     <div class="gnb-bhs">
       <div class="divintro-5sw">소개</div>
       <div class="divevent-Nc9">행사소식</div>
@@ -80,7 +80,7 @@
       </a>
     </div>
     <div class="eventtitle-Gw3">
-      <div class="diveventcategory-dWh">공연 종료</div>
+      <div class="diveventcategory-dWh" th:text="${e.eventstate}">공연 종료</div>
       <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
       <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
         <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>

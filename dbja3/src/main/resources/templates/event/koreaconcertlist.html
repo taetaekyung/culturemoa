@@ -27,30 +27,61 @@
 </head>
 <body>
 <div class="eventlist-Xxu">
-  <div class="auto-group-gtsh-Tbf">
-    <div class="gnb-bhs">
-      <div class="divintro-5sw">소개</div>
-      <div class="divevent-Nc9">행사소식</div>
-      <div class="divcommunity-5mT">커뮤니티</div>
-      <div class="divfaq-z7j">FAQ</div>
-      <div class="divmypage-hXw">마이페이지</div>
-      <div class="divopentalk-QBT">
-        <img class="iconopentalk-u8D" src="/assets/iconopentalk-w9B.png"/>
-        <div class="opentalk-EgH">오픈톡</div>
+  <div class="auto-group-9o4m-KFo">
+         <!-- header_top div 시작 -->
+	  <div class="header_top">
+		<!--logo p 시작-->
+	    <p class="logo">
+	    컬쳐
+	    <br/>
+	    모아
+	    </p>
+	    <!--logo p 끝-->
+	    
+	    <!--searchbar div 시작-->
+	    <div class="searchbar">
+		  <!-- searchicon div 시작 -->
+	      <div class="searchicon">
+	        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
+	      </div>
+	      <!-- searchicon div 끝 -->
+	      
+	      <div class="searchtext">검색어를 입력하세요.</div>
+	      
+	    </div>
+	    <!--searchbar div 끝-->
+	    
+	    <div class="div_login">로그인</div>
+	    <div class="div_signup">회원가입</div>
+	    
+	  </div>
+	  <!-- header_top div 끝 -->
+  
+    
+    
+    
+    
+    <!--gnb -->
+    <div class="gnb-EhX" onmouseover="showDropDown()"  onmouseout="hideDropDown()">
+      <div class="divintro-9pV" >소개</div>
+      <div class="divevent-3Q5">행사소식</div>
+      <div class="divcommunity-xG9">커뮤니티</div>
+      <div class="divfaq-fwF">FAQ</div>
+      <div class="divmypage-o1s">마이페이지</div>
+      <div class="divopentalk-DLV">
+        <img class="iconopentalk-vEu" src="./assets/iconopentalk-2m7.png"/>
+        <div class="opentalk-GJm" onclick="opentalk()">오픈톡</div>
       </div>
-      <div class="divmessage-MF7">
-        <img class="iconmessage-TZ3" src="/assets/iconmessage-9Bo.png"/>
-        <div class="message-Bjw">쪽지</div>
+      <div class="divmessage-aaM">
+        <img class="iconmessage-VBX" src="./assets/iconmessage-2Bj.png"/>
+        <div class="message-Rqs">쪽지</div>
       </div>
-    </div>
-    <div class="header-54d">
-      <p class="logo-PLD">
-      컬쳐
-      <br/>
-      모아
-      </p>
     </div>
   </div>
+  
+  
+  
+  
   <div class="main-Ji5">
     <div class="auto-group-cavd-39s">
       <div class="maintitle-n7T">내한공연</div>
@@ -91,7 +122,7 @@
 	      </a>
 	    </div>
 	    <div class="eventtitle-Gw3">
-	      <div class="diveventcategory-dWh">공연 종료</div>
+	      <div class="diveventcategory-dWh" th:text="${e.eventstate}"></div>
 	      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
 	      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
 	        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>

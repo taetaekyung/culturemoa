@@ -7,15 +7,16 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.db.DBManager;
 import com.example.demo.vo.EventVO;
+import com.example.demo.vo.EventVO2;
 
 @Repository
 public class EventDAO_mb {
 	//전체 event top15
-	public List<EventVO> findTop(){
-		List<EventVO> list=null;
+	public List<EventVO2> findTop(){
+		List<EventVO2> list=null;
 		list=DBManager.findTop();
-		for(EventVO vo:list) {
-			String eventstart=vo.getEventstart();
+		for(EventVO2 vo:list) {
+			String eventstart=vo.getEventstart().toString();
 			String []day=eventstart.split("-");
 			// 현재 날짜 가져오기
 	        LocalDate currentDate = LocalDate.now();
