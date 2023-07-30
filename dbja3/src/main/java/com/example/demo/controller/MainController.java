@@ -76,11 +76,15 @@ public class MainController {
 	@GetMapping("selectArea")
 	@ResponseBody
 	public ArrayList<ArrayList<EventVO>> selectArea(String area){
-		System.out.println("area:"+area);
 		ArrayList<ArrayList<EventVO>> list=new ArrayList<>();
 		
 		List<EventVO> event=null;
-		event=eventdao_mb.findByArea(area);
+		if(area.equals("all")) {
+			event=eventdao_mb.findTop();
+		}else {
+			event=eventdao_mb.findByArea(area);
+		}
+		
 		ArrayList<EventVO> event1=new ArrayList<>();
 		ArrayList<EventVO> event2=new ArrayList<>();
 		ArrayList<EventVO> event3=new ArrayList<>();
@@ -102,7 +106,6 @@ public class MainController {
 		if(event3.size()!=0) {
 			list.add(event3);
 		}
-		
 		
 		
 		return list;
