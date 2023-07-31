@@ -1485,6 +1485,7 @@ body {
   background-color: #ffffff;
   border-radius: 2rem;
   flex-shrink: 0;
+  position: relative;
 }
 .main-mVB .dropdown_main .main-Fpu .opentalk-m3f {
   margin-bottom: 5rem;
