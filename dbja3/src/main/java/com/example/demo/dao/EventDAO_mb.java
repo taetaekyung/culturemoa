@@ -28,19 +28,22 @@ public class EventDAO_mb {
         		continue;
         	}
         	Map<String, Object> event = new HashMap<String, Object>();
+        	event.put("no", v.getEventno());
         	event.put("title",v.getEventname() );
         	event.put("start",dateFormat.format(v.getEventstart()));
         	event.put("end", dateFormat.format(v.getEventend()));
         	event.put("textcolor", "#000000");
         	int num=v.getCategoryno();
         	if(num==1) {
-        		event.put("color", "rgb(254 116 151 / 60%)");
+        		event.put("color", "rgb(254 116 151 / 30%)");
         	}else if(num==2) {
-        		event.put("color", "rgb(2 180 203 / 50%)");
+        		event.put("color", "rgb(2 180 203 / 30%)");
         	}else if(num==3) {
-        		event.put("color", "rgb(7 180 127 / 50%)");
+        		event.put("color", "rgb(7 180 127 / 30%)");
+        	}else if(num==4) {
+        		event.put("color", "rgb(253 208 15 / 30%)");
         	}else {
-        		event.put("color", "rgb(253 208 15 / 80%)");
+        		event.put("color", "rgb(1 139 248 / 30%)");
         	}
         	eventList.add(event);
         }
@@ -55,18 +58,21 @@ public class EventDAO_mb {
 	        for(EventVO v:list) {
 	        	if(v.getEventticket()==null||v.getEventticket().equals("")) {continue;}
 	        	Map<String, Object> event = new HashMap<String, Object>();
+	        	event.put("no", v.getEventno());
 	        	event.put("title",v.getEventname() );
 	        	event.put("start",v.getEventticket().replaceAll("/", "-"));
 	        	event.put("textcolor", "#000000");
 	        	int num=v.getCategoryno();
 	        	if(num==1) {
-	        		event.put("color", "rgb(254 116 151 / 60%)");
+	        		event.put("color", "rgb(254 116 151 / 30%)");
 	        	}else if(num==2) {
-	        		event.put("color", "rgb(2 180 203 / 50%)");
+	        		event.put("color", "rgb(2 180 203 / 30%)");
 	        	}else if(num==3) {
-	        		event.put("color", "rgb(7 180 127 / 50%)");
+	        		event.put("color", "rgb(7 180 127 / 30%)");
+	        	}else if(num==4){
+	        		event.put("color", "rgb(253 208 15 / 30%)");
 	        	}else {
-	        		event.put("color", "rgb(253 208 15 / 80%)");
+	        		event.put("color", "rgb(1 139 248 / 30%)");
 	        	}
 	        	eventList.add(event);
 	        }

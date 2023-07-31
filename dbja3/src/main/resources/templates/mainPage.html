@@ -19,60 +19,98 @@
 .mySlides {display:none;}
 .myEvent {visibility: hidden;}
 #calendar {
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     height: 160rem;
     font-size: 24px;
+    position: absolute;
   }
 #ticket {
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     height: 160rem;
     font-size: 24px;
+     position: absolute;
   }
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 <script>
 	//캘린더 공연일정
-	 document.addEventListener('DOMContentLoaded', function() {
-	    var calendarEl = document.getElementById('calendar');
-		var request = $.ajax({
-	      url: "/calendarEvent",
-	      method: "GET",
-	      success:function(data){
-			   var calendar = new FullCalendar.Calendar(calendarEl, {
-		        initialView: 'dayGridMonth',
-		        selectable: true,
-		        businessHours: true,
-		        dayMaxEvents: true, // allow "more" link when too many events
-		        events: data
-		      });
-		      calendar.render();
-		  }
-	    });
-	    
+	  document.addEventListener('DOMContentLoaded', function() {
+		  var calendarEl = document.getElementById('calendar');
+		  var calendar = new FullCalendar.Calendar(calendarEl, {
+		    initialView: 'dayGridMonth',
+		    selectable: true,
+		    businessHours: true,
+		    dayMaxEvents: true, // allow "more" link when too many events
+		    events: '/calendarEvent', // event data
+		    eventClick: function(info) {
+		      var eventNo = info.event.extendedProps.no; //no부여
+		      findEvent(eventNo); //해당 event로 이동
+		    }
+		  });
+		  calendar.render();
 	  });
-	//캘린더 티켓오픈 일정
-	 document.addEventListener('DOMContentLoaded', function() {
-	    var calendarEl = document.getElementById('ticket');
-		var request = $.ajax({
-	      url: "/calendarTicket",
-	      method: "GET",
-	      success:function(data){
-			  console.log(data);
-			   var calendar = new FullCalendar.Calendar(calendarEl, {
-		        initialView: 'dayGridMonth',
-		        selectable: true,
-		        businessHours: true,
-		        dayMaxEvents: true, // allow "more" link when too many events
-		        events: data
-		      });
-		      calendar.render();
-		  }
-	    });
-	    
+	  
+	  function findEvent(eventNo) {
+		 alert("You clicked on event with no: " + eventNo);
+	  }
+	  
+	  //캘린더 티켓오픈 일정
+	  document.addEventListener('DOMContentLoaded', function() {
+		  var calendarEl = document.getElementById('ticket');
+		  var calendar = new FullCalendar.Calendar(calendarEl, {
+		    initialView: 'dayGridMonth',
+		    selectable: true,
+		    businessHours: true,
+		    dayMaxEvents: true, // allow "more" link when too many events
+		    events: '/calendarTicket', // event data
+		    eventClick: function(info) {
+		      var eventNo = info.event.extendedProps.no; //no부여
+		      findEvent(eventNo); //해당 event로 이동
+		    }
+		  });
+		  calendar.render();
 	  });
+	  
+	  function findEvent(eventNo) {
+		 var eventDetailUrl = '/event/eventdetail?eventno=' + eventNo;
+  		 window.location.href = eventDetailUrl;
+	  }
+
+	//------공연일정 / 티켓오픈 토글
+	
+	//공연일정 토글 선택
+	function toggleEvent(){
+		 const calendar = document.querySelector("#calendar");
+	     const ticket = document.querySelector("#ticket");
+         calendar.style.visibility = 'visible';
+         ticket.style.visibility = 'hidden';
+         //토글버튼 background-color,textColor 변경
+         var toggle1=document.querySelector(".toggle02-JnM");
+		 var toggle2=document.querySelector(".toggle01-keM");
+		 toggle1.classList.remove("toggle02-JnM");
+         toggle1.classList.add("toggle01-keM");
+         toggle2.classList.remove("toggle01-keM");
+         toggle2.classList.add("toggle02-JnM");
+        
+	}
+	//티켓오픈 토글 선택
+	function toggleTicket(){
+	    const calendar = document.querySelector("#calendar");
+	    const ticket = document.querySelector("#ticket");
+		calendar.style.visibility = 'hidden';
+        ticket.style.visibility = 'visible';
+        //토글버튼 background-color,textColor 변경
+        var toggle1=document.querySelector(".toggle02-JnM");
+		var toggle2=document.querySelector(".toggle01-keM");
+		toggle1.classList.remove("toggle02-JnM");
+        toggle1.classList.add("toggle01-keM");
+        toggle2.classList.remove("toggle01-keM");
+        toggle2.classList.add("toggle02-JnM");
+	}
+	
 	//-----주변행사 dropdown
 	var dropIndex=0;
 	function openDrop() {
@@ -261,7 +299,7 @@
 	} 
 	  
 	// 1초마다 updateTalk 함수 호출
-    setInterval(checkNo, 200);
+    //setInterval(checkNo, 200);
 	//채팅입력 및 전송
 	function insertTalk(){
 		var talk = $("#myInput").val().replace(/\n/g, "<br>");
@@ -620,15 +658,16 @@
       <div class="calendar-iJM">
         <div class="divtoggle-2pq">
           <div class="toggle-9eZ">
-            <div class="toggle02-JnM">공연일정</div>
-            <div class="toggle01-keM">티켓 오픈 일정</div>
+            <div class="toggle02-JnM" onclick="toggleEvent()">공연일정</div>
+            <div class="toggle01-keM" onclick="toggleTicket()">티켓 오픈 일정</div>
           </div>
         </div>
         <div class="positioncalendar-di9">
-			<div id='ticket'></div>
+			<div id='calendar' style="visibility: visible;"></div>
+			<div id='ticket' style="visibility: hidden;"></div>
         </div>
         </div>
-      </div>
+      
       <!-- 오픈톡 -->
       <div class="opentalk-m3f">
 	    <!-- 오픈톡 타이틀-->
@@ -695,7 +734,7 @@
         </div>
       </div>
       </div>
-    
+    </div>
   </div>
   <!--dropdown_main 끝-->
 </div>
