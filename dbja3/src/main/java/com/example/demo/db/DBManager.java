@@ -44,6 +44,14 @@ public class DBManager {
 		return list;
 	}
 	//----eventMapper
+	//전체 행사
+	public static List<EventVO> findEvent(){
+		SqlSession session=sqlSessionFactory.openSession();
+		List<EventVO>list=null;
+		list=session.selectList("event.findEvent");
+		session.close();
+		return list;
+	}
 	//전체 event top15
 	public static List<EventVO> findTop(){
 		SqlSession session=sqlSessionFactory.openSession();

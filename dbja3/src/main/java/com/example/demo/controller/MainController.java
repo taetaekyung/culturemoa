@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,19 @@ public class MainController {
 	private opentalkDAO_mb opentalkdao_mb;	
 	@Autowired
 	private EventDAO_mb eventdao_mb;
+	
+
+	//캘린더 공연일정
+	@GetMapping("/calendarEvent") 
+	   public @ResponseBody List<Map<String, Object>> getEvent(){
+		  return eventdao_mb.getEventList();
+    }
+	//캘린더 티켓오픈일정
+	@GetMapping("/calendarTicket") 
+	   public @ResponseBody List<Map<String, Object>> getTicket(){
+		  return eventdao_mb.getEventTicketList();
+ }
+	
 	
 	@GetMapping("/")
 	public String main() {

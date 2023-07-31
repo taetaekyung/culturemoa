@@ -18,10 +18,61 @@
 <style>
 .mySlides {display:none;}
 .myEvent {visibility: hidden;}
-
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 160rem;
+    font-size: 24px;
+  }
+#ticket {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 160rem;
+    font-size: 24px;
+  }
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 <script>
+	//캘린더 공연일정
+	 document.addEventListener('DOMContentLoaded', function() {
+	    var calendarEl = document.getElementById('calendar');
+		var request = $.ajax({
+	      url: "/calendarEvent",
+	      method: "GET",
+	      success:function(data){
+			   var calendar = new FullCalendar.Calendar(calendarEl, {
+		        initialView: 'dayGridMonth',
+		        selectable: true,
+		        businessHours: true,
+		        dayMaxEvents: true, // allow "more" link when too many events
+		        events: data
+		      });
+		      calendar.render();
+		  }
+	    });
+	    
+	  });
+	//캘린더 티켓오픈 일정
+	 document.addEventListener('DOMContentLoaded', function() {
+	    var calendarEl = document.getElementById('ticket');
+		var request = $.ajax({
+	      url: "/calendarTicket",
+	      method: "GET",
+	      success:function(data){
+			  console.log(data);
+			   var calendar = new FullCalendar.Calendar(calendarEl, {
+		        initialView: 'dayGridMonth',
+		        selectable: true,
+		        businessHours: true,
+		        dayMaxEvents: true, // allow "more" link when too many events
+		        events: data
+		      });
+		      calendar.render();
+		  }
+	    });
+	    
+	  });
 	//-----주변행사 dropdown
 	var dropIndex=0;
 	function openDrop() {
@@ -574,6 +625,8 @@
           </div>
         </div>
         <div class="positioncalendar-di9">
+			<div id='ticket'></div>
+        </div>
         </div>
       </div>
       <!-- 오픈톡 -->
