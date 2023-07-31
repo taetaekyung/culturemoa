@@ -335,7 +335,7 @@ body {
 
 .freelist .dropdown_main .gnb_dropdown {
   box-sizing: border-box;
-  padding: 0rem 0rem 0rem 33rem;
+  padding: 0rem 0rem 0rem 31rem;
   width: 100%;
   height: 30.8rem;
   display: flex;
@@ -379,7 +379,7 @@ body {
   flex-shrink: 0;
 }
 .freelist .dropdown_main .gnb_dropdown .div_eventlist {
-  width: 505px;
+  width: 295px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -447,12 +447,12 @@ body {
   flex-shrink: 0;
 }
 .freelist .dropdown_main .gnb_dropdown .div_boardlist {
-  width: 164px;
+  width: 145px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   align-items: center;
-  margin-right: 13.4rem;
+  margin-right: 11.6rem;
 }
 .freelist .dropdown_main .gnb_dropdown .div_boardlist .freelist_text {
   display: flex;
@@ -489,7 +489,7 @@ body {
 }
 .freelist .dropdown_main .gnb_dropdown .faq {
   display: flex;
-  width: 150px;
+  width: 50px;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 3.125;
@@ -506,7 +506,7 @@ body {
   flex-direction: column;
   flex-shrink: 0;
   align-items: center;
-  width: 363px;
+  width: 340px;
 }
 .freelist .dropdown_main .gnb_dropdown .div_infolist .wishlist {
   display: flex;
