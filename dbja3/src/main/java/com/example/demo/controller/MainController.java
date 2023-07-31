@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dao.BoardDAO_jpa;
 import com.example.demo.dao.EventDAO_mb;
 import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
@@ -31,18 +32,11 @@ public class MainController {
 	private opentalkDAO_mb opentalkdao_mb;	
 	@Autowired
 	private EventDAO_mb eventdao_mb;
+	@Autowired
+	private BoardDAO_jpa boarddao_jpa;
 	
 
-	//캘린더 공연일정
-	@GetMapping("/calendarEvent") 
-	   public @ResponseBody List<Map<String, Object>> getEvent(){
-		  return eventdao_mb.getEventList();
-    }
-	//캘린더 티켓오픈일정
-	@GetMapping("/calendarTicket") 
-	   public @ResponseBody List<Map<String, Object>> getTicket(){
-		  return eventdao_mb.getEventTicketList();
- }
+	
 	
 	
 	@GetMapping("/")
@@ -53,6 +47,9 @@ public class MainController {
 	//메인페이지를 열었을 때
 	@GetMapping("/mainPage")
 	public void mainPage(Model model) {
+		//최신 10개 게시물
+		model.addAttribute("list", boarddao_jpa.findAll());
+		
 		//주변행사소식 행사 리스트 출력
 		List<EventVO> event=null;
 		event=eventdao_mb.findTop();
@@ -86,6 +83,17 @@ public class MainController {
 		model.addAttribute("now", nowNo);
 	}
 	
+	//캘린더 공연일정
+	@GetMapping("/calendarEvent") 
+	   public @ResponseBody List<Map<String, Object>> getEvent(){
+		  return eventdao_mb.getEventList();
+    }
+	//캘린더 티켓오픈일정
+	@GetMapping("/calendarTicket") 
+	   public @ResponseBody List<Map<String, Object>> getTicket(){
+		  return eventdao_mb.getEventTicketList();
+	}
+		
 	//주변행사지역 > 행사지역 선택했을 때
 	@GetMapping("selectArea")
 	@ResponseBody

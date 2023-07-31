@@ -694,11 +694,11 @@ html{
               <!--talk 내용-->
               <div class="textcontent-ub7" th:utext="${t.talkcontent}">
 			  </div>
-			   <div  class="datebox" style="display: flex; align-items: flex-end;">
-				   <p class="datetext" th:text="${t.day}" style="display: block;"></p>
-			   </div>
+			  <div  class="datebox" style="display: flex; align-items: flex-end;">
+				 <p class="datetext" th:text="${t.day}" style="display: block;"></p>
+			  </div>
 				
-			   </div>
+			  </div>
             </div>
             
           </div>
@@ -723,15 +723,20 @@ html{
           <div class="boardth-gGR">
             <div class="boardtitle-Rzh">제목</div>
             <div class="boardregdate-xUq">게시일</div>
+            <div class="boardregdate">작성자</div>
           </div>
         </div>
         <div class="auto-group-pu6z-srh">
           <div class="boardtable-ESM">
+			<!--게시물 리스트 -->
             <div class="boardlist-yeq">
-              <div class="list-LkH">
-                <div class="title-6zM">제목</div>
-                <div class="regdate-S2d">YYYY-MM-DD</div>
+			  <!--게시글 -->	
+              <div class="list-LkH" th:each="b:${list}" >
+                <div class="title-6zM" th:text="${b.boardtitle}"></div>
+                <div class="regdate-S2d" th:text="${b.regdate}"></div> 
+                <div class="id" th:text="${b.member.id}"></div> 
               </div>
+              
             </div>
           </div>
         </div>

@@ -1658,7 +1658,7 @@ textarea {
   flex-shrink: 0;
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb {
-  margin: 0rem 32rem 0rem 31.4rem;
+  margin: 2rem 32rem 0rem 31.4rem;
   box-sizing: border-box;
   padding-bottom: 44rem;
   width: calc(100% - 63.4rem);
@@ -1666,6 +1666,7 @@ textarea {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  height: 70rem;
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-qosq-eKj {
   box-sizing: border-box;
@@ -1697,7 +1698,7 @@ textarea {
   flex-shrink: 0;
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-qosq-eKj .boardth-gGR .boardtitle-Rzh {
-  margin-right: 110.1rem;
+  margin-right: 90.1rem;
   display: flex;
   font-size: 1.8rem;
   font-weight: 400;
@@ -1709,6 +1710,19 @@ textarea {
   flex-shrink: 0;
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-qosq-eKj .boardth-gGR .boardregdate-xUq {
+  margin-right: 15rem;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  letter-spacing: -0.03rem;
+  color: #191919;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-qosq-eKj .boardth-gGR .boardregdate{
+  margin-right: 15rem;
   display: flex;
   font-size: 1.8rem;
   font-weight: 400;
@@ -1721,8 +1735,7 @@ textarea {
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-pu6z-srh {
   width: 100%;
-  height: 4.6rem;
-  border-top: solid 0.1rem #dfdfdf;
+  border-top: solid 0.5rem #07b47f;
   box-sizing: border-box;
   flex-shrink: 0;
 }
@@ -1730,8 +1743,8 @@ textarea {
   margin-right: 6.6rem;
   box-sizing: border-box;
   padding: 1rem;
-  width: 122rem;
-  height: 100%;
+  width: 100%;
+  height: 55rem;
   overflow: hidden;
   position: relative;
 }
@@ -1743,12 +1756,13 @@ textarea {
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-pu6z-srh .boardtable-ESM .boardlist-yeq .list-LkH {
   width: 100%;
-  height: 100%;
+  height: 5rem;
   display: flex;
   align-items: center;
+  border-bottom: 0.1rem solid lightgray ;
 }
 .main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-pu6z-srh .boardtable-ESM .boardlist-yeq .list-LkH .title-6zM {
-  margin-right: 107.5rem;
+  margin-left: 3rem;
   display: flex;
   font-size: 1.6rem;
   line-height: 1.625;
@@ -1768,4 +1782,19 @@ textarea {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  position: absolute;
+  right: 19rem;
+}
+.main-mVB .dropdown_main .main-Fpu .board-7qb .auto-group-pu6z-srh .boardtable-ESM .boardlist-yeq .list-LkH .id{
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  letter-spacing: -0.03rem;
+  color: #666666;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: absolute;
+  right: 5rem;
 }
