@@ -98,11 +98,18 @@ body {
   height: calc(100% - 6.4rem);
   position: relative;
   background-color: #ffffff;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 1rem 1rem;
   flex-shrink: 0;
 }
+
+.freelist .auto-group-9o4m-KFo .header_top .searchbar .main_search{
+  margin: 1.5rem 0 0 1.5rem;
+  width: 50rem;
+  font-size: 20px;
+}
+
+
 .freelist .auto-group-9o4m-KFo .header_top .searchbar .searchicon {
-  box-sizing: border-box;
   padding: 1.6rem 2.144rem 1.558rem 3.5rem;
   width: 6.5rem;
   height: 5.2rem;
@@ -110,7 +117,7 @@ body {
   left: 55.5rem;
   top: 0;
   background-color: #ffffff;
-  border-radius: 0 1rem 1rem 0;
+  border: none;
 }
 .freelist .auto-group-9o4m-KFo .header_top .searchbar .searchicon .iconsearch-tj3 {
   width: 2.1558rem;
@@ -155,6 +162,8 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
+
+
 .freelist .auto-group-9o4m-KFo .header_top .div_signup {
   margin: 2rem 0rem 4.4rem 0rem;
   width: 8.6rem;

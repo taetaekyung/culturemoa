@@ -12,13 +12,34 @@ ul, li {
 input {
 	border: none;
 }
+
+textarea {
+   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+   height: 6rem;
+   padding-top: 1rem;
+   width: 100%;
+   box-sizing: border-box;
+   border: hidden;
+   font-size: 2.4rem;
+   font-weight: 400;
+   resize: none; /* 사용자가 크기 조절하지 못하도록 설정 */
+   overflow-y: auto; /* 초기에는 스크롤을 숨기도록 설정 */
+}
+
+textarea:focus {
+	outline: none;
+	
+  }
+  
 body {
   width: 78.3rem;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
 }
 .textbox{
 	display: flex;
 }
 .datebox{
+	height: 28px;
 	display: flex; 
 	align-items: flex-end;
 }
@@ -219,19 +240,8 @@ body {
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
-    height: auto; /* 높이를 자동으로 늘어나도록 설정 */
-}
-textarea {
-  height: 6rem;
-  padding-top: 1.5rem;
-  width: 100%;
-  box-sizing: border-box;
-  border: hidden;
-  font-size: 2.4rem;
-  font-weight: 400;
-  resize: none; /* 사용자가 크기 조절하지 못하도록 설정 */
-  overflow-y: auto; /* 초기에는 스크롤을 숨기도록 설정 */
-  
+  height: auto; /* 높이를 자동으로 늘어나도록 설정 */
+ 
 }
 
 .opentalk-vXb .divinputtalk-F9s .insertBtn {

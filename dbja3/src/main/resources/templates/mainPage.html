@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 html{
-	font-size: 62.5%;
+   font-size: 62.5%;
 }
 .mySlides {display:none;}
 .myEvent {visibility: hidden;}
@@ -39,202 +39,202 @@ html{
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 <script>
-	//캘린더 공연일정
-	  document.addEventListener('DOMContentLoaded', function() {
-		  var calendarEl = document.getElementById('calendar');
-		  var calendar = new FullCalendar.Calendar(calendarEl, {
-		    initialView: 'dayGridMonth',
-		    selectable: true,
-		    businessHours: true,
-		    dayMaxEvents: true, // allow "more" link when too many events
-		    events: '/calendarEvent', // event data
-		    eventClick: function(info) {
-		      var eventNo = info.event.extendedProps.no; //no부여
-		      findEvent(eventNo); //해당 event로 이동
-		    }
-		  });
-		  calendar.render();
-	  });
-	  
-	  function findEvent(eventNo) {
-		 alert("You clicked on event with no: " + eventNo);
-	  }
-	  
-	  //캘린더 티켓오픈 일정
-	  document.addEventListener('DOMContentLoaded', function() {
-		  var calendarEl = document.getElementById('ticket');
-		  var calendar = new FullCalendar.Calendar(calendarEl, {
-		    initialView: 'dayGridMonth',
-		    selectable: true,
-		    businessHours: true,
-		    dayMaxEvents: true, // allow "more" link when too many events
-		    events: '/calendarTicket', // event data
-		    eventClick: function(info) {
-		      var eventNo = info.event.extendedProps.no; //no부여
-		      findEvent(eventNo); //해당 event로 이동
-		    }
-		  });
-		  calendar.render();
-	  });
-	  
-	  function findEvent(eventNo) {
-		 var eventDetailUrl = '/event/eventdetail?eventno=' + eventNo;
-  		 window.location.href = eventDetailUrl;
-	  }
+   //캘린더 공연일정
+     document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          selectable: true,
+          businessHours: true,
+          dayMaxEvents: true, // allow "more" link when too many events
+          events: '/calendarEvent', // event data
+          eventClick: function(info) {
+            var eventNo = info.event.extendedProps.no; //no부여
+            findEvent(eventNo); //해당 event로 이동
+          }
+        });
+        calendar.render();
+     });
+     
+     function findEvent(eventNo) {
+       alert("You clicked on event with no: " + eventNo);
+     }
+     
+     //캘린더 티켓오픈 일정
+     document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('ticket');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          selectable: true,
+          businessHours: true,
+          dayMaxEvents: true, // allow "more" link when too many events
+          events: '/calendarTicket', // event data
+          eventClick: function(info) {
+            var eventNo = info.event.extendedProps.no; //no부여
+            findEvent(eventNo); //해당 event로 이동
+          }
+        });
+        calendar.render();
+     });
+     
+     function findEvent(eventNo) {
+       var eventDetailUrl = '/event/eventdetail?eventno=' + eventNo;
+         window.location.href = eventDetailUrl;
+     }
 
-	//------공연일정 / 티켓오픈 토글
-	
-	//공연일정 토글 선택
-	function toggleEvent(){
-		 const calendar = document.querySelector("#calendar");
-	     const ticket = document.querySelector("#ticket");
+   //------공연일정 / 티켓오픈 토글
+   
+   //공연일정 토글 선택
+   function toggleEvent(){
+       const calendar = document.querySelector("#calendar");
+        const ticket = document.querySelector("#ticket");
          calendar.style.visibility = 'visible';
          ticket.style.visibility = 'hidden';
          //토글버튼 background-color,textColor 변경
          var toggle1=document.querySelector(".toggle02-JnM");
-		 var toggle2=document.querySelector(".toggle01-keM");
-		 toggle1.classList.remove("toggle02-JnM");
+       var toggle2=document.querySelector(".toggle01-keM");
+       toggle1.classList.remove("toggle02-JnM");
          toggle1.classList.add("toggle01-keM");
          toggle2.classList.remove("toggle01-keM");
          toggle2.classList.add("toggle02-JnM");
         
-	}
-	//티켓오픈 토글 선택
-	function toggleTicket(){
-	    const calendar = document.querySelector("#calendar");
-	    const ticket = document.querySelector("#ticket");
-		calendar.style.visibility = 'hidden';
+   }
+   //티켓오픈 토글 선택
+   function toggleTicket(){
+       const calendar = document.querySelector("#calendar");
+       const ticket = document.querySelector("#ticket");
+      calendar.style.visibility = 'hidden';
         ticket.style.visibility = 'visible';
         //토글버튼 background-color,textColor 변경
         var toggle1=document.querySelector(".toggle02-JnM");
-		var toggle2=document.querySelector(".toggle01-keM");
-		toggle1.classList.remove("toggle02-JnM");
+      var toggle2=document.querySelector(".toggle01-keM");
+      toggle1.classList.remove("toggle02-JnM");
         toggle1.classList.add("toggle01-keM");
         toggle2.classList.remove("toggle01-keM");
         toggle2.classList.add("toggle02-JnM");
-	}
-	
-	//-----주변행사 dropdown
-	var dropIndex=0;
-	function openDrop() {
-	  var drop = document.querySelector(".drop"); // Use querySelector to get the first element with the class "drop"
-	  if (dropIndex==0) {
-	    dropIndex=1;
-	    drop.style.visibility = "visible";
-	  }else{
-		dropIndex=0;
-	    drop.style.visibility = "hidden";
-	  }
-	}
-	
-	//드롭다운에서 마우스 벗어나면 없어지기
+   }
+   
+   //-----주변행사 dropdown
+   var dropIndex=0;
+   function openDrop() {
+     var drop = document.querySelector(".drop"); // Use querySelector to get the first element with the class "drop"
+     if (dropIndex==0) {
+       dropIndex=1;
+       drop.style.visibility = "visible";
+     }else{
+      dropIndex=0;
+       drop.style.visibility = "hidden";
+     }
+   }
+   
+   //드롭다운에서 마우스 벗어나면 없어지기
      function hideDrop() {
          const dropdown = document.querySelector(".drop");
          dropdown.style.visibility = 'hidden';
          dropIndex=0;
      }
      
-	//-----주변 행사 소식 : 지역 드롭다운 효과
-	function addHoverStyle(element) {
-	  element.classList.add("hover");
-	}
-	
-	function removeHoverStyle(element) {
-	  element.classList.remove("hover");
-	}
-	
-	//-----------주변행사 소식 배너
-	var slideIndex = 1;
-		showDivs(slideIndex);
-	
-	function plusDivs(n) {
-	  showDivs(slideIndex += n);
-	}
-	
-	function showDivs(n) {
-	  var i;
-	  var x = document.getElementsByClassName("myEvent");
+   //-----주변 행사 소식 : 지역 드롭다운 효과
+   function addHoverStyle(element) {
+     element.classList.add("hover");
+   }
+   
+   function removeHoverStyle(element) {
+     element.classList.remove("hover");
+   }
+   
+   //-----------주변행사 소식 배너
+   var slideIndex = 1;
+      showDivs(slideIndex);
+   
+   function plusDivs(n) {
+     showDivs(slideIndex += n);
+   }
+   
+   function showDivs(n) {
+     var i;
+     var x = document.getElementsByClassName("myEvent");
 
-	  if (n > x.length) {slideIndex = 1}
-	  if (n < 1) {slideIndex = x.length}
-	  for (i = 0; i < x.length; i++) {
-		if(x[i]){
-			x[i].style.visibility = "hidden";  
-		}
-	    
-	  }
-	  if( x[slideIndex-1]){
-		  x[slideIndex-1].style.visibility = "visible";  
-	  }
-	  
-	}
-		
-	//--------------메인배너 자동,버튼 슬라이드쇼
-	var myIndex = 0;
-	var slides = document.getElementsByClassName("mySlides");
-	
-	// 페이지가 로드되면 슬라이드 쇼를 시작
-	startCarousel();
-	
-	// 슬라이드 쇼를 시작하는 함수
-	function startCarousel() {
-	  carousel();
-	}
-	
-	function carousel() {
-	  for (var i = 0; i < slides.length; i++) {
-		if(slides[i]){
-			slides[i].style.display = "none";
-		}
-	  }
-	  myIndex++;
-	  if (myIndex > slides.length) {
-	    myIndex = 1;
-	  }
-	  if(slides[myIndex - 1]){
-		  slides[myIndex - 1].style.display = "block";
-	  }
-	  $(".nn-nn-pS5").html("0"+myIndex+"/03");
-	  setTimeout(carousel, 5000); // Change image every 2 seconds
-	}
-	
-	// 이전 슬라이드로 이동하는 함수
-	function prevSlide() {
-	  myIndex--;
-	  if (myIndex < 1) {
-	    myIndex = slides.length;
-	  }
-	   $(".nn-nn-pS5").html("0"+myIndex+"/03");
-	  showSlide(myIndex);
-	}
-	
-	// 다음 슬라이드로 이동하는 함수
-	function nextSlide() {
-	  myIndex++;
-	  if (myIndex > slides.length) {
-	    myIndex = 1;
-	  }
-	   $(".nn-nn-pS5").html("0"+myIndex+"/03");
-	  showSlide(myIndex);
-	}
-	
-	// 특정 슬라이드를 보여주는 함수
-	function showSlide(index) {
-	  for (var i = 0; i < slides.length; i++) {
-	    slides[i].style.display = "none";
-	  }
-	  slides[index - 1].style.display = "block";
-	}
-	//-------------------------------------------------------
-			
-	
-	//--------gnb드롭다운
-	//마우스가 올라오면 드롭다운
-	 function showDropDown() {
+     if (n > x.length) {slideIndex = 1}
+     if (n < 1) {slideIndex = x.length}
+     for (i = 0; i < x.length; i++) {
+      if(x[i]){
+         x[i].style.visibility = "hidden";  
+      }
+       
+     }
+     if( x[slideIndex-1]){
+        x[slideIndex-1].style.visibility = "visible";  
+     }
+     
+   }
+      
+   //--------------메인배너 자동,버튼 슬라이드쇼
+   var myIndex = 0;
+   var slides = document.getElementsByClassName("mySlides");
+   
+   // 페이지가 로드되면 슬라이드 쇼를 시작
+   startCarousel();
+   
+   // 슬라이드 쇼를 시작하는 함수
+   function startCarousel() {
+     carousel();
+   }
+   
+   function carousel() {
+     for (var i = 0; i < slides.length; i++) {
+      if(slides[i]){
+         slides[i].style.display = "none";
+      }
+     }
+     myIndex++;
+     if (myIndex > slides.length) {
+       myIndex = 1;
+     }
+     if(slides[myIndex - 1]){
+        slides[myIndex - 1].style.display = "block";
+     }
+     $(".nn-nn-pS5").html("0"+myIndex+"/03");
+     setTimeout(carousel, 5000); // Change image every 2 seconds
+   }
+   
+   // 이전 슬라이드로 이동하는 함수
+   function prevSlide() {
+     myIndex--;
+     if (myIndex < 1) {
+       myIndex = slides.length;
+     }
+      $(".nn-nn-pS5").html("0"+myIndex+"/03");
+     showSlide(myIndex);
+   }
+   
+   // 다음 슬라이드로 이동하는 함수
+   function nextSlide() {
+     myIndex++;
+     if (myIndex > slides.length) {
+       myIndex = 1;
+     }
+      $(".nn-nn-pS5").html("0"+myIndex+"/03");
+     showSlide(myIndex);
+   }
+   
+   // 특정 슬라이드를 보여주는 함수
+   function showSlide(index) {
+     for (var i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+     }
+     slides[index - 1].style.display = "block";
+   }
+   //-------------------------------------------------------
+         
+   
+   //--------gnb드롭다운
+   //마우스가 올라오면 드롭다운
+    function showDropDown() {
          const gnbDropdown = document.getElementById('gnbDropdown');
          gnbDropdown.style.visibility = 'visible';
       }
-	//gnb에 마우스가 벗어나면 드롭다운 없애기
+   //gnb에 마우스가 벗어나면 드롭다운 없애기
      function hideDropDown() {
          const gnbDropdown = document.getElementById('gnbDropdown');
          gnbDropdown.style.visibility = 'hidden';
@@ -246,10 +246,10 @@ html{
      }
     //-------------------------------------------------------
      
-	//--------------오픈톡
-	//버튼 선택시 오픈톡 새창 띄우기
-	function opentalk(){
-		// 새 창을 띄우기 위한 옵션 설정
+   //--------------오픈톡
+   //버튼 선택시 오픈톡 새창 띄우기
+   function opentalk(){
+      // 새 창을 띄우기 위한 옵션 설정
         var windowFeatures = 'width=550px,height=550px';
         // 새 창 열기
         var newWindow = window.open('/opentalk', '_blank', windowFeatures);
@@ -257,133 +257,133 @@ html{
         if (!newWindow) {
             alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
         }
-	}	
-	
-	//채팅 업데이트 함수
- 	function checkNo(){
-		var now=$("#now").val();
-		$.ajax({
-			url:"main_updateTalk",
-			data:{now:now},
-			success:function(data){
-				if(data.length!=0){
-					now = parseInt(now); // 
-					now = now + data.length; // 
-					$("#now").val(now);
-					for(var i=0;i<data.length;i++){
-						var div=$("<div></div>").addClass("chat-SJD");
-						var pro_div=$("<div></div>").addClass("profile-C2V");
-						
-						var img=$("<img></img>").addClass("ellipse-8-Y6M").attr("src","./profileImage/"+data[i].fname);
-						
-						
-						var id=$("<div></div>").addClass("name-DCV").html(data[i].id);
-						pro_div.append(img);
-						if(data[i].fname.includes("icon")){
-							var img2=$("<img></img>").addClass("profile-seR").attr("src","./profileImage/profile-12Z.png");
-							pro_div.append(img2);
-						}
-						pro_div.append(id);
-					
-  						var content_div=$("<div></div>").addClass("textcontent-ub7").html(data[i].talkcontent);
-						var textbox=$("<div></div>").addClass("textbox");
-						var datebox=$("<div></div>").addClass("datebox");
-						var datetext=$("<p></p>").addClass("datetext").html(data[i].day);
-						datebox.append(datetext);
-						textbox.append(content_div).append(datebox);
-						div.append(pro_div).append(textbox);
-						
-						$(".inputchat-i7K").append(div);
-					}
-				}
-				
-			}
-		});
-	} 
-	  
-	// 1초마다 updateTalk 함수 호출
+   }   
+   
+   //채팅 업데이트 함수
+    function checkNo(){
+      var now=$("#now").val();
+      $.ajax({
+         url:"main_updateTalk",
+         data:{now:now},
+         success:function(data){
+            if(data.length!=0){
+               now = parseInt(now); // 
+               now = now + data.length; // 
+               $("#now").val(now);
+               for(var i=0;i<data.length;i++){
+                  var div=$("<div></div>").addClass("chat-SJD");
+                  var pro_div=$("<div></div>").addClass("profile-C2V");
+                  
+                  var img=$("<img></img>").addClass("ellipse-8-Y6M").attr("src","./profileImage/"+data[i].fname);
+                  
+                  
+                  var id=$("<div></div>").addClass("name-DCV").html(data[i].id);
+                  pro_div.append(img);
+                  if(data[i].fname.includes("icon")){
+                     var img2=$("<img></img>").addClass("profile-seR").attr("src","./profileImage/profile-12Z.png");
+                     pro_div.append(img2);
+                  }
+                  pro_div.append(id);
+               
+                    var content_div=$("<div></div>").addClass("textcontent-ub7").html(data[i].talkcontent);
+                  var textbox=$("<div></div>").addClass("textbox");
+                  var datebox=$("<div></div>").addClass("datebox");
+                  var datetext=$("<p></p>").addClass("datetext").html(data[i].day);
+                  datebox.append(datetext);
+                  textbox.append(content_div).append(datebox);
+                  div.append(pro_div).append(textbox);
+                  
+                  $(".inputchat-i7K").append(div);
+               }
+            }
+            
+         }
+      });
+   } 
+     
+   // 1초마다 updateTalk 함수 호출
     //setInterval(checkNo, 200);
-	//채팅입력 및 전송
-	function insertTalk(){
-		var talk = $("#myInput").val().replace(/\n/g, "<br>");
-		var id=$("#id").val();
-		if(!id){
-			alert("로그인이 필요합니다");
-		}else{
-			$.ajax({
-				url:"main_insertTalk",
-				data:{talk:talk},
-				success:function(){
-					$("#myInput").val("");
-				}
-			});
-		}
-	}
-	
-	//텍스트 창 스크롤이 항상 맨 밑에 위치
-	// 스크롤 맨 아래로 이동하는 함수
-	function scrollToBottom() {
-	  const scrollableDiv = document.getElementById("scrollableDiv");
-	  scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
-	}
-	
-	// DOM이 로드되면 스크롤 가능한 div가 맨 아래로 스크롤되도록 함수를 호출합니다.
-	document.addEventListener("DOMContentLoaded", scrollToBottom);
-	
-	// 스크롤 이벤트를 감지하여 스크롤이 변경되어도 스크롤 가능한 div가 맨 아래에 위치하도록 함수를 호출합니다.
-	document.getElementById("scrollableDiv").addEventListener("scroll", scrollToBottom);
-	
-	//엔터쳤을때 텍스트가 전송	
-	var isShiftKeyPressed = false;
-	
-	function handleKeyDown(event) {
-	  if (event.keyCode === 16) {
-	    // Shift 키를 눌렀을 때 isShiftKeyPressed를 true로 설정합니다.
-	    isShiftKeyPressed = true;
-	  } else if (event.keyCode === 13) {
-	    if (isShiftKeyPressed) {
-	      // Shift 키를 누른 상태에서 Enter 키를 누르면 다음 줄로 이동합니다.
-	      isShiftKeyPressed = false; // Shift 키 상태 초기화
-	    } else {
-	      // Shift 키를 누르지 않고 Enter 키를 누르면 insertTalk() 함수를 호출합니다.
-	      insertTalk();
-	      event.preventDefault(); // Enter 키의 기본 동작(새 줄 생성)을 방지합니다.
-	    }
-	  }
-	}
+   //채팅입력 및 전송
+   function insertTalk(){
+      var talk = $("#myInput").val().replace(/\n/g, "<br>");
+      var id=$("#id").val();
+      if(!id){
+         alert("로그인이 필요합니다");
+      }else{
+         $.ajax({
+            url:"main_insertTalk",
+            data:{talk:talk},
+            success:function(){
+               $("#myInput").val("");
+            }
+         });
+      }
+   }
+   
+   //텍스트 창 스크롤이 항상 맨 밑에 위치
+   // 스크롤 맨 아래로 이동하는 함수
+   function scrollToBottom() {
+     const scrollableDiv = document.getElementById("scrollableDiv");
+     scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+   }
+   
+   // DOM이 로드되면 스크롤 가능한 div가 맨 아래로 스크롤되도록 함수를 호출합니다.
+   document.addEventListener("DOMContentLoaded", scrollToBottom);
+   
+   // 스크롤 이벤트를 감지하여 스크롤이 변경되어도 스크롤 가능한 div가 맨 아래에 위치하도록 함수를 호출합니다.
+   document.getElementById("scrollableDiv").addEventListener("scroll", scrollToBottom);
+   
+   //엔터쳤을때 텍스트가 전송   
+   var isShiftKeyPressed = false;
+   
+   function handleKeyDown(event) {
+     if (event.keyCode === 16) {
+       // Shift 키를 눌렀을 때 isShiftKeyPressed를 true로 설정합니다.
+       isShiftKeyPressed = true;
+     } else if (event.keyCode === 13) {
+       if (isShiftKeyPressed) {
+         // Shift 키를 누른 상태에서 Enter 키를 누르면 다음 줄로 이동합니다.
+         isShiftKeyPressed = false; // Shift 키 상태 초기화
+       } else {
+         // Shift 키를 누르지 않고 Enter 키를 누르면 insertTalk() 함수를 호출합니다.
+         insertTalk();
+         event.preventDefault(); // Enter 키의 기본 동작(새 줄 생성)을 방지합니다.
+       }
+     }
+   }
    //---------------------------------------------------
    // 주변 행사 소식 > 행사 지역 선택
    function selectArea(area){
-	   var column=area;
-	   console.log(column);
-	  $.ajax({
-		  url:"selectArea",
-		  data:{area:column},
-		  success:function(data){
-			console.log(data);
-			$(".eventList").empty();
-			for(var i=0;i<data.length;i++){
-				var div=$("<div></div>").addClass("list"+(i+1)).addClass("poster-Qth").addClass("myEvent");
-				// i가 0일 때 스타일 추가
+      var column=area;
+      console.log(column);
+     $.ajax({
+        url:"selectArea",
+        data:{area:column},
+        success:function(data){
+         console.log(data);
+         $(".eventList").empty();
+         for(var i=0;i<data.length;i++){
+            var div=$("<div></div>").addClass("list"+(i+1)).addClass("poster-Qth").addClass("myEvent");
+            // i가 0일 때 스타일 추가
                 if (i === 0) {
                     div.css("visibility", "visible");
                 }
-				for(var j=0;j<data[i].length;j++){
-					var event=$("<div></div>").addClass("poster-kSm");
-					var divimg=$("<div></div>").addClass("imgposter-VfF");
-					var img=$("<img></img>").addClass("imgposter-VfF").attr("src","./images/"+data[i][j].eventfname);
-					divimg.append(img);
-					var divstate=$("<div></div>").addClass("frame-6-aaD");
-					var eventstate=$("<div></div>").addClass("frame-3-jT7").html(data[i][j].eventState);
-					var eventname=$("<div></div>").addClass("eventname-2BK").html(data[i][j].eventname);
-					divstate.append(eventstate).append(eventname);
-					event.append(divimg).append(divstate);
-					div.append(event);
-			 	}
-			 	$(".eventList").append(div);
-			}
-		  }
-	  });
+            for(var j=0;j<data[i].length;j++){
+               var event=$("<div></div>").addClass("poster-kSm");
+               var divimg=$("<div></div>").addClass("imgposter-VfF");
+               var img=$("<img></img>").addClass("imgposter-VfF").attr("src","./images/"+data[i][j].eventfname);
+               divimg.append(img);
+               var divstate=$("<div></div>").addClass("frame-6-aaD");
+               var eventstate=$("<div></div>").addClass("frame-3-jT7").html(data[i][j].eventState);
+               var eventname=$("<div></div>").addClass("eventname-2BK").html(data[i][j].eventname);
+               divstate.append(eventstate).append(eventname);
+               event.append(divimg).append(divstate);
+               div.append(event);
+             }
+             $(".eventList").append(div);
+         }
+        }
+     });
    }
 </script>
 </head>
@@ -391,41 +391,41 @@ html{
 <!--id  -->
 <input type="hidden" id="id" th:value="${id}">
 <!--now no -->
-<input type="hidden" id="now" th:value="${now}">	
-	
+<input type="hidden" id="now" th:value="${now}">   
+   
 <div class="main-mVB">
   
   
   <!-- header -->
   <div class="auto-group-9o4m-KFo">
      <!-- header_top div 시작 -->
-	  <div class="header_top">
-		<!--logo p 시작-->
-	    <p class="logo">
-	    컬쳐
-	    <br/>
-	    모아
-	    </p>
-	    <!--logo p 끝-->
-	    
-	    <!--searchbar div 시작-->
-	    <div class="searchbar">
-		  <!-- searchicon div 시작 -->
-	      <div class="searchicon">
-	        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
-	      </div>
-	      <!-- searchicon div 끝 -->
-	      
-	      <div class="searchtext">검색어를 입력하세요.</div>
-	      
-	    </div>
-	    <!--searchbar div 끝-->
-	    
-	    <div class="div_login">로그인</div>
-	    <div class="div_signup">회원가입</div>
-	    
-	  </div>
-	  <!-- header_top div 끝 -->
+     <div class="header_top">
+      <!--logo p 시작-->
+       <p class="logo">
+       컬쳐
+       <br/>
+       모아
+       </p>
+       <!--logo p 끝-->
+       
+       <!--searchbar div 시작-->
+       <div class="searchbar">
+        <!-- searchicon div 시작 -->
+         <div class="searchicon">
+           <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
+         </div>
+         <!-- searchicon div 끝 -->
+         
+         <div class="searchtext">검색어를 입력하세요.</div>
+         
+       </div>
+       <!--searchbar div 끝-->
+       
+       <div class="div_login">로그인</div>
+       <div class="div_signup">회원가입</div>
+       
+     </div>
+     <!-- header_top div 끝 -->
  
     
     <!--gnb -->
@@ -450,7 +450,7 @@ html{
   
   <!--dropdown_main 시작-->
   <div class="dropdown_main">
-	<!-- gnb 드롭다운 시작 -->
+   <!-- gnb 드롭다운 시작 -->
     <div class="gnb_dropdown"  style="visibility: hidden;" id="gnbDropdown"  onmouseover="cancelHide()" onmouseout="hideDropDown()">
       
       <!--div_introduce 시작-->
@@ -488,36 +488,36 @@ html{
       </div>
       <!--div_infolist 끝-->
     </div>
-	<!-- gnb 드롭다운 끝 -->
+   <!-- gnb 드롭다운 끝 -->
 
     
     
     
-	<!--메인페이지 -->
+   <!--메인페이지 -->
     <div class="main-Fpu">
-	  <!-- 메인배너 -->
+     <!-- 메인배너 -->
       <div class="banner-NuX">
-		  <div class="banner-slide-jEH">
-		    <!--배너1-->
+        <div class="banner-slide-jEH">
+          <!--배너1-->
             <div class="rectangle-117-H2q mySlides" style="display: block;">
                 <div class="imagebanner-dMb"></div>
             </div>
-		    <!--배너2-->
-			<div class="group-11-WPT mySlides">
+          <!--배너2-->
+         <div class="group-11-WPT mySlides">
                 <div class="imagebanner-U5P" src="./assets/imagebanner.png"></div>
             </div>
             <!--배너3-->
-		    <div class="bannersample03-Uhf mySlides">
-		        <div class="imagebanner-Rso"></div>
-		    </div>
-		  </div>
-		  <!--배너 넘기는 버튼 -->
-		  <div class="btnslide-mih">
-	           <img class="btnprevious-smj" src="./assets/btnprevious-xdo.png"  onclick="prevSlide()"/>
-	           <div class="nn-nn-pS5">01/03</div>
-	           <img class="btnnext-wFo" src="./assets/btnnext-GD7.png" onclick="nextSlide()"/>
+          <div class="bannersample03-Uhf mySlides">
+              <div class="imagebanner-Rso"></div>
           </div>
-	  </div>
+        </div>
+        <!--배너 넘기는 버튼 -->
+        <div class="btnslide-mih">
+              <img class="btnprevious-smj" src="./assets/btnprevious-xdo.png"  onclick="prevSlide()"/>
+              <div class="nn-nn-pS5">01/03</div>
+              <img class="btnnext-wFo" src="./assets/btnnext-GD7.png" onclick="nextSlide()"/>
+          </div>
+     </div>
       
 
       <!--주요 서비스 -->
@@ -562,11 +562,11 @@ html{
         </div>
         <!-- 주변 행사 소식-->
         <div class="news-z8q">
-		<!-- 주변 행사 타이틀-->	
+      <!-- 주변 행사 타이틀-->   
           <div class="auto-group-9job-9Gd">
             <div class="newstitle-siR">주변 행사 소식</div>
             <div class="dropdownarea-oMB">
-			<!-- 지역 선택 드롭다운-->
+         <!-- 지역 선택 드롭다운-->
               <div class="component-20-MtV">
                 <div class="auto-group-rq2q-7cm" onclick="openDrop()">
                   <div class="selectarea-GEm">지역을 선택하세요.</div>
@@ -575,25 +575,25 @@ html{
                 <div class="line-3-isT"></div>
                <!-- 지역 선택 -->
                <div class="drop" style="visibility: hidden;" onmouseleave="hideDrop()">
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('all')">전체</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('서울')">서울</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('부산')">부산</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대구')">대구</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('인천')">인천</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('광주')">광주</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대전')">대전</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('울산')">울산</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('세종')">세종</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('강원')">강원</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청북도')">충청북도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청남도')">충청남도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라북도')">전라북도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라남도')">전라남도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상북도')">경상북도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상남도')">경상남도</div>
-               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('제주')">제주</div>
-			   </div>
-			   
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('all')">전체</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('서울')">서울</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('부산')">부산</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대구')">대구</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('인천')">인천</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('광주')">광주</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대전')">대전</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('울산')">울산</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('세종')">세종</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('강원')">강원</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청북도')">충청북도</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청남도')">충청남도</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라북도')">전라북도</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라남도')">전라남도</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상북도')">경상북도</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상남도')">경상남도</div>
+                    <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('제주')">제주</div>
+            </div>
+            
               </div>
             </div>
           </div>
@@ -608,51 +608,51 @@ html{
             <!--행사하나 -->
             <div class="poster-Qth myEvent list1" style="visibility: visible;">
               <div class="poster-kSm "  th:each="e:${event1}" >
-				<input type="hidden" value="${e.eventno}">
-				<!-- 행사 사진-->
+            <input type="hidden" value="${e.eventno}">
+            <!-- 행사 사진-->
                 <div class="imgposter-VfF"  >
-					<img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+               <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
-				  <!--공연 진행 여부 -->
+              <!--공연 진행 여부 -->
                   <div class="frame-3-jT7" th:text="${e.eventState}"></div>
                   <!--공연이름 -->
                   <div class="eventname-2BK" th:text="${e.eventname}"></div>
                 </div>
               </div>              
-             </div>	
-       		 <!--행사둘 -->
+             </div>   
+              <!--행사둘 -->
             <div class="poster-Qth myEvent list2">
               <div class="poster-kSm "  th:each="e:${event2}" >
-				<input type="hidden" value="${e.eventno}">  
-				<!-- 행사 사진-->
+            <input type="hidden" value="${e.eventno}">  
+            <!-- 행사 사진-->
                 <div class="imgposter-VfF" >
-					<img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+               <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
-				  <!--공연 진행 여부 -->
+              <!--공연 진행 여부 -->
                   <div class="frame-3-jT7" th:text="${e.eventState}"></div>
                   <!--공연이름 -->
                   <div class="eventname-2BK" th:text="${e.eventname}"></div>
                 </div>
               </div>              
-             </div>	
+             </div>   
               <!--행사셋 -->
             <div class="poster-Qth myEvent list3">
               <div class="poster-kSm "  th:each="e:${event3}" >
-				<input type="hidden" value="${e.eventno}">
-				<!-- 행사 사진-->
+            <input type="hidden" value="${e.eventno}">
+            <!-- 행사 사진-->
                 <div class="imgposter-VfF">
-					<img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+               <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
-				  <!--공연 진행 여부 -->
+              <!--공연 진행 여부 -->
                   <div class="frame-3-jT7" th:text="${e.eventState}"></div>
                   <!--공연이름 -->
                   <div class="eventname-2BK" th:text="${e.eventname}"></div>
                 </div>
               </div>              
-             </div>	
+             </div>   
              </div>
              
           </div>
@@ -666,23 +666,23 @@ html{
           </div>
         </div>
         <div class="positioncalendar-di9">
-			<div id='calendar' style="visibility: visible;"></div>
-			<div id='ticket' style="visibility: hidden;"></div>
+         <div id='calendar' style="visibility: visible;"></div>
+         <div id='ticket' style="visibility: hidden;"></div>
         </div>
         </div>
       
       <!-- 오픈톡 -->
       <div class="opentalk-m3f">
-	    <!-- 오픈톡 타이틀-->
+       <!-- 오픈톡 타이틀-->
         <div class="opentalktitle-gRX">오픈톡</div>
         <!-- 오픈톡 프레임 -->
         <div class="divchat-BNH" id="scrollableDiv">
-		 <!-- 채팅창 -->
+       <!-- 채팅창 -->
           <div class="inputchat-i7K">
-			  
-			<!--talk1 -->
+           
+         <!--talk1 -->
             <div class="chat-SJD"  th:each="t:${talk}">
-			  <!--talk icon-->	
+           <!--talk icon-->   
               <div class="profile-C2V">
                 <img class="ellipse-8-Y6M" th:src="@{'./profileImage/'+${t.fname}}"/>
                 <img class="profile-seR" th:if="${t.fname != null and t.fname.contains('icon')}" src="./profileImage/profile-12Z.png"/>
@@ -693,12 +693,12 @@ html{
               <div class="textbox" style="display: flex;">
               <!--talk 내용-->
               <div class="textcontent-ub7" th:utext="${t.talkcontent}">
-			  </div>
-			  <div  class="datebox" style="display: flex; align-items: flex-end;">
-				 <p class="datetext" th:text="${t.day}" style="display: block;"></p>
-			  </div>
-				
-			  </div>
+           </div>
+           <div  class="datebox" style="display: flex; align-items: flex-end;">
+             <p class="datetext" th:text="${t.day}" style="display: block;"></p>
+           </div>
+            
+           </div>
             </div>
             
           </div>
@@ -708,12 +708,12 @@ html{
         <div class="inputtext-Dbo">
           <img class="profile-kbj" src="./assets/profile-kVw.png"/>
           <div class="text-swF">
-			   <!--채팅 입력 -->
-   			   <textarea id="myInput" placeholder="내용을 입력하세요" onkeydown="handleKeyDown(event)"></textarea>
-		  </div>
-		  <!--전송 버튼 -->
-		  <button class="insertBtn" onclick="insertTalk()">전송 </button>
-		  
+            <!--채팅 입력 -->
+               <textarea id="myInput" placeholder="내용을 입력하세요" onkeydown="handleKeyDown(event)"></textarea>
+        </div>
+        <!--전송 버튼 -->
+        <button class="insertBtn" onclick="insertTalk()">전송 </button>
+        
         </div>
       </div>
       <!-- 게시판 -->
@@ -728,9 +728,9 @@ html{
         </div>
         <div class="auto-group-pu6z-srh">
           <div class="boardtable-ESM">
-			<!--게시물 리스트 -->
+         <!--게시물 리스트 -->
             <div class="boardlist-yeq">
-			  <!--게시글 -->	
+           <!--게시글 -->   
               <div class="list-LkH" th:each="b:${list}" >
                 <div class="title-6zM" th:text="${b.boardtitle}"></div>
                 <div class="regdate-S2d" th:text="${b.regdate}"></div> 
