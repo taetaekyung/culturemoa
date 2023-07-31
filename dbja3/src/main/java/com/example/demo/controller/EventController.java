@@ -150,6 +150,8 @@ public class EventController {
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
 	
+	
+	
 	//뮤지컬 행사리스트
 	@GetMapping("/event/musicallist")
 	public void musicallist(Model model, @RequestParam(defaultValue = "1") int page) {
@@ -227,9 +229,4 @@ public class EventController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
-	
-//	행사 상세로 이동
-//	@GetMapping("/event/eventdetail")
-//	public void eventDetail() {
-//	}
 }

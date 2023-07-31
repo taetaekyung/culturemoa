@@ -14,43 +14,67 @@
   <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
   
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<!-- JavaScript를 이용하여 드롭다운 메뉴를 제어합니다 -->
-<script type="text/javascript">
-  // 드롭다운 메뉴를 보여주는 함수
-  function showDropdownMenu() {
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    dropdownMenu.style.display = 'block';
-  }
-
-  // 드롭다운 메뉴를 숨기는 함수
-  function hideDropdownMenu() {
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    dropdownMenu.style.display = 'none';
-  }
-
-  // 지역을 선택했을 때의 동작을 처리하는 함수
-  function onRegionSelected() {
-    var selectedRegion = document.getElementById('regionSelect').value;
-    var displayDiv = document.querySelector('.addr-GB3');
-    displayDiv.innerText = selectedRegion;
-    hideDropdownMenu();
-  }
-
-  // 지역 선택 div에 클릭 이벤트 리스너를 추가합니다.
-  var regionDiv = document.querySelector('.addr-GB3');
-  regionDiv.addEventListener('click', showDropdownMenu);
-
-  // select 요소에 change 이벤트 리스너를 추가합니다.
-  var regionSelect = document.getElementById('regionSelect');
-  regionSelect.addEventListener('change', onRegionSelected);
-
-  // document에 클릭 이벤트 리스너를 추가하여 드롭다운 메뉴를 숨깁니다.
-  document.addEventListener('click', function (event) {
-    var target = event.target;
-    if (!target.classList.contains('addr-GB3') && !target.classList.contains('dropdown-menu')) {
-      hideDropdownMenu();
-    }
-  });
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script>
+	//-----주변행사 dropdown
+	var dropIndex=0;
+	function openDrop() {
+	  var drop = document.querySelector(".drop"); // Use querySelector to get the first element with the class "drop"
+	  if (dropIndex==0) {
+	    dropIndex=1;
+	    drop.style.visibility = "visible";
+	  }else{
+		dropIndex=0;
+	    drop.style.visibility = "hidden";
+	  }
+	}
+	//드롭다운에서 마우스 벗어나면 없어지기
+     function hideDrop() {
+         const dropdown = document.querySelector(".drop");
+         dropdown.style.visibility = 'hidden';
+         dropIndex=0;
+     }
+     //-----주변 행사 소식 : 지역 드롭다운 효과
+	function addHoverStyle(element) {
+	  element.classList.add("hover");
+	}
+	
+	function removeHoverStyle(element) {
+	  element.classList.remove("hover");
+	}
+	 // 주변 행사 소식 > 행사 지역 선택
+   function selectArea(area){
+	   var column=area;
+	   console.log(column);
+	  $.ajax({
+		  url:"selectArea",
+		  data:{area:column},
+		  success:function(data){
+			console.log(data);
+			$(".eventList").empty();
+			for(var i=0;i<data.length;i++){
+				var div=$("<div></div>").addClass("list"+(i+1)).addClass("poster-Qth").addClass("myEvent");
+				// i가 0일 때 스타일 추가
+                if (i === 0) {
+                    div.css("visibility", "visible");
+                }
+				for(var j=0;j<data[i].length;j++){
+					var event=$("<div></div>").addClass("poster-kSm");
+					var divimg=$("<div></div>").addClass("imgposter-VfF");
+					var img=$("<img></img>").addClass("imgposter-VfF").attr("src","./images/"+data[i][j].eventfname);
+					divimg.append(img);
+					var divstate=$("<div></div>").addClass("frame-6-aaD");
+					var eventstate=$("<div></div>").addClass("frame-3-jT7").html(data[i][j].eventState);
+					var eventname=$("<div></div>").addClass("eventname-2BK").html(data[i][j].eventname);
+					divstate.append(eventstate).append(eventname);
+					event.append(divimg).append(divstate);
+					div.append(event);
+			 	}
+			 	$(".eventList").append(div);
+			}
+		  }
+	  });
+   }
 </script>
 </head>
 <body>
@@ -114,29 +138,38 @@
       <div class="maintitle-n7T">국내공연</div>
       <div class="searchbar-UFB">
         <div class="auto-group-mh4m-ccH">
-          <div class="divaddr-weZ">
-            <!-- <div class="addr-GB3">지역</div> -->
-                <select id="regionSelect">
-			      <!-- 지역 옵션 항목들을 추가합니다. -->
-			      <option value="서울">서울</option>
-			      <option value="부산">부산</option>
-			      <option value="대구">대구</option>
-			      <option value="인천">인천</option>
-			      <option value="광주">광주</option>
-			      <option value="대전">대전</option>
-			      <option value="울산">울산</option>
-			      <option value="세종">세종</option>
-			      <option value="강원">강원</option>
-			      <option value="충청북도">충청북도</option>
-			      <option value="충청남도">충청남도</option>
-			      <option value="전라북도">전라북도</option>
-			      <option value="전라남도">전라남도</option>
-			      <option value="경상북도">경상북도</option>
-			      <option value="경상남도">경상남도</option>
-			      <option value="제주">제주</option>
-			    </select>
-            <!--<img class="click-yLM" src="/assets/click-Rpu.png"/>-->
-          </div>
+		  <!-- 드롭다운 DIV 여기 아래부터 복붙-->
+          <div class="dropdownarea-oMB">
+			<!-- 지역 선택 드롭다운-->
+              <div class="component-20-MtV">
+                <div class="auto-group-rq2q-7cm" onclick="openDrop()">
+                  <div class="selectarea-GEm">지역을 선택하세요.</div>
+                  <!--<img class="vector-1-PaH" src="./assets/vector-1-GTB.png"/>-->
+                </div>
+                <div class="line-3-isT"></div>
+               <!-- 지역 선택 -->
+               <div class="drop" style="visibility: hidden;" onmouseleave="hideDrop()">
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('all')">전체</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('서울')">서울</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('부산')">부산</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대구')">대구</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('인천')">인천</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('광주')">광주</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대전')">대전</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('울산')">울산</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('세종')">세종</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('강원')">강원</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청북도')">충청북도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청남도')">충청남도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라북도')">전라북도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라남도')">전라남도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상북도')">경상북도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상남도')">경상남도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('제주')">제주</div>
+			   </div>
+              </div>
+            </div>
+          
           <div class="divdate-4ch">
             <div class="date-Pus">날짜</div>
             <img class="click-v97" src="/assets/click-JXj.png"/>
