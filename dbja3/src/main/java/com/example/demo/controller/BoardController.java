@@ -42,7 +42,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView("/boards/board/freelist");
 
 		if(orderby == null) {
-			if(session.getAttribute("orderby") != null || !session.getAttribute("orderby").equals("")) {
+			if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
 				orderby = (String) session.getAttribute("orderby");
 			}
 			else {
