@@ -444,6 +444,217 @@ body {
   position: relative;
   flex-shrink: 0;
 }
+
+.main-mVB .dropdown_main .gnb_dropdown {
+  box-sizing: border-box;
+  padding: 0rem 0rem 0rem 33rem;
+  width: 100%;
+  height: 30.8rem;
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.8999999762);
+  z-index: 1;
+  position: absolute;
+	
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_introduce {
+  display: flex;
+  width: 130px;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_introduce .pageinfo {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  text-align: center;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_introduce .teaminfo {
+  display: flex;
+  margin: auto 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  text-align: center;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_eventlist {
+  width: 505px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .festival {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  text-align: center;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .domestic {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  text-align: center;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .overseas {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  text-align: center;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .musical {
+  display: flex;
+  margin-right: 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  text-align: center;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .localfestival {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  text-align: center;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_boardlist {
+  width: 164px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  margin-right: 13.4rem;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_boardlist .freelist {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_boardlist .reviewlist {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_boardlist .togetherlist {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .faq {
+  display: flex;
+  width: 150px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  text-align: center;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_infolist {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  width: 363px;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_infolist .wishlist {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_infolist .message {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-mVB .dropdown_main .gnb_dropdown .div_infolist .memberinfo {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.125;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+
 .main-mVB .dropdown_main .main-Fpu {
   width: 192rem;
   height: 532.7rem;
@@ -533,26 +744,6 @@ body {
   */
 }
 
-
-/*
-.main-mVB .dropdown_main .main-Fpu .banner-NuX .banner-slide-jEH .group-11-WPT .banner-slide-aPK {
-  width: 192rem;
-  height: 56rem;
-  cursor: pointer;
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-}
-
-.main-mVB .dropdown_main .main-Fpu .banner-NuX .banner-slide-jEH  {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-}
-*/
 
 .main-mVB .dropdown_main .main-Fpu .banner-NuX .btnslide-mih {
   box-sizing: border-box;
@@ -1561,214 +1752,6 @@ textarea {
   letter-spacing: -0.03rem;
   color: #666666;
   font-family: Montserrat, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown {
-  box-sizing: border-box;
-  padding: 0rem 0rem 0rem 33rem;
-  width: 100%;
-  height: 30.8rem;
-  display: flex;
-  align-items: flex-start;
-  background-color: rgba(255, 255, 255, 0.8999999762);
-  z-index: 1;
-  position: absolute;
-	
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_introduce {
-  display: flex;
-  width: 130px;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_introduce .pageinfo {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  text-align: center;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_introduce .teaminfo {
-  display: flex;
-  margin: auto 0;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  text-align: center;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_eventlist {
-  width: 505px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .festival {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .domestic {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .overseas {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .musical {
-  display: flex;
-  margin-right: 0.3rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_eventlist .localfestival {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_boardlist {
-  width: 164px;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  margin-right: 13.4rem;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_boardlist .freelist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_boardlist .reviewlist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_boardlist .togetherlist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .faq {
-  display: flex;
-  width: 150px;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-  align-items: center;
-  text-align: center;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_infolist {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  width: 363px;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_infolist .wishlist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_infolist .message {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.main-mVB .dropdown_main .gnb_dropdown .div_infolist .memberinfo {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
 }
