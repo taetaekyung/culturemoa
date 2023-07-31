@@ -76,7 +76,7 @@ public class ApiService {
 				  String eventstart =(String) jObj.get("eventStartDate"); // 행사시작일
 				  String eventend = (String)jObj.get("eventEndDate");  // 행사종료일
 			      // 포맷터
-			      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+			      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			      e.setEventstart(formatter.parse(eventstart));
 			      e.setEventend(formatter.parse(eventend));
 			 

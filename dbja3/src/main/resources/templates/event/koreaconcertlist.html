@@ -28,7 +28,8 @@
 <body>
 <div class="eventlist-Xxu">
   <div class="auto-group-9o4m-KFo">
-         <!-- header_top div 시작 -->
+	  
+      <!-- header_top div 시작 -->
 	  <div class="header_top">
 		<!--logo p 시작-->
 	    <p class="logo">
@@ -122,7 +123,8 @@
 	      </a>
 	    </div>
 	    <div class="eventtitle-Gw3">
-	      <div class="diveventcategory-dWh" th:text="${e.eventstate}"></div>
+			<!-- 공연 진행 상태 -->
+	      <div class="diveventcategory-dWh" th:text="${e.eventState}"></div>
 	      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
 	      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
 	        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>

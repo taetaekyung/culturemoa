@@ -80,7 +80,7 @@
       </a>
     </div>
     <div class="eventtitle-Gw3">
-      <div class="diveventcategory-dWh" th:text="${e.eventstate}">공연 종료</div>
+      <div class="diveventcategory-dWh" th:text="${e.eventState}">공연 종료</div>
       <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
       <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
         <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
