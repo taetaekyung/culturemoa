@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>main</title>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/styles/main.css}"/>
   <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -356,35 +356,48 @@
   
  
   
-  
-  <div class="auto-group-rgrf-WcR">
-	<!-- gnb 드롭다운-->
-    <div class="gnbdrop-down-XJy"  style="visibility: hidden;" id="gnbDropdown"  onmouseover="cancelHide()" onmouseout="hideDropDown()">
-      <div class="property-1default-DSh">
-        <div class="pageinfo-mDK pointer">페이지소개</div>
-        <div class="teaminfo-VQD pointer">팀원소개</div>
+  <!--dropdown_main 시작-->
+  <div class="dropdown_main">
+	<!-- gnb 드롭다운 시작 -->
+    <div class="gnb_dropdown"  style="visibility: hidden;" id="gnbDropdown"  onmouseover="cancelHide()" onmouseout="hideDropDown()">
+      
+      <!--div_introduce 시작-->
+      <div class="div_introduce">
+        <div class="pageinfo pointer">페이지소개</div>
+        <div class="teaminfo pointer">팀원소개</div>
       </div>
-      <div class="property-1default-czd">
-        <div class="festival-mMj pointer">페스티벌</div>
-        <div class="domestic-6Q1 pointer">국내공연</div>
-        <div class="overseas-SCy pointer">내한공연</div>
-        <div class="musical-Aem pointer">뮤지컬</div>
-        <div class="localfestival-uMT pointer">지역축제</div>
+      <!--div_introduce 끝-->
+      
+      <!--div_eventlist 시작-->
+      <div class="div_eventlist">
+        <div class="festival pointer">페스티벌</div>
+        <div class="domestic pointer">국내공연</div>
+        <div class="overseas pointer">내한공연</div>
+        <div class="musical pointer">뮤지컬</div>
+        <div class="localfestival pointer">지역축제</div>
       </div>
-      <div class="property-1default-qW1">
-        <div class="freelist-PGd pointer">자유게시판</div>
-        <div class="reviewlist-KRB pointer">후기게시판</div>
-        <div class="togetherlist-T1b pointer">동행게시판</div>
+      <!--div_eventlist 끝-->
+      
+      <!--div_boardlist 시작-->
+      <div class="div_boardlist">
+        <div class="freelist pointer">자유게시판</div>
+        <div class="reviewlist pointer">후기게시판</div>
+        <div class="togetherlist pointer">동행게시판</div>
       </div>
-      <div class="faq-BTP pointer">FAQ</div>
-      <div class="property-1default-7M3">
-        <div class="wishlist-GUq pointer">관심목록</div>
-        <div class="message-1SR pointer">쪽지함</div>
-        <div class="memberinfo-Yx9 pointer">회원정보</div>
+      <!--div_boardlist 끝-->
+      
+      <div class="faq pointer">FAQ</div>
+      
+      <!--div_infolist 시작-->
+      <div class="div_infolist">
+        <div class="wishlist pointer">관심목록</div>
+        <div class="message pointer">쪽지함</div>
+        <div class="memberinfo pointer">회원정보</div>
       </div>
+      <!--div_infolist 끝-->
     </div>
-    
-    
+	<!-- gnb 드롭다운 끝 -->
+
     
     
     
@@ -631,5 +644,6 @@
       </div>
     
   </div>
+  <!--dropdown_main 끝-->
 </div>
 </body>
