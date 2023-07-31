@@ -37,8 +37,8 @@ public class BoardController {
 	
 	@GetMapping(value={"/boards/board/freelist", "/boards/board/freelist/", "/boards/board/freelist/{page}", 
 			"/boards/board/freelist/{keyword}/{page}", "/boards/board/freelist/{keyword}/{page}/{orderby}"})
-	public ModelAndView freelist(HttpSession session, @PathVariable(required = false) Integer pageNUM, @PathVariable(required=false) String keyword, 
-			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable int page) {
+	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 
+			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
 		ModelAndView mav = new ModelAndView("/boards/board/freelist");
 
 		if(orderby == null) {
@@ -49,10 +49,9 @@ public class BoardController {
 				orderby="regdate";
 			}	
 		}
-		
 		String key = "all";
-		if(pageNUM == null) {
-			pageNUM = 1;
+		if(page == null) {
+			page = 1;
 		}
 		if(keyword == null) {
 			key = "all";
