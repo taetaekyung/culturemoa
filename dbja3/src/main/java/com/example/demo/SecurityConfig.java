@@ -14,7 +14,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filerChain(HttpSecurity http) throws Exception {
 		//security가 제공해주는 로그인 폼 말고 우리가 만들거야
 		http.authorizeHttpRequests() //내가 원하는 인증과 인가에 대한 설정을 한다
-	//	.requestMatchers("/","/member/login","/member/join").permitAll() //이 요청은 모두 사용가능
+	//	.requestMatchers("/","/member/login","/join").permitAll() //이 요청은 모두 사용가능
 		.requestMatchers("/**").permitAll() //모두 사용가능
 		.anyRequest().authenticated(); //나머지는 인증만 받으면 되
 		

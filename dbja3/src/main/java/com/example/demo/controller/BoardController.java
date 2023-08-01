@@ -111,4 +111,14 @@ public class BoardController {
 		return mav;
 	}
 	
+	@GetMapping("/boards/review/reviewlist")
+	public void reviewlist() {
+		
+	}
+	
+	@GetMapping("/boards/board/togetherlist")
+	public void togetherlist() {
+		
+	}
+	
 }

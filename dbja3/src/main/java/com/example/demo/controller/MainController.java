@@ -167,5 +167,7 @@ public class MainController {
 		
 	}
 	
-	
+	@GetMapping("/FAQ")
+	public void FAQ() {
+	}
 }
