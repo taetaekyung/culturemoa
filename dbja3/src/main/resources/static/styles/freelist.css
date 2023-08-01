@@ -71,491 +71,10 @@ body {
   background-color: #ffffff;
 }
 
-.freelist .auto-group-9o4m-KFo .header_top {
-  box-sizing: border-box;
-  padding: 2.5rem 32rem 0.7rem 32rem;
-  width: 100%;
-  height: 15.4rem;
-  display: flex;
-  align-items: center;
-  background-color: #fdd00f;
-  flex-shrink: 0;
-}
-
-.freelist .auto-group-9o4m-KFo .header_top .logo {
-  margin-right: 20rem;
-  font-size: 4.6rem;
-  font-weight: bolder;
-  line-height: 1;
-  color: #ffffff;
-  font-family: 'GmarketSans', 'Source Sans 3', sans-serif;
-  flex-shrink: 0;
-}
-
-.freelist .auto-group-9o4m-KFo .header_top .searchbar {
-  margin: 2.5rem 14.8rem 3.9rem 0rem;
-  width: 64rem;
-  height: calc(100% - 6.4rem);
-  position: relative;
-  background-color: #ffffff;
-  border-radius: 1rem 1rem 1rem 1rem;
-  flex-shrink: 0;
-}
-
-.freelist .auto-group-9o4m-KFo .header_top .searchbar .main_search{
-  margin: 1.5rem 0 0 1.5rem;
-  width: 50rem;
-  font-size: 20px;
-}
-
-
-.freelist .auto-group-9o4m-KFo .header_top .searchbar .searchicon {
-  padding: 1.6rem 2.144rem 1.558rem 3.5rem;
-  width: 6.5rem;
-  height: 5.2rem;
-  position: absolute;
-  left: 55.5rem;
-  top: 0;
-  background-color: #ffffff;
-  border: none;
-}
-.freelist .auto-group-9o4m-KFo .header_top .searchbar .searchicon .iconsearch-tj3 {
-  width: 2.1558rem;
-  height: 2.0424rem;
-  margin-top: 0.2rem;
-  object-fit: contain;
-  vertical-align: top;
-}
-.freelist .auto-group-9o4m-KFo .header_top .searchbar .searchtext {
-  box-sizing: border-box;
-  padding: 0.2rem 2.4rem 0 2.4rem;
-  width: 55.5rem;
-  height: 5.2rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 2.1666666667;
-  letter-spacing: -0.1rem;
-  color: #c0c0c0;
-  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
-  white-space: nowrap;
-  background-color: #ffffff;
-  border-radius: 1rem 0 0 1rem;
-}
-
-.freelist .auto-group-9o4m-KFo .header_top .div_login {
-  margin: 2rem 3.1rem 4.4rem 0rem;
-  width: 6.5rem;
-  height: calc(100% - 6.4rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 570;
-  line-height: 2.6;
-  letter-spacing: -0.1rem;
-  color: #FFFFFF;
-  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-
-.freelist .auto-group-9o4m-KFo .header_top .div_signup {
-  margin: 2rem 0rem 4.4rem 0rem;
-  width: 8.6rem;
-  height: calc(100% - 6.4rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 2.6;
-  letter-spacing: -0.1rem;
-  color: #FFFFFF;
-  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
 
 
 
-
-
-.freelist .auto-group-9o4m-KFo .gnb-EhX {
-  box-sizing: border-box;
-  padding: 0.1rem 32.5rem 0rem 34.5rem;
-  width: 100%;
-  height: 6.4rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.200000003);
-  background-color: #ffffff;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divintro-9pV {
-  margin-right: 16rem;
-  width: 3.6rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divevent-3Q5 {
-  margin-right: 15rem;
-  width: 7.1rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divcommunity-xG9 {
-  margin-right: 15rem;
-  width: 7.1rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divfaq-fwF {
-  margin-right: 14rem;
-  width: 3.7rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divmypage-o1s {
-  margin-right: 11.7rem;
-  width: 9.9rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divopentalk-DLV {
-  margin: 1.6rem 2rem 1.7rem 0rem;
-  box-sizing: border-box;
-  padding: 0rem 2rem 0rem 1.1rem;
-  height: calc(100% - 3.3rem);
-  display: flex;
-  align-items: center;
-  background-color: #f796af;
-  border-radius: 100rem;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divopentalk-DLV .iconopentalk-vEu {
-  margin-left: 0.5rem;
-  width: 1.7971rem;
-  height: 1.3rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divopentalk-DLV .opentalk-GJm {
-  display: flex;
-  margin-left: 0.7rem;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2.1428571429;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divmessage-aaM {
-  margin: 1.6rem 0rem 1.7rem 0rem;
-  box-sizing: border-box;
-  padding: 0rem 1.5rem 0rem 1.5rem;
-  height: calc(100% - 3.3rem);
-  display: flex;
-  align-items: center;
-  background-color: #46c3d3;
-  border-radius: 100rem;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divmessage-aaM .iconmessage-VBX {
-  margin-right: 0.5rem;
-  width: 1.7rem;
-  height: 1.1rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.freelist .auto-group-9o4m-KFo .gnb-EhX .divmessage-aaM .message-Rqs {
-  display: flex;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2.1428571429;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.freelist .dropdown_main {
-  width: 100%;
-  height: 533.4rem;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.freelist .dropdown_main .gnb_dropdown {
-  box-sizing: border-box;
-  padding: 0rem 0rem 0rem 31rem;
-  width: 100%;
-  height: 30.8rem;
-  display: flex;
-  align-items: flex-start;
-  background-color: rgba(255, 255, 255, 0.8999999762);
-  z-index: 1;
-  position: absolute;
-	
-}
-.freelist .dropdown_main .gnb_dropdown .div_introduce {
-  display: flex;
-  width: 130px;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  
-}
-.freelist .dropdown_main .gnb_dropdown .div_introduce .pageinfo {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  text-align: center;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_introduce .teaminfo {
-  display: flex;
-  margin: auto 0;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  text-align: center;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_eventlist {
-  width: 295px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_eventlist .festival {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_eventlist .domestic {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_eventlist .overseas {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_eventlist .musical {
-  display: flex;
-  margin-right: 0.3rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_eventlist .localfestival {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  text-align: center;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_boardlist {
-  width: 145px;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  margin-right: 11.6rem;
-}
-.freelist .dropdown_main .gnb_dropdown .div_boardlist .freelist_text {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_boardlist .reviewlist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_boardlist .togetherlist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .faq {
-  display: flex;
-  width: 50px;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-  align-items: center;
-  text-align: center;
-}
-.freelist .dropdown_main .gnb_dropdown .div_infolist {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
-  width: 340px;
-}
-.freelist .dropdown_main .gnb_dropdown .div_infolist .wishlist {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_infolist .message {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.freelist .dropdown_main .gnb_dropdown .div_infolist .memberinfo {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.125;
-  letter-spacing: -0.1rem;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-
-
-
-
-.freelist .dropdown_main .main {
+.freelist .main {
   box-sizing: border-box;
   padding: 2.6rem 30.2rem 0rem 30rem;
   width: 100%;
@@ -564,13 +83,13 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .location {
+.freelist .main .location {
   margin: 0rem 116.655rem 5.35rem 0rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .location .home {
+.freelist .main .location .home {
   margin-right: 1.1rem;
   display: flex;
   font-size: 1.4rem;
@@ -581,7 +100,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .location .nexticon {
+.freelist .main .location .nexticon {
   margin-right: 1rem;
   width: 0.4726rem;
   height: 0.9452rem;
@@ -590,7 +109,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .location .community {
+.freelist .main .location .community {
   margin-right: 1rem;
   display: flex;
   font-size: 1.4rem;
@@ -601,7 +120,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .location .nexticon2 {
+.freelist .main .location .nexticon2 {
   margin-right: 1rem;
   width: 0.4726rem;
   height: 0.9452rem;
@@ -610,7 +129,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .location .freelist_text {
+.freelist .main .location .freelist_text {
   display: flex;
   font-size: 1.4rem;
   font-weight: 500;
@@ -621,7 +140,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content {
+.freelist .main .main_content {
   margin-left: 3.8rem;
   width: 128rem;
   align-items: center;
@@ -629,7 +148,7 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_top {
+.freelist .main .main_content .main_content_top {
   box-sizing: border-box;
   padding: 0rem 6.7rem 2rem 33rem;
   width: 100%;
@@ -638,7 +157,7 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .title {
+.freelist .main .main_content .main_content_top .title {
   margin: 0rem 26.22rem 2.95rem 0rem;
   display: flex;
   align-items: center;
@@ -652,7 +171,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .main_searchbar {
+.freelist .main .main_content .main_content_top .main_searchbar {
   margin: 0rem 26.3rem 2.8rem 0rem;
   width: 62rem;
   height: 5.2rem;
@@ -661,7 +180,7 @@ body {
   border: #f2f2f2 0.1rem solid;
   border-radius: 1rem;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .main_searchbar .searchbtn {
+.freelist .main .main_content .main_content_top .main_searchbar .searchbtn {
   box-sizing: border-box;
   padding: 1.6rem 2.144rem 1.558rem 2.2rem;
   width: 6.5rem;
@@ -673,13 +192,13 @@ body {
   border: #ffffff 0.1rem;
   border-radius: 0 1rem 1rem 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .main_searchbar .searchbtn .search_icon {
+.freelist .main .main_content .main_content_top .main_searchbar .searchbtn .search_icon {
   width: 2.1558rem;
   height: 2.0424rem;
   object-fit: contain;
   vertical-align: top;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .main_searchbar .main_searchtext {
+.freelist .main .main_content .main_content_top .main_searchbar .main_searchtext {
   box-sizing: border-box;
   padding: 0 2.4rem;
   width: 55.5rem;
@@ -699,14 +218,14 @@ body {
   border-radius: 1rem 0 0 1rem;
 }
 
-.freelist .dropdown_main .main .main_content .main_content_top .filter {
+.freelist .main .main_content .main_content_top .filter {
   margin-left: 76.6rem;
   height: 5.2rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .filter .register {
+.freelist .main .main_content .main_content_top .filter .register {
   margin-right: 1rem;
   width: 4.8rem;
   height: 100%;
@@ -722,7 +241,7 @@ body {
   flex-shrink: 0;
 }
 
-.freelist .dropdown_main .main .main_content .main_content_top .filter .register .register_anchor{
+.freelist .main .main_content .main_content_top .filter .register .register_anchor{
   width: 4.8rem;
   height: 100%;
   cursor: pointer;
@@ -737,14 +256,14 @@ body {
   color: #c0c0c0;
 }
 
-.freelist .dropdown_main .main .main_content .main_content_top .filter .middleline {
+.freelist .main .main_content .main_content_top .filter .middleline {
   margin: 0.2rem 0.8rem 0rem 0rem;
   width: 0.2rem;
   height: 1.8rem;
   background-color: #a5a5a5;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_top .filter .popular {
+.freelist .main .main_content .main_content_top .filter .popular {
   width: 4.9rem;
   height: 100%;
   cursor: pointer;
@@ -761,7 +280,7 @@ body {
   flex-shrink: 0;
 }
 
-.freelist .dropdown_main .main .main_content .main_content_top .filter .popular .popular_anchor{
+.freelist .main .main_content .main_content_top .filter .popular .popular_anchor{
   margin-left: 1rem;
   margin-right: 1rem;
   width: 4.8rem;
@@ -778,7 +297,7 @@ body {
   color: #c0c0c0;
  }
 
-.freelist .dropdown_main .main .main_content .main_content_middle {
+.freelist .main .main_content .main_content_middle {
   box-sizing: border-box;
   width: 100%;
   height:1000px;
@@ -788,7 +307,7 @@ body {
   border-bottom: solid 0.1rem #dfdfdf;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title {
+.freelist .main .main_content .main_content_middle .list_title {
   margin-bottom: 1.9rem;
   width: 100%;
   height: 5rem;
@@ -796,19 +315,19 @@ body {
   background-color: #ffffff;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names {
+.freelist .main .main_content .main_content_middle .list_title .div_names {
   box-sizing: border-box;
 /*  padding: 0rem 7.7rem 0rem 4.1rem;
 */  width: 100%;
   height: 100%;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names {
   width: 100%;
   height: 2.6rem;
   display: flex;
   align-items: center;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names .dno_name {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names .dno_name {
   width: 15rem;
   display: flex;
   align-items: center;
@@ -822,7 +341,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names .title_name {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names .title_name {
   width: 49.7rem;
   display: flex;
   align-items: center;
@@ -836,7 +355,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names .regdate_name {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names .regdate_name {
   width: 19rem;
   display: flex;
   align-items: center;
@@ -850,7 +369,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names .id_name {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names .id_name {
   width: 20rem;
   display: flex;
   align-items: center;
@@ -864,7 +383,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names .hit_name {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names .hit_name {
   width: 10rem;
   display: flex;
   align-items: center;
@@ -878,7 +397,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list_title .div_names .names .like_name {
+.freelist .main .main_content .main_content_middle .list_title .div_names .names .like_name {
   width: 10rem;
   display: flex;
   align-items: center;
@@ -892,7 +411,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list {
+.freelist .main .main_content .main_content_middle .list {
   margin: 0rem 0rem 105.2rem 0rem;
   width: 100%;
   overflow: hidden;
@@ -903,13 +422,13 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list {
+.freelist .main .main_content .main_content_middle .list .div_list {
   width: 1280px;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list .dno {
+.freelist .main .main_content .main_content_middle .list .div_list .dno {
   width: 15rem;
   display: flex;
   align-items: center;
@@ -924,7 +443,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list .title {
+.freelist .main .main_content .main_content_middle .list .div_list .title {
   width: 49.7rem;
   display: flex;
   align-items: center;
@@ -937,7 +456,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list .regdate {
+.freelist .main .main_content .main_content_middle .list .div_list .regdate {
   width: 19rem;
   display: flex;
   align-items: center;
@@ -951,7 +470,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list .userid {
+.freelist .main .main_content .main_content_middle .list .div_list .userid {
   width: 20rem;
   display: flex;
   align-items: center;
@@ -965,7 +484,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list .hit {
+.freelist .main .main_content .main_content_middle .list .div_list .hit {
   width: 10rem;
   display: flex;
   align-items: center;
@@ -979,7 +498,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_middle .list .div_list .likes {
+.freelist .main .main_content .main_content_middle .list .div_list .likes {
   width: 10rem;
   display: flex;
   align-items: center;
@@ -993,7 +512,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom {
+.freelist .main .main_content .main_content_bottom {
   box-sizing: border-box;
   width: 1280px;
   align-items: center;
@@ -1001,14 +520,14 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .insertboardbtn {
+.freelist .main .main_content .main_content_bottom .insertboardbtn {
   width: 100%;
   display: flex;
   text-align: right;
   justify-content: right;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .insertboardbtn .inserticon {
+.freelist .main .main_content .main_content_bottom .insertboardbtn .inserticon {
   margin: 2.1rem 0.5rem 0rem 0rem;
   width: 10px;
   height: 10px;
@@ -1016,7 +535,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .insertboardbtn .insert_text {
+.freelist .main .main_content .main_content_bottom .insertboardbtn .insert_text {
   display: flex;
   font-size: 1.8rem;
   font-weight: 500;
@@ -1027,7 +546,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging {
+.freelist .main .main_content .main_content_bottom .paging {
   margin-right: 43.2989rem;
   display: flex;
   align-items: center;
@@ -1037,14 +556,14 @@ body {
   margin: 0 auto;
 }
 
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging .div_page {
+.freelist .main .main_content .main_content_bottom .paging .div_page {
   text-align: left;
   justify-content: center;
   display: flex;
   margin-bottom: 0.4rem;
 }
 
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging .btndoubleprevious {
+.freelist .main .main_content .main_content_bottom .paging .btndoubleprevious {
   margin: 0rem 1.5rem 0rem 0rem;
   width: 14px;
   height: 14px;
@@ -1053,7 +572,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging .btnprevious {
+.freelist .main .main_content .main_content_bottom .paging .btnprevious {
   margin: 0rem 2.5rem 0rem 0rem;
   width: 14px;
   height: 14px;
@@ -1061,7 +580,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging .page1 {
+.freelist .main .main_content .main_content_bottom .paging .page1 {
   margin-right: 2rem;
   margin-bottom: 0.7rem;
   width: 14px;
@@ -1075,7 +594,7 @@ body {
 
 
 
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging .btnnext {
+.freelist .main .main_content .main_content_bottom .paging .btnnext {
   margin: 0rem 1.5rem 0rem 0rem;
   width: 14px;
   height: 14px;
@@ -1083,7 +602,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.freelist .dropdown_main .main .main_content .main_content_bottom .paging .btndoublenext {
+.freelist .main .main_content .main_content_bottom .paging .btndoublenext {
   margin-bottom: 0rem;
   width: 14px;
   height: 14px;
