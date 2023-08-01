@@ -1,0 +1,102 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 14.2rem;
+}.btnradio-toB {
+  box-sizing: border-box;
+  padding: 1.9rem 0.7rem 1.6rem 0.8rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: dashed 0.1rem #9747ff;
+  border-radius: 0.5rem;
+}
+.btnradio-toB .property-1default-cz5 {
+  margin: 0rem 0.2rem 1.7rem 0rem;
+  box-sizing: border-box;
+  padding-right: 3rem;
+  width: calc(100% - 0.2rem);
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.btnradio-toB .property-1default-cz5 .group-34-VY5 {
+  margin-right: 0.8rem;
+  width: 2rem;
+  height: 100%;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}
+.btnradio-toB .property-1default-cz5 .group-34-VY5 .rectangle-137-Rgd {
+  width: 100%;
+  height: 2rem;
+  border: solid 0.2rem #cdcdcd;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 10rem;
+}
+.btnradio-toB .property-1default-cz5 .item--xAm {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #cdcdcd;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btnradio-toB .property-1variant2-fL5 {
+  margin-left: 0.2rem;
+  box-sizing: border-box;
+  padding-right: 3rem;
+  width: calc(100% - 0.2rem);
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.btnradio-toB .property-1variant2-fL5 .group-34-nfb {
+  margin-right: 0.8rem;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 100%;
+  border: solid 0.2rem #07b47f;
+  background-color: #ffffff;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}
+.btnradio-toB .property-1variant2-fL5 .group-34-nfb .rectangle-138-WrV {
+  width: 100%;
+  height: 1rem;
+  background-color: #07b47f;
+  border-radius: 3rem;
+}
+.btnradio-toB .property-1variant2-fL5 .item--p6V {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}

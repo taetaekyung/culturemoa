@@ -1,0 +1,518 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.boardlistfree-2b3 {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.boardlistfree-2b3 .header-xDo {
+  box-sizing: border-box;
+  padding: 3.1rem 32.9rem 0.7rem 32rem;
+  width: 100%;
+  height: 15.4rem;
+  display: flex;
+  align-items: center;
+  background-color: #fdd00f;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .header-xDo .logo-fe1 {
+  margin-right: 27.4rem;
+  max-width: 5.6rem;
+  font-size: 4.6rem;
+  font-weight: 500;
+  line-height: 1.2575;
+  color: #ffffff;
+  font-family: Gmarket Sans, 'Source Sans Pro';
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .header-xDo .searchbar-aky {
+  margin: 2rem 14.9rem 4.4rem 0rem;
+  width: 62rem;
+  height: calc(100% - 6.4rem);
+  position: relative;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .header-xDo .searchbar-aky .searchicon-FcD {
+  box-sizing: border-box;
+  padding: 1.6rem 2.144rem 1.558rem 2.2rem;
+  width: 6.5rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 55.5rem;
+  top: 0;
+  background-color: #ffffff;
+  border-radius: 0 1rem 1rem 0;
+}
+.boardlistfree-2b3 .header-xDo .searchbar-aky .searchicon-FcD .iconsearch-jnH {
+  width: 2.1558rem;
+  height: 2.0424rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.boardlistfree-2b3 .header-xDo .searchbar-aky .searchtext-NqF {
+  box-sizing: border-box;
+  padding: 0 2.4rem;
+  width: 55.5rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 2.1666666667;
+  letter-spacing: -0.1rem;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #ffffff;
+  border-radius: 1rem 0 0 1rem;
+}
+.boardlistfree-2b3 .header-xDo .searchbar-aky .divsearch-Y7T {
+  width: 62rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 1rem;
+}
+.boardlistfree-2b3 .header-xDo .login-egH {
+  margin: 0rem 4.3rem 2.4rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.6;
+  letter-spacing: -0.1rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .header-xDo .signup-huT {
+  margin-bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.6;
+  letter-spacing: -0.1rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry {
+  box-sizing: border-box;
+  padding: 0.1rem 32rem 0rem 32rem;
+  width: 100%;
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.200000003);
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divintro-JPT {
+  margin-right: 18.4rem;
+  width: 3.6rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divevent-QxH {
+  margin-right: 13.2rem;
+  width: 7.1rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divcommunity-XX7 {
+  margin-right: 15.8rem;
+  width: 7.1rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divfaq-3kM {
+  margin-right: 15.8rem;
+  width: 3.7rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divmypage-mgM {
+  margin-right: 13.7rem;
+  width: 9.9rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divopentalk-f13 {
+  margin: 1.6rem 4.303rem 1.7rem 0rem;
+  box-sizing: border-box;
+  padding: 0rem 2.4rem 0rem 1.1rem;
+  height: calc(100% - 3.3rem);
+  display: flex;
+  align-items: center;
+  background-color: #f796af;
+  border-radius: 100rem;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divopentalk-f13 .iconopentalk-AyP {
+  margin-right: 0.5rem;
+  width: 1.7971rem;
+  height: 1.3rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divopentalk-f13 .opentalk-7td {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divmessage-boo {
+  margin: 1.6rem 0rem 1.7rem 0rem;
+  box-sizing: border-box;
+  padding: 0rem 1rem 0rem 1.1rem;
+  height: calc(100% - 3.3rem);
+  display: flex;
+  align-items: center;
+  background-color: #46c3d3;
+  border-radius: 100rem;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divmessage-boo .iconmessage-hbw {
+  margin-right: 0.5rem;
+  width: 1.7rem;
+  height: 1.1rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .gnb-yry .divmessage-boo .message-S3j {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD {
+  width: 100%;
+  height: 151.2rem;
+  display: flex;
+  column-gap: 3.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .paddingleft-Sxq {
+  width: 32rem;
+  height: 151.2rem;
+  background-color: #fafafa;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs {
+  margin: 13.5rem 0rem 8.8rem 0rem;
+  width: 121rem;
+  height: calc(100% - 22.3rem);
+  position: relative;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-mwuv-w8u {
+  width: 24.2rem;
+  height: 2.2rem;
+  position: absolute;
+  left: 95.5rem;
+  top: 126.7rem;
+  display: flex;
+  align-items: center;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-mwuv-w8u .golistbtn-FfP {
+  margin: 0.2rem 4.2rem 0rem 0rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-mwuv-w8u .divwritebtn-9Ey {
+  margin-bottom: 0.2rem;
+  box-sizing: border-box;
+  padding-left: 0.2188rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-mwuv-w8u .divwritebtn-9Ey .pencilline-G4h {
+  margin: 0rem 1.156rem 0.062rem 0rem;
+  width: 1.6251rem;
+  height: 1.625rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-mwuv-w8u .divwritebtn-9Ey .writebtn-mn9 {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .contentinput-Vi9 {
+  width: 18.4rem;
+  height: 3rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 27.7rem;
+  display: flex;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #dcdcdc;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .divtitle-bFP {
+  width: 121rem;
+  height: 6.1rem;
+  position: absolute;
+  left: 0;
+  top: 13.7rem;
+  display: flex;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 0.6666666667;
+  letter-spacing: -0.07rem;
+  color: #dcdcdc;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  border-bottom: solid 0.1rem #dcdcdc;
+  box-sizing: border-box;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s {
+  box-sizing: border-box;
+  padding-bottom: 5.5rem;
+  width: 121rem;
+  height: 13.7rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divwriter-RVK {
+  margin: 0rem 103rem 3rem 0rem;
+  width: calc(100% - 103rem);
+  display: flex;
+  align-items: center;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divwriter-RVK .writertitle-YK3 {
+  margin-right: 7.9rem;
+  display: flex;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divwriter-RVK .writerinput-ecy {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 {
+  margin-right: 82.1rem;
+  width: calc(100% - 82.1rem);
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .categorytitle-6zm {
+  margin-right: 3.7rem;
+  display: flex;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq {
+  margin: 0.3rem 0;
+  height: calc(100% - 0.6rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiofree-nsb {
+  margin-right: 1.5rem;
+  box-sizing: border-box;
+  padding-right: 3rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiofree-nsb .group-34-wkV {
+  margin-right: 0.8rem;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 100%;
+  border: solid 0.2rem #07b47f;
+  background-color: #ffffff;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiofree-nsb .group-34-wkV .rectangle-138-sPF {
+  width: 100%;
+  height: 1rem;
+  background-color: #07b47f;
+  border-radius: 3rem;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiofree-nsb .free-M3X {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiotogether-sXf {
+  box-sizing: border-box;
+  padding-right: 3rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiotogether-sXf .group-34-cEM {
+  margin-right: 0.8rem;
+  width: 2rem;
+  height: 100%;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiotogether-sXf .group-34-cEM .rectangle-137-ZvH {
+  width: 100%;
+  height: 2rem;
+  border: solid 0.2rem #cdcdcd;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 10rem;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .auto-group-zphp-V5s .divcategory-ZE9 .btnradio-SYq .radiotogether-sXf .together-eB3 {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #cdcdcd;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.boardlistfree-2b3 .main-uCD .divmain-QPs .bottomline-Bgm {
+  width: 121rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 0;
+  top: 123.7rem;
+  background-color: #dcdcdc;
+}
+.boardlistfree-2b3 .main-uCD .paddingright-6Hw {
+  width: 32rem;
+  height: 151.2rem;
+  background-color: #fafafa;
+  flex-shrink: 0;
+}
