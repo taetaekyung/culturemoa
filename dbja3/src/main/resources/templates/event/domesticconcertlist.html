@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>event_list</title>
@@ -44,15 +43,29 @@
 	  element.classList.remove("hover");
 	}
 	
-	// JavaScript 코드 추가
-    // 지역 div 클릭 이벤트 핸들러
-    function selectArea(area) {
-        // 서버로 선택한 지역 정보를 전송
-        window.location.href = "/event/domesticconcertlist?area=" + area;
+	 function selectArea(area) {
+    // 서버로 선택한 지역 정보를 전송
+    window.location.href = "/event/domesticconcertlist?area=" + area;
+    // 선택한 지역 이름을 LocalStorage에 저장합니다.
+    localStorage.setItem('selectedArea', area);
+    // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
+    var selectedAreaText = area === 'all' ? '지역을 선택하세요.' : area;
+    document.getElementById('selectedAreaText').textContent = selectedAreaText;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // LocalStorage에서 저장된 지역을 가져옵니다.
+    var selectedArea = localStorage.getItem('selectedArea');
+
+    // 저장된 지역이 있다면 <div class="selectarea-GEm">에 표시합니다.
+    if (selectedArea) {
+      // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
+      var selectedAreaText = selectedArea === 'all' ? '지역을 선택하세요.' : selectedArea;
+      document.getElementById('selectedAreaText').textContent = selectedAreaText;
     }
-    
-    
-		//--------gnb드롭다운
+  });
+  
+  	//--------gnb드롭다운
 	//마우스가 올라오면 드롭다운
 	 function showDropDown() {
          const gnbDropdown = document.getElementById('gnbDropdown');
@@ -80,15 +93,11 @@
         if (!newWindow) {
             alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
         }
-	}	
-     
+	}
 </script>
 </head>
 <body>
 <div class="eventlist-Xxu"  layout:fragment="content">
-  
-  
-  
   <div class="main-Ji5">
     <div class="auto-group-cavd-39s">
 				<!-- location div 시작 -->
@@ -108,7 +117,7 @@
 			<!-- 지역 선택 드롭다운-->
               <div class="component-20-MtV">
                 <div class="auto-group-rq2q-7cm" onclick="openDrop()">
-                  <div class="selectarea-GEm">지역을 선택하세요.</div>
+                  <div class="selectarea-GEm" id="selectedAreaText">지역을 선택하세요.</div>
                   <!--<img class="vector-1-PaH" src="./assets/vector-1-GTB.png"/>-->
                 </div>
                 <div class="line-3-isT"></div>
