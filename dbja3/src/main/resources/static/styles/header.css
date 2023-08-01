@@ -183,7 +183,6 @@ body {
   height: 6.4rem;
   display: flex;
   align-items: center;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.200000003);
   background-color: #ffffff;
   flex-shrink: 0;
 }
