@@ -35,10 +35,6 @@ public class BoardController {
 	@Autowired
 	private BoardDAO_jpa boarddao_jpa;
 	
-	@GetMapping("boards/board/insertBoard_free")
-	public void ff() {
-		
-	}
 	@GetMapping("summernote")
 	public void ffs() {
 		

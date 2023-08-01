@@ -16,8 +16,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="reviewBoard")
-public class ReviewBoard {
+@Table(name="reviewboard")
+public class Reviewboard {
 	@Id
 	private int reviewno;
 	
@@ -39,4 +39,17 @@ public class ReviewBoard {
 	
 	@OneToMany(mappedBy = "reviewboard", cascade=CascadeType.REMOVE)
 	private List<ReviewComment> reviewcomments = new ArrayList<>();
+	
+	public void setMemberId(String memberId) {
+		 if (this.member == null) {
+		        this.member = new Member();
+		    }
+		 this.member.setId(memberId);
+	    }
+	public void setEventNo(int eventNo) {
+		if(this.event==null) {
+			this.event=new Event();
+		}
+		this.event.setEventno(eventNo);
+	}
 }

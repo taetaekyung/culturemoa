@@ -37,7 +37,7 @@ public class Event {
 	private String parkplace; // 주차장여부
 	
 	@OneToMany(mappedBy = "event", cascade=CascadeType.REMOVE)
-	private List<ReviewBoard> reviewBoards = new ArrayList<>();
+	private List<Reviewboard> reviewBoards = new ArrayList<>();
 	   
 	@OneToMany(mappedBy = "event", cascade=CascadeType.REMOVE)
 	private List<WishList> wishLists = new ArrayList<>();

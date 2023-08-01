@@ -22,5 +22,5 @@ public class ReviewComment {
 	
 	@ManyToOne
 	@JoinColumn(name="reviewno",insertable = true, updatable = true)
-	private ReviewBoard reviewboard;
+	private Reviewboard reviewboard;
 }

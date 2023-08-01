@@ -36,7 +36,7 @@ public class Member {
 	private List<Comments> comments = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
-	private List<ReviewBoard> reviewBoards = new ArrayList<>();
+	private List<Reviewboard> reviewBoards = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
 	private List<ReviewComment> reviewComments = new ArrayList<>();
