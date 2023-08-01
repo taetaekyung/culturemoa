@@ -1,83 +1,147 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>event_list</title>
+  <title>연극</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+  <script>
+	//-----주변행사 dropdown
+	var dropIndex=0;
+	function openDrop() {
+	  var drop = document.querySelector(".drop"); // Use querySelector to get the first element with the class "drop"
+	  if (dropIndex==0) {
+	    dropIndex=1;
+	    drop.style.visibility = "visible";
+	  }else{
+		dropIndex=0;
+	    drop.style.visibility = "hidden";
+	  }
+	}
+	//드롭다운에서 마우스 벗어나면 없어지기
+     function hideDrop() {
+         const dropdown = document.querySelector(".drop");
+         dropdown.style.visibility = 'hidden';
+         dropIndex=0;
+     }
+     //-----주변 행사 소식 : 지역 드롭다운 효과
+	function addHoverStyle(element) {
+	  element.classList.add("hover");
+	}
+	
+	function removeHoverStyle(element) {
+	  element.classList.remove("hover");
+	}
+	
+	 function selectArea(area) {
+    // 서버로 선택한 지역 정보를 전송
+    window.location.href = "/event/playlist?area=" + area;
+    // 선택한 지역 이름을 LocalStorage에 저장합니다.
+    localStorage.setItem('selectedArea', area);
+    // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
+    var selectedAreaText = area === 'all' ? '지역을 선택하세요.' : area;
+    document.getElementById('selectedAreaText').textContent = selectedAreaText;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // LocalStorage에서 저장된 지역을 가져옵니다.
+    var selectedArea = localStorage.getItem('selectedArea');
+
+    // 저장된 지역이 있다면 <div class="selectarea-GEm">에 표시합니다.
+    if (selectedArea) {
+      // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
+      var selectedAreaText = selectedArea === 'all' ? '지역을 선택하세요.' : selectedArea;
+      document.getElementById('selectedAreaText').textContent = selectedAreaText;
+    }
+  });
+  
+  	//--------gnb드롭다운
+	//마우스가 올라오면 드롭다운
+	 function showDropDown() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'visible';
+      }
+	//gnb에 마우스가 벗어나면 드롭다운 없애기
+     function hideDropDown() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'hidden';
+     }
+    //gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+     function cancelHide() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'visible';
+     }
+     
+    //--------------오픈톡
+	//버튼 선택시 오픈톡 새창 띄우기
+	function opentalk(){
+		// 새 창을 띄우기 위한 옵션 설정
+        var windowFeatures = 'width=550px,height=550px';
+        // 새 창 열기
+        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}
+</script>
 </head>
 <body>
-<div class="eventlist-Xxu">
-  
- <div class="auto-group-9o4m-KFo">
-	  
-   <!-- header_top div 시작 -->
-	  <div class="header_top">
-		<!--logo p 시작-->
-	    <p class="logo">
-	    컬쳐
-	    <br/>
-	    모아
-	    </p>
-	    <!--logo p 끝-->
-	    
-	    <!--searchbar div 시작-->
-	    <div class="searchbar">
-		  <!-- searchicon div 시작 -->
-	      <div class="searchicon">
-	        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
-	      </div>
-	      <!-- searchicon div 끝 -->
-	      
-	      <div class="searchtext">검색어를 입력하세요.</div>
-	      
-	    </div>
-	    <!--searchbar div 끝-->
-	    
-	    <div class="div_login">로그인</div>
-	    <div class="div_signup">회원가입</div>
-	    
-	  </div>
-	  <!-- header_top div 끝 -->
-  
-    
-    
-    
-    
-    <!--gnb -->
-    <div class="gnb-EhX" onmouseover="showDropDown()"  onmouseout="hideDropDown()">
-      <div class="divintro-9pV" >소개</div>
-      <div class="divevent-3Q5">행사소식</div>
-      <div class="divcommunity-xG9">커뮤니티</div>
-      <div class="divfaq-fwF">FAQ</div>
-      <div class="divmypage-o1s">마이페이지</div>
-      <div class="divopentalk-DLV">
-        <img class="iconopentalk" src="/assets/iconopentalk-1ms.png"/>
-        <div class="opentalk-GJm" onclick="opentalk()">오픈톡</div>
-      </div>
-      <div class="divmessage-aaM">
-        <img class="iconmessage" src="/assets/iconmessage-wqB.png"/>
-        <div class="message-Rqs">쪽지</div>
-      </div>
-    </div>
-  </div>
-  
+<div class="eventlist-Xxu"  layout:fragment="content">
   <div class="main-Ji5">
     <div class="auto-group-cavd-39s">
+				<!-- location div 시작 -->
+	   <div class="location">
+	      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
+	      <img class="nexticon" src="/assets/icon-YJu.png"/>
+	      <div class="community">행사소식</div>
+	      <img class="nexticon2" src="/assets/icon-umT.png"/>
+	      <div class="freelist_text">연극</div>
+	   </div>
+	    <!-- location div 끝 -->
       <div class="maintitle-n7T">연극</div>
       <div class="searchbar-UFB">
         <div class="auto-group-mh4m-ccH">
-          <div class="divaddr-weZ">
-            <div class="addr-GB3">지역</div>
-            <img class="click-yLM" src="/assets/click-Rpu.png"/>
-          </div>
+		  <!-- 드롭다운 DIV 여기 아래부터 복붙-->
+          <div class="dropdownarea-oMB">
+			<!-- 지역 선택 드롭다운-->
+              <div class="component-20-MtV">
+                <div class="auto-group-rq2q-7cm" onclick="openDrop()">
+                  <div class="selectarea-GEm" id="selectedAreaText">지역을 선택하세요.</div>
+                  <!--<img class="vector-1-PaH" src="./assets/vector-1-GTB.png"/>-->
+                </div>
+                <div class="line-3-isT"></div>
+               <!-- 지역 선택 -->
+               <div class="drop" style="visibility: hidden;" onmouseleave="hideDrop()">
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('all')">전체</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('서울')">서울</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('부산')">부산</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대구')">대구</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('인천')">인천</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('광주')">광주</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('대전')">대전</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('울산')">울산</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('세종')">세종</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('강원')">강원</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청북도')">충청북도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('충청남도')">충청남도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라북도')">전라북도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('전라남도')">전라남도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상북도')">경상북도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('경상남도')">경상남도</div>
+               	  <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectArea('제주')">제주</div>
+			   </div>
+              </div>
+            </div>
           <div class="divdate-4ch">
             <div class="date-Pus">날짜</div>
             <img class="click-v97" src="/assets/click-JXj.png"/>
@@ -87,7 +151,7 @@
             <img class="click-Fqb" src="/assets/click-ktR.png"/>
           </div>
         </div>
-		<!--
+        <!--
         <div class="divsearch-ABs">
           <div class="iconsearch-uv9">
             <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
@@ -100,61 +164,60 @@
       </div>
     </div>
     <div class="eventlist-im7">
-<!-- 각 행 별로 반복 -->
-<div class="row1-dt5" th:each="row : ${rows}">
-  <!-- 한 행에 4개의 열을 출력 -->
-  <div class="divposter-At1" th:each="e : ${row}">
-    <div class="posterimage-8K3">
-      <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
-      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
-        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
-      </a>
-    </div>
-    <div class="eventtitle-Gw3">
-		<!-- 공연 진행 상태 -->
-      <div class="diveventcategory-dWh" th:text="${e.eventState}">공연 종료</div>
-      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
-      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
-        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
-      </a>
-    </div>
-  </div>
-</div>
-
+		<!-- 각 행 별로 반복,여행 정보 4(?)줄 담긴 거 1줄씩 row 에 담음 -->
+		<div class="row1-dt5" th:each="row : ${rows}">
+		  <!-- 한 행에 4개의 열을 출력,1줄에 담긴 최대4개 중에서 1개의 이벤트 정보를 e 에 담음. -->
+		  <div class="divposter-At1" th:each="e : ${row}">
+		    <div class="posterimage-8K3"><!-- 1개의 이벤트의 포스터 처리-->
+		      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}"> <!-- (이벤트 번호) 주고,(공연정보)+(상태 반환) -->
+		        <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
+		        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+		      </a>
+		    </div>
+		    <div class="eventtitle-Gw3"><!-- 공연상태,공연 이름 처리-->
+		      <div class="diveventcategory-dWh" th:text="${e.eventState}">공연 종료</div>
+		      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
+		      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
+		        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
+		      </a>
+		    </div>
+		  </div><!-- 1줄 속 1개 처리 끝-->
+		</div><!-- 4(?)줄 속 1줄 처리 끝-->
 	</div>
 	
 	<!-- 페이징처리 시작 -->
 	<div class="paging">
-		<!-- 이전 버튼 -->
-		<a th:if="${currentPage > 1}" th:href="@{/event/playlist(page=1)}">
+		<!-- 처음으로 버튼 -->
+		<a th:if="${currentPage > 1}" th:href="@{/event/playlist(page=1, area=${param.area})}">
 		  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
 		</a>
-		<a th:if="${currentPage > 1}" th:href="@{/event/playlist(page=${currentPage - 1})}">
+		<!-- 이전 버튼 -->
+		<a th:if="${currentPage > 1}" th:href="@{/event/playlist(page=${currentPage - 1}, area=${param.area})}">
 		  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
 		</a>
 		<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
 		<div class="div_page" th:if="${totalPages > 1}">
 		  <th:block th:with="startPage=${(currentPage-1) / 10 * 10 + 1}">
-			  <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
+		    <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
 		      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
-		        <!-- 페이지 숫자를 답는 div -->
+		        <!-- 페이지 숫자를 담는 div -->
 		        <div class="page1">
-		        	<a class="pages" th:href="@{/event/playlist(page=${pageNum})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
-		        	</a>
+		          <a class="pages" th:href="@{/event/playlist(page=${pageNum}, area=${param.area})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+		          </a>
 		        </div> 
 		      </th:block>
 		    </th:block>
 		  </th:block>
 		</div>
 		<!-- 다음 버튼 -->
-		<a th:if="${currentPage < totalPages}" th:href="@{/event/playlist(page=${currentPage + 1})}">
+		<a th:if="${currentPage < totalPages}" th:href="@{/event/playlist(page=${currentPage + 1}, area=${param.area})}">
 		  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
 		</a>
-		<a th:if="${currentPage < totalPages}" th:href="@{/event/playlist(page=${totalPages})}">
+		<!-- 마지막으로 버튼 -->
+		<a th:if="${currentPage < totalPages}" th:href="@{/event/playlist(page=${totalPages}, area=${param.area})}">
 		  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
 		</a>
 	</div>
-	
   </div>
 </div>
 </body>
