@@ -35,6 +35,15 @@ public class BoardController {
 	@Autowired
 	private BoardDAO_jpa boarddao_jpa;
 	
+	@GetMapping("boards/board/insertBoard_free")
+	public void ff() {
+		
+	}
+	@GetMapping("summernote")
+	public void ffs() {
+		
+	}
+	
 	@GetMapping(value={"/boards/board/freelist", "/boards/board/freelist/", "/boards/board/freelist/{page}", 
 			"/boards/board/freelist/{keyword}/{page}", "/boards/board/freelist/{keyword}/{page}/{orderby}"})
 	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 
