@@ -42,39 +42,13 @@
 	function removeHoverStyle(element) {
 	  element.classList.remove("hover");
 	}
-	 // 주변 행사 소식 > 행사 지역 선택
-   function selectArea(area){
-	   var column=area;
-	   console.log(column);
-	  $.ajax({
-		  url:"selectArea",
-		  data:{area:column},
-		  success:function(data){
-			console.log(data);
-			$(".eventList").empty();
-			for(var i=0;i<data.length;i++){
-				var div=$("<div></div>").addClass("list"+(i+1)).addClass("poster-Qth").addClass("myEvent");
-				// i가 0일 때 스타일 추가
-                if (i === 0) {
-                    div.css("visibility", "visible");
-                }
-				for(var j=0;j<data[i].length;j++){
-					var event=$("<div></div>").addClass("poster-kSm");
-					var divimg=$("<div></div>").addClass("imgposter-VfF");
-					var img=$("<img></img>").addClass("imgposter-VfF").attr("src","./images/"+data[i][j].eventfname);
-					divimg.append(img);
-					var divstate=$("<div></div>").addClass("frame-6-aaD");
-					var eventstate=$("<div></div>").addClass("frame-3-jT7").html(data[i][j].eventState);
-					var eventname=$("<div></div>").addClass("eventname-2BK").html(data[i][j].eventname);
-					divstate.append(eventstate).append(eventname);
-					event.append(divimg).append(divstate);
-					div.append(event);
-			 	}
-			 	$(".eventList").append(div);
-			}
-		  }
-	  });
-   }
+	
+	// JavaScript 코드 추가
+    // 지역 div 클릭 이벤트 핸들러
+    function selectArea(area) {
+        // 서버로 선택한 지역 정보를 전송
+        window.location.href = "/event/domesticconcertlist?area=" + area;
+    }
 </script>
 </head>
 <body>
@@ -191,62 +165,61 @@
       </div>
     </div>
     <div class="eventlist-im7">
-<!-- 각 행 별로 반복 -->
-<div class="row1-dt5" th:each="row : ${rows}">
-  <!-- 한 행에 4개의 열을 출력 -->
-  <div class="divposter-At1" th:each="e : ${row}">
-    <div class="posterimage-8K3">
-      <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
-      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
-        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
-      </a>
-    </div>
-    <div class="eventtitle-Gw3">
-      <div class="diveventcategory-dWh" th:text="${e.eventState}">공연 종료</div>
-      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
-      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
-        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
-      </a>
-    </div>
-  </div>
-</div>
-
-
+		<!-- 각 행 별로 반복,여행 정보 4(?)줄 담긴 거 1줄씩 row 에 담음 -->
+		<div class="row1-dt5" th:each="row : ${rows}">
+		  <!-- 한 행에 4개의 열을 출력,1줄에 담긴 최대4개 중에서 1개의 이벤트 정보를 e 에 담음. -->
+		  <div class="divposter-At1" th:each="e : ${row}">
+		    <div class="posterimage-8K3"><!-- 1개의 이벤트의 포스터 처리-->
+		      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}"> <!-- (이벤트 번호) 주고,(공연정보)+(상태 반환) -->
+		        <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
+		        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+		      </a>
+		    </div>
+		    <div class="eventtitle-Gw3"><!-- 공연상태,공연 이름 처리-->
+		      <div class="diveventcategory-dWh" th:text="${e.eventState}">공연 종료</div>
+		      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
+		      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}">
+		        <div class="eventname-i2M" th:text="${e.eventname}">공연 이름</div>
+		      </a>
+		    </div>
+		  </div><!-- 1줄 속 1개 처리 끝-->
+		</div><!-- 4(?)줄 속 1줄 처리 끝-->
 	</div>
-	
 	
 	<!-- 페이징처리 시작 -->
 	<div class="paging">
-		<!-- 이전 버튼 -->
-		<a th:if="${currentPage > 1}" th:href="@{/event/domesticconcertlist(page=1)}">
-		  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
-		</a>
-		<a th:if="${currentPage > 1}" th:href="@{/event/domesticconcertlist(page=${currentPage - 1})}">
-		  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
-		</a>
-		<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
-		<div class="div_page" th:if="${totalPages > 1}">
-		  <th:block th:with="startPage=${(currentPage-1) / 10 * 10 + 1}">
-			  <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
-		      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
-		        <!-- 페이지 숫자를 답는 div -->
-		        <div class="page1">
-		        	<a class="pages" th:href="@{/event/domesticconcertlist(page=${pageNum})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
-		        	</a>
-		        </div> 
-		      </th:block>
-		    </th:block>
-		  </th:block>
-		</div>
-		<!-- 다음 버튼 -->
-		<a th:if="${currentPage < totalPages}" th:href="@{/event/domesticconcertlist(page=${currentPage + 1})}">
-		  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
-		</a>
-		<a th:if="${currentPage < totalPages}" th:href="@{/event/domesticconcertlist(page=${totalPages})}">
-		  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
-		</a>
-	</div>
-	
+  <!-- 처음으로 버튼 -->
+  <a th:if="${currentPage > 1}" th:href="@{/event/domesticconcertlist(page=1, area=${param.area})}">
+    <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
+  </a>
+  <!-- 이전 버튼 -->
+  <a th:if="${currentPage > 1}" th:href="@{/event/domesticconcertlist(page=${currentPage - 1}, area=${param.area})}">
+    <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
+  </a>
+  <!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
+  <div class="div_page" th:if="${totalPages > 1}">
+    <th:block th:with="startPage=${(currentPage-1) / 10 * 10 + 1}">
+      <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
+        <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
+          <!-- 페이지 숫자를 담는 div -->
+          <div class="page1">
+            <a class="pages" th:href="@{/event/domesticconcertlist(page=${pageNum}, area=${param.area})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+            </a>
+          </div> 
+        </th:block>
+      </th:block>
+    </th:block>
+  </div>
+  <!-- 다음 버튼 -->
+  <a th:if="${currentPage < totalPages}" th:href="@{/event/domesticconcertlist(page=${currentPage + 1}, area=${param.area})}">
+    <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
+  </a>
+  <!-- 마지막으로 버튼 -->
+  <a th:if="${currentPage < totalPages}" th:href="@{/event/domesticconcertlist(page=${totalPages}, area=${param.area})}">
+    <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
+  </a>
+</div>
+
   </div>
 </div>
 </body>

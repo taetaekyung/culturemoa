@@ -69,15 +69,3 @@ public class DBManager {
 		return list;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
