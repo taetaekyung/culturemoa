@@ -84,7 +84,7 @@ body {
   flex-shrink: 0;
 }
 .freelist .main .location {
-  margin: 0rem 116.655rem 5.35rem 0rem;
+  margin: 0rem 100rem 5.35rem 0rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -140,6 +140,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .freelist .main .main_content {
   margin-left: 3.8rem;
   width: 128rem;

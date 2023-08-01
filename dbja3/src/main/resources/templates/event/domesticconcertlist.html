@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
@@ -10,7 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+ <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
   
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -49,66 +50,56 @@
         // 서버로 선택한 지역 정보를 전송
         window.location.href = "/event/domesticconcertlist?area=" + area;
     }
+    
+    
+		//--------gnb드롭다운
+	//마우스가 올라오면 드롭다운
+	 function showDropDown() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'visible';
+      }
+	//gnb에 마우스가 벗어나면 드롭다운 없애기
+     function hideDropDown() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'hidden';
+     }
+    //gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+     function cancelHide() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'visible';
+     }
+     
+    //--------------오픈톡
+	//버튼 선택시 오픈톡 새창 띄우기
+	function opentalk(){
+		// 새 창을 띄우기 위한 옵션 설정
+        var windowFeatures = 'width=550px,height=550px';
+        // 새 창 열기
+        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}	
+     
 </script>
 </head>
 <body>
-<div class="eventlist-Xxu">
-  <div class="auto-group-9o4m-KFo">
-	  
-   <!-- header_top div 시작 -->
-	  <div class="header_top">
-		<!--logo p 시작-->
-	    <p class="logo">
-	    컬쳐
-	    <br/>
-	    모아
-	    </p>
-	    <!--logo p 끝-->
-	    
-	    <!--searchbar div 시작-->
-	    <div class="searchbar">
-		  <!-- searchicon div 시작 -->
-	      <div class="searchicon">
-	        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
-	      </div>
-	      <!-- searchicon div 끝 -->
-	      
-	      <div class="searchtext">검색어를 입력하세요.</div>
-	      
-	    </div>
-	    <!--searchbar div 끝-->
-	    
-	    <div class="div_login">로그인</div>
-	    <div class="div_signup">회원가입</div>
-	    
-	  </div>
-	  <!-- header_top div 끝 -->
+<div class="eventlist-Xxu"  layout:fragment="content">
   
-    
-    
-    
-    
-    <!--gnb -->
-    <div class="gnb-EhX" onmouseover="showDropDown()"  onmouseout="hideDropDown()">
-      <div class="divintro-9pV" >소개</div>
-      <div class="divevent-3Q5">행사소식</div>
-      <div class="divcommunity-xG9">커뮤니티</div>
-      <div class="divfaq-fwF">FAQ</div>
-      <div class="divmypage-o1s">마이페이지</div>
-      <div class="divopentalk-DLV">
-        <img class="iconopentalk" src="/assets/iconopentalk-1ms.png"/>
-        <div class="opentalk-GJm" onclick="opentalk()">오픈톡</div>
-      </div>
-      <div class="divmessage-aaM">
-        <img class="iconmessage" src="/assets/iconmessage-wqB.png"/>
-        <div class="message-Rqs">쪽지</div>
-      </div>
-    </div>
-  </div>
   
   
   <div class="main-Ji5">
     <div class="auto-group-cavd-39s">
+				<!-- location div 시작 -->
+	   <div class="location">
+	      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
+	      <img class="nexticon" src="/assets/icon-YJu.png"/>
+	      <div class="community">행사소식</div>
+	      <img class="nexticon2" src="/assets/icon-umT.png"/>
+	      <div class="freelist_text">국내공연</div>
+	   </div>
+	    <!-- location div 끝 -->
       <div class="maintitle-n7T">국내공연</div>
       <div class="searchbar-UFB">
         <div class="auto-group-mh4m-ccH">
