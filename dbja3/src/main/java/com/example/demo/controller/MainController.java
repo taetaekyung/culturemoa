@@ -163,18 +163,7 @@ public class MainController {
       }   
       return list;
       }
-         
-   
-   @GetMapping("/pageinfo")
-   public void pageinfo() {
-      
-   }
-   
-   @GetMapping("/teaminfo")
-   public void teaminfo() {
-      
-   }
-   
+
    @GetMapping("/FAQ")
    public void FAQ() {
    } 

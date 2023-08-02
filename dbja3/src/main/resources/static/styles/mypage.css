@@ -14,7 +14,11 @@ input {
 }
 body {
   width: 192rem;
-}.mypage-vVX {
+}
+
+
+
+.mypage {
   box-sizing: border-box;
   padding-bottom: 15.8rem;
   width: 100%;
@@ -23,259 +27,15 @@ body {
   flex-direction: column;
   background-color: #ffffff;
 }
-.mypage-vVX .header-Pe1 {
-  box-sizing: border-box;
-  padding: 3.1rem 32.9rem 0.7rem 32rem;
-  width: 100%;
-  height: 15.4rem;
-  display: flex;
-  align-items: center;
-  background-color: #fdd00f;
-  flex-shrink: 0;
-}
-.mypage-vVX .header-Pe1 .logo-ucM {
-  margin-right: 27.4rem;
-  max-width: 5.6rem;
-  font-size: 4.6rem;
-  font-weight: 500;
-  line-height: 1.2575;
-  color: #ffffff;
-  font-family: Gmarket Sans, 'Source Sans Pro';
-  flex-shrink: 0;
-}
-.mypage-vVX .header-Pe1 .searchbar-2BB {
-  margin: 2rem 14.9rem 4.4rem 0rem;
-  width: 62rem;
-  height: calc(100% - 6.4rem);
-  position: relative;
-  flex-shrink: 0;
-}
-.mypage-vVX .header-Pe1 .searchbar-2BB .searchicon-wow {
-  box-sizing: border-box;
-  padding: 1.6rem 2.144rem 1.558rem 2.2rem;
-  width: 6.5rem;
-  height: 5.2rem;
-  position: absolute;
-  left: 55.5rem;
-  top: 0;
-  background-color: #ffffff;
-  border-radius: 0 1rem 1rem 0;
-}
-.mypage-vVX .header-Pe1 .searchbar-2BB .searchicon-wow .iconsearch-TnH {
-  width: 2.1559rem;
-  height: 2.0424rem;
-  object-fit: contain;
-  vertical-align: top;
-}
-.mypage-vVX .header-Pe1 .searchbar-2BB .searchtext-kmP {
-  box-sizing: border-box;
-  padding: 0 2.4rem;
-  width: 55.5rem;
-  height: 5.2rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 2.1666666667;
-  letter-spacing: -0.1rem;
-  color: #c0c0c0;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  background-color: #ffffff;
-  border-radius: 1rem 0 0 1rem;
-}
-.mypage-vVX .header-Pe1 .searchbar-2BB .divsearch-Nnm {
-  width: 62rem;
-  height: 5.2rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 1rem;
-}
-.mypage-vVX .header-Pe1 .login-JwK {
-  margin: 0rem 4.3rem 2.4rem 0rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 2.6;
-  letter-spacing: -0.1rem;
-  color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .header-Pe1 .signup-ma1 {
-  margin-bottom: 2.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 2.6;
-  letter-spacing: -0.1rem;
-  color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted {
-  box-sizing: border-box;
-  padding: 0.1rem 32rem 0rem 32rem;
-  width: 100%;
-  height: 6.4rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.200000003);
-  background-color: #ffffff;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divintro-1jF {
-  margin-right: 18.4rem;
-  width: 3.6rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divevent-KV3 {
-  margin-right: 13.2rem;
-  width: 7.1rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divcommunity-bhT {
-  margin-right: 15.8rem;
-  width: 7.1rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divfaq-4b3 {
-  margin-right: 15.8rem;
-  width: 3.7rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divmypage-mEZ {
-  margin-right: 13.7rem;
-  width: 9.9rem;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.15;
-  letter-spacing: -0.1rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divopentalk-eZF {
-  margin: 1.6rem 4.303rem 1.7rem 0rem;
-  box-sizing: border-box;
-  padding: 0rem 2.4rem 0rem 1.1rem;
-  height: calc(100% - 3.3rem);
-  display: flex;
-  align-items: center;
-  background-color: #f796af;
-  border-radius: 100rem;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divopentalk-eZF .iconopentalk-Lws {
-  margin-right: 0.5rem;
-  width: 1.7972rem;
-  height: 1.3rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divopentalk-eZF .opentalk-h1j {
-  display: flex;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2.1428571429;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divmessage-abK {
-  margin: 1.6rem 0rem 1.7rem 0rem;
-  box-sizing: border-box;
-  padding: 0rem 1rem 0rem 1.1rem;
-  height: calc(100% - 3.3rem);
-  display: flex;
-  align-items: center;
-  background-color: #46c3d3;
-  border-radius: 100rem;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divmessage-abK .iconmessage-sKX {
-  margin-right: 0.5rem;
-  width: 1.7rem;
-  height: 1.1rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.mypage-vVX .gnb-ted .divmessage-abK .message-oDB {
-  display: flex;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2.1428571429;
-  color: #000000;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mypage-vVX .main-Vbo {
+
+.mypage .div_main {
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP {
+.mypage .div_main .main_top {
   margin-bottom: 12.8297rem;
   box-sizing: border-box;
   padding: 2.6rem 33.2rem 0rem 30rem;
@@ -285,15 +45,15 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo {
+.mypage .div_main .main_top .headerframe {
   margin: 0rem 114.855rem 0.4rem 0rem;
   height: 2rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo .home-hSy {
-  margin-right: 1.1rem;
+.mypage .div_main .main_top .headerframe .home {
+  margin-right: 0.8rem;
   display: flex;
   font-size: 1.4rem;
   line-height: 1.4285714286;
@@ -302,8 +62,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo .icon-DgD {
+.mypage .div_main .main_top .headerframe .nexticon {
   margin-right: 0.6rem;
   width: 0.4727rem;
   height: 0.9452rem;
@@ -312,14 +76,14 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo .auto-group-fhbf-MnR {
+.mypage .div_main .main_top .headerframe .div_root {
   margin-right: 0.6rem;
   width: 7.2727rem;
   height: 100%;
   position: relative;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo .auto-group-fhbf-MnR .mypage-6zu {
+.mypage .div_main .main_top .headerframe .div_root .mypage_text {
   width: 6.9rem;
   height: 2rem;
   position: absolute;
@@ -332,8 +96,12 @@ body {
   color: #666666;
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo .auto-group-fhbf-MnR .icon-Dpd {
+.mypage .div_main .main_top .headerframe .div_root .nexticon2 {
   width: 0.4727rem;
   height: 0.9452rem;
   position: absolute;
@@ -342,7 +110,8 @@ body {
   object-fit: contain;
   vertical-align: top;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .headerframe-nqo .myinfo-LeM {
+
+.mypage .div_main .main_top .headerframe .myinfo_text {
   display: flex;
   font-size: 1.4rem;
   font-weight: 500;
@@ -353,14 +122,14 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .filter-44Z {
+.mypage .div_main .main_top .div_filter {
   margin-left: 109.6rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .filter-44Z .registration-P6q {
-  margin-right: 2.2rem;
+.mypage .div_main .main_top .div_filter .registration_text {
+  margin-right: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,16 +141,17 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor : pointer;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .filter-44Z .middleline-WSM {
+.mypage .div_main .main_top .div_filter .middleline {
   margin-right: 0.7rem;
   width: 0.2rem;
   height: 1.8rem;
   background-color: #a5a5a5;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .filter-44Z .message-eoT {
-  margin-right: 0.9rem;
+.mypage .div_main .main_top .div_filter .message_text {
+  margin-right: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -393,15 +163,16 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor : pointer;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .filter-44Z .middleline-m7P {
-  margin-right: 2rem;
+.mypage .div_main .main_top .div_filter .middleline2 {
+  margin-right: 0.7rem;
   width: 0.2rem;
   height: 1.8rem;
   background-color: #a5a5a5;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .auto-group-dpkm-fFP .filter-44Z .like-tSu {
+.mypage .div_main .main_top .div_filter .like_text {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -413,8 +184,9 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+   cursor : pointer;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 {
+.mypage .div_main .div_myinfo {
   margin: 0 64.5rem;
   width: calc(100% - 129rem);
   align-items: center;
@@ -422,15 +194,44 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .profile-VSh {
-  margin: 0rem 0.038rem 2.73rem 0rem;
+
+.mypage .div_main .div_myinfo .div_img {
+	display: block;
+	margin-bottom: 5rem;
+
+
+}
+
+.mypage .div_main .div_myinfo .div_img .a_myinfo {
+	color: #07B47F;
+	font-size: 14px;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+    -webkit-touch-callout: none;
+     user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -webkit-user-select: none;
+}
+
+.mypage .div_main .div_myinfo .profile_img {
+  margin: 0rem 0.038rem 0rem 0rem;
   width: 21.5625rem;
   height: 21.6406rem;
   object-fit: contain;
-  vertical-align: top;
+  flex-shrink: 0;
+  border: 0.1rem solid black;
+  border-radius: 12rem;
+}
+
+.mypage .div_main .div_myinfo .pencilline {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y {
+
+
+.mypage .div_main .div_myinfo .information {
   margin-bottom: 5.7rem;
   width: 100%;
   row-gap: 0.4rem;
@@ -438,14 +239,15 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divid-EHo {
-  margin-right: 34.6rem;
-  width: calc(100% - 34.6rem);
+.mypage .div_main .div_myinfo .information .div_id {
+  width: 630px;
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-shrink: 0;
+  margin: auto 0;
+
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divid-EHo .idtitle-Biq {
+.mypage .div_main .div_myinfo .information .div_id .id_text {
   margin-right: 9.8rem;
   display: flex;
   font-size: 2.4rem;
@@ -455,26 +257,32 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divid-EHo .id-g9o {
+.mypage .div_main .div_myinfo .information .div_id .userid {
   display: flex;
+  width: 400px;
   font-size: 2.4rem;
   font-weight: 500;
   line-height: 2.1666666667;
   color: #a5a5a5;
   font-family: Montserrat, 'Source Sans Pro';
+  text-align: center;
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divmickname-NoK {
-  width: 100%;
+.mypage .div_main .div_myinfo .information .div_nickname {
+  width: 630px;
   height: 5.2rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divmickname-NoK .nicknametitle-jNy {
-  margin-right: 12.5rem;
+.mypage .div_main .div_myinfo .information .div_nickname .nickname_text {
+  margin-right: 9.8rem;
   display: flex;
   font-size: 2.4rem;
   font-weight: 700;
@@ -483,9 +291,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divmickname-NoK .nickname-G81 {
-  margin-right: 31.5rem;
+.mypage .div_main .div_myinfo .information .div_nickname .usernickname {
   display: flex;
   font-size: 2.4rem;
   font-weight: 500;
@@ -494,25 +305,27 @@ body {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  width: 400px;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divmickname-NoK .updatebtn-QV7 {
+.mypage .div_main .div_myinfo .information .div_nickname .div_update {
   margin: 1.5rem 0rem 1.7rem 0rem;
   box-sizing: border-box;
   padding-left: 0.2188rem;
   height: calc(100% - 3.2rem);
   display: flex;
-  align-items: center;
+  text-align: right;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divmickname-NoK .updatebtn-QV7 .pencilline-Y5X {
-  margin: 0rem 2.556rem 0.062rem 0rem;
+.mypage .div_main .div_myinfo .information .div_nickname .div_update .pencilline {
   width: 1.6251rem;
   height: 1.625rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  
+  
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divmickname-NoK .updatebtn-QV7 .item--QdX {
+.mypage .div_main .div_myinfo .information .div_nickname .div_update .update_text {
   text-align: right;
   display: flex;
   font-size: 2rem;
@@ -524,15 +337,15 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divemail-fJZ {
+.mypage .div_main .div_myinfo .information .div_email {
   width: 100%;
   height: 5.2rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divemail-fJZ .emailtitle-Day {
-  margin-right: 10.8rem;
+.mypage .div_main .div_myinfo .information .div_email .email_text {
+  margin-right: 9.8rem;
   display: flex;
   font-size: 2.4rem;
   font-weight: 700;
@@ -541,9 +354,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divemail-fJZ .email-8hw {
-  margin-right: 7.4rem;
+.mypage .div_main .div_myinfo .information .div_email .useremail {
   display: flex;
   font-size: 2.4rem;
   font-weight: 500;
@@ -552,9 +368,10 @@ body {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  margin: auto 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divemail-fJZ .updatebtn-2YR {
-  margin: 1.5rem 0rem 1.7rem 0rem;
+
+.mypage .div_main .div_myinfo .information .div_email .div_update {
   box-sizing: border-box;
   padding-left: 0.2188rem;
   height: calc(100% - 3.2rem);
@@ -562,15 +379,14 @@ body {
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divemail-fJZ .updatebtn-2YR .pencilline-xBB {
-  margin: 0rem 2.556rem 0.062rem 0rem;
+.mypage .div_main .div_myinfo .information .div_email .div_update .pencilline {
   width: 1.6251rem;
   height: 1.625rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divemail-fJZ .updatebtn-2YR .item--fLV {
+.mypage .div_main .div_myinfo .information .div_email .div_update .update_text {
   text-align: right;
   display: flex;
   font-size: 2rem;
@@ -582,15 +398,16 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divbirth-ksj {
+
+.mypage .div_main .div_myinfo .information .div_birth {
   width: 100%;
   height: 5.2rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divbirth-ksj .birthtitle-tyw {
-  margin-right: 11.1rem;
+.mypage .div_main .div_myinfo .information .div_birth .birth_text {
+  margin-right: 7.8rem;
   display: flex;
   font-size: 2.4rem;
   font-weight: 700;
@@ -599,8 +416,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divbirth-ksj .birth-Enu {
+.mypage .div_main .div_myinfo .information .div_birth .userbirth {
   margin-right: 22.8rem;
   display: flex;
   font-size: 2.4rem;
@@ -610,8 +431,12 @@ body {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divbirth-ksj .updatebtn-abs {
+.mypage .div_main .div_myinfo .information .div_birth .div_update {
   margin: 1.5rem 0rem 1.7rem 0rem;
   box-sizing: border-box;
   padding-left: 0.2188rem;
@@ -620,7 +445,7 @@ body {
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divbirth-ksj .updatebtn-abs .pencilline-v9w {
+.mypage .div_main .div_myinfo .information .div_birth .div_update .pencilline {
   margin: 0rem 2.556rem 0.062rem 0rem;
   width: 1.6251rem;
   height: 1.625rem;
@@ -628,7 +453,7 @@ body {
   vertical-align: top;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divbirth-ksj .updatebtn-abs .item--aEV {
+.mypage .div_main .div_myinfo .information .div_birth .div_update .update_text {
   text-align: right;
   display: flex;
   font-size: 2rem;
@@ -640,15 +465,15 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divgender-ha1 {
+.mypage .div_main .div_myinfo .information .div_gender {
   margin-right: 44.6rem;
   width: calc(100% - 44.6rem);
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divgender-ha1 .gendertitle-rSu {
-  margin-right: 14rem;
+.mypage .div_main .div_myinfo .information .div_gender .gender_text {
+  margin-right: 12rem;
   display: flex;
   font-size: 2.4rem;
   font-weight: 700;
@@ -657,8 +482,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .information-h2y .divgender-ha1 .item--a81 {
+.mypage .div_main .div_myinfo .information .div_gender .usergender {
   display: flex;
   font-size: 2.4rem;
   font-weight: 500;
@@ -667,15 +496,19 @@ body {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .divbtn-cqP {
+.mypage .div_main .div_myinfo .div_btns {
   width: 100%;
   height: 5rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .divbtn-cqP .updateinfobtn-yvq {
+.mypage .div_main .div_myinfo .div_btns .updateinfobtn {
   margin-right: 2rem;
   width: 30.5rem;
   height: 100%;
@@ -693,7 +526,7 @@ body {
   border-radius: 1rem;
   flex-shrink: 0;
 }
-.mypage-vVX .main-Vbo .divmyinfo-BB7 .divbtn-cqP .deleteinfobtn-U6u {
+.mypage .div_main .div_myinfo .div_btns .deleteinfobtn {
   width: 30.5rem;
   height: 100%;
   display: flex;

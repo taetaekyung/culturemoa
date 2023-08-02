@@ -11,6 +11,8 @@ ul, li {
 }
 input {
 	border: none;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+
 }
 body {
   width: 192.1rem;

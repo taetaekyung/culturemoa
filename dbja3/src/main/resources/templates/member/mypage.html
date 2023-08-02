@@ -1,113 +1,190 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>mypage</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A500"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+ <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/mypage.css}"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	  		//--------gnb드롭다운
+	//마우스가 올라오면 드롭다운
+	 function showDropDown() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'visible';
+      }
+	//gnb에 마우스가 벗어나면 드롭다운 없애기
+     function hideDropDown() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'hidden';
+     }
+    //gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+     function cancelHide() {
+         const gnbDropdown = document.getElementById('gnbDropdown');
+         gnbDropdown.style.visibility = 'visible';
+     }
+     
+    //--------------오픈톡
+	//버튼 선택시 오픈톡 새창 띄우기
+	function opentalk(){
+		// 새 창을 띄우기 위한 옵션 설정
+        var windowFeatures = 'width=550px,height=550px';
+        // 새 창 열기
+        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}	
+
+	$(function() {
+		$(".registration_text").click(function() {
+			$(".clicked").css("color", "#a5a5a5");
+			$(".registration_text").css("color", "black");
+		})
+		
+		$(".message_text").click(function() {
+			$(".clicked").css("color", "#a5a5a5");
+			$(".message_text").css("color", "black");
+		})
+		
+		$(".like_text").click(function() {
+			$(".clicked").css("color", "#a5a5a5");
+			$(".like_text").css("color", "black");
+		})
+	})	
+		
+  </script>
+  <style></style>
 </head>
 <body>
-<div class="mypage-vVX">
-  <div class="header-Pe1">
-    <p class="logo-ucM">
-    컬쳐
-    <br/>
-    모아
-    </p>
-    <div class="searchbar-2BB">
-      <div class="searchicon-wow">
-        <img class="iconsearch-TnH" src="./assets/iconsearch-Vs7.png"/>
-      </div>
-      <div class="searchtext-kmP">검색어를 입력하세요.</div>
-      <div class="divsearch-Nnm">
-      </div>
-    </div>
-    <div class="login-JwK">로그인</div>
-    <div class="signup-ma1">회원가입</div>
-  </div>
-  <div class="gnb-ted">
-    <div class="divintro-1jF">소개</div>
-    <div class="divevent-KV3">행사소식</div>
-    <div class="divcommunity-bhT">커뮤니티</div>
-    <div class="divfaq-4b3">FAQ</div>
-    <div class="divmypage-mEZ">마이페이지</div>
-    <div class="divopentalk-eZF">
-      <img class="iconopentalk-Lws" src="./assets/iconopentalk-JY9.png"/>
-      <div class="opentalk-h1j">오픈톡</div>
-    </div>
-    <div class="divmessage-abK">
-      <img class="iconmessage-sKX" src="./assets/iconmessage-SPb.png"/>
-      <div class="message-oDB">쪽지</div>
-    </div>
-  </div>
-  <div class="main-Vbo">
-    <div class="auto-group-dpkm-fFP">
-      <div class="headerframe-nqo">
-        <div class="home-hSy">홈</div>
-        <img class="icon-DgD" src="./assets/icon-YzM.png"/>
-        <div class="auto-group-fhbf-MnR">
-          <div class="mypage-6zu">마이페이지</div>
-          <img class="icon-Dpd" src="./assets/icon-qAy.png"/>
+<!--mypage 시작-->
+<div class="mypage" layout:fragment="content">
+
+  <!--div_main 시작-->
+  <div class="div_main">
+	<!--main_top 시작-->
+    <div class="main_top">
+	  <!--headerframe 시작-->
+      <div class="headerframe">
+        <div class="home" onclick="location.href='/mainPage'">홈</div>
+        <img class="nexticon" src="/assets/icon-YJu.png"/>
+        <!--div_root 시작-->
+        <div class="div_root">
+          <div class="mypage_text" onclick="location.href='/member/mypage'">마이페이지</div>
+          <img class="nexticon2" src="/assets/icon-YJu.png"/>
         </div>
-        <div class="myinfo-LeM">회원정보</div>
+        <!--div_root 끝-->
+        <div class="myinfo_text">회원정보</div>
       </div>
-      <div class="filter-44Z">
-        <div class="registration-P6q">회원정보</div>
-        <div class="middleline-WSM">
+      <!--headerframe 끝-->
+      
+      <!--div_filter 시작-->
+      <div class="div_filter">
+        <div class="registration_text clicked">회원정보</div>
+        <div class="middleline">
         </div>
-        <div class="message-eoT">쪽지함</div>
-        <div class="middleline-m7P">
+        <div class="message_text clicked">쪽지함</div>
+        <div class="middleline2">
         </div>
-        <div class="like-tSu">관심목록</div>
+        <div class="like_text clicked">관심목록</div>
       </div>
+      <!--div_filter 끝-->
     </div>
-    <div class="divmyinfo-BB7">
-      <img class="profile-VSh" src="./assets/profile-NoK.png"/>
-      <div class="information-h2y">
-        <div class="divid-EHo">
-          <div class="idtitle-Biq">아이디</div>
-          <div class="id-g9o">teddie123</div>
+    <!--main_top 끝-->
+    
+    
+    <!--div_myinfo 시작-->
+    <div class="div_myinfo">
+		<div class="div_img">
+			<img class="profile_img" src="/profileImage/profile-12Z.png"/>
+            <img class="pencilline" src="/assets/pencilline-TAy.png"/>
+            <a class="a_myinfo">사진수정</a>
+		</div>
+      
+      <!--information 시작-->
+      <div class="information">
+		<!--div_id 시작-->  
+        <div class="div_id">
+          <div class="id_text">아이디</div>
+          <div class="userid">teddie123</div>
         </div>
-        <div class="divmickname-NoK">
-          <div class="nicknametitle-jNy">닉네임</div>
-          <div class="nickname-G81">teddie</div>
-          <div class="updatebtn-QV7">
-            <img class="pencilline-Y5X" src="./assets/pencilline-TAy.png"/>
-            <div class="item--QdX">수정</div>
+        <!--div_id 끝-->  
+        
+        <!--div_nickname 시작--> 
+        <div class="div_nickname">
+          <div class="nickname_text">닉네임</div>
+          <div class="usernickname">teddie</div>
+          
+<!--          div_update 시작
+          <div class="div_update">
+            <img class="pencilline" src="/assets/pencilline-TAy.png"/>
+            <div class="update_text">수정</div>
           </div>
+          div_update 끝-->
+          
         </div>
-        <div class="divemail-fJZ">
-          <div class="emailtitle-Day">이메일</div>
-          <div class="email-8hw">green3potato@gmail.com</div>
-          <div class="updatebtn-2YR">
-            <img class="pencilline-xBB" src="./assets/pencilline-wfP.png"/>
-            <div class="item--fLV">수정</div>
+        <!--div_nickname 끝-->
+        
+        <!--div_email 시작-->
+        <div class="div_email">
+          <div class="email_text">이메일</div>
+          <div class="useremail">green3potato@gmail.com</div>
+          
+<!--          div_update 시작
+          <div class="div_update">
+            <img class="pencilline" src="/assets/pencilline-TAy.png"/>
+            <div class="update_text">수정</div>
           </div>
+          div_update 끝-->
+          
         </div>
-        <div class="divbirth-ksj">
-          <div class="birthtitle-tyw">생년월일</div>
-          <div class="birth-Enu">YYYY-MM-DD</div>
-          <div class="updatebtn-abs">
-            <img class="pencilline-v9w" src="./assets/pencilline-Nd7.png"/>
-            <div class="item--aEV">수정</div>
+        <!--div_email 끝-->
+        
+        <!--div_birth 시작-->
+        <div class="div_birth">
+          <div class="birth_text">생년월일</div>
+          <div class="userbirth">YYYY-MM-DD</div>
+          
+          
+<!--          div_update 시작
+          <div class="div_update">
+            <img class="pencilline" src="/assets/pencilline-TAy.png"/>
+            <div class="update_text">수정</div>
           </div>
+          div_update 끝-->
+          
+          
         </div>
-        <div class="divgender-ha1">
-          <div class="gendertitle-rSu">성별</div>
-          <div class="item--a81">여</div>
+        <!--div_birth 끝-->
+        
+        <!--div_gender 시작-->
+        <div class="div_gender">
+          <div class="gender_text">성별</div>
+          <div class="usergender">여</div>
         </div>
+        <!--div_gender 끝-->
       </div>
-      <div class="divbtn-cqP">
-        <div class="updateinfobtn-yvq">비밀번호 수정</div>
-        <div class="deleteinfobtn-U6u">회원 탈퇴</div>
+      <!--information 끝-->
+      
+      <!--div_btns 시작-->
+      <div class="div_btns">
+        <div class="updateinfobtn">회원정보 수정</div>
+        <div class="deleteinfobtn">회원 탈퇴</div>
       </div>
+      <!--div_btns 끝-->
     </div>
+    <!--div_myinfo 끝 -->
   </div>
+  <!--div_main 끝-->
 </div>
+<!--mypage 끝-->
 </body>
+</html>
