@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>국내공연</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
-  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-  <script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>국내공연</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+<link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/styles/eventlist.css}"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script>
 	//-----지역 선택 dropdown
 	var dropIndex=0;
 	function openDrop() {
@@ -42,16 +42,23 @@
 	  element.classList.remove("hover");
 	}
 	
+	//지역선택,공연진행상태 초기화 메서드 
+	function initializeLocalStorage() {
+		localStorage.setItem('selectedArea', 'all');
+		localStorage.setItem('selectedStatus', 'all');
+	}
+	
 	//지역 선택 처리
-	 function selectArea(area) {
-	    // 서버로 선택한 지역 정보를 전송
-	    window.location.href = "/event/domesticconcertlist?area=" + area;
-	    // 선택한 지역 이름을 LocalStorage에 저장합니다.
-	    localStorage.setItem('selectedArea', area);
-	    // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
-	    var selectedAreaText = area === 'all' ? '지역을 선택하세요.' : area;
-	    document.getElementById('selectedAreaText').textContent = selectedAreaText;
-	  }
+	function selectArea(area) {
+		// 서버로 선택한 지역 정보를 전송
+		window.location.href = "/event/domesticconcertlist?area=" + area;
+		// 선택한 지역 이름을 LocalStorage에 저장합니다.
+		localStorage.setItem('selectedArea', area);
+		// 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
+		var selectedAreaText = area === 'all' ? '지역을 선택하세요.' : area;
+		document.getElementById('selectedAreaText').textContent = selectedAreaText;
+	}
+
 
 	  //공연진행상태ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	  var dropStatusIndex = 0;
@@ -79,8 +86,15 @@
 	  function removeHoverStyle(element) {
 	    element.classList.remove("hover");
 	  }
-	  
+	
+	// 초기화 함수
+	function initializeLocalStorage() {
+	  localStorage.setItem('selectedArea', 'all');
+	  localStorage.setItem('selectedStatus', 'all');
+	}
+	
 	// 공연 진행상태 처리
+	
 	function selectStatus(status) {
 		// 서버로 선택한 공연상태 정보를 전송
 		window.location.href = "/event/domesticconcertlist?eventstate=" + status;
@@ -91,29 +105,63 @@
 		document.getElementById('selectedStatusText').textContent = selectedStatusText;
 	}
 	
-	document.addEventListener('DOMContentLoaded', function() {
-		// LocalStorage에서 저장된 지역을 가져옵니다.
-		var selectedArea = localStorage.getItem('selectedArea');
-		var selectedStatus = localStorage.getItem('selectedStatus');
-		
-		// 저장된 지역이 있다면 <div class="selectarea-GEm">에 표시합니다.
-		if (selectedArea) {
-		  // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
-		  var selectedAreaText = selectedArea === 'all' ? '지역을 선택하세요.' : selectedArea;
-		  document.getElementById('selectedAreaText').textContent = selectedAreaText;
-		}
-		
-		// 저장된 공연상태가 있다면 <div class="selectarea-GEm">에 표시합니다.
-		if (selectedStatus) {
-		  // 선택한 공연상태를 적절한 텍스트로 업데이트합니다.
-		  var selectedStatusText = selectedStatus === 'all' ? '공연중/공연예정' : selectedStatus === '공연예정' ? '공연예정' : selectedStatus === '공연중' ? '공연중' : selectedStatus === '공연종료' ? '공연종료' : '미정';
-		  document.getElementById('selectedStatusText').textContent = selectedStatusText;
-		}
-	});
+	/*
+	function selectStatus(status) {
+  // 서버로 선택한 공연상태 정보를 전송하기 위해 URL 링크를 생성합니다.
+  const selectedArea = localStorage.getItem('selectedArea');
+  const url = `/event/domesticconcertlist?area=${selectedArea}&eventstate=${status}`;
+  // 생성한 URL로 페이지를 이동합니다.
+  window.location.href = url;
 
+  // 선택한 공연상태 이름을 LocalStorage에 저장합니다.
+  localStorage.setItem('selectedStatus', status);
 
-	//공연진행상태 끝ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-  
+  // 선택한 공연상태가 "all"이면 "공연중/공연예정"을 표시하고, 아니면 선택한 상태 이름으로 업데이트합니다.
+  var selectedStatusText =
+    status === 'all'
+      ? '공연중/공연예정'
+      : status === '공연예정'
+      ? '공연예정'
+      : status === '공연중'
+      ? '공연중'
+      : status === '공연종료'
+      ? '공연종료'
+      : '미정';
+  document.getElementById('selectedStatusText').textContent = selectedStatusText;
+}
+*/
+
+	
+	document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedArea = urlParams.get('area');
+    const selectedStatus = urlParams.get('eventstate');
+
+    // 저장된 지역이 있다면 <div class="selectarea-GEm">에 표시합니다.
+    if (selectedArea) {
+      // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
+      var selectedAreaText = selectedArea === 'all' ? '지역을 선택하세요.' : selectedArea;
+      document.getElementById('selectedAreaText').textContent = selectedAreaText;
+    }
+
+    // 저장된 공연상태가 있다면 <div class="selectarea-GEm">에 표시합니다.
+    if (selectedStatus) {
+      // 선택한 공연상태를 적절한 텍스트로 업데이트합니다.
+      var selectedStatusText =
+        selectedStatus === 'all'
+          ? '공연중/공연예정'
+          : selectedStatus === '공연예정'
+          ? '공연예정'
+          : selectedStatus === '공연중'
+          ? '공연중'
+          : selectedStatus === '공연종료'
+          ? '공연종료'
+          : '미정';
+      document.getElementById('selectedStatusText').textContent = selectedStatusText;
+    }
+  });
+//공연진행상태 끝ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+ 
 	//--------gnb드롭다운
 	//마우스가 올라오면 드롭다운
 	function showDropDown() {
@@ -192,13 +240,27 @@
 			   </div>
               </div>
             </div>
-          <div class="divdate-4ch">
-            <div class="date-Pus">
-				<input type="date" />
+            
+            <!-- 날짜 선택 -->
+            <!--
+		    <div class="divdate-4ch">
+		        <div class="date-Pus">
+		            <input class="inputdate" type="date" id="selectedDate" onchange="selectDate()" />
+		        </div>
+				<div class="dateLine"></div>
+		    </div>
+		    -->
+		    
+			<!-- 날짜 선택-->
+			<div class="dropdownarea-oMB">
+			  <div class="component-20-MtV">
+			    <div class="auto-group-rq2q-7cm">
+			      <div class="selectarea-GEm" id="selectedStatusText">날짜</div>
+			    </div>
+			    <div class="line-3-isT"></div>
+			  </div>
 			</div>
-            <!--<img class="click-v97" src="/assets/click-JXj.png"/>-->
-          </div>
-          
+		    
           <!-- 드롭다운 div 여기 아래부터 복붙 -->
 			<div class="dropdownarea-oMB">
 			  <!-- 공연상태 선택 드롭다운 -->
@@ -231,6 +293,8 @@
         -->
       </div>
     </div>
+    
+    <!-- 행사 리스트 출력-->
     <div class="eventlist-im7">
 		<!-- 각 행 별로 반복,여행 정보 4(?)줄 담긴 거 1줄씩 row 에 담음 -->
 		<div class="row1-dt5" th:each="row : ${rows}">

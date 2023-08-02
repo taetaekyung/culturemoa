@@ -16,5 +16,4 @@ public class Dbja3Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Dbja3Application.class, args);
 	}
-
 }

@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>event_detail</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C600%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A600"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>event_detail</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C600%2C700"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A600"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/styles/eventdetail.css}"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script>
-			//--------gnb드롭다운
+<link rel="stylesheet" th:href="@{/styles/eventdetail.css}"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>	
+	//현재 url 변수로 가져오기
+	let nowUrl = window.location.href;
+	
+	function copyUrl(){ 
+	  //nowUrl 변수에 담긴 주소를
+	  	navigator.clipboard.writeText(nowUrl).then(res=>{
+		  alert("링크를 클립보드에 복사했습니다.");
+		})
+	}
+		
+	//--------gnb드롭다운
 	//마우스가 올라오면 드롭다운
-	 function showDropDown() {
-         const gnbDropdown = document.getElementById('gnbDropdown');
-         gnbDropdown.style.visibility = 'visible';
-      }
+	function showDropDown() {
+       const gnbDropdown = document.getElementById('gnbDropdown');
+       gnbDropdown.style.visibility = 'visible';
+    }
 	//gnb에 마우스가 벗어나면 드롭다운 없애기
-     function hideDropDown() {
-         const gnbDropdown = document.getElementById('gnbDropdown');
-         gnbDropdown.style.visibility = 'hidden';
-     }
+    function hideDropDown() {
+       const gnbDropdown = document.getElementById('gnbDropdown');
+       gnbDropdown.style.visibility = 'hidden';
+    }
     //gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
-     function cancelHide() {
-         const gnbDropdown = document.getElementById('gnbDropdown');
-         gnbDropdown.style.visibility = 'visible';
-     }
+    function cancelHide() {
+        const gnbDropdown = document.getElementById('gnbDropdown');
+        gnbDropdown.style.visibility = 'visible';
+    }
      
     //--------------오픈톡
 	//버튼 선택시 오픈톡 새창 띄우기
@@ -50,7 +60,6 @@
 </head>
 <body>
 <div class="eventdetail-d3F" layout:fragment="content">
-  
   
   <div class="main-RW9">
     <div class="mainheader-NgH">
@@ -80,7 +89,7 @@
         </div>
         <div class="frameicon-bay">
           <img class="bookmark-Z21" src="/assets/bookmark-C4y.png"/>
-          <img class="sharing-5m3" src="/assets/sharing-uEh.png"/>
+          <img class="sharing-5m3" src="/assets/sharing-uEh.png" onclick="copyUrl()"/>
         </div>
       </div>
     </div>

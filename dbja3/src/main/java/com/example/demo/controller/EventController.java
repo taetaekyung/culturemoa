@@ -25,6 +25,7 @@ import com.example.demo.dao.EventDAO_mb;
 import com.example.demo.entity.Event;
 import com.example.demo.vo.EventVO;
 
+import jakarta.transaction.Transactional;
 import lombok.Setter;
 
 @Controller
@@ -84,19 +85,24 @@ public class EventController {
         }
     }
 	
-	//행사 상세 : <이벤트 번호>를 받아서 <전체 이벤트 정보>와 <공연진행상태>를 반환함.
-	@GetMapping("/event/eventdetail")
-	public String eventDetail(@RequestParam int eventno, Model model) {
-	    // eventno를 사용하여 해당 이벤트를 조회합니다. (여기에서는 이벤트를 찾는 로직을 추가해야 합니다.)
-	    Event event = eventdao_jpa.findByEventno(eventno);
-	    String state =  calculateEventStatus(event);
-	    System.out.println(state);
-	    System.out.println("오늘 날짜: " + currentDate);
-	    
-	    model.addAttribute("event", event);
-	    model.addAttribute("state",state);
-	    return "/event/eventdetail"; // "/event/eventdetail" 페이지로 이동하도록 반환합니다.
-	}
+    // 행사 상세 : <이벤트 번호>를 받아서 <전체 이벤트 정보>와 <공연진행상태>를 반환함.
+    @GetMapping("/event/eventdetail")
+    @Transactional // 추가: 조회수 업데이트를 위해 트랜잭션을 사용
+    public String eventDetail(@RequestParam int eventno, Model model) {
+        // eventno를 사용하여 해당 이벤트를 조회합니다. (여기에서는 이벤트를 찾는 로직을 추가해야 합니다.)
+        Event event = eventdao_jpa.findByEventno(eventno);
+        String state = calculateEventStatus(event);
+        System.out.println(state);
+        System.out.println("오늘 날짜: " + currentDate);
+
+        // 조회수를 1 증가시킵니다.
+        event.setEventhit(event.getEventhit() + 1); // 이벤트의 조회수를 1 증가시킵니다.
+        eventdao_jpa.save(event); // 변경된 이벤트 엔티티를 저장합니다.
+
+        model.addAttribute("event", event);
+        model.addAttribute("state", state);
+        return "/event/eventdetail"; // "/event/eventdetail" 페이지로 이동하도록 반환합니다.
+    }
 	/*
 	@GetMapping("/event/domesticconcertlist")
 	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String area, @RequestParam(required = false) String eventstate) {
