@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" th:href="@{/styles/mypage.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/editmypage.css}"/>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script type="text/javascript">
 	  		//--------gnb드롭다운
@@ -49,16 +49,7 @@
 			$(".clicked").css("color", "#a5a5a5");
 			$(".registration_text").css("color", "black");
 		})
-		
-		$(".message_text").click(function() {
-			$(".clicked").css("color", "#a5a5a5");
-			$(".message_text").css("color", "black");
-		})
-		
-		$(".like_text").click(function() {
-			$(".clicked").css("color", "#a5a5a5");
-			$(".like_text").css("color", "black");
-		})
+
 	})
 	
 	function editpic(){
@@ -70,8 +61,28 @@
         if (!newWindow) {
             alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
         }
-	}		
-		
+	}	
+	
+	function chkpwd(){
+		// 새 창을 띄우기 위한 옵션 설정
+        var windowFeatures = 'width=450px,height=200px';
+        // 새 창 열기
+        var newWindow = window.open('/member/changepwd', '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}	
+	
+	function getAuthNum(){
+		alert("인증번호가 발송되었습니다.");
+		$(".authentication").css("display", "flex");
+	}	
+	
+	function checkAuthNum(){
+		alert("인증되었습니다.");
+	}	
+
   </script>
   <style></style>
 </head>
@@ -93,28 +104,29 @@
           <img class="nexticon2" src="/assets/icon-YJu.png"/>
         </div>
         <!--div_root 끝-->
-        <div class="myinfo_text">회원정보</div>
+        <div class="myinfo_text">회원정보수정</div>
       </div>
       <!--headerframe 끝-->
-      
       
       <!--div_filter 시작-->
       <div class="div_filter">
         <div class="registration_text clicked">회원정보</div>
         <div class="middleline">
         </div>
-        <div class="message_text clicked">쪽지함</div>
+        <div class="message_text">쪽지함</div>
         <div class="middleline2">
         </div>
-        <div class="like_text clicked">관심목록</div>
+        <div class="like_text">관심목록</div>
       </div>
       <!--div_filter 끝-->
     </div>
     <!--main_top 끝-->
     
-    <div class="title">마이페이지</div>
+    <div class="title">정보수정</div>
 
+    
     <!--div_myinfo 시작-->
+    <form method="post" action="/member/editmypage">
     <div class="div_myinfo">
 		<div class="div_img">
 			<img class="profile_img" src="/profileImage/profile-12Z.png"/>
@@ -127,7 +139,7 @@
 		<!--div_id 시작-->  
         <div class="div_id">
           <div class="id_text">아이디</div>
-          <div class="userid" name="id" th:text="${session.m.id}"></div>
+          <div class="userid" th:text="${session.m.id}"></div>
         </div>
         <!--div_id 끝-->  
         
@@ -138,42 +150,50 @@
         </div>
         <!--div_name 끝-->
         
+        
         <!--div_nickname 시작--> 
         <div class="div_nickname">
           <div class="nickname_text">닉네임</div>
-          <div class="usernickname" th:text="${session.m.nickname}"></div>
+          <input type="text" name="nickname" class="usernickname" th:value="${session.m.nickname}"/>
         </div>
         <!--div_nickname 끝-->
+        
+<!--        div_pwd 시작 
+        <div class="div_pwd">
+          <div class="pwd_text">비밀번호</div>
+          <input type="password" name="pwd" class="userpwd" th:value="${session.m.pwd}"/>
+          <div class="btnchangepwd" onclick="showchkpwd()">변경</div>
+        </div>
+        div_pwd 끝
+        
+        div_chkpwd 시작 
+        <div class="div_chkpwd">
+          <div class="chkpwd_text">비밀번호 확인</div>
+          <input type="password" name="chkpwd" class="userchkpwd"/>
+        </div>
+        div_chkpwd 끝-->
         
         <!--div_email 시작-->
         <div class="div_email">
           <div class="email_text">이메일</div>
-          <div class="useremail" th:text="${session.m.email}"></div>
-          
-<!--          div_update 시작
-          <div class="div_update">
-            <img class="pencilline" src="/assets/pencilline-TAy.png"/>
-            <div class="update_text">수정</div>
-          </div>
-          div_update 끝-->
-          
+          <input type="text" name="email" class="useremail" th:value="${session.m.email}"/>
+          <div class="btnsubmit" onclick="getAuthNum()">인증요청</div>
         </div>
         <!--div_email 끝-->
+
+		<!--authentication 시작-->
+        <div class="authentication">
+		  <div class="authnum_text">인증번호</div>
+          <input type="text" name="authnum" class="authnum" value="543214"/>
+          <div class="btncheck" onclick="checkAuthNum()">인증확인</div>
+
+		</div>
+		<!--authentication 끝-->
         
         <!--div_birth 시작-->
         <div class="div_birth">
           <div class="birth_text">생년월일</div>
           <div class="userbirth" th:text="${session.m.birth}"></div>
-          
-          
-<!--          div_update 시작
-          <div class="div_update">
-            <img class="pencilline" src="/assets/pencilline-TAy.png"/>
-            <div class="update_text">수정</div>
-          </div>
-          div_update 끝-->
-          
-          
         </div>
         <!--div_birth 끝-->
         
@@ -188,11 +208,13 @@
       
       <!--div_btns 시작-->
       <div class="div_btns">
-        <div class="updateinfobtn" onclick="location.href='/member/editmypage'">회원정보 수정</div>
-        <div class="deleteinfobtn">회원 탈퇴</div>
+        <div class="btnchangepwd" onclick="chkpwd()">비밀번호 변경</div>
+        <input type="submit" value="회원정보 수정" class="updateinfobtn"/>
       </div>
       <!--div_btns 끝-->
     </div>
+   </form>
+
     <!--div_myinfo 끝 -->
   </div>
   <!--div_main 끝-->

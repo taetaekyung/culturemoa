@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.BoardDAO_jpa;
 import com.example.demo.dao.EventDAO_mb;
+import com.example.demo.dao.MemberDAO_jpa;
 import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
+import com.example.demo.entity.Member;
 import com.example.demo.entity.Opentalk;
 import com.example.demo.vo.EventVO;
 import com.example.demo.vo.OpentalkVO;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainController {
@@ -34,6 +39,8 @@ public class MainController {
    private EventDAO_mb eventdao_mb;
    @Autowired
    private BoardDAO_jpa boarddao_jpa;
+   @Autowired
+   private MemberDAO_jpa memberdao_jpa;
    
    
    //캘린더 공연일정
@@ -55,7 +62,12 @@ public class MainController {
    
    //메인페이지를 열었을 때
    @GetMapping("/mainPage")
-   public void mainPage(Model model) {
+   public void mainPage(Model model, HttpSession session) {
+	  //session으로 Member Entity 전달하기
+	  Member m = memberdao_jpa.findById(id).get();
+	  session.setAttribute("m", m);
+	   
+	   
       //최신 10개 게시물
       model.addAttribute("list", boarddao_jpa.findAll());
 

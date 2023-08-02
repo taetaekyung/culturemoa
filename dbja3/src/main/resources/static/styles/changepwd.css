@@ -1,0 +1,144 @@
+.title {
+  margin: 0rem 5rem 7rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.16rem;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.div_pwd {
+  width: 400px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.div_pwd .pwd_text {
+  margin-right: 3rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+}
+.div_pwd .userpwd {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.btnchangepwd {
+  margin-top: 0.5rem;
+  width: 396px;
+  height: 40px;
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #018bf8;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+  cursor: pointer;
+}
+
+
+.div_newpwd {
+  width: 400px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.div_newpwd .newpwd_text {
+  margin-right: 4.4rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+}
+.div_newpwd .usernewpwd {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 200px;
+}
+
+
+.div_chkpwd {
+  width: 400px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.div_chkpwd .chkpwd_text {
+  margin-right: 1.25rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+}
+.div_chkpwd .userchkpwd {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 200px;
+}
+

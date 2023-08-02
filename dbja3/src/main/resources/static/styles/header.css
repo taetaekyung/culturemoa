@@ -43,15 +43,14 @@ a {
 ul, li {
 	list-style: none;
 }
-input {
-	border: none;
+.main_search {
 	width: 100%;
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
 	border: #ffffff;
 	font-size: 16px; 
 }
 
-input:focus { 
+.main_search:focus { 
 	outline: none !important; 
 	border-color: #FFFFFF;
 }

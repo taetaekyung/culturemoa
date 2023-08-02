@@ -2,6 +2,43 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <link rel="stylesheet" type="text/css" th:href="@{/styles/header.css}"/>
 <head th:fragment="mainHeader">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+		//--------gnb드롭다운
+	//마우스가 올라오면 드롭다운
+	function showDropDown() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'visible';
+	}
+	//gnb에 마우스가 벗어나면 드롭다운 없애기
+	function hideDropDown() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'hidden';
+	}
+	//gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+	function cancelHide() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'visible';
+	}
+     
+    //--------------오픈톡
+	//버튼 선택시 오픈톡 새창 띄우기
+	function opentalk(){
+		// 새 창을 띄우기 위한 옵션 설정
+        var windowFeatures = 'width=550px,height=550px';
+        // 새 창 열기
+        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}
+	</script>
+	
+	
+	
+	
+	
 	   <!-- header_top div 시작 -->
 		  <div class="header_top">
 			
@@ -39,7 +76,7 @@
 	      <div class="divevent-3Q5">행사소식</div>
 	      <div class="divcommunity-xG9">커뮤니티</div>
 	      <div class="divfaq-fwF">FAQ</div>
-	      <div class="divmypage-o1s" onclick="location.href='/member/mypage/mypage'">마이페이지</div>
+	      <div class="divmypage-o1s" onclick="location.href='/member/mypage'">마이페이지</div>
 	      <div class="divopentalk-DLV">
 	        <img class="iconopentalk-vEu" src="/assets/iconopentalk-2m7.png"/>
 	        <div class="opentalk-GJm" onclick="opentalk()">오픈톡</div>
