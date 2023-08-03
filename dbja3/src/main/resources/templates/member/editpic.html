@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>프로필사진 수정</title>
+<link rel="stylesheet" type="text/css" th:href="@{/styles/editpic.css}"/>
 </head>
 <body>
-<h2>프로필 수정 페이지</h2>
+	<div class="container">
+		<div class="title">프로필 사진 수정</div>
+		<img class="pic" th:src="@{'/profileImage/'+${session.m.fname}}"></img>
+		<br>
+		<input type="file" class="selectfile">
+	    <div class="btnchangepic" onclick="changepic()">프로필 사진 수정</div>
+    </div>
 </body>
 </html>

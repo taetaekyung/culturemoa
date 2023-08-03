@@ -11,26 +11,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	function changepwd(msg){
+	  var pwd=$("#pwd").val();
+	  var newpwd=$("#newpwd").val();
+	  var chkpwd=$("#chkpwd").val();
+      $.ajax({
+			url : "/member/changepwd",
+			type : 'post',
+			data : {
+				pwd : pwd,
+				newpwd : newpwd,
+				chkpwd : chkpwd
+			},
+			success : function(msg) {
+				alert(msg);
+				if(msg == "비밀번호 변경이 완료되었습니다.") {
+					window.close();
+				}
+				else {
+					$("#pwd").val("");
+					$("#newpwd").val("");
+					$("#chkpwd").val("");
+				}
+		     },
+			error : function() {
+				alert("error");
+			}
+		});
+      }
+  </script>
+
 </head>
 <body>
-	<div class="title">비밀번호 수정</div>
- 	<div class="div_pwd">
-    	<div class="pwd_text">현재 비밀번호</div>
-        <input type="password" name="pwd" class="userpwd"/>
-    </div>
-    
-    <div class="div_newpwd">
-    	<div class="newpwd_text">새 비밀번호</div>
-        <input type="password" name="newpwd" class="usernewpwd"/>
-    </div>
-    
-    <div class="div_chkpwd">
-    	<div class="chkpwd_text">새 비밀번호 확인</div>
-        <input type="password" name="chkpwd" class="userchkpwd"/>
-    </div>
-        
-
-    <div class="btnchangepwd" onclick="showchkpwd()">변경</div>
-
+		<div class="title">비밀번호 수정</div>
+	 	<div class="div_pwd">
+	    	<div class="pwd_text">현재 비밀번호</div>
+	        <input type="password" name="pwd" id="pwd" class="userpwd"/>
+	    </div>
+	    
+	    <div class="div_newpwd">
+	    	<div class="newpwd_text">새 비밀번호</div>
+	        <input type="password" name="newpwd" id="newpwd" class="usernewpwd"/>
+	    </div>
+	    
+	    <div class="div_chkpwd">
+	    	<div class="chkpwd_text">새 비밀번호 확인</div>
+	        <input type="password" name="chkpwd" id="chkpwd" class="userchkpwd"/>
+	    </div>
+	        
+	
+	    <div class="btnchangepwd" onclick="changepwd()">비밀번호 변경</input>
 </body>
 </html>
