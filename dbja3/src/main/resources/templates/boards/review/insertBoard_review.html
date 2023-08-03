@@ -1,16 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>board_list_review</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/insertBoard_review.css}"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- include libraries(jQuery, bootstrap) -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+  <!-- include summernote css/js-->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+  <!-- include summernote-ko-KR -->
+  <!-- 서머노트를 위해 추가해야할 부분 -->
+  <link rel="stylesheet" href="/summernote/summernote-lite.css">
 </head>
+<style>
+
+</style>
+<script>
+	//summernote 내용 입력하기
+	 $(document).ready(function() {
+	//여기 아래 부분
+	$('#summernote').summernote({
+			height: 800,                 // 에디터 높이
+			minHeight: 800,             // 최소 높이
+			maxHeight: null,             // 최대 높이
+			focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+			lang: "ko-KR",					// 한글 설정
+			placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
+			callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+				onImageUpload : function(files) {
+					//console.log(files)
+					uploadSummernoteImageFile(files[0],this);
+				},
+				onPaste: function (e) {
+					var clipboardData = e.originalEvent.clipboardData;
+					if (clipboardData && clipboardData.items && clipboardData.items.length) {
+						var item = clipboardData.items[0];
+						if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+							e.preventDefault();
+						}
+					}
+				}
+			}
+		});
+		
+	});
+
+
+	function uploadSummernoteImageFile(file, editor) {
+		data = new FormData();
+		data.append("file", file);
+		$.ajax({
+			data : data,
+			type : "POST",
+			url : "/uploadSummernoteImageFile",
+			enctype: 'multipart/form-data',
+			contentType : false,
+			processData : false,
+			success : function(response) {
+				console.log(response);
+				  // JSON 문자열을 JSON 객체로 파싱
+	            var jsonResponse = JSON.parse(response);
+	            // url에 접근하여 이미지 삽입
+	            $(editor).summernote('insertImage', jsonResponse.url);
+            	//항상 업로드된 파일의 url이 있어야 한다.
+				//$(editor).summernote('insertImage', response.url);
+				//$(el).summernote('editor.insertImage', response.url);
+				
+			}
+		});
+	}
+	$("div.note-editable").on('drop',function(e){
+         for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
+         	uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
+         }
+        e.preventDefault();
+   });
+	//검색창에 포커스가 올 때 목록보이기
+	 document.addEventListener("DOMContentLoaded", function () {
+        const searchLKs = document.querySelector(".search-LKs");
+        const eventList = document.querySelector(".eventList");
+		//검색창에 마우스가 들어오면 목록이 보이기
+		searchLKs.addEventListener("mouseover",function(){
+			eventList.style.visibility = "visible";
+		});
+		//목록에 마우스 올리면 목록 계속 보이게 유지
+        eventList.addEventListener("mouseover", function () {
+            eventList.style.visibility = "visible";
+        });
+        //목록에 마우스 없고 검색창에도 마우스가 없으면 목록 닫기
+        eventList.addEventListener("mouseout", function (event) {
+            if (!eventList.contains(event.relatedTarget) && !searchLKs.contains(event.relatedTarget)) {
+                eventList.style.visibility = "hidden";
+            }
+        });
+        //목록에 마우스 없고 검색창에도 마우스가 없으면 목록 닫기
+        searchLKs.addEventListener("mouseout", function (event) {
+            if (!eventList.contains(event.relatedTarget) && !searchLKs.contains(event.relatedTarget)) {
+                eventList.style.visibility = "hidden";
+            }
+        });
+    });
+	//행사 필터링
+	function findEvent() {
+	  var input, filter, ul, li, a, i;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  ul = document.getElementById("myUL");
+	  li = ul.getElementsByTagName("li");
+	  for (i = 0; i < li.length; i++) {
+	    txtValue = li[i].textContent || li[i].innerText;
+	    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	      li[i].style.display = "";
+	    } else {
+	      li[i].style.display = "none";
+	    }
+	  }
+	}
+	//행사 선택하기
+	 function selectEvent(liElement) {
+        var eventName = liElement.textContent;
+        eventno = liElement.getAttribute("no");
+		console.log(eventno);
+		$("#no").attr("value",eventno);
+        document.getElementById("myInput").value = eventName;
+        const eventList = document.querySelector(".eventList");
+        eventList.style.visibility = "hidden";
+    }
+    
+   
+</script>
 <body>
 <div class="boardlistreview-gXb">
   <div class="header-DXX">
@@ -21,7 +148,7 @@
     </p>
     <div class="searchbar-S9P">
       <div class="searchicon-Zjo">
-        <img class="iconsearch-Rn1" src="./assets/iconsearch-f2H.png"/>
+        <img class="iconsearch-Rn1" src="/assets/iconsearch-f2H.png"/>
       </div>
       <div class="searchtext-kJV">검색어를 입력하세요.</div>
       <div class="divsearch-At1">
@@ -37,11 +164,11 @@
     <div class="divfaq-LT3">FAQ</div>
     <div class="divmypage-G5o">마이페이지</div>
     <div class="divopentalk-yW1">
-      <img class="iconopentalk-3Vs" src="./assets/iconopentalk-dE9.png"/>
+      <img class="iconopentalk-3Vs" src="/assets/iconopentalk-dE9.png"/>
       <div class="opentalk-Bry">오픈톡</div>
     </div>
     <div class="divmessage-Vsf">
-      <img class="iconmessage-Cn5" src="./assets/iconmessage-sSq.png"/>
+      <img class="iconmessage-Cn5" src="/assets/iconmessage-sSq.png"/>
       <div class="message-jn1">쪽지</div>
     </div>
   </div>
@@ -49,33 +176,43 @@
     <div class="paddingleft-N4H">
     </div>
     <div class="divmain-uK7">
+		
+	<form id="board" role="form" action="/board" method="post">
+
       <div class="auto-group-kd3o-pws">
+		<!-- 작성자 아이디-->
         <div class="divwriter-jZ3">
           <div class="writertitle-FGV">작성자</div>
-          <div class="writerinput-xAu">teddie</div>
+          <div class="writerinput-xAu">user01</div>
         </div>
-        <div class="dropdownreview-4Uq">
-          <div class="component-20-Q2u">
-            <div class="auto-group-huq7-Yuo">
-              <div class="eventcategory-i3b">공연카테고리</div>
-              <img class="vector-1-QBK" src="./assets/vector-1-bB7.png"/>
-            </div>
-          </div>
-        </div>
-        <div class="search-LKs">
-        </div>
+        <!-- 행사 검색  -->
+         <div class="w3-dropdown-hover">
+		   <input type="hidden" id="no" name="event.eventno">
+		   <div class="eventcategory">관람 행사</div>
+		   <input class="w3-input w3-border w3-padding search-LKs" type="text" placeholder="행사이름을 검색해주세요" id="myInput" onkeyup="findEvent()"  required>
+		   <ul class="w3-ul  eventList" id="myUL" style="visibility: hidden;" >
+		     <li th:each="e:${list}" th:text="${e.eventname}" th:no="${e.eventno}" onclick="selectEvent(this)"></li>
+		   </ul>
+		 </div>
       </div>
-      <div class="divtitle-4mf">제목</div>
-      <div class="contentinput-waZ">내용을 입력해주세요.</div>
+      <!--게시글 작성하기 -->
+      <input class="divtitle-4mf" placeholder="제목을 입력해주세요"  id="reviewtitle" name="reviewtitle" required></input>
+      <div class="form-group">
+    	  <textarea class="contentinput-waZ form-control" id="summernote" name="Contents"  required></textarea>
+      </div>
       <div class="bottomline-TJ1">
       </div>
+      <!--버튼 -->
       <div class="auto-group-ujz1-cAu">
         <div class="golistbtn-iDw">게시글 목록</div>
-        <div class="divwritebtn-cid">
-          <img class="pencilline-y3P" src="./assets/pencilline-sQV.png"/>
+        <button class="divwritebtn-cid btn" >
+          <img class="pencilline-y3P" src="/assets/pencilline-sQV.png"/>
           <div class="writebtn-6do">게시글 작성</div>
-        </div>
+        </button>
       </div>
+      
+      </form>
+      
     </div>
     <div class="paddingright-QPb">
     </div>

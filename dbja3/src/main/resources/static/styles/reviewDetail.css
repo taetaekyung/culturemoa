@@ -14,7 +14,8 @@ input {
 }
 body {
   width: 192rem;
-}.boardreviewdetail-XaZ {
+}
+.boardreviewdetail-XaZ {
   box-sizing: border-box;
   padding-bottom: 11.5rem;
   width: 100%;
@@ -383,7 +384,7 @@ body {
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .divtitle-uJq .divmaintitle-DqK {
-  margin: 0rem 24.2rem 0.6rem 0rem;
+  margin: 0rem 0rem 0.6rem 0rem;
   width: calc(100% - 24.2rem);
   display: flex;
   align-items: center;
@@ -414,7 +415,6 @@ body {
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .divtitle-uJq .divsubtitle-b5B {
-  margin-left: 1.3rem;
   width: calc(100% - 1.3rem);
   height: 2.8rem;
   display: flex;
@@ -521,7 +521,7 @@ body {
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws {
-  margin: 0rem 0.4rem 46.6rem 0.45rem;
+  margin: 0rem 0.4rem 0rem 0.45rem;
   width: calc(100% - 0.85rem);
   display: flex;
   flex-direction: column;
@@ -535,6 +535,7 @@ body {
   height: 14rem;
   background-color: #eeeeee;
   flex-shrink: 0;
+  border-radius: 2rem;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws .event-7Fo .eventcontent-emX {
   width: 50.05rem;
@@ -547,9 +548,9 @@ body {
   width: 12rem;
   height: 9rem;
   position: relative;
-  background-size: 109.508% 458.584%;
+ /* background-size: 109.508% 458.584%;
   background-position: -0.5605rem -4.933rem;
-  background-image: url('../assets/poster-6jK.png');
+  background-image: url('../assets/poster-6jK.png');*/
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws .event-7Fo .eventcontent-emX .content-r6u {
@@ -562,8 +563,6 @@ body {
   margin-bottom: 0.6rem;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.4475;
@@ -622,9 +621,11 @@ body {
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws .file-tbK {
   margin-bottom: 3.6rem;
   width: 100%;
-  height: 47.5rem;
-  background-color: #d9d9d9;
+  min-height: 47.5rem;
+  border:solid 0.2rem lightgray;
+  border-radius: 2rem;
   flex-shrink: 0;
+  padding: 1rem;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws .content-d37 {
   margin-left: 0.4rem;

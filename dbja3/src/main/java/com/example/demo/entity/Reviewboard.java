@@ -22,7 +22,7 @@ public class Reviewboard {
 	private int reviewno;
 	
 	private String reviewtitle;
-	private String reivewcontent;
+	private String reviewcontent;
 	private int reviewhit;
 	
 	@ManyToOne
@@ -33,23 +33,30 @@ public class Reviewboard {
 	@JoinColumn(name="eventno",insertable = true, updatable = true)
 	private Event event;
 	
-	private String reviewfname;
-	
 	private Date regdate;
+	private int reviewlike;
 	
 	@OneToMany(mappedBy = "reviewboard", cascade=CascadeType.REMOVE)
 	private List<ReviewComment> reviewcomments = new ArrayList<>();
 	
-	public void setMemberId(String memberId) {
+	public void setId(String id) {
 		 if (this.member == null) {
 		        this.member = new Member();
 		    }
-		 this.member.setId(memberId);
-	    }
+		 this.member.setId(id);
+	}
+	
 	public void setEventNo(int eventNo) {
 		if(this.event==null) {
 			this.event=new Event();
 		}
 		this.event.setEventno(eventNo);
 	}
+	
+	public int getEventno() {
+        if (this.event == null) {
+        	this.event=new Event();
+        }
+        return this.event.getEventno();
+    }
 }

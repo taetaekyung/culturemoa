@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
@@ -47,7 +47,7 @@
   </div>
   <div class="main-pUR">
     <div class="auto-group-q6mw-PGd">
-      <div class="maintitle-6B3">게시판</div>
+      <div class="maintitle-6B3">후기게시판</div>
       <div class="mainheader-Msf">
         <div class="framemainheader-gQ9">
           <div class="framelocation-EgZ">
@@ -63,49 +63,51 @@
     <div class="divmain-bZ3">
       <div class="divtitle-uJq">
         <div class="divmaintitle-DqK">
-          <div class="category-Luw">[후기기]</div>
-          <div class="title-3pM">제목</div>
+          <div class="category-Luw">[후기]</div>
+          <div class="title-3pM" th:text="${r.reviewtitle}"></div>
         </div>
         <div class="divsubtitle-b5B">
           <div class="auto-group-m8ty-v7T">
             <div class="divwrtier-faq">
               <div class="writer-zt1">작성자</div>
-              <div class="inputwriter-Y8q">feddie</div>
+              <div class="inputwriter-Y8q" th:text="${id}"></div>
             </div>
             <div class="line1-TFo">
             </div>
-            <div class="regdate-arD">2023 / 07 / 12</div>
+            <div class="regdate-arD" th:text="${r.regdate}"></div>
             <div class="line2-ToX">
             </div>
           </div>
           <div class="divhi-ocV">
             <div class="hitinput-mZK">조회수 </div>
-            <div class="hittitile-Gky">17</div>
+            <div class="hittitile-Gky"  th:text="${r.reviewhit}"></div>
           </div>
         </div>
       </div>
       <div class="maincontent-zws">
         <div class="event-7Fo">
           <div class="eventcontent-emX">
-            <div class="poster-yJ1">
-            </div>
+            <!--<img class="poster-yJ1" />    -->     
+           <img class="poster-yJ1" th:src="@{'/images/'+${event.eventfname}}"/> 
+
             <div class="content-r6u">
-              <div class="eventname-mzZ">브루노마스 내한 공연</div>
+              <div class="eventname-mzZ" th:text="${event.eventname}"></div>
               <div class="eventtitle-GRX">
-                <div class="eventaddr-C4H">잠실 주경기장</div>
+                <div class="eventaddr-C4H" th:text="${event.eventplace}"></div>
                 <div class="auto-group-32bj-sgD">
                   <div class="line-8-2JD">
                   </div>
-                  <div class="eventdate-mmb">2023. 06. 17 ~ 2023. 06. 18</div>
+                  <div class="eventdate-mmb" th:text="${day}"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="file-tbK">
+        <!-- 게시글 내용-->
+        <div class="file-tbK" th:utext="${r.reviewcontent}">
         </div>
-        <p class="content-d37">게시글 내용</p>
       </div>
+      <!--버튼 -->
       <div class="mainfooter-m9K">
         <div class="updatebtn-Jf3">수정하기</div>
         <div class="deletebtn-kG9">삭제하기</div>

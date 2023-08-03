@@ -14,7 +14,34 @@ input {
 }
 body {
   width: 192rem;
-}.boardlistreview-gXb {
+}
+.eventList{
+  position: absolute;
+  top:3.8rem;
+  right: 60rem;
+  overflow: auto;
+  width: 44.5rem;
+  max-height: 15.5rem;
+  border: solid 0.1rem #cdcdcd;
+  cursor: pointer;
+  background-color: white;	
+  z-index: 1;
+  }
+
+.eventcategory{
+  display: flex;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+}
+
+.boardlistreview-gXb {
   box-sizing: border-box;
   padding-bottom: 10.4rem;
   width: 100%;
@@ -279,7 +306,6 @@ body {
 .boardlistreview-gXb .main-DSH .paddingleft-N4H {
   width: 32rem;
   height: 157.8rem;
-  background-color: #fafafa;
   flex-shrink: 0;
 }
 .boardlistreview-gXb .main-DSH .divmain-uK7 {
@@ -371,19 +397,30 @@ body {
   height: 4.5rem;
   border: solid 0.1rem #cdcdcd;
   box-sizing: border-box;
-  border-radius: 1.2rem;
   flex-shrink: 0;
+  margin-top: 1rem;
+  position: absolute;
+  right: 60rem;
+  top:-1.8rem;
 }
+.search-LKs:focus { 
+   outline: none !important; 
+   border-color: #FFFFFF;
+}
+
+.divtitle-4mf:focus { 
+   outline: none !important; 
+   border-color: #FFFFFF;
+}
+
 .boardlistreview-gXb .main-DSH .divmain-uK7 .divtitle-4mf {
-  margin-bottom: 7.9rem;
   width: 100%;
   height: 6.1rem;
   display: flex;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 400;
   line-height: 0.6666666667;
   letter-spacing: -0.07rem;
-  color: #dcdcdc;
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   border-bottom: solid 0.1rem #dcdcdc;
@@ -431,6 +468,8 @@ body {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  background: none;
+  border: none;
 }
 .boardlistreview-gXb .main-DSH .divmain-uK7 .auto-group-ujz1-cAu .divwritebtn-cid .pencilline-y3P {
   margin: 0rem 1.156rem 0.062rem 0rem;
@@ -450,10 +489,10 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  background-color: none;
 }
 .boardlistreview-gXb .main-DSH .paddingright-QPb {
   width: 32rem;
   height: 157.8rem;
-  background-color: #fafafa;
   flex-shrink: 0;
 }

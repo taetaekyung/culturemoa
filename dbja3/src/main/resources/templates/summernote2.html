@@ -1,58 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
-<!-- include summernote-ko-KR -->
-<script src="/resources/js/summernote/summernote-ko-KR.js"></script>
+
 </head>
 <script type="text/javascript">
-  $(document).ready(function() {
-	//여기 아래 부분
-	$('#summernote').summernote({
-		  height: 300,                 // 에디터 높이
-		  minHeight: null,             // 최소 높이
-		  maxHeight: null,             // 최대 높이
-		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		  lang: "ko-KR",					// 한글 설정
-		  placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
-		      toolbar: [
-                ['fontname', ['fontname']],     // 글꼴 설정
-                ['fontsize', ['fontsize']],    // 글자 크기 설정
-                ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']], // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-                ['color', ['forecolor','color']],    // 글자색
-                ['table', ['table']],    // 표만들기
-                ['para', ['ul', 'ol', 'paragraph']],    // 글머리 기호, 번호매기기, 문단정렬
-                ['height', ['height']],    // 줄간격
-                ['insert',['picture']]  // 그림첨부, 링크만들기, 동영상첨부
-		    ],
-		      // 추가한 글꼴
-		    fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
-		     // 추가한 폰트사이즈
-		    fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-		          
-	});
-});
 </script>
 <body>
-<form id="articleForm" role="form" action="/article" method="post">
-	  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-	  <h3 style="margin-bottom: 25px;">Article Form</h3>
-	  <div class="form-group">
-	    <input type="text" class="form-control" id="reviewtitle" name="reviewtitle" placeholder="subject" required>
-	  </div>
-	  <div class="form-group">
-	    <textarea class="form-control" id="summernote" name="reviewcontent" placeholder="reviewcontent" maxlength="140" rows="7"></textarea>
-	  </div>
-	  <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
-</form>
-
+	<div th:each="rr:${r}">
+	 <div th:utext="${rr.reviewcontent}"></div>
+	</div>
 </body>
 </html>
