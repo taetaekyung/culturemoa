@@ -29,7 +29,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/member/editpic")
-	public void editpic() {
+	public void editpic(HttpSession session) {
 	}
 	
 	

@@ -230,10 +230,11 @@ body {
 	font-size: 14px;
     font-family: Noto Sans KR, 'Source Sans Pro';
     -webkit-touch-callout: none;
-     user-select: none;
-     -moz-user-select: none;
-     -ms-user-select: none;
-     -webkit-user-select: none;
+   user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
 }
 
 .mypage .div_main .div_myinfo .profile_img {
@@ -251,6 +252,11 @@ body {
   height: 2rem;
   object-fit: contain;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+  cursor: pointer;
 }
 
 
@@ -557,6 +563,11 @@ body {
   background-color: #018bf8;
   border-radius: 1rem;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+  cursor: pointer;
 }
 .mypage .div_main .div_myinfo .div_btns .deleteinfobtn {
   width: 30.5rem;
@@ -574,4 +585,9 @@ body {
   background-color: #018bf8;
   border-radius: 1rem;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+  cursor: pointer;
 }

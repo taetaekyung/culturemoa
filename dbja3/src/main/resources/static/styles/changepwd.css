@@ -1,14 +1,14 @@
 body {
 	margin:0;
+	overflow: hidden;
+
 }
 
 .title {
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
+  padding: 0.7rem 1rem 0.7rem 1rem;
   margin-bottom: 1.4rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
   font-size: 1.6rem;
   font-weight: 700;
