@@ -329,7 +329,7 @@ body {
   flex-shrink: 0;
 }
 .boardlistreview-gXb .main-DSH .divmain-uK7 .auto-group-kd3o-pws .divwriter-jZ3 .writertitle-FGV {
-  margin-right: 11.6rem;
+  margin-right: 9.6rem;
   display: flex;
   font-size: 2.6rem;
   font-weight: 400;
@@ -460,6 +460,7 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .boardlistreview-gXb .main-DSH .divmain-uK7 .auto-group-ujz1-cAu .divwritebtn-cid {
   margin-top: 0.1rem;

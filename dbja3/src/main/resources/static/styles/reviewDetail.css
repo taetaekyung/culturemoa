@@ -15,6 +15,55 @@ input {
 body {
   width: 192rem;
 }
+.boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter{
+  margin-left: 95.65rem;
+  width: calc(100% - 95.65rem);
+  height: 4.6rem;
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  position: absolute;
+  left: 48.4rem;
+  top:124rem;
+}
+.boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter .listbtn {
+  width: 10.7rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #fe7497;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K .listbtn {
+  width: 10.7rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: lightgray;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+
 .boardreviewdetail-XaZ {
   box-sizing: border-box;
   padding-bottom: 11.5rem;
@@ -620,7 +669,7 @@ body {
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws .file-tbK {
   margin-bottom: 3.6rem;
-  width: 100%;
+  width: 98%;
   min-height: 47.5rem;
   border:solid 0.2rem lightgray;
   border-radius: 2rem;
@@ -638,14 +687,19 @@ body {
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K {
-  margin-left: 95.65rem;
+  margin-left: 83rem;
   width: calc(100% - 95.65rem);
   height: 4.6rem;
   display: flex;
   align-items: center;
   border-radius: 1rem;
   flex-shrink: 0;
+  margin-right: 0.5rem;
+  position: absolute;
+  left: 36rem;
+  top:124rem;
 }
+
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K .updatebtn-Jf3 {
   margin-right: 1.8rem;
   width: 10.7rem;
@@ -662,6 +716,7 @@ body {
   background-color: #018bf8;
   border-radius: 1rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K .deletebtn-kG9 {
   width: 10.7rem;
@@ -678,4 +733,6 @@ body {
   background-color: #fe7497;
   border-radius: 1rem;
   flex-shrink: 0;
+  cursor: pointer;
+  margin-right: 1.8rem;
 }

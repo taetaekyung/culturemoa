@@ -11,6 +11,29 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
    <link rel="stylesheet" type="text/css" th:href="@{/styles/reviewDetail.css}"/>
 </head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+	function goReview(){
+		var review = "/boards/review/reviewlist";
+        window.location.href = review;
+	}
+	$(function(){
+		var id=$("#id").val();
+		var writer=$(".inputwriter-Y8q").text();
+		const btn1 = document.querySelector(".mainfooter-m9K");
+        const btn2 = document.querySelector(".mainfooter");
+		if(id==writer){
+		   
+	        btn1.style.visibility = 'visible';
+	        btn2.style.visibility = 'hidden';
+	        
+		}else{
+			btn2.style.visibility = 'visible';
+        	btn1.style.visibility = 'hidden';
+		}
+	})
+	
+</script>
 <body>
 <div class="boardreviewdetail-XaZ">
   <div class="header-fgm">
@@ -60,6 +83,7 @@
         </div>
       </div>
     </div>
+    <input type="hidden" id="id" th:value="${id}">
     <div class="divmain-bZ3">
       <div class="divtitle-uJq">
         <div class="divmaintitle-DqK">
@@ -70,7 +94,7 @@
           <div class="auto-group-m8ty-v7T">
             <div class="divwrtier-faq">
               <div class="writer-zt1">작성자</div>
-              <div class="inputwriter-Y8q" th:text="${id}"></div>
+              <div class="inputwriter-Y8q" th:text="${r.member.id}"></div>
             </div>
             <div class="line1-TFo">
             </div>
@@ -101,6 +125,7 @@
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
         <!-- 게시글 내용-->
@@ -108,10 +133,14 @@
         </div>
       </div>
       <!--버튼 -->
-      <div class="mainfooter-m9K">
+      <div class="mainfooter-m9K" style="visibility:hidden;">
         <div class="updatebtn-Jf3">수정하기</div>
         <div class="deletebtn-kG9">삭제하기</div>
+        <div  class="listbtn" onclick=" goReview()">목록보기</div>
       </div>
+      <div class="mainfooter" >
+		 <div  class="listbtn" onclick=" goReview()">목록보기</div>
+	  </div>
     </div>
   </div>
 </div>

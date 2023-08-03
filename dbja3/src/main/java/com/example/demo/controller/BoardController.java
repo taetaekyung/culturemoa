@@ -53,7 +53,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardController {
 	//로그인 했을때만 이용가능 
 	//로그인 했을때 아이디
-	public String id="user01";
+	public String id="user02";
 	
 	public int pageSIZE = 25;
 	public int totalRecord;
@@ -71,7 +71,6 @@ public class BoardController {
 		Reviewboard review=new Reviewboard();
 		review=reviewboarddao_jpa.findByNo(reviewno);
 		int eventno=review.getEventno();
-		System.out.println(eventno);
 		//게시물 내용 가져오기
 		model.addAttribute("r", review);
 		//아이디
@@ -80,6 +79,7 @@ public class BoardController {
 		Event event=new Event();
 		event= eventdao_jpa.findByEventno(eventno);
 		model.addAttribute("event", event);
+		
 		
 		String start=event.getEventstart().toString();
 		String end=event.getEventend().toString();
@@ -170,6 +170,7 @@ public class BoardController {
 	@GetMapping("/boards/review/insertBoard_review")
 	public void reivew(Model model) {
 		model.addAttribute("list", eventdao_jpa.findAll());
+		model.addAttribute("id", id);
 	}
 	
 	@PostMapping("/board")

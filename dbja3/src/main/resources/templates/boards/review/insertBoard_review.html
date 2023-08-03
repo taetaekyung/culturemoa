@@ -135,8 +135,11 @@
         const eventList = document.querySelector(".eventList");
         eventList.style.visibility = "hidden";
     }
-    
-   
+   //목록으로 이동하기
+   function goReview(){
+		var review = "/boards/review/reviewlist";
+        window.location.href = review;
+	}
 </script>
 <body>
 <div class="boardlistreview-gXb">
@@ -183,7 +186,7 @@
 		<!-- 작성자 아이디-->
         <div class="divwriter-jZ3">
           <div class="writertitle-FGV">작성자</div>
-          <div class="writerinput-xAu">user01</div>
+          <div class="writerinput-xAu" th:text="${id}"></div>
         </div>
         <!-- 행사 검색  -->
          <div class="w3-dropdown-hover">
@@ -204,7 +207,7 @@
       </div>
       <!--버튼 -->
       <div class="auto-group-ujz1-cAu">
-        <div class="golistbtn-iDw">게시글 목록</div>
+        <div class="golistbtn-iDw" onclick=" goReview()">게시글 목록</div>
         <button class="divwritebtn-cid btn" >
           <img class="pencilline-y3P" src="/assets/pencilline-sQV.png"/>
           <div class="writebtn-6do">게시글 작성</div>
