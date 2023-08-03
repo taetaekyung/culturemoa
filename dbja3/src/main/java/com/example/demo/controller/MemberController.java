@@ -61,12 +61,10 @@ public class MemberController {
 		else {
 			msg = "현재 비밀번호와 일치하지 않습니다.";
 		}
-		
 		return msg;
 	}
 	
 
-	
 	@PostMapping("/member/editmypage")
 	public ModelAndView editmypage(HttpSession session, String nickname, String email) {
 		ModelAndView mav = new ModelAndView("redirect:/member/mypage");
