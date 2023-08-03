@@ -54,7 +54,7 @@
 	
 	function editpic(){
 		// 새 창을 띄우기 위한 옵션 설정
-        var windowFeatures = 'width=500px,height=500px';
+        var windowFeatures = 'width=450px,height=370px';
         // 새 창 열기
         var newWindow = window.open('/member/editpic', '_blank', windowFeatures);
         // 새 창이 차단되었을 경우 알림
@@ -65,7 +65,7 @@
 	
 	function chkpwd(){
 		// 새 창을 띄우기 위한 옵션 설정
-        var windowFeatures = 'width=450px,height=200px';
+        var windowFeatures = 'width=450px,height=270px';
         // 새 창 열기
         var newWindow = window.open('/member/changepwd', '_blank', windowFeatures);
         // 새 창이 차단되었을 경우 알림
@@ -129,7 +129,7 @@
     <form method="post" action="/member/editmypage">
     <div class="div_myinfo">
 		<div class="div_img">
-			<img class="profile_img" src="/profileImage/profile-12Z.png"/>
+			<img class="profile_img" src="/profileImage/profile.png"/>
             <img class="pencilline" src="/assets/pencilline-TAy.png"/>
             <a class="a_myinfo" onclick="editpic()" th:text="사진수정" target="_blank"></a>
 		</div>
