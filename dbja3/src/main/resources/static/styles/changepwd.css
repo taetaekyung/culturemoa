@@ -82,6 +82,7 @@ body {
  -ms-user-select: none;
  -webkit-user-select: none;
   cursor: pointer;
+  border: none;
 }
 
 
