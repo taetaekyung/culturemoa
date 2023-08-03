@@ -1,70 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>mypage_like</title>
+  <title>관심목록</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+CJK+KR%3A400%2C500"/>
-  <link rel="stylesheet" href="./styles/mypagelike.css"/>
+  <link rel="stylesheet" th:href="@{/styles/mypagelike.css}"/></head>
 </head>
 <body>
-<div class="mypagelike-exZ">
-  <div class="header-yzq">
-    <p class="logo-JGR">
-    컬쳐
-    <br/>
-    모아
-    </p>
-    <div class="searchbar-DPP">
-      <div class="searchicon-7zZ">
-        <img class="iconsearch-dCD" src="./assets/iconsearch-f93.png"/>
-      </div>
-      <div class="searchtext-wih">검색어를 입력하세요.</div>
-      <div class="divsearch-C8q">
-      </div>
-    </div>
-    <div class="login-jPf">로그인</div>
-    <div class="signup-ciM">회원가입</div>
-  </div>
-  <div class="gnb-7QD">
-    <div class="divintro-CRf">소개</div>
-    <div class="divevent-4yf">행사소식</div>
-    <div class="divcommunity-xJM">커뮤니티</div>
-    <div class="divfaq-SjK">FAQ</div>
-    <div class="divmypage-AfK">마이페이지</div>
-    <div class="divopentalk-y6y">
-      <img class="iconopentalk-TH3" src="./assets/iconopentalk-6RX.png"/>
-      <div class="opentalk-aMf">오픈톡</div>
-    </div>
-    <div class="divmessage-TgM">
-      <img class="iconmessage-N2d" src="./assets/iconmessage-wRj.png"/>
-      <div class="message-gp1">쪽지</div>
-    </div>
-  </div>
+<div class="mypagelike-exZ" layout:fragment="content">
   <div class="main-iEu">
     <div class="auto-group-97pd-fvq">
       <div class="headerframe-Q7j">
-        <div class="home-jQu">홈</div>
-        <img class="icon-Fu3" src="./assets/icon-Hk5.png"/>
+		<a th:href="@{/mainPage}">
+        	<div class="home-jQu">홈</div>
+        </a>
+        <img class="icon-Fu3" src="/assets/icon-Hk5.png"/>
         <div class="auto-group-nbuu-C3b">
           <div class="mypage-Wa5">마이페이지</div>
-          <img class="icon-EFB" src="./assets/icon-d5T.png"/>
+          <img class="icon-EFB" src="/assets/icon-d5T.png"/>
         </div>
-        <div class="message-xws">쪽지함</div>
+        <a th:href="@{/member/mypagemessage}">
+        	<div class="message-xws">쪽지함</div>
+        </a>
       </div>
       <div class="filter-6oB">
-        <div class="registration-C5X">회원정보</div>
+		<a th:href="@{/member/mypage}">
+        	<div class="registration-C5X">회원정보</div>
+        </a>
         <div class="middleline-vGR">
         </div>
-        <div class="message-Enu">쪽지함</div>
+        <a th:href="@{/member/mypagemessage}">
+        	<div class="message-Enu">쪽지함</div>
+        </a>
         <div class="middleline-a65">
         </div>
-        <div class="like-XGD">관심목록</div>
+        <a th:href="@{/member/mypagelike}">
+        	<div class="like-XGD">관심목록</div>
+        </a>
       </div>
     </div>
     <div class="divmain-S8H">
@@ -78,7 +55,7 @@
                 <div class="frameeventstate-M2H">공연 종류</div>
                 <div class="eventname-n7b">공연 이름</div>
               </div>
-              <img class="heart-UWD" src="./assets/heart-8Bb.png"/>
+              <img class="heart-UWD" src="/assets/heart-8Bb.png"/>
             </div>
           </div>
           <div class="poster01-mkD">
@@ -89,7 +66,7 @@
                 <div class="frameeventstate-vWd">공연 종류</div>
                 <div class="eventname-N7j">공연 이름</div>
               </div>
-              <img class="heart-tLy" src="./assets/heart-JhX.png"/>
+              <img class="heart-tLy" src="/assets/heart-JhX.png"/>
             </div>
           </div>
           <div class="poster01-pkR">
@@ -100,7 +77,7 @@
                 <div class="frameeventstate-FUM">공연 종류</div>
                 <div class="eventname-fny">공연 이름</div>
               </div>
-              <img class="heart-1bw" src="./assets/heart-Pvy.png"/>
+              <img class="heart-1bw" src="/assets/heart-Pvy.png"/>
             </div>
           </div>
           <div class="poster01-xGH">
@@ -111,7 +88,7 @@
                 <div class="frameeventstate-i8y">공연 종류</div>
                 <div class="eventname-QGh">공연 이름</div>
               </div>
-              <img class="heart-hWh" src="./assets/heart-LWV.png"/>
+              <img class="heart-hWh" src="/assets/heart-LWV.png"/>
             </div>
           </div>
           <div class="poster01-qso">
@@ -122,7 +99,7 @@
                 <div class="frameeventstate-A2u">공연 종류</div>
                 <div class="eventname-Ka1">공연 이름</div>
               </div>
-              <img class="heart-S8q" src="./assets/heart-oQD.png"/>
+              <img class="heart-S8q" src="/assets/heart-oQD.png"/>
             </div>
           </div>
         </div>
@@ -135,7 +112,7 @@
                 <div class="frameeventstate-SwT">공연 종류</div>
                 <div class="eventname-jff">공연 이름</div>
               </div>
-              <img class="heart-V93" src="./assets/heart-NZP.png"/>
+              <img class="heart-V93" src="/assets/heart-NZP.png"/>
             </div>
           </div>
           <div class="poster01-z5o">
@@ -146,7 +123,7 @@
                 <div class="frameeventstate-w9T">공연 종류</div>
                 <div class="eventname-bUu">공연 이름</div>
               </div>
-              <img class="heart-Kfo" src="./assets/heart-oVj.png"/>
+              <img class="heart-Kfo" src="/assets/heart-oVj.png"/>
             </div>
           </div>
           <div class="poster01-psT">
@@ -157,7 +134,7 @@
                 <div class="frameeventstate-nxh">공연 종류</div>
                 <div class="eventname-qvy">공연 이름</div>
               </div>
-              <img class="heart-Zry" src="./assets/heart.png"/>
+              <img class="heart-Zry" src="/assets/heart.png"/>
             </div>
           </div>
           <div class="poster01-7db">
@@ -168,7 +145,7 @@
                 <div class="frameeventstate-o93">공연 종류</div>
                 <div class="eventname-gTj">공연 이름</div>
               </div>
-              <img class="heart-q5j" src="./assets/heart-mJ1.png"/>
+              <img class="heart-q5j" src="/assets/heart-mJ1.png"/>
             </div>
           </div>
           <div class="poster01-9s7">
@@ -179,7 +156,7 @@
                 <div class="frameeventstate-JdX">공연 종류</div>
                 <div class="eventname-NNV">공연 이름</div>
               </div>
-              <img class="heart-tbj" src="./assets/heart-u7X.png"/>
+              <img class="heart-tbj" src="/assets/heart-u7X.png"/>
             </div>
           </div>
         </div>
@@ -188,19 +165,19 @@
         <div class="bottomline-MkD">
         </div>
         <div class="paging-F4u">
-          <img class="btndoubleprevious-9g5" src="./assets/btndoubleprevious-yHs.png"/>
-          <img class="btnprevious-UCZ" src="./assets/btnprevious-WRw.png"/>
-          <img class="item-1-1iH" src="./assets/-dtV.png"/>
-          <img class="item-2-8nu" src="./assets/-Fmb.png"/>
-          <img class="item-3-rU1" src="./assets/-zhP.png"/>
-          <img class="item-4-QVX" src="./assets/-e3b.png"/>
-          <img class="item-5-MvZ" src="./assets/-TBw.png"/>
-          <img class="item-6-Tih" src="./assets/-wbw.png"/>
-          <img class="item-7-1kD" src="./assets/-Wuw.png"/>
-          <img class="item-8-9Ld" src="./assets/-85F.png"/>
-          <img class="item-9-f45" src="./assets/-Sdf.png"/>
-          <img class="btnnext-1Nq" src="./assets/btnnext-yfP.png"/>
-          <img class="btndoublenext-KuK" src="./assets/btndoublenext-Spq.png"/>
+          <img class="btndoubleprevious-9g5" src="/assets/btndoubleprevious-yHs.png"/>
+          <img class="btnprevious-UCZ" src="/assets/btnprevious-WRw.png"/>
+          <img class="item-1-1iH" src="/assets/-dtV.png"/>
+          <img class="item-2-8nu" src="/assets/-Fmb.png"/>
+          <img class="item-3-rU1" src="/assets/-zhP.png"/>
+          <img class="item-4-QVX" src="/assets/-e3b.png"/>
+          <img class="item-5-MvZ" src="/assets/-TBw.png"/>
+          <img class="item-6-Tih" src="/assets/-wbw.png"/>
+          <img class="item-7-1kD" src="/assets/-Wuw.png"/>
+          <img class="item-8-9Ld" src="/assets/-85F.png"/>
+          <img class="item-9-f45" src="/assets/-Sdf.png"/>
+          <img class="btnnext-1Nq" src="/assets/btnnext-yfP.png"/>
+          <img class="btndoublenext-KuK" src="/assets/btndoublenext-Spq.png"/>
         </div>
       </div>
     </div>

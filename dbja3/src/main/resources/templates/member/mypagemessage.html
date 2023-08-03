@@ -1,75 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>mypage_message</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A400"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="./styles/mypagemessage.css"/>
-</head>
+  <title>받은 쪽지함</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+<link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/styles/mypagemessage.css}"/></head>
 <body>
-<div class="mypagemessage-Y2V">
-  <div class="header-Ugq">
-    <p class="logo-Mkd">
-    컬쳐
-    <br/>
-    모아
-    </p>
-    <div class="searchbar-gY1">
-      <div class="searchicon-Qiu">
-        <img class="iconsearch-L6m" src="./assets/iconsearch-G73.png"/>
-      </div>
-      <div class="searchtext-edF">검색어를 입력하세요.</div>
-      <div class="divsearch-eWm">
-      </div>
-    </div>
-    <div class="login-y3F">로그인</div>
-    <div class="signup-4Kb">회원가입</div>
-  </div>
-  <div class="gnb-4D7">
-    <div class="divintro-aSM">소개</div>
-    <div class="divevent-G4H">행사소식</div>
-    <div class="divcommunity-m13">커뮤니티</div>
-    <div class="divfaq-g81">FAQ</div>
-    <div class="divmypage-NmX">마이페이지</div>
-    <div class="divopentalk-VLM">
-      <img class="iconopentalk-CVf" src="./assets/iconopentalk-Z3f.png"/>
-      <div class="opentalk-Lbs">오픈톡</div>
-    </div>
-    <div class="divmessage-Dff">
-      <img class="iconmessage-M1B" src="./assets/iconmessage-U6d.png"/>
-      <div class="message-F6Z">쪽지</div>
-    </div>
-  </div>
+<div class="mypagemessage-Y2V" layout:fragment="content">
   <div class="main-KcD">
     <div class="headerframe-fg5">
-      <div class="home-ao3">홈</div>
-      <img class="icon-XCV" src="./assets/icon-3Jh.png"/>
+	  <a th:href="@{/mainPage}">
+      	<div class="home-ao3">홈</div>
+      </a>
+      <img class="icon-XCV" src="/assets/icon-3Jh.png"/>
       <div class="auto-group-1swr-2Q9">
-        <div class="mypage-aAm">마이페이지</div>
-        <img class="icon-697" src="./assets/icon-nyP.png"/>
+		<a th:href="@{/member/mypage}">
+        	<div class="mypage-aAm">마이페이지</div>
+        </a>
+        <img class="icon-697" src="/assets/icon-nyP.png"/>
       </div>
-      <div class="message-RhB">쪽지함</div>
+      <a th:href="@{/member/mypagemessage}">
+      	<div class="message-RhB">쪽지함</div>
+      </a>
     </div>
     <div class="divmain-85o">
       <div class="auto-group-wxay-UQZ">
         <div class="filter-nw3">
-          <div class="registration-MDT">회원정보</div>
+		  <a th:href="@{/member/mypage}">
+          	<div class="registration-MDT">회원정보</div>
+          </a>
           <div class="middleline-eyF">
           </div>
-          <div class="message-n3s">쪽지함</div>
+          <a th:href="@{/member/mypagemessage}">
+          	<div class="message-n3s">쪽지함</div>
+          </a>
           <div class="middleline-ueH">
           </div>
-          <div class="like-rZX">관심목록</div>
+          <a th:href="@{/member/mypagelike}">
+          	<div class="like-rZX">관심목록</div>
+          </a>
         </div>
         <div class="messagebtn-xsT">
-          <div class="receivebtn-tFK">받은 쪽지함</div>
-          <div class="sendbtn-ugD">보낸 쪽지함</div>
+      	<div class="receivebtn-tFK">받은 쪽지함</div>
+          <a th:href="@{/member/mypagemessagesend}">
+          	<div class="sendbtn-ugD">보낸 쪽지함</div>
+          </a>
         </div>
       </div>
       <div class="divlist-CQR">
@@ -86,40 +68,46 @@
             <div class="delete-NVF">삭제</div>
           </div>
         </div>
+        
+        <!--받은 쪽지 목록-->
         <div class="messagelist-HcD">
-          <div class="message-P9T">
-            <div class="auto-group-jmvt-7bF">
-              <div class="btncheck-rYq">
-                <div class="rectangle-137-C6u">
-                </div>
-              </div>
-              <div class="num-7Ds">0000</div>
-              <div class="id-Qyf">test</div>
-              <div class="receivedate-Ypy">YYYY-MM-DD</div>
-              <div class="content-s6Z">받은 쪽지함 내용입니다.</div>
-              <img class="deletebtn-kg9" src="./assets/deletebtn.png"/>
-            </div>
-          </div>
-        </div>
+		  <!-- Thymeleaf iteration over the list of messages -->
+		  <div class="message-P9T" th:each="message : ${messageList}">
+		    <div class="auto-group-jmvt-7bF">
+		      <div class="btncheck-rYq">
+		        <div class="rectangle-137-C6u">
+		          <input type="checkbox" name="messageCheckbox" th:value="${message.mno}">
+		        </div>
+		      </div>
+		      <!-- Display the message details -->
+		      <div class="num-7Ds" th:text="${message.mno}">0000</div>
+		      <div class="id-Qyf" th:text="${message.mid}">test</div>
+		      <div class="receivedate-Ypy" th:text="${message.regdate}">YYYY-MM-DD</div>
+		      <div class="content-s6Z" th:text="${message.mcontent}">받은 쪽지함 내용입니다.</div>
+		      <img class="deletebtn-kg9" src="/assets/deletebtn.png"/>
+		    </div>
+		  </div>
+		</div>
+
         <div class="writebtn-Sos">
-          <img class="item--yYu" src="./assets/-UXb.png"/>
+          <img class="item--yYu" src="/assets/-UXb.png"/>
           <div class="item--iFb">쪽지쓰기</div>
         </div>
       </div>
       <div class="paging-oXw">
-        <img class="btndoubleprevious-JDo" src="./assets/btndoubleprevious-W89.png"/>
-        <img class="btnprevious-ckH" src="./assets/btnprevious-4eV.png"/>
-        <img class="item-1-ZfX" src="./assets/-Y1f.png"/>
-        <img class="item-2-UnV" src="./assets/-1dB.png"/>
-        <img class="item-3-pbT" src="./assets/-hSh.png"/>
-        <img class="item-4-mmb" src="./assets/-PqT.png"/>
-        <img class="item-5-Ko7" src="./assets/-NKK.png"/>
-        <img class="item-6-Scq" src="./assets/-ciM.png"/>
-        <img class="item-7-Q3s" src="./assets/-bMT.png"/>
-        <img class="item-8-x5P" src="./assets/-e3K.png"/>
-        <img class="item-9-tUq" src="./assets/-EtR.png"/>
-        <img class="btnnext-E2u" src="./assets/btnnext-EuF.png"/>
-        <img class="btndoublenext-AhF" src="./assets/btndoublenext-PcV.png"/>
+        <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
+        <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
+        <img class="item-1-ZfX" src="/assets/-Y1f.png"/>
+        <img class="item-2-UnV" src="/assets/-1dB.png"/>
+        <img class="item-3-pbT" src="/assets/-hSh.png"/>
+        <img class="item-4-mmb" src="/assets/-PqT.png"/>
+        <img class="item-5-Ko7" src="/assets/-NKK.png"/>
+        <img class="item-6-Scq" src="/assets/-ciM.png"/>
+        <img class="item-7-Q3s" src="/assets/-bMT.png"/>
+        <img class="item-8-x5P" src="/assets/-e3K.png"/>
+        <img class="item-9-tUq" src="/assets/-EtR.png"/>
+        <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
+        <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
       </div>
     </div>
   </div>

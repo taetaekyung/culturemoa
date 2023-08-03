@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -20,4 +22,5 @@ public class Message {
 	@ManyToOne
 	@JoinColumn(name="id",insertable = true, updatable = true)
 	private Member member;
+	private Date regdate;
 }
