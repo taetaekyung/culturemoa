@@ -100,7 +100,6 @@
 			alert("인증되었습니다.");
 			$.ajax({
 				url:"/changeEmail",
-				data: data,
 				success:function(num) {
 					$("#chkemail").val(num);
 				}
@@ -111,11 +110,6 @@
 			$(".authentication").css("display", "none");
 		}
 	}
-	
-	function editalert(){
-		var msg = '${msg}';
-		alert(msg);
-	}		
 
   </script>
   <style></style>
@@ -123,7 +117,20 @@
 <body>
 <!--mypage 시작-->
 <div class="mypage" layout:fragment="content">
-
+	
+   <!--회원정보 수정이 있는 경우 msg 띄우고, 창 이동 -->
+   <th:block th:if="${msg}!=null">
+		<script>
+			top.alert("[[${msg}]]");
+		</script>
+	</th:block>
+	<th:block th:if="${pagehref}!=null">
+		<script>
+			top.location.href = '[[${pagehref}]]';
+		</script>
+	</th:block>
+	
+	
   <!--div_main 시작-->
   <div class="div_main">
 	<!--main_top 시작-->
@@ -243,7 +250,7 @@
       <!--div_btns 시작-->
       <div class="div_btns">
         <div class="btnchangepwd" onclick="chkpwd()">비밀번호 변경</div>
-        <input type="submit" value="회원정보 수정" onclick="editalert()" class="updateinfobtn"/>
+        <input type="submit" value="회원정보 수정" class="updateinfobtn"/>
         <input type="hidden" name="chkemail" id="chkemail" value="0">
 
       </div>

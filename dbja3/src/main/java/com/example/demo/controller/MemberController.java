@@ -153,9 +153,11 @@ public class MemberController {
 	}
 	
 	
-	// 마이페이지 닉네임과 비밀번호 변경 시
+	// 마이페이지 닉네임과 이메일 변경 시
 	@PostMapping("/member/editmypage")
-	public String editmypage(HttpSession session, String nickname, String email, int chkemail, RedirectAttributes rttr) {
+	public ModelAndView editmypage(HttpSession session, String nickname, String email, int chkemail) {
+		ModelAndView mav = new ModelAndView();
+		
 		Member m = (Member)session.getAttribute("m");
 		
 		if(nickname != null && !nickname.equals("")) {
@@ -166,15 +168,21 @@ public class MemberController {
 			if(!email.equals(m.getEmail())) {
 				if(chkemail == 1) {
 					m.setEmail(email);
-					rttr.addFlashAttribute("msg", "회원정보 수정이 완료되었습니다.");
+					mav.addObject("msg", "회원정보 수정이 완료되었습니다.");
+					mav.addObject("pagehref", "/member/mypage");
 				}
 				else {
-					rttr.addFlashAttribute("msg", "이메일 인증이 되지 않았습니다.");
+					mav.addObject("msg", "이메일 인증이 되지 않았습니다.");
+					mav.addObject("pagehref", "/member/editmypage");
 				}
 			}
+			else {
+				mav.addObject("msg", "회원정보 수정이 완료되었습니다.");
+				mav.addObject("pagehref", "/member/mypage");
+			}
 		}
-		
+		mav.setViewName("/member/editmypage");
 		memberdao_jpa.save(m);
-		return "redirect:/member/mypage";
+		return mav;
 	}
 }
