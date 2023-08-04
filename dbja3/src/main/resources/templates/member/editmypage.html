@@ -77,11 +77,45 @@
 	function getAuthNum(){
 		alert("인증번호가 발송되었습니다.");
 		$(".authentication").css("display", "flex");
+
+		var data = {
+				email: $("#email").val()
+		};
+		
+		$.ajax({
+			url:"/vaildEmail",
+			data: data,
+			success:function(n) {
+				sendNUM = eval(n); // 숫자로 변환
+			}
+		});	
 	}	
 	
 	function checkAuthNum(){
-		alert("인증되었습니다.");
-	}	
+		userNUM = eval($("#authnum").val());
+		var data = {
+				email: $("#email").val()
+		};
+		if(userNUM == sendNUM) {
+			alert("인증되었습니다.");
+			$.ajax({
+				url:"/changeEmail",
+				data: data,
+				success:function(num) {
+					$("#chkemail").val(num);
+				}
+			});	
+		}else {
+			alert("인증에 실패하였습니다.");
+			$("#email").val("");
+			$(".authentication").css("display", "none");
+		}
+	}
+	
+	function editalert(){
+		var msg = '${msg}';
+		alert(msg);
+	}		
 
   </script>
   <style></style>
@@ -176,17 +210,17 @@
         <!--div_email 시작-->
         <div class="div_email">
           <div class="email_text">이메일</div>
-          <input type="text" name="email" class="useremail" th:value="${session.m.email}"/>
+          <input type="text" name="email" id="email" class="useremail" th:value="${session.m.email}"/>
           <div class="btnsubmit" onclick="getAuthNum()">인증요청</div>
         </div>
         <!--div_email 끝-->
 
+
 		<!--authentication 시작-->
         <div class="authentication">
 		  <div class="authnum_text">인증번호</div>
-          <input type="text" name="authnum" class="authnum" value="543214"/>
+          <input type="text" name="authnum" id="authnum" class="authnum"/>
           <div class="btncheck" onclick="checkAuthNum()">인증확인</div>
-
 		</div>
 		<!--authentication 끝-->
         
@@ -209,7 +243,9 @@
       <!--div_btns 시작-->
       <div class="div_btns">
         <div class="btnchangepwd" onclick="chkpwd()">비밀번호 변경</div>
-        <input type="submit" value="회원정보 수정" class="updateinfobtn"/>
+        <input type="submit" value="회원정보 수정" onclick="editalert()" class="updateinfobtn"/>
+        <input type="hidden" name="chkemail" id="chkemail" value="0">
+
       </div>
       <!--div_btns 끝-->
     </div>
