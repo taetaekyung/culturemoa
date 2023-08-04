@@ -15,6 +15,18 @@ import jakarta.transaction.Transactional;
 
 @Repository
 public interface ReviewBoardDAO_jpa extends JpaRepository<Reviewboard, Integer> {
+	//조회수 업데이트
+	@Modifying
+	@Transactional
+	@Query(value="update Reviewboard r set r.reviewhit=?1 where r.reviewno=?2", nativeQuery = true)
+	public int updateHit(int like,int reviewno);
+	
+	//좋아요 개수 업데이트
+	@Modifying
+	@Transactional
+	@Query(value="update Reviewboard r set r.reviewlike=?1 where r.reviewno=?2", nativeQuery = true)
+	public int plusLike(int like,int reviewno);
+	
 	//REVIEWNO로 찾기
 	 @Query("select r from Reviewboard r where r.reviewno = ?1")
 	 public Reviewboard findByNo(int reviewno);

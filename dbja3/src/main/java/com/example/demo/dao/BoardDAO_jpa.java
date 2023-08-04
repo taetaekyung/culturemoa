@@ -6,17 +6,41 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Board;
+import com.example.demo.entity.Reviewboard;
+
+import jakarta.transaction.Transactional;
 
 @Repository
 public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
+	//조회수 업데이트
+	@Modifying
+	@Transactional
+	@Query(value="update Board b set b.boardhit=?1 where b.boardno=?2", nativeQuery = true)
+	public int updateHit(int like,int boardno);
+	
+	//좋아요 개수 업데이트
+	@Modifying
+	@Transactional
+	@Query(value="update Board b set b.boardlikes=?1 where b.boardno=?2", nativeQuery = true)
+	public int updatefreeLike(int like,int boardno);
 
-	@Query(value = "select * from Board where bcategory=:bcategory and boardtitle like CONCAT(CONCAT('%', :keyword), '%') or boardcontent like CONCAT(CONCAT('%', :keyword), '%')", nativeQuery=true)
-	public Page<Board> findByBcategory(@Param("bcategory") String bcategory,@Param("keyword") String keyword, Pageable pageable);
+	//REVIEWNO로 찾기
+	 @Query("select b from Board b where b.boardno = ?1")
+	 public Board findByNo(int boardno);
+	 
+	 //다음 reviewno찾기
+	 @Query("select nvl(Max(b.boardno),0)+1 from Board b ")
+	 public int findNextNo();
+	 
+	 @Query(value = "select b from Board b where b.bcategory=?1 and (b.boardtitle like CONCAT(CONCAT('%', ?2), '%') or b.boardcontent like CONCAT(CONCAT('%', ?2), '%'))")
+	 public Page<Board> findByBcategory(String bcategory, String keyword, Pageable pageable);
+
 
 	@Query(value = "select count(*) from Board where bcategory=?1", nativeQuery = true)
 	public int getTotalRecord(String bcategory);

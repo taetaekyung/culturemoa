@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
@@ -11,6 +11,94 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/freeDetail.css}"/>
 </head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+	//좋아요 index
+	var likeIndex=0;
+	//좋아요 업데이트
+	function pluslike(){
+		//게시물 번호
+		var boardno=$("#boardno").val();
+		//좋아요 개수 
+		var like=$(".like").text();
+		like=parseInt(like);
+		//likIndex가 0이면 빈 별 1이면 채워진 별
+		if(likeIndex==0){
+			//별이 빈별에서 채워진 별로 바뀜
+			$(".star").attr("src","/assets/bookmark-Bkd.png");
+			//개수 추가
+			like=like+1;		
+			//페이지에 반영
+			$(".like").text(like);
+			likeIndex=1;
+			
+		}else{
+			$(".star").attr("src","/assets/star2.png");
+			like=like-1;
+			$(".like").text(like);
+			likeIndex=0;
+		}
+		
+		//db변경
+		$.ajax({
+			type:"GET",
+			url:"/updatefreeLike",
+			data:{like:like,boardno:boardno},
+			success:function(){
+				
+			}
+		});
+	}	
+	//조회수 업데이트
+	$(document).ready(function(){
+		//게시물 번호
+		var boardno=$("#boardno").val();
+		//조회수 가져오기
+		var hit=$(".hittitile-v8R").text();
+		//조회수+1
+		hit=parseInt(hit);
+		hit=hit+1;
+		$(".hittitile-v8R").text(hit);
+		//조회수 db저장
+		$.ajax({
+			type:"GET",
+			url:"/updatefreeHit",
+			data:{hit:hit,boardno:boardno},
+			success:function(){
+			}
+		});
+	});
+	//목록으로 돌아가기
+	function goFree(){
+		var free = "/boards/board/freelist";
+        window.location.href = free;
+	}
+	//본인이 작성한 글일 경우 '수정,삭제,목록' 아닐경우 '목록'만 보이기
+	$(function(){
+		var id=$("#id").val();
+		var writer=$(".inputwriter-jRK").text();
+		//수정버튼
+		const btn1 = document.querySelector(".updatebtn-Rcu"); 
+		//삭제버튼
+        const btn2 = document.querySelector(".deletebtn-3eH");
+		if(id==writer){
+	        btn1.style.visibility = 'visible';
+	        btn2.style.visibility = 'visible';
+	        
+		}else{
+			btn2.style.visibility = 'hidden';
+        	btn1.style.visibility = 'hidden';
+		}
+	})
+	//수정 버튼 클릭시 수정 페이지로 이동
+	function update(){
+		var boardno=$("#boardno").val();
+		console.log(boardno);
+		var boardUpdate = '/boards/board/updateFree?boardno=' + boardno;
+        window.location.href = boardUpdate;
+		
+	}
+</script>
 <body>
 <div class="boardtogetherdetail-7Ey">
   <div class="header-dz1">
@@ -55,7 +143,7 @@
             <img class="icon-HkM" src="./assets/icon-z4h.png"/>
             <div class="board-pkH">게시판</div>
             <img class="icon-Lid" src="./assets/icon-J1o.png"/>
-            <div class="freetogether-V5j">자유 / 동행</div>
+            <div class="freetogether-V5j">자유</div>
           </div>
         </div>
       </div>
@@ -63,37 +151,50 @@
     <div class="maincontent-1Jy">
       <div class="divtitle-6bK">
         <div class="divmaintitle-3WZ">
-          <div class="category-P4d">[동행]</div>
-          <div class="title-gZX">제목</div>
+		  <!--boardno -->
+		  <input id="boardno" type="hidden" th:value="${b.boardno}">
+		  <!--id -->
+		  <input type="hidden" id="id" th:value="${id}"> 
+          <div class="category-P4d">[자유]</div>
+           <!--제목 -->
+          <div class="title-gZX" th:text="${b.boardtitle}"></div>
+          <!--좋아요 수-->
+          <div class="like" th:text="${b.boardlikes}"></div>
+          <!--좋아요별-->
+          <img class="star" src="/assets/star2.png" onclick="pluslike()">
         </div>
         <div class="divsubtitle-RX7">
           <div class="auto-group-mqft-ZtD">
+		    <!--작성자 -->  
             <div class="divwrtier-UkH">
               <div class="writer-oGm">작성자</div>
-              <div class="inputwriter-jRK">feddie</div>
+              <div class="inputwriter-jRK" th:text="${b.member.id}"></div>
             </div>
             <div class="line1-3gu">
             </div>
-            <div class="regdate-Q1f">2023 / 07 / 12</div>
+            <!--작성일 -->
+            <div class="regdate-Q1f" th:text="${b.regdate}"></div>
             <div class="line2-jJq">
             </div>
           </div>
+          <!--조회수 -->
           <div class="divhi-Tkd">
             <div class="hitinput-RxM">조회수 </div>
-            <div class="hittitile-v8R">17</div>
+            <div class="hittitile-v8R" th:text="${b.boardhit}"></div>
           </div>
         </div>
       </div>
       <div class="middleline-oT7">
       </div>
+      <!--게시글 내용 -->
       <div class="divcontent-vnd">
-        <div class="file-3sF">
-        </div>
-        <p class="content-mYM">게시글 내용</p>
+        <div class="content-mYM" th:utext="${b.boardcontent}"></div>
       </div>
+      <!--버튼 --> 
       <div class="mainfooter-5ow">
-        <div class="updatebtn-Rcu">수정하기</div>
-        <div class="deletebtn-3eH">삭제하기</div>
+        <div class="updatebtn-Rcu" onclick="update()">수정하기</div>
+        <div class="deletebtn-3eH" onclick="remove()">삭제하기</div>
+        <div  class="listbtn" onclick=" goFree()">목록보기</div>
       </div>
     </div>
   </div>

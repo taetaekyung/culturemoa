@@ -15,6 +15,23 @@ input {
 body {
   width: 192rem;
 }
+.like{
+  display: block;
+  margin-left: auto;
+  font-size: 2rem;
+  line-height: 1.4475;
+  color:darkgray;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  
+}
+.star{
+	display: block;
+	margin-left: 1rem;
+	width: 3rem;
+	cursor: pointer;
+	
+}
 
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K .listbtn {
   width: 10.7rem;
@@ -399,13 +416,13 @@ body {
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .divtitle-uJq {
-  margin: 0rem 81.2rem 4rem 0rem;
-  width: 37.65rem;
+  margin: 0rem 0rem 4rem 0rem;
+  width: 100%;
   flex-shrink: 0;
 }
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .divtitle-uJq .divmaintitle-DqK {
   margin: 0rem 0rem 0.6rem 0rem;
-  width: calc(100% - 24.2rem);
+  /*width: calc(100% - 24.2rem);*/
   display: flex;
   align-items: center;
 }
@@ -641,7 +658,7 @@ body {
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .maincontent-zws .file-tbK {
   margin-bottom: 3.6rem;
   width: 98%;
-  min-height: 47.5rem;
+  min-height: 67.5rem;
   border:solid 0.2rem lightgray;
   border-radius: 2rem;
   flex-shrink: 0;

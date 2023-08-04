@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/styles/insertBoard_free.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/updateFree.css}"/>
    <!-- include libraries(jQuery, bootstrap) -->
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -25,10 +25,7 @@
 .note-editor.note-frame, .note-editor.note-airframe{
 	margin-top:22rem;
 }	
-input[type="radio"], input[type="checkbox"] {
-	 margin-bottom: 0.5rem;
-	 margin-right: 0.5rem;
-}
+
 </style>
 <script>
 	//파일이 있을 시 
@@ -101,6 +98,7 @@ input[type="radio"], input[type="checkbox"] {
          }
         e.preventDefault();
    });	
+   
    //목록으로 이동하기
    function goReview(){
 	   var review = "/boards/review/reviewlist";
@@ -148,60 +146,43 @@ input[type="radio"], input[type="checkbox"] {
     </div>
     
     <div class="divmain-QPs">
-		<form id="board" role="form" action="/free" method="post"> 
+		<form id="board" role="form" action="/freeUpdate" method="post"> 
+		<!-- 게시글 번호 -->
+		<input type="hidden" name="boardno" th:value="${b.boardno}">
+		<input type="hidden" name="boardlikes" th:value="${b.boardlikes}">
+		<input type="hidden" name="boardhit" th:value="${b.boardhit}">
 		<div class="auto-group-zphp-V5s">
 		<!-- 작성자 -->	
         <div class="divwriter-RVK">
           <div class="writertitle-YK3">작성자</div>
-          <div class="writerinput-ecy" name="member.id" th:text="${id}"></div>
+          <div class="writerinput-ecy" name="member.id" th:text="${b.member.id}"></div>
         </div>
         
         <div class="divcategory-ZE9">
-			
           <div class="categorytitle-6zm">카테고리</div>
-          
-          <!--라디오 버튼 -->
-          <fieldset>
-		  <label>
-		    <input type="radio" name="bcategory" value="자유" checked />
-		    <span>자유게시글</span>
-		  </label>
-		
-		  <label>
-		    <input type="radio" name="bcategory" value="동행" />
-		    <span>동행게시글</span>
-		  </label>
-		
-		  <label>
-		    <input type="radio" name="bcategory" value="후기" disabled />
-		    <span>후기게시글</span>
-		  </label>
-		</fieldset>
- 
+ 		  <div class="category"  th:text="${b.bcategory}"></div>
         </div>
       </div>
+      
       <!-- 버튼-->
       <div class="auto-group-mwuv-w8u">
         <div class="golistbtn-FfP" onclick=" goReview()">게시글 목록</div>
         <button class="divwritebtn-9Ey btn">
-          <img class="pencilline-G4h" src="./assets/pencilline-sQV.png"/>
-          <div class="writebtn-mn9">게시글 작성</div>
+          <img class="pencilline-G4h" src="/assets/pencilline-sQV.png"/>
+          <div class="writebtn-mn9">게시글 수정</div>
         </button>
       </div>
       <!-- 버튼 끝 -->
       
       <!--제목 입력 -->
-      <input class="divtitle-bFP" placeholder="제목을 입력해주세요" name="boardtitle" required>
+      <input class="divtitle-bFP" placeholder="제목을 입력해주세요" name="boardtitle" th:value="${b.boardtitle}" required>
       <!--내용 입력 -->
-      <textarea class="form-control" id="summernote" name="Contents"  required></textarea>
+      <textarea class="form-control" id="summernote" name="Contents" th:utext="${b.boardcontent}" required></textarea>
       <div class="bottomline-Bgm">
       </div>
       </form>
       
     </div>
-    
-    
-    
     <div class="paddingright-6Hw">
     </div>
     

@@ -14,7 +14,42 @@ input {
 }
 body {
   width: 192rem;
-}.boardtogetherdetail-7Ey {
+}
+.listbtn {
+  width: 10.7rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: lightgray;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.like{
+  display: block;
+  margin-left: auto;
+  font-size: 2rem;
+  line-height: 1.4475;
+  color:darkgray;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  
+}
+.star{
+	display: block;
+	margin-left: 1rem;
+	width: 3rem;
+	cursor: pointer;
+	
+}
+.boardtogetherdetail-7Ey {
   box-sizing: border-box;
   padding-bottom: 18.3rem;
   width: 100%;
@@ -378,13 +413,12 @@ body {
   flex-shrink: 0;
 }
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .divtitle-6bK {
-  margin: 0rem 81.2rem 3.4rem 0rem;
-  width: 37.4rem;
+  margin: 0rem 0rem 3.4rem 0rem;
+  width:100%;
   flex-shrink: 0;
 }
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .divtitle-6bK .divmaintitle-3WZ {
-  margin: 0rem 26.1rem 0.6rem 0rem;
-  width: calc(100% - 26.1rem);
+  margin: 0rem 0rem 0.6rem 1rem;
   display: flex;
   align-items: center;
 }
@@ -530,13 +564,17 @@ body {
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .divcontent-vnd {
   margin: 0rem 0.4rem 3.5rem 0.6rem;
   box-sizing: border-box;
-  padding-bottom: 51.5rem;
   width: calc(100% - 1rem);
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  border:solid 0.2rem lightgray;
+  border-radius: 2rem;
+   min-height: 67.5rem;
+    padding: 1rem;
+
 }
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .divcontent-vnd .file-3sF {
   margin-bottom: 3.7rem;
@@ -555,13 +593,15 @@ body {
   flex-shrink: 0;
 }
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .mainfooter-5ow {
-  margin-left: 95.4rem;
+  margin-left: 83rem;
   width: calc(100% - 95.4rem);
   height: 4.6rem;
   display: flex;
   align-items: center;
   border-radius: 1rem;
   flex-shrink: 0;
+   margin-right: 13.5rem;
+
 }
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .mainfooter-5ow .updatebtn-Rcu {
   margin-right: 1.8rem;
@@ -579,6 +619,7 @@ body {
   background-color: #018bf8;
   border-radius: 1rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .boardtogetherdetail-7Ey .main-QuX .maincontent-1Jy .mainfooter-5ow .deletebtn-3eH {
   width: 10.7rem;
@@ -595,4 +636,6 @@ body {
   background-color: #fe7497;
   border-radius: 1rem;
   flex-shrink: 0;
+  cursor: pointer;
+  margin-right: 1.8rem;
 }

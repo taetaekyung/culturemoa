@@ -192,6 +192,7 @@ body {
   background-color: #ffffff;
   border: #ffffff 0.1rem;
   border-radius: 0 1rem 1rem 0;
+  cursor: pointer;
 }
 .freelist .main .main_content .main_content_top .main_searchbar .searchbtn .search_icon {
   width: 2.1558rem;
@@ -428,6 +429,7 @@ body {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .freelist .main .main_content .main_content_middle .list .div_list .dno {
   width: 15rem;

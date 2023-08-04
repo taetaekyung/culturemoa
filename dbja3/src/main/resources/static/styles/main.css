@@ -565,6 +565,7 @@ body {
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .main-mVB .main-Fpu .auto-group-ejdf-2Y9 .news-z8q .auto-group-zqav-fXo .btnslide2-RWy .newsbtnnext-gSu {
   margin-top: 0.1rem;
@@ -574,6 +575,7 @@ body {
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .main-mVB .main-Fpu .auto-group-ejdf-2Y9 .news-z8q .auto-group-zqav-fXo .poster-Qth {
   width: 115.9rem;

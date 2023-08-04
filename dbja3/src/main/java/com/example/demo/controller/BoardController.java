@@ -66,14 +66,26 @@ public class BoardController {
 	@Autowired
 	private ReviewBoardDAO_jpa reviewboarddao_jpa;
 	//-----------------------후기 게시판
+	//조회수 추가
+	@GetMapping("/updateHit")
+	@ResponseBody
+	public void updateHit(int hit,int reviewno) {
+		int re=reviewboarddao_jpa.updateHit(hit, reviewno);
+	}
+	//좋아요 개수 추가
+	@GetMapping("/plusLike")
+	@ResponseBody
+	public void plusLike(int like,int reviewno) {
+		int re=reviewboarddao_jpa.plusLike(like, reviewno);
+	}
+	
 	//게시글 삭제
 	@GetMapping("/deleteReview")
 	@ResponseBody
 	public void deleteReview(@RequestParam int reviewno) {
-		System.out.println("여기와?");
 		int re=reviewboarddao_jpa.deleteByNo(reviewno);
-		System.out.println("re:"+re);
 	}
+	
 	//게시물 수정 페이지 이동
 	@GetMapping("/boards/review/reviewUpdate")
 	public void reviewupdate(@RequestParam int reviewno,Model model) {
@@ -105,9 +117,7 @@ public class BoardController {
 		member.setId(id);
 		// Reviewboard 객체에 Member 객체 설정
 		r.setMember(member);
-			
 		r.setRegdate(new Date());
-		r.setReviewhit(1);
 		r.setReviewcontent(Contents);
 		reviewboarddao_jpa.save(r);
 		return mav;
@@ -224,14 +234,13 @@ public class BoardController {
 	public ModelAndView board(Reviewboard r,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewlist");
 		//게시물 작성하기
-		r.setReviewno(reviewboarddao_jpa.findNextNo());
-	  
+		r.setReviewno(reviewboarddao_jpa.findNextNo());	
 		// Member 객체 생성 및 설정
 		Member member = new Member();
 		member.setId(id);
 		// Reviewboard 객체에 Member 객체 설정
 		r.setMember(member);
-			
+		r.setReviewlike(0);
 		r.setRegdate(new Date());
 		r.setReviewhit(1);
 		r.setReviewcontent(Contents);
@@ -275,6 +284,78 @@ public class BoardController {
 	}
 	//-----------------------
 	//-----------------------자유게시판
+	//자유 게시글 수정
+	@PostMapping("/freeUpdate")
+	public ModelAndView freeUpdate(Board b,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/board/freelist");
+		//게시물 작성하기
+		// Member 객체 생성 및 설정
+		Member member = new Member();
+		member.setId(id);
+		b.setMember(member);
+		b.setRegdate(new Date());
+		b.setBoardcontent(Contents);
+		b.setBcategory("자유");
+		boarddao_jpa.save(b);
+		return mav;
+	}
+	
+	//게시물 수정 페이지 이동
+	@GetMapping("/boards/board/updateFree")
+	public void boardupdate(@RequestParam int boardno,Model model) {
+
+		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
+		model.addAttribute("id", id);
+
+		
+	}
+	//조회수 추가
+	@GetMapping("/updatefreeHit")
+	@ResponseBody
+	public void updatefreHit(int hit,int boardno) {
+		int re=boarddao_jpa.updateHit(hit, boardno);
+	}
+	
+	//좋아요 개수 추가
+	@GetMapping("/updatefreeLike")
+	@ResponseBody
+	public void updatefreeLike(int like,int boardno) {
+		int re=boarddao_jpa.updatefreeLike(like, boardno);
+	}
+	
+	//게시물 상세 페이지 이동
+	@GetMapping("/boards/board/freeDetail")
+	public String freeDetail(@RequestParam int boardno,Model model) {
+		Board board=new Board();
+		board=boarddao_jpa.findByNo(boardno);
+		//게시물 내용 가져오기
+		model.addAttribute("b", board);
+		//아이디
+		model.addAttribute("id", id);
+		return "/boards/board/freeDetail";
+	}
+	//자유 게시글 작성 페이지
+	@GetMapping("/boards/board/insertBoard_free")
+	public void free(Model model) {
+		model.addAttribute("id", id);
+	}
+	//게시글 저장
+	@PostMapping("/free")
+	public ModelAndView free(Board b,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/board/freelist");
+		b.setBoardno(boarddao_jpa.findNextNo());
+		Member member = new Member();
+		member.setId(id);
+		b.setMember(member);
+		b.setBoardlikes(0);
+		b.setRegdate(new Date());
+		b.setBoardhit(1);
+		b.setBoardcontent(Contents);
+		boarddao_jpa.save(b);
+		return mav;
+	}
+	
+	//게시글 list
 	@GetMapping(value={"/boards/board/freelist", "/boards/board/freelist/", "/boards/board/freelist/{page}", 
 			"/boards/board/freelist/{keyword}/{page}", "/boards/board/freelist/{keyword}/{page}/{orderby}"})
 	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 
@@ -343,7 +424,7 @@ public class BoardController {
 	        }
 	        currentRow.add(board);
 	    }
-		
+	    
 		mav.addObject("list", boardlist);
 		mav.addObject("currentPage", page);
 		mav.addObject("totalPages", list.getTotalPages());
