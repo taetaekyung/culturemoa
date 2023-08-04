@@ -9,6 +9,8 @@ import java.net.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.ApiService;
 
@@ -23,9 +25,10 @@ public class ApiController {
 
 	// service 선언
 	
-	@GetMapping("/EventApi")
-	// localhost:8080/api 호출 시 실행
-	public void callFestivalApi() throws IOException {
+	@RequestMapping("/EventApi")
+	@ResponseBody
+	// localhost:8080/EventApi 호출 시 실행
+	public String callFestivalApi() throws IOException {
 		for(int i=1; i<= ApiService.size; i++) {
 			// service에서 선언한 80번 반복
 			StringBuilder result = new StringBuilder();
@@ -53,6 +56,7 @@ public class ApiController {
 			// Service로 값 넘겨줌.
 			System.out.println(i+"번째 컨트롤러 동작 완료");
 		}
+		return "완료";
 	}
 	
 }

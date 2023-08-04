@@ -185,4 +185,17 @@ public class MemberController {
 		memberdao_jpa.save(m);
 		return mav;
 	}
+	
+	/* -----------마이페이지-회원탈퇴------------ */
+	
+	// 마이페이지-비밀번호 변경 페이지
+	@GetMapping("/member/deletemember")
+	public ModelAndView deletemember(HttpSession session) {
+		ModelAndView mav = new ModelAndView("redirect:/mainPage");
+		String id = ((Member) session.getAttribute("m")).getId();
+		memberdao_jpa.deleteById(id);
+		session.setAttribute("m", null); // 세션파기
+		return mav;
+	}
+	
 }

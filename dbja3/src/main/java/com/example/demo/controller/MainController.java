@@ -64,7 +64,10 @@ public class MainController {
    @GetMapping("/mainPage")
    public void mainPage(Model model, HttpSession session) {
 	  //session으로 Member Entity 전달하기
-	  Member m = memberdao_jpa.findById(id).get();
+	   Member m = null;
+	  if(id != null && !id.equals("") && memberdao_jpa.countById(id) != 0) {
+		  m = memberdao_jpa.findById(id).get();
+	  }
 	  session.setAttribute("m", m);
 	   
 	   
@@ -102,7 +105,6 @@ public class MainController {
       List<OpentalkVO> list=null;
       list=opentalkdao_mb.findAllTalk();
       model.addAttribute("talk", list);
-      model.addAttribute("id", id);
       model.addAttribute("now", nowNo);
    }
    

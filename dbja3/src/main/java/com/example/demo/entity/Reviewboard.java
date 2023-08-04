@@ -19,7 +19,7 @@ import lombok.Data;
 @Table(name="reviewboard")
 public class Reviewboard {
 	@Id
-	private int reviewno;
+	private Integer reviewno;
 	
 	private String reviewtitle;
 	private String reviewcontent;
@@ -34,7 +34,7 @@ public class Reviewboard {
 	private Event event;
 	
 	private Date regdate;
-	private int reviewlike;
+	private Integer reviewlike;
 	
 	@OneToMany(mappedBy = "reviewboard", cascade=CascadeType.REMOVE)
 	private List<ReviewComment> reviewcomments = new ArrayList<>();
