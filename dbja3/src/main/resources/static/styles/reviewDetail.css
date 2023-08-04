@@ -15,36 +15,7 @@ input {
 body {
   width: 192rem;
 }
-.boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter{
-  margin-left: 95.65rem;
-  width: calc(100% - 95.65rem);
-  height: 4.6rem;
-  display: flex;
-  align-items: center;
-  border-radius: 1rem;
-  flex-shrink: 0;
-  margin-right: 0.5rem;
-  position: absolute;
-  left: 48.4rem;
-  top:124rem;
-}
-.boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter .listbtn {
-  width: 10.7rem;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 1.4475;
-  color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  background-color: #fe7497;
-  border-radius: 1rem;
-  flex-shrink: 0;
-  cursor: pointer;
-}
+
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K .listbtn {
   width: 10.7rem;
   height: 100%;
@@ -694,10 +665,8 @@ body {
   align-items: center;
   border-radius: 1rem;
   flex-shrink: 0;
-  margin-right: 0.5rem;
-  position: absolute;
-  left: 36rem;
-  top:124rem;
+  margin-right: 13.5rem;
+
 }
 
 .boardreviewdetail-XaZ .main-pUR .divmain-bZ3 .mainfooter-m9K .updatebtn-Jf3 {

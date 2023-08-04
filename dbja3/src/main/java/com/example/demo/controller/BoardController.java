@@ -65,12 +65,60 @@ public class BoardController {
 	private EventDAO_jpa eventdao_jpa;
 	@Autowired
 	private ReviewBoardDAO_jpa reviewboarddao_jpa;
-	
+	//-----------------------후기 게시판
+	//게시글 삭제
+	@GetMapping("/deleteReview")
+	@ResponseBody
+	public void deleteReview(@RequestParam int reviewno) {
+		System.out.println("여기와?");
+		int re=reviewboarddao_jpa.deleteByNo(reviewno);
+		System.out.println("re:"+re);
+	}
+	//게시물 수정 페이지 이동
+	@GetMapping("/boards/review/reviewUpdate")
+	public void reviewupdate(@RequestParam int reviewno,Model model) {
+		Reviewboard review=new Reviewboard();
+		review=reviewboarddao_jpa.findByNo(reviewno);
+		//후기 게시물 행사번호
+		int eventno=review.getEventno();  
+		//게시물 내용 가져오기
+		model.addAttribute("r", review);
+		//아이디
+		model.addAttribute("id", id);
+		//공연정보
+		Event event=new Event();
+		event= eventdao_jpa.findByEventno(eventno);
+		model.addAttribute("event", event);
+		
+		Date today=new Date();
+		model.addAttribute("today", today);
+		//행사리스트
+		model.addAttribute("list", eventdao_jpa.findAll());
+	}
+	//후기 게시글 수정
+	@PostMapping("/boardUpdate")
+	public ModelAndView boardUpdate(Reviewboard r,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewlist");
+		//게시물 작성하기
+		// Member 객체 생성 및 설정
+		Member member = new Member();
+		member.setId(id);
+		// Reviewboard 객체에 Member 객체 설정
+		r.setMember(member);
+			
+		r.setRegdate(new Date());
+		r.setReviewhit(1);
+		r.setReviewcontent(Contents);
+		reviewboarddao_jpa.save(r);
+		return mav;
+	}
+	//게시물 상세 페이지 이동
 	@GetMapping("/boards/review/reviewDetail")
 	public String reviewDetail(@RequestParam int reviewno,Model model) {
 		Reviewboard review=new Reviewboard();
 		review=reviewboarddao_jpa.findByNo(reviewno);
-		int eventno=review.getEventno();
+		//후기 게시물 행사번호
+		int eventno=review.getEventno();  
 		//게시물 내용 가져오기
 		model.addAttribute("r", review);
 		//아이디
@@ -88,8 +136,6 @@ public class BoardController {
 		return "/boards/review/reviewDetail";
 	}
 	
-	
-	//--------------------------review
 	@GetMapping(value={"/boards/review/reviewlist", "/boards/review/reviewlist", "/boards/review/reviewlist/{page}", 
 			"/boards/review/reviewlist/{keyword}/{page}", "/boards/review/reviewlist/{keyword}/{page}/{orderby}"})
 	public ModelAndView reviewlist(HttpSession session, @PathVariable(required=false) String keyword, 
@@ -192,22 +238,7 @@ public class BoardController {
 		reviewboarddao_jpa.save(r);
 		return mav;
 	}
-	
-	//후기 게시글을 작성하고 목록으로 돌아가면 폴더에 저장된 사진 삭제
-	@PostMapping("/deleteSummernoteImageFile")
-	@ResponseBody
-	public void deleteSummernoteImageFile(@RequestParam("url") String url) {
-		System.out.println("url:"+url);
-		File innerFile=new File(url);
-		innerFile.delete(); // 내부에 저장된 파일 삭제
-		
-		String fileRoot = "C:\\summer\\";	//저장될 외부 파일 경로
-		String savedFileName=url.substring(url.lastIndexOf("/")+1, url.length());
-		System.out.println("savedFileName"+savedFileName);
-		File targetFile = new File(fileRoot + savedFileName);	
-		FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-		
-	}
+
 	
 	//후기 게시글 작성 시 사진이 있으면 폴더에 저장
 	@PostMapping(value="/uploadSummernoteImageFile")
@@ -242,7 +273,8 @@ public class BoardController {
 		
 		return jsonString;
 	}
-	
+	//-----------------------
+	//-----------------------자유게시판
 	@GetMapping(value={"/boards/board/freelist", "/boards/board/freelist/", "/boards/board/freelist/{page}", 
 			"/boards/board/freelist/{keyword}/{page}", "/boards/board/freelist/{keyword}/{page}/{orderby}"})
 	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 

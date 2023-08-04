@@ -9,7 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/styles/insertBoard_review.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/reviewUpdate.css}"/>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- include libraries(jQuery, bootstrap) -->
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -182,8 +182,9 @@
     </div>
     <div class="divmain-uK7">
 		
-	<form id="board" role="form" action="/board" method="post">
-
+	<form id="board" role="form" action="/boardUpdate" method="post">
+	<!-- reviewno-->
+	<input type="hidden" name="reviewno" th:value="${r.reviewno}">
       <div class="auto-group-kd3o-pws">
 		<!-- 작성자 아이디-->
         <div class="divwriter-jZ3">
@@ -192,18 +193,20 @@
         </div>
         <!-- 행사 검색  -->
          <div class="w3-dropdown-hover">
-		   <input type="hidden" id="no" name="event.eventno">
+		   <input type="hidden" id="no" name="event.eventno" th:value="${event.eventno}">
 		   <div class="eventcategory">관람 행사</div>
-		   <input class="w3-input w3-border w3-padding search-LKs" type="text" placeholder="행사이름을 검색해주세요" id="myInput" onkeyup="findEvent()"  required>
+		   <input th:value="${event.eventname}" class="w3-input w3-border w3-padding search-LKs" type="text" placeholder="행사이름을 검색해주세요" id="myInput" onkeyup="findEvent()"  required>
 		   <ul class="w3-ul  eventList" id="myUL" style="visibility: hidden;" >
 		     <li th:each="e:${list}" th:text="${e.eventname}" th:no="${e.eventno}" onclick="selectEvent(this)"></li>
 		   </ul>
 		 </div>
       </div>
-      <!--게시글 작성하기 -->
-      <input class="divtitle-4mf" placeholder="제목을 입력해주세요"  id="reviewtitle" name="reviewtitle" required></input>
+      <!--게시글 수정하기 -->
+      <!--게시글 제목 -->
+      <input th:value="${r.reviewtitle}" class="divtitle-4mf"  placeholder="제목을 입력해주세요"  id="reviewtitle" name="reviewtitle" required></input>
+      <!--게시글 내용 -->
       <div class="form-group">
-    	  <textarea class="contentinput-waZ form-control" id="summernote" name="Contents"  required></textarea>
+    	  <textarea th:utext="${r.reviewcontent}" class="contentinput-waZ form-control" id="summernote" name="Contents"  required></textarea>
       </div>
       <div class="bottomline-TJ1">
       </div>
@@ -212,7 +215,7 @@
         <div class="golistbtn-iDw" onclick=" goReview()">게시글 목록</div>
         <button class="divwritebtn-cid btn" >
           <img class="pencilline-y3P" src="/assets/pencilline-sQV.png"/>
-          <div class="writebtn-6do">게시글 작성</div>
+          <div class="writebtn-6do">게시글 수정</div>
         </button>
       </div>
       
