@@ -166,13 +166,14 @@ public class BoardController {
 		return mav;
 	}
 	
-	
+	//후기 게시글 작성 페이지
 	@GetMapping("/boards/review/insertBoard_review")
 	public void reivew(Model model) {
 		model.addAttribute("list", eventdao_jpa.findAll());
 		model.addAttribute("id", id);
 	}
 	
+	//후기 게시글 작성
 	@PostMapping("/board")
 	public ModelAndView board(Reviewboard r,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewlist");
@@ -192,6 +193,23 @@ public class BoardController {
 		return mav;
 	}
 	
+	//후기 게시글을 작성하고 목록으로 돌아가면 폴더에 저장된 사진 삭제
+	@PostMapping("/deleteSummernoteImageFile")
+	@ResponseBody
+	public void deleteSummernoteImageFile(@RequestParam("url") String url) {
+		System.out.println("url:"+url);
+		File innerFile=new File(url);
+		innerFile.delete(); // 내부에 저장된 파일 삭제
+		
+		String fileRoot = "C:\\summer\\";	//저장될 외부 파일 경로
+		String savedFileName=url.substring(url.lastIndexOf("/")+1, url.length());
+		System.out.println("savedFileName"+savedFileName);
+		File targetFile = new File(fileRoot + savedFileName);	
+		FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+		
+	}
+	
+	//후기 게시글 작성 시 사진이 있으면 폴더에 저장
 	@PostMapping(value="/uploadSummernoteImageFile")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
@@ -203,17 +221,18 @@ public class BoardController {
 				
 		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
 		File targetFile = new File(fileRoot + savedFileName);	
+		System.out.println(targetFile);
 		HashMap<String, String> jsonResponse = new HashMap<>();
+		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
-			System.out.println(fileStream);
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
 			jsonResponse.put("url", "/summernoteImage/" + savedFileName);
 			jsonResponse.put("responseCode", "success");
 
 		} catch (IOException e) {
 			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			 jsonResponse.put("responseCode", "error");
+			jsonResponse.put("responseCode", "error");
 			e.printStackTrace();
 		}
 		 // Gson 객체를 사용하여 HashMap을 JSON 문자열로 변환

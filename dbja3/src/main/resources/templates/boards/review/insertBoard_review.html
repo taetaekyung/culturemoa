@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>board_list_review</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/insertBoard_review.css}"/>
@@ -20,11 +21,11 @@
   <!-- include summernote-ko-KR -->
   <!-- 서머노트를 위해 추가해야할 부분 -->
   <link rel="stylesheet" href="/summernote/summernote-lite.css">
+  
 </head>
-<style>
-
-</style>
 <script>
+	//파일이 있을 시 
+	var url;
 	//summernote 내용 입력하기
 	 $(document).ready(function() {
 	//여기 아래 부분
@@ -66,17 +67,34 @@
 			contentType : false,
 			processData : false,
 			success : function(response) {
-				console.log(response);
-				  // JSON 문자열을 JSON 객체로 파싱
+				// JSON 문자열을 JSON 객체로 파싱
 	            var jsonResponse = JSON.parse(response);
+	            url=jsonResponse.url;
+	            console.log(url);
 	            // url에 접근하여 이미지 삽입
 	            $(editor).summernote('insertImage', jsonResponse.url);
-            	//항상 업로드된 파일의 url이 있어야 한다.
-				//$(editor).summernote('insertImage', response.url);
-				//$(el).summernote('editor.insertImage', response.url);
 				
 			}
 		});
+	}
+	//목록으로 이동하기
+   function goReview(){
+	   if(url!=null){
+		   console.log("1:"+url);
+		   var encodedUrl = encodeURIComponent(url);
+		  // url = decodeURIComponent(url); // URL 디코딩 추가
+		   $.ajax({
+			  url: "deleteSummernoteImageFile?url=" + encodedUrl,
+           	  type: "POST", // 요청 방식을 명시적으로 지정
+			  success:function(){
+				   console.log("와?");
+				   url=null;
+			   }
+		   });
+
+	   };
+	  
+		
 	}
 	$("div.note-editable").on('drop',function(e){
          for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
@@ -129,17 +147,13 @@
 	 function selectEvent(liElement) {
         var eventName = liElement.textContent;
         eventno = liElement.getAttribute("no");
-		console.log(eventno);
 		$("#no").attr("value",eventno);
         document.getElementById("myInput").value = eventName;
         const eventList = document.querySelector(".eventList");
         eventList.style.visibility = "hidden";
     }
-   //목록으로 이동하기
-   function goReview(){
-		var review = "/boards/review/reviewlist";
-        window.location.href = review;
-	}
+    
+   
 </script>
 <body>
 <div class="boardlistreview-gXb">

@@ -87,31 +87,31 @@ html{
    //공연일정 토글 선택
    function toggleEvent(){
        const calendar = document.querySelector("#calendar");
-        const ticket = document.querySelector("#ticket");
-         calendar.style.visibility = 'visible';
-         ticket.style.visibility = 'hidden';
-         //토글버튼 background-color,textColor 변경
-         var toggle1=document.querySelector(".toggle02-JnM");
+       const ticket = document.querySelector("#ticket");
+       calendar.style.visibility = 'visible';
+       ticket.style.visibility = 'hidden';
+       //토글버튼 background-color,textColor 변경
+       var toggle1=document.querySelector(".toggle02-JnM");
        var toggle2=document.querySelector(".toggle01-keM");
        toggle1.classList.remove("toggle02-JnM");
-         toggle1.classList.add("toggle01-keM");
-         toggle2.classList.remove("toggle01-keM");
-         toggle2.classList.add("toggle02-JnM");
+       toggle1.classList.add("toggle01-keM");
+       toggle2.classList.remove("toggle01-keM");
+       toggle2.classList.add("toggle02-JnM");
         
    }
    //티켓오픈 토글 선택
    function toggleTicket(){
-       const calendar = document.querySelector("#calendar");
-       const ticket = document.querySelector("#ticket");
+      const calendar = document.querySelector("#calendar");
+      const ticket = document.querySelector("#ticket");
       calendar.style.visibility = 'hidden';
-        ticket.style.visibility = 'visible';
-        //토글버튼 background-color,textColor 변경
-        var toggle1=document.querySelector(".toggle02-JnM");
+      ticket.style.visibility = 'visible';
+      //토글버튼 background-color,textColor 변경
+      var toggle1=document.querySelector(".toggle02-JnM");
       var toggle2=document.querySelector(".toggle01-keM");
       toggle1.classList.remove("toggle02-JnM");
-        toggle1.classList.add("toggle01-keM");
-        toggle2.classList.remove("toggle01-keM");
-        toggle2.classList.add("toggle02-JnM");
+      toggle1.classList.add("toggle01-keM");
+      toggle2.classList.remove("toggle01-keM");
+      toggle2.classList.add("toggle02-JnM");
    }
    
    //-----주변행사 dropdown
