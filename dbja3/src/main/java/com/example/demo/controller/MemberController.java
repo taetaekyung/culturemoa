@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,6 +25,7 @@ import com.example.demo.dao.MessageDAO_jpa;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Message;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -82,7 +85,40 @@ public class MemberController {
 	}
 	
 	@GetMapping("/member/editpic")
-	public void editpic(HttpSession session) {
+	public void editpic(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("m");
+		String path =  Paths.get(System.getProperty("user.dir"))
+			    .resolve("src").resolve("main").resolve("resources").resolve("static").resolve("profileImage").toString();
+		System.out.println("path: "+path);
+	/*	MultipartFile uploadFile = m.getFname();
+		
+		m.setFname("");
+		String fname = null;
+		
+		//업로드한 파일명을 fname변수에 저장
+		fname = uploadFile.getOriginalFilename();
+
+		if(!fname.equals("") && fname != null) { //업로드한 파일이 있다면
+			System.out.println("업로드 파일이 있어요");
+			try {
+				byte []data = uploadFile.getBytes(); //파일의 내용을 바이트로 가져옴
+				fname = uploadFile.getOriginalFilename(); //업로드한 파일 이름 가져오기
+				FileOutputStream fos = new FileOutputStream(path+"/"+fname); //파일 출력을 위한 스트림 생성
+				fos.write(data); //파일에 출력
+				fos.close(); 
+
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else {
+			System.out.println("업로드 파일이 없어요");
+		}
+		
+		g.setFname(fname);// 업로드 파일 없음: "" 있음: 파일이름
+
+		dao.insert(g); */
 	}
 	
 
