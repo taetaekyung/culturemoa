@@ -126,7 +126,7 @@
     <!--div_myinfo 시작-->
     <div class="div_myinfo">
 		<div class="div_img">
-			<img class="profile_img" src="/profileImage/profile.png"/>
+			<img class="profile_img" th:src="@{'/profileImage/'+${session.m.fname}}"/>
             <img class="pencilline" src="/assets/pencilline-TAy.png"/>
             <a class="a_myinfo" onclick="editpic()" th:text="사진수정" target="_blank"></a>
 		</div>

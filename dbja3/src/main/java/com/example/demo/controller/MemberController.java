@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
@@ -10,6 +12,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +48,8 @@ public class MemberController {
 	
 	
 	@GetMapping("/member/mypage")
-	public void mypage(HttpSession session) {
+	public void mypage() {
+	
 	}
 	
 
@@ -80,47 +84,89 @@ public class MemberController {
 		
 	
 	@GetMapping("/member/editmypage")
-	public void editmypageform(Model model, Member m) {
-		model.addAttribute("m", m);
+	public void editmypageform() {
 	}
 	
 	@GetMapping("/member/editpic")
-	public void editpic(HttpSession session, HttpServletRequest request) {
-		Member m = (Member) session.getAttribute("m");
-		String path =  Paths.get(System.getProperty("user.dir"))
-			    .resolve("src").resolve("main").resolve("resources").resolve("static").resolve("profileImage").toString();
-		System.out.println("path: "+path);
-	/*	MultipartFile uploadFile = m.getFname();
-		
-		m.setFname("");
-		String fname = null;
-		
-		//업로드한 파일명을 fname변수에 저장
-		fname = uploadFile.getOriginalFilename();
-
-		if(!fname.equals("") && fname != null) { //업로드한 파일이 있다면
-			System.out.println("업로드 파일이 있어요");
-			try {
-				byte []data = uploadFile.getBytes(); //파일의 내용을 바이트로 가져옴
-				fname = uploadFile.getOriginalFilename(); //업로드한 파일 이름 가져오기
-				FileOutputStream fos = new FileOutputStream(path+"/"+fname); //파일 출력을 위한 스트림 생성
-				fos.write(data); //파일에 출력
-				fos.close(); 
-
-			}catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-		else {
-			System.out.println("업로드 파일이 없어요");
-		}
-		
-		g.setFname(fname);// 업로드 파일 없음: "" 있음: 파일이름
-
-		dao.insert(g); */
+	public void editpicform() {
 	}
 	
+	@PostMapping("/member/editpic")
+	public String editpic(HttpSession session, MultipartFile uploadFile) {
+		Member m = (Member) session.getAttribute("m");
+		
+		// 사진 경로 지정
+		String path =  Paths.get(System.getProperty("user.dir"))
+			    .resolve("src").resolve("main").resolve("resources").resolve("static").resolve("profileImage").toString();
+	//	System.out.println("path: "+path);
+		
+		// 원래 파일 이름 받아 oldfname에 저장
+		String oldfname = m.getFname();
+		String newfname = null;
+		
+		//업로드한 파일명을 fname변수에 저장
+		newfname = uploadFile.getOriginalFilename();
+
+		// 만약 파일이 바뀌었다면
+		if(newfname != null && !newfname.equals("")) {
+			try {
+				
+				// 바뀐 파일 저장
+				FileOutputStream fos = new FileOutputStream(path+"/"+newfname);
+				FileCopyUtils.copy(uploadFile.getBytes(), fos);
+				fos.close();
+				
+				// 기존 파일이 기본(profile) 사진이 아니었다면 삭제
+				if(!oldfname.equals("profile.png")) {
+					File file = new File(path+"/"+oldfname);
+					file.delete();
+				}
+
+				
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		// 파일이 바뀌지 않았다면 기존 파일 유지
+		else {
+			newfname = oldfname;
+		}
+
+		m.setFname(newfname);
+		// 업로드 파일 없음: 기존 파일이름 
+		// 있음: 새 파일이름
+		memberdao_jpa.save(m);
+		
+		session.setAttribute("m", m);
+	//	request.setAttribute("oldfname", oldfname);
+		return "/member/windowclose";
+	}
+	
+	
+	// 사진 삭제 후 기본프로필 사진으로 변경
+	@RequestMapping("/deletepic")
+	@ResponseBody
+	public void deletepic(HttpSession session) {
+		
+		Member m = (Member)session.getAttribute("m");
+		String fname = m.getFname();
+		
+		// 경로 받아오기
+		String path =  Paths.get(System.getProperty("user.dir"))
+			    .resolve("src").resolve("main").resolve("resources").resolve("static").resolve("profileImage").toString();
+	//	System.out.println("path: "+path);
+		
+		// 파일 삭제
+		File file = new File(path+"/"+fname);
+		file.delete();
+		
+		// 기본 프로필로 변경
+		m.setFname("profile.png");
+		memberdao_jpa.save(m);
+		session.setAttribute("m", m);
+	}
+
 
 	// 이메일 인증
 	@GetMapping("/vaildEmail")
@@ -129,6 +175,7 @@ public class MemberController {
 		
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		
+		// 인증번호 난수 생성
 		Random r = new Random();
 		int a = r.nextInt(10);		
 		int b = r.nextInt(10);		
@@ -170,24 +217,43 @@ public class MemberController {
 	public Object changepwd(HttpSession session,@RequestParam("pwd")  String pwd,@RequestParam("newpwd") String newpwd,
 			@RequestParam("chkpwd") String chkpwd) {
 		Member m = (Member) session.getAttribute("m");
+		
+		// 회원 기존 비밀번호 받음
 		String userpwd = m.getPwd();
+		
+		// alert문 담을 msg 생성
 		String msg = "";
-		if(pwd.equals(userpwd)) {
-			if(newpwd.equals(chkpwd)) {
+		if(pwd.equals(userpwd)) { // 현재 비밀번호 일치
+			
+			if(newpwd.equals(chkpwd)) { // 새 비밀번호와 새 비밀번호 확인이 일치하면 변경
 				msg = "비밀번호 변경이 완료되었습니다.";
 				m.setPwd(newpwd);
 				memberdao_jpa.save(m);
 			}
-			else {
+			else { // 새 비밀번호와 새 비밀번호 확인이 다르면 바뀌지 않음
 				msg = "새 비밀번호가 일치하지 않습니다.";
 			}
 		}
+		
+		// 현재 비밀번호가 일치하지 않으면 
 		else {
 			msg = "현재 비밀번호와 일치하지 않습니다.";
 		}
 		return msg;
 	}
 	
+	
+	@RequestMapping("/chknickname")
+	@ResponseBody
+	public int chknickname(String nickname) {
+		
+		int re = 1; // 없는 경우 1, 존재하는 경우 2
+		int cnt = memberdao_jpa.countByNickname(nickname);
+		if(cnt != 0) { // 존재함
+			re = 2;
+		}
+		return re;
+	}
 	
 	// 마이페이지 닉네임과 이메일 변경 시
 	@PostMapping("/member/editmypage")
@@ -196,10 +262,12 @@ public class MemberController {
 		
 		Member m = (Member)session.getAttribute("m");
 		
+		// 닉네임이 바뀌었다면 수정
 		if(nickname != null && !nickname.equals("")) {
 			m.setNickname(nickname);
 		}
-		System.out.println(chkemail);
+		
+		// 이메일이 바뀌었다면 수정
 		if(email != null && !email.equals("")) {
 			if(!email.equals(m.getEmail())) {
 				if(chkemail == 1) {
@@ -224,11 +292,13 @@ public class MemberController {
 	
 	/* -----------마이페이지-회원탈퇴------------ */
 	
-	// 마이페이지-비밀번호 변경 페이지
+	// 마이페이지-회원탈퇴
 	@GetMapping("/member/deletemember")
 	public ModelAndView deletemember(HttpSession session) {
 		ModelAndView mav = new ModelAndView("redirect:/mainPage");
 		String id = ((Member) session.getAttribute("m")).getId();
+		
+		// 회원탈퇴
 		memberdao_jpa.deleteById(id);
 		session.setAttribute("m", null); // 세션파기
 		return mav;

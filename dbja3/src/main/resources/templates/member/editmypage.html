@@ -110,6 +110,28 @@
 			$(".authentication").css("display", "none");
 		}
 	}
+	
+	function chknickname(){
+		var data = {
+			nickname: $("#nickname").val()
+		};
+		$.ajax({
+			url:"/chknickname",
+			data: data,
+			success:function(n) {
+				if(n == 1) {
+					$("#resultchk").text("사용 가능한 닉네임입니다.");
+					$("#resultchk").css("color", "black");
+				}
+				else {
+					$("#resultchk").text("이미 존재하는 닉네임입니다.");
+					$("#resultchk").css("color", "red");
+					$("#nickname").val("");
+				}
+				$("#resultchk").css("display", "block");
+			}
+		});	
+	}
 
   </script>
   <style></style>
@@ -170,7 +192,7 @@
     <form method="post" action="/member/editmypage">
     <div class="div_myinfo">
 		<div class="div_img">
-			<img class="profile_img" src="/profileImage/profile.png"/>
+			<img class="profile_img" th:src="@{'/profileImage/'}+${session.m.fname}"/>
             <img class="pencilline" src="/assets/pencilline-TAy.png"/>
             <a class="a_myinfo" onclick="editpic()" th:text="사진수정" target="_blank"></a>
 		</div>
@@ -195,9 +217,12 @@
         <!--div_nickname 시작--> 
         <div class="div_nickname">
           <div class="nickname_text">닉네임</div>
-          <input type="text" name="nickname" class="usernickname" th:value="${session.m.nickname}"/>
+          <input type="text" name="nickname" id="nickname" class="usernickname" th:value="${session.m.nickname}"/>
+          <div class="btnchecknickname" onclick="chknickname()">중복확인</div><br>
         </div>
         <!--div_nickname 끝-->
+        <div class="resultchk" id="resultchk"></div>
+
         
 <!--        div_pwd 시작 
         <div class="div_pwd">
@@ -217,7 +242,7 @@
         <!--div_email 시작-->
         <div class="div_email">
           <div class="email_text">이메일</div>
-          <input type="text" name="email" id="email" class="useremail" th:value="${session.m.email}"/>
+          <input type="email" name="email" id="email" class="useremail" th:value="${session.m.email}"/>
           <div class="btnsubmit" onclick="getAuthNum()">인증요청</div>
         </div>
         <!--div_email 끝-->

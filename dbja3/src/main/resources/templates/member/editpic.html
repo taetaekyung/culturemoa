@@ -4,14 +4,43 @@
 <meta charset="UTF-8">
 <title>프로필사진 수정</title>
 <link rel="stylesheet" type="text/css" th:href="@{/styles/editpic.css}"/>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	function editcomplete(){
+		alert("사진 수정이 완료되었습니다.");
+	}	
+	
+	function deletepic(){
+		location.href='/deletepic';
+		alert("사진 삭제가 완료되었습니다.");
+		opener.parent.location.reload();
+		window.close();
+	}	
+		
+	function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('preview').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('preview').src = "";
+	  }
+	}
+		
+  </script>
 </head>
 <body>
+	<form action="/member/editpic" method="post" enctype="multipart/form-data">
 	<div class="container">
 		<div class="title">프로필 사진 수정</div>
-		<img class="pic" th:src="@{'/profileImage/'+${session.m.fname}}"></img>
+		<img class="pic" id="preview" th:src="@{'/profileImage/'+${session.m.fname}}"></img>
 		<br>
-		<input type="file" class="selectfile">
-	    <div class="btnchangepic" onclick="changepic()">프로필 사진 수정</div>
+		<input type="file" accept=".png, .jpeg, .jpg"  th:onchange="readURL(this)" class="selectfile" name="uploadFile">
+	    <div class="btnreset" onclick="deletepic()">프로필 사진 삭제</div>
+	    <input type="submit" class="btnchangepic" onclick="editcomplete()" value="프로필 사진 수정"></input>
     </div>
+    </form>
 </body>
 </html>

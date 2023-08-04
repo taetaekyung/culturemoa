@@ -7,6 +7,12 @@ body {
    width: 100%;
 }
 
+input {
+	outline: none;
+	border: none;
+}
+
+
 .title {
   padding: 0.7rem 1rem 0.7rem 1rem;
   margin-bottom: 1.4rem;
@@ -39,8 +45,34 @@ body {
 
 }
 
-.btnchangepic {
+.btnreset {
   margin-top: 1rem;
+  margin-left: 10.8rem;
+  width: 210px;
+  height: 40px;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #018bf8;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+  cursor: pointer;
+	
+}
+
+.btnchangepic {
+  margin-top: 0.5rem;
   margin-left: 10.8rem;
   width: 210px;
   height: 40px;

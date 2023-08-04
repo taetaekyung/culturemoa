@@ -50,6 +50,7 @@ body {
   flex-shrink: 0;
 }
 .mypage .div_main .main_top .headerframe .home {
+  margin-left: 18rem;
   margin-right: 0.8rem;
   display: flex;
   font-size: 1.4rem;
@@ -373,6 +374,44 @@ body {
   width: 400px;
 }
 
+.mypage .div_main .div_myinfo .information .div_nickname .btnchecknickname {
+  margin-left: 2rem;
+  width: 110px;
+  height: 100%;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #018bf8;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.mypage .div_main .div_myinfo .information .resultchk {
+  margin-top:0.4rem;
+  margin-left: 162px;
+  display: flex;
+  width: 400px;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.1666666667;
+  color: #a5a5a5;
+  font-family: Montserrat, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .mypage .div_main .div_myinfo .information .div_pwd {
   width: 630px;
   height: 5.2rem;
@@ -509,6 +548,9 @@ body {
   width: 400px;
 
 }
+
+
+
 
 .mypage .div_main .div_myinfo .information .div_email .btnsubmit {
   margin-left: 2rem;
