@@ -70,7 +70,7 @@
 	});
 	//목록으로 돌아가기
 	function goFree(){
-		var free = "/boards/board/freelist";
+		var free = "/boards/board/togetherlist";
         window.location.href = free;
 	}
 	//본인이 작성한 글일 경우 '수정,삭제,목록' 아닐경우 '목록'만 보이기
@@ -94,7 +94,7 @@
 	function update(){
 		var boardno=$("#boardno").val();
 		console.log(boardno);
-		var boardUpdate = '/boards/board/updateFree?boardno=' + boardno;
+		var boardUpdate = '/boards/board/updateTogether?boardno=' + boardno;
         window.location.href = boardUpdate;
 		
 	}
@@ -104,10 +104,10 @@
 		    var boardno=$("#boardno").val();
 			$.ajax({
 				type:"GET",
-				url:"/deletefree?boardno=" + boardno,
+				url:"/deleteTogether?boardno=" + boardno,
 				success:function(){
 					alert("삭제되었습니다");
-					window.location.href="/boards/board/freelist";
+					window.location.href="/boards/board/togetherlist";
 				}
 			});
 		}else{

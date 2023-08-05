@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>동행게시판</title>
+  <title>자유게시판</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
@@ -18,10 +18,10 @@
 		$("#searchbtn").click(function() {
 			var keyword = $("#keyword").val();
 			if(keyword!=null && keyword!='') {
-				url = "/boards/board/freelist/"+keyword+"/1/regdate";
+				url = "/boards/board/togetherlist/"+keyword+"/1/regdate";
 			}
 			else {
-				url = "/boards/board/freelist/all/1/regdate";
+				url = "/boards/board/togetherlist/all/1/regdate";
 			}
 			location.href = url;
 		})
@@ -64,20 +64,17 @@
             alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
         }
 	}	
-     
+    //게시글 선택 시 해당 상세 게시글로 이동
+    function goReview(free){
+		var boardno=free.getAttribute("value")
+		var togetherDetail = '/boards/board/togetherDetail?boardno=' + boardno;
+        window.location.href = togetherDetail;
+	} 
   </script>
 </head>
 	<body>
 	<!--freelist div 시작-->
 	<div class="freelist" layout:fragment="content">
-		
-	
-	  
-	  
-	  
-	  
-	  
-	  
 	  <!-- main div 시작 -->
 	  <div class="main">
 		
@@ -87,7 +84,7 @@
 	      <img class="nexticon" src="/assets/icon-YJu.png"/>
 	      <div class="community">커뮤니티</div>
 	      <img class="nexticon2" src="/assets/icon-umT.png"/>
-	      <div class="freelist_text">동행게시판</div>
+	      <div class="freelist_text">자유게시판</div>
 	    </div>
 	    <!-- location div 끝 -->
 	    
@@ -116,11 +113,11 @@
 	        <!-- filter div 시작 -->
 	        <div class="filter">
 	          <div class="register">
-			  	  <a id="register_anchor" class="register_anchor" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/regdate'}" th:text="등록순"></a>
+			  	  <a id="register_anchor" class="register_anchor" th:href="@{'/boards/board/togetherlist/'+${session.keyword}+'/1/regdate'}" th:text="등록순"></a>
 			  </div>
 	          <div class="middleline"></div>
 	          <div class="popular">
-				  <a id="popular_anchor" class="popular_anchor" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/1/boardhit'}" th:text="인기순"></a>
+				  <a id="popular_anchor" class="popular_anchor" th:href="@{'/boards/board/togetherlist/'+${session.keyword}+'/1/boardhit'}" th:text="인기순"></a>
 			  </div>
 	        </div>
 	        <!-- filter div 끝 -->
@@ -155,7 +152,7 @@
 	        <div class="list">
 			  <span th:each="b:${list}">
 				  <!-- div_list 시작 -->
-		          <div class="div_list">
+		          <div class="div_list" onclick="goReview(this)" th:value="${b.boardno}">
 		            <div class="dno" th:text="${b.boardno}"></div>
 		            <div class="title" th:text="${b.boardtitle}"></div>
 		            <div class="regdate" th:text="${b.regdate}"></div>
@@ -175,7 +172,7 @@
 			<!-- insertboardbtn div 시작 -->
 	        <div class="insertboardbtn">
 			  <img class="inserticon" src="/assets/icon-wLD.png"/>
-	          <a class="insert_text" th:text="게시글작성"></a>
+	          <a class="insert_text" th:text="게시글작성" href="/boards/board/insertBoard_together"></a>
 	        </div>
 	        <!-- insertboardbtn div 끝 -->
 	        
@@ -197,10 +194,10 @@
 		    <!-- paging div 시작 -->
 			<div class="paging">
 				<!-- 이전 버튼 -->
-				<a th:if="${currentPage > 1}" th:href="@{/boards/board/freelist/1}">
+				<a th:if="${currentPage > 1}" th:href="@{/boards/board/togetherlist/1}">
 				  <img class="btndoubleprevious" src="/assets/btndoubleprevious-zc9.png"/>
 				</a>
-				<a th:if="${currentPage > 1}" th:href="@{'/boards/board/freelist/'+${currentPage-1}}">
+				<a th:if="${currentPage > 1}" th:href="@{'/boards/board/togetherlist/'+${currentPage-1}}">
 				  <img class="btnprevious" src="/assets/btnprevious-fUm.png"/>
 				</a>
 				<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
@@ -210,7 +207,7 @@
 				      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
 				        <!-- 페이지 숫자를 답는 div -->
 				        <div class="page1">
-				        	<a class="pages" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${pageNum}+'/'+${session.orderby}}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+				        	<a class="pages" th:href="@{'/boards/board/togetherlist/'+${session.keyword}+'/'+${pageNum}+'/'+${session.orderby}}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
 				        	</a>
 				        </div> 
 				      </th:block>
@@ -218,10 +215,10 @@
 				  </th:block>
 				</div>
 				<!-- 다음 버튼 -->
-				<a th:if="${currentPage < totalPages}" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${currentPage+1}+'/'+${session.orderby}}">
+				<a th:if="${currentPage < totalPages}" th:href="@{'/boards/board/togetherlist/'+${session.keyword}+'/'+${currentPage+1}+'/'+${session.orderby}}">
 				  <img class="btnnext" src="/assets/btnnext-zrm.png"/>
 				</a>
-				<a th:if="${currentPage < totalPages}" th:href="@{'/boards/board/freelist/'+${session.keyword}+'/'+${totalPages}+'/'+${session.orderby}}">
+				<a th:if="${currentPage < totalPages}" th:href="@{'/boards/board/togetherlist/'+${session.keyword}+'/'+${totalPages}+'/'+${session.orderby}}">
 				  <img class="btndoublenext" src="/assets/btndoublenext-Y7s.png"/>
 				</a>
 			</div>

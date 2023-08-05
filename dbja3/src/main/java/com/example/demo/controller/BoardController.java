@@ -284,6 +284,14 @@ public class BoardController {
 	}
 	//-----------------------
 	//-----------------------자유게시판
+
+	//게시글 삭제
+	@GetMapping("/deletefree")
+	@ResponseBody
+	public void deletefree(@RequestParam int boardno) {
+		int re=boarddao_jpa.deleteByNo(boardno);
+	}
+	
 	//자유 게시글 수정
 	@PostMapping("/freeUpdate")
 	public ModelAndView freeUpdate(Board b,String Contents) {
@@ -306,8 +314,6 @@ public class BoardController {
 
 		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
 		model.addAttribute("id", id);
-
-		
 	}
 	//조회수 추가
 	@GetMapping("/updatefreeHit")
@@ -334,7 +340,7 @@ public class BoardController {
 		model.addAttribute("id", id);
 		return "/boards/board/freeDetail";
 	}
-	//자유 게시글 작성 페이지
+	//게시글 작성 페이지
 	@GetMapping("/boards/board/insertBoard_free")
 	public void free(Model model) {
 		model.addAttribute("id", id);
@@ -432,10 +438,144 @@ public class BoardController {
 		return mav;
 	}
 	
-	
-	@GetMapping("/boards/board/togetherlist")
-	public void togetherlist() {
-		
+	//--------------------------------------
+	//-----------------동행게시판
+	//게시글 작성 페이지
+	@GetMapping("/boards/board/insertBoard_together")
+	public void together(Model model) {
+		model.addAttribute("id", id);
 	}
+	//게시글 저장
+	@PostMapping("/together")
+	public ModelAndView together(Board b,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
+		b.setBoardno(boarddao_jpa.findNextNo());
+		Member member = new Member();
+		member.setId(id);
+		b.setMember(member);
+		b.setBoardlikes(0);
+		b.setRegdate(new Date());
+		b.setBoardhit(1);
+		b.setBoardcontent(Contents);
+		boarddao_jpa.save(b);
+		return mav;
+	}
+	//동행 게시글 수정
+	@PostMapping("/togetherUpdate")
+	public ModelAndView togetherUpdate(Board b,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
+		//게시물 작성하기
+		// Member 객체 생성 및 설정
+		Member member = new Member();
+		member.setId(id);
+		b.setMember(member);
+		b.setRegdate(new Date());
+		b.setBoardcontent(Contents);
+		b.setBcategory("동행");
+		boarddao_jpa.save(b);
+		return mav;
+	}
+	//게시글 삭제
+	@GetMapping("/deleteTogether")
+	@ResponseBody
+	public void deleteTogether(@RequestParam int boardno) {
+		int re=boarddao_jpa.deleteByNo(boardno);
+	}
+	
+	//게시물 수정 페이지 이동
+	@GetMapping("/boards/board/updateTogether")
+	public void updateTogether(@RequestParam int boardno,Model model) {
+
+		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
+		model.addAttribute("id", id);
+	}
+		
+	//게시물 상세 페이지 이동
+		@GetMapping("/boards/board/togetherDetail")
+		public String togetherDetail(@RequestParam int boardno,Model model) {
+			Board board=new Board();
+			board=boarddao_jpa.findByNo(boardno);
+			//게시물 내용 가져오기
+			model.addAttribute("b", board);
+			//아이디
+			model.addAttribute("id", id);
+			return "/boards/board/togetherDetail";
+		}
+	//게시글 list
+		@GetMapping(value={"/boards/board/togetherlist", "/boards/board/togetherlist/", "/boards/board/togetherlist/{page}", 
+				"/boards/board/togetherlist/{keyword}/{page}", "/boards/board/togetherlist/{keyword}/{page}/{orderby}"})
+		public ModelAndView togetherlist(HttpSession session, @PathVariable(required=false) String keyword, 
+				@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
+			ModelAndView mav = new ModelAndView("/boards/board/togetherlist");
+
+			if(orderby == null) {
+				if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
+					orderby = (String) session.getAttribute("orderby");
+				}
+				else {
+					orderby="regdate";
+				}	
+			}
+			String key = "all";
+			if(page == null) {
+				page = 1;
+			}
+			if(keyword == null) {
+				key = "all";
+			}
+
+			Page<Board> list;
+			
+			if(session.getAttribute("keyword")!=null) {
+				key = (String)session.getAttribute("keyword");
+			}
+			if(keyword != null) {
+				key = keyword;
+			}
+			
+			Pageable pageable;
+			
+			if(key.equals("all")) {
+				if(orderby.equals("regdate")) {
+					pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
+				}
+				else {
+				    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
+				}
+				list = boarddao_jpa.findByBcategory("동행", "", pageable);
+			}
+			else {
+				if(orderby.equals("regdate")) {
+				    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
+				}
+				else {
+				    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
+				}
+				list = boarddao_jpa.findByBcategory("동행", keyword, pageable);
+
+			}
+			
+		    List<List<Board>> rows = new ArrayList<>();
+		    List<Board> boardlist = new ArrayList<Board>();
+		    List<Board> currentRow = null;
+			session.setAttribute("keyword", key);
+			session.setAttribute("orderby", orderby);
+			
+		    for (Board board : list.getContent()) {
+		    	
+		    	boardlist.add(board);
+		        if (currentRow == null || currentRow.size() >= 4) {
+		            currentRow = new ArrayList<>();
+		            rows.add(currentRow);
+		        }
+		        currentRow.add(board);
+		    }
+		    
+			mav.addObject("list", boardlist);
+			mav.addObject("currentPage", page);
+			mav.addObject("totalPages", list.getTotalPages());
+
+			return mav;
+		}
 	
 }

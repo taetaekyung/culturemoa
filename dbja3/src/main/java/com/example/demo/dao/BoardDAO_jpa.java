@@ -18,6 +18,12 @@ import jakarta.transaction.Transactional;
 
 @Repository
 public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
+	 //삭제
+	 @Modifying 
+	 @Transactional
+	 @Query(value="delete board b where b.boardno=?1", nativeQuery = true)
+	 public int deleteByNo(int boardno);
+	 
 	//조회수 업데이트
 	@Modifying
 	@Transactional
