@@ -127,16 +127,44 @@ body {
 }
 .eventdetail-d3F .main-RW9 .maintitle-pTj {
   box-sizing: border-box;
-  padding: 3.163rem 30.114rem 12.613rem 74rem;
   width: 100%;
+  height: 900px;
   align-items: center;
   display: flex;
   flex-direction: column;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../assets/divbackposter-QFK.png');
   flex-shrink: 0;
+}
+
+.eventdetail-d3F .main-RW9 .div_img {
+  box-sizing: border-box;
+  align-items: center;
+  width: 1920px;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+  position: absolute;
+}
+
+.eventdetail-d3F .main-RW9 .div_img .maintitle-img {
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  flex-shrink: 0;
+  opacity: 0.5;
+  width: 1920px;
+  height: 900px;
+  object-fit: cover;
 }
 .eventdetail-d3F .main-RW9 .maintitle-pTj .divhit-MTf {
   margin: 0rem 0rem 7.088rem 78.7rem;
@@ -164,41 +192,42 @@ body {
   flex-shrink: 0;
 }
 .eventdetail-d3F .main-RW9 .maintitle-pTj .divposter-wwf {
-  margin-right: 43.8862rem;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  align-items: center;
 }
 .eventdetail-d3F .main-RW9 .maintitle-pTj .divposter-wwf .postertitle-uNh {
-  margin: 0rem 0rem 5.25rem 0.9rem;
   display: flex;
   font-size: 4.8rem;
   font-weight: 600;
   line-height: 1.2125;
-  color: #ffffff;
+  color: #000000;
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  z-index: 1;
 }
 .eventdetail-d3F .main-RW9 .maintitle-pTj .divposter-wwf .poster-pVf {
   width: 44rem;
   height: 63.5866rem;
+  margin: 0rem 0rem 5.25rem 0rem;
   position: relative;
   background-size: 100% 217.343%;
   background-position: 0 -0rem;
-  background-image: url('../assets/poster-FPo.png');
   flex-shrink: 0;
 }
 .eventdetail-d3F .main-RW9 .auto-group-nltz-hpM {
   box-sizing: border-box;
-  padding: 13.6rem 29.9rem 0rem 30rem;
+  padding: 0rem 29.9rem 0rem 30rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
 .eventdetail-d3F .main-RW9 .auto-group-nltz-hpM .maincontent-S1F {
-  margin-bottom: 28.7rem;
+  margin-top: 15rem;
+  margin-bottom: 10rem;
   width: 100%;
   display: flex;
   align-items: flex-start;

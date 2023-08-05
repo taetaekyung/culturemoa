@@ -84,18 +84,21 @@
 	      <a th:if="${event.categoryno == 5}" th:href="@{/event/festivallist}">
 	        <div class="event-pAu">행사소식</div>
 	      </a>
-          <img class="icon-vzd" src="/assets/icon-FM3.png"/>
+          <img class="icon-vzd" src="/assets/icon-XG5.png"/>
           <div class="eventdetail-fhK">행사상세</div>
         </div>
         <div class="frameicon-bay">
-          <img class="bookmark-Z21" src="/assets/bookmark-C4y.png"/>
-          <img class="sharing-5m3" src="/assets/sharing-uEh.png" onclick="copyUrl()"/>
+          <img class="bookmark-Z21" src="/assets/bookmark-Bkd.png"/>
+          <img class="sharing-5m3" src="/assets/sharing-pBb.png" onclick="copyUrl()"/>
         </div>
       </div>
     </div>
     <div class="maintitle-pTj">
+	<div class="div_img">
+		<img class="maintitle-img" th:src="@{'/images/'}+${event.eventfname}">
+	</div>
       <div class="divhit-MTf">
-        <img class="iconhit-gVw" src="/assets/iconhit-5mb.png"/>
+        <img class="iconhit-gVw" src="/assets/iconhit-DYu.png"/>
         <div class="hit-oaZ" th:text="${event.eventhit}"></div>
       </div>
       <div class="divposter-wwf">
@@ -104,7 +107,7 @@
 			<img th:src="${event.eventfname == null ? '/images/togetready.png' : '/images/' + event.eventfname}" alt="행사 이미지" class="poster-pVf"/>
         </div>
       </div>
-    </div>
+    </img>
     <div class="auto-group-nltz-hpM">
       <div class="maincontent-S1F">
         <div class="divcontent-mZK">
@@ -132,28 +135,28 @@
             <div class="divlocationinfo-3UD">위치 안내</div>
             <div class="divway-v2D">길찾기</div>
           </div>
-          <img class="divmap-Byj" src="/assets/divmap-nQh.png"/>
+          <img class="divmap-Byj" src="/assets/divmap-BKX.png"/>
         </div>
       </div>
       <div class="mainfooter-Kq3">
 		  <a th:if="${event.categoryno == 1}" th:href="@{/event/domesticconcertlist}">
-		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <img class="icongolist-UT3" src="/assets/icongolist-z9o.png"/>
 		    <div class="golist-p17">목록으로</div>
 		  </a>
 		  <a th:if="${event.categoryno == 2}" th:href="@{/event/koreaconcertlist}">
-		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <img class="icongolist-UT3" src="/assets/icongolist-z9o.png"/>
 		    <div class="golist-p17">목록으로</div>
 		  </a>
 		  <a th:if="${event.categoryno == 3}" th:href="@{/event/musicallist}">
-		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <img class="icongolist-UT3" src="/assets/icongolist-z9o.png"/>
 		    <div class="golist-p17">목록으로</div>
 		  </a>
 		  <a th:if="${event.categoryno == 4}" th:href="@{/event/playlist}">
-		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <img class="icongolist-UT3" src="/assets/icongolist-z9o.png"/>
 		    <div class="golist-p17">목록으로</div>
 		  </a>
 		  <a th:if="${event.categoryno == 5}" th:href="@{/event/festivallist}">
-		    <img class="icongolist-UT3" src="/assets/icongolist-F6h.png"/>
+		    <img class="icongolist-UT3" src="/assets/icongolist-z9o.png"/>
 		    <div class="golist-p17">목록으로</div>
 		  </a>
 		</div>
