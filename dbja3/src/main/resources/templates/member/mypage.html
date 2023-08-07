@@ -112,10 +112,14 @@
         <div class="registration_text clicked">회원정보</div>
         <div class="middleline">
         </div>
-        <div class="message_text clicked">쪽지함</div>
+        <a th:href="@{/member/mypagemessage}">
+        	<div class="message_text clicked">쪽지함</div>
+        </a>
         <div class="middleline2">
         </div>
-        <div class="like_text clicked">관심목록</div>
+        <a th:href="@{/member/mypagelike}">
+        	<div class="like_text clicked">관심목록</div>
+        </a>
       </div>
       <!--div_filter 끝-->
     </div>
