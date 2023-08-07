@@ -11,19 +11,31 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Message;
+
 @Repository
 public interface MessageDAO_jpa extends JpaRepository<Message, Integer> {
-	@Query(value = "select * from Message where id=?1", nativeQuery = true)
-	List<Message> findByReceiveId(String id);
 	
-	@Query(value = "select * from Message where mid=?1", nativeQuery = true)
-	List<Message> findBySendId(String id);
-	
-	// 새로운 메소드를 추가하여 페이징된 받은 쪽지들을 가져옴
-    @Query(value = "select * from Message where id=?1", countQuery = "select count(*) from Message where id=?1", nativeQuery = true)
-    Page<Message> findPagedReceivedMessages(String id, Pageable pageable);
-    
-    // 새로운 메소드를 추가하여 페이징된 보낸 쪽지들을 가져옴
-    @Query(value = "select * from Message where mid=?1", countQuery = "select count(*) from Message where mid=?1", nativeQuery = true)
-    Page<Message> findPagedSendedMessages(String id, Pageable pageable);
+	  @Query(value = "select * from Message where id=?1", nativeQuery = true)
+	  List<Message> findByReceiveId(String id);
+	  
+	  @Query(value = "select * from Message where mid=?1", nativeQuery = true)
+	  List<Message> findBySendId(String id);
+	  
+	  // 새로운 메소드를 추가하여 페이징된 받은 쪽지들을 가져옴
+//	  @Query(value = "select * from Message where id=?1", countQuery =
+//	  "select count(*) from Message where id=?1", nativeQuery = true) 
+//	  Page<Message> findPagedReceivedMessages(String id, Pageable pageable);
+	  
+	  // 새로운 메소드를 추가하여 페이징된 보낸 쪽지들을 가져옴
+	  //@Query(value = "select * from Message where mid=?1", countQuery ="select count(*) from Message where mid=?1", nativeQuery = true)
+	  //Page<Message> findPagedSentMessages(String id, Pageable pageable);
+	  
+		// 새로운 메소드를 추가하여 페이징된 받은 쪽지들을 가져옴 (삭제 여부 검사 추가)
+		@Query(value = "SELECT * FROM message WHERE id = ?1 AND is_deleted_by_receiver_boolean = 0", countQuery = "SELECT count(*) FROM message WHERE id = ?1 AND is_deleted_by_receiver_boolean = 0", nativeQuery = true)
+		Page<Message> findPagedReceivedMessages(String id, Pageable pageable);
+	 
+
+		// 새로운 메소드를 추가하여 페이징된 보낸 쪽지들을 가져옴 (삭제 여부 검사 추가)
+		@Query(value = "SELECT * FROM message WHERE mid = ?1 AND is_deleted_by_sender_boolean = 0", countQuery = "SELECT count(*) FROM message WHERE mid = ?1 AND is_deleted_by_sender_boolean = 0", nativeQuery = true)
+		Page<Message> findPagedSentMessages(String mid, Pageable pageable);
 }

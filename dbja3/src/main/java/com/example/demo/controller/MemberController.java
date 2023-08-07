@@ -60,25 +60,43 @@ public class MemberController {
 
 	/* -----------마이페이지-쪽지함------------ */
 	
-	//마이페이지-받은 쪽지함
-	@GetMapping("/member/mypagemessage")
-	public String myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
-	    String id = ((Member) session.getAttribute("m")).getId();
-	    
-	    // 한 페이지에 보여줄 개수
-	    int pageSize = 25;
-	    
-	    // 받은 쪽지 목록을 페이지로 분할하여 가져옴
-	    Page<Message> messagePage = messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
-	    
-	    model.addAttribute("messagePage", messagePage);
-	    model.addAttribute("currentPage", page);
-	    
-	    return "/member/mypagemessage";
+	//마이페이지-쪽지 삭제 기능
+	@PostMapping("/member/deletemessage")
+	@ResponseBody
+	public String deleteMessage(@RequestParam("mno") int mno, HttpSession session) {
+	    Message message = messagedao_jpa.findById(mno).orElse(null);
+	    if (message != null) {
+	        // 해당 쪽지를 논리적으로 삭제 처리 (발신자 또는 수신자에 따라 쪽지를 삭제 처리)
+	        if (message.getMid().equals(((Member) session.getAttribute("m")).getId())) {
+	            // 로그인 사용자가 보낸 쪽지인 경우
+	            message.setDeletedBySender(true);
+	        } else {
+	            // 로그인 사용자가 받은 쪽지인 경우
+	            message.setDeletedByReceiver(true);
+	        }
+	        messagedao_jpa.save(message);
+	        return "쪽지가 삭제되었습니다.";
+	    } else {
+	        return "해당 쪽지를 찾을 수 없습니다.";
+	    }
 	}
+	
+    // 마이페이지-받은 쪽지함
+    @GetMapping("/member/mypagemessage")
+    public String myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
+        String id = ((Member) session.getAttribute("m")).getId();
 
-    
-	//마이페이지-보낸 쪽지함
+        // 한 페이지에 보여줄 개수
+        int pageSize = 25;
+
+        // 받은 쪽지 목록을 페이지로 분할하여 가져옴 (삭제 여부 검사)
+        Page<Message> messagePage = messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
+        model.addAttribute("messagePage", messagePage);
+        model.addAttribute("currentPage", page);
+
+        return "/member/mypagemessage";
+    }
+
 	@GetMapping("/member/mypagemessagesend")
 	public String mypagemessagesend(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
 	    String id = ((Member) session.getAttribute("m")).getId();
@@ -86,13 +104,48 @@ public class MemberController {
 	    // 한 페이지에 보여줄 개수
 	    int pageSize = 25;
 	    
-	    // 받은 쪽지 목록을 페이지로 분할하여 가져옴
-	    Page<Message> messagePage = messagedao_jpa.findPagedSendedMessages(id, PageRequest.of(page, pageSize));
+	    // 보낸 쪽지 목록을 페이지로 분할하여 가져옴 (삭제되지 않은 쪽지만 조회)
+	    Page<Message> messagePage = messagedao_jpa.findPagedSentMessages(id, PageRequest.of(page, pageSize));
 	    model.addAttribute("messagePage", messagePage);
 	    model.addAttribute("currentPage", page);
 	    
 	    return "/member/mypagemessagesend";
 	}
+	
+	/*
+	 * //마이페이지-받은 쪽지함
+	 * 
+	 * @GetMapping("/member/mypagemessage") public String
+	 * myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page,
+	 * Model model, HttpSession session) { String id = ((Member)
+	 * session.getAttribute("m")).getId();
+	 * 
+	 * // 한 페이지에 보여줄 개수 int pageSize = 25;
+	 * 
+	 * // 받은 쪽지 목록을 페이지로 분할하여 가져옴 Page<Message> messagePage =
+	 * messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
+	 * model.addAttribute("messagePage", messagePage);
+	 * model.addAttribute("currentPage", page);
+	 * 
+	 * return "/member/mypagemessage"; }
+	 * 
+	 * 
+	 * //마이페이지-보낸 쪽지함
+	 * 
+	 * @GetMapping("/member/mypagemessagesend") public String
+	 * mypagemessagesend(@RequestParam(name = "page", defaultValue = "0") int page,
+	 * Model model, HttpSession session) { String id = ((Member)
+	 * session.getAttribute("m")).getId();
+	 * 
+	 * // 한 페이지에 보여줄 개수 int pageSize = 25;
+	 * 
+	 * // 받은 쪽지 목록을 페이지로 분할하여 가져옴 Page<Message> messagePage =
+	 * messagedao_jpa.findPagedSentMessages(id, PageRequest.of(page, pageSize));
+	 * model.addAttribute("messagePage", messagePage);
+	 * model.addAttribute("currentPage", page);
+	 * 
+	 * return "/member/mypagemessagesend"; }
+	 */
 	
 	/* -----------마이페이지-위시리스트------------ */
 

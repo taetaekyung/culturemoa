@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -35,4 +36,10 @@ public class Message {
 	}
 	
 	private Date regdate;
+	
+    @Column(name = "is_deleted_by_sender_boolean")
+    private boolean isDeletedBySender;
+
+    @Column(name = "is_deleted_by_receiver_boolean")
+    private boolean isDeletedByReceiver;
 }

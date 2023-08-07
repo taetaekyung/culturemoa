@@ -11,7 +11,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
 <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/styles/mypagemessagesend.css}"/></head>
+  <link rel="stylesheet" th:href="@{/styles/mypagemessagesend.css}"/>
+  <script th:inline="javascript">
+    function deleteMessage(mno) {
+        if (confirm('쪽지를 삭제하시겠습니까?')) {
+            $.ajax({
+                type: 'POST',
+                url: '/member/deletemessage',
+                data: {
+                    mno: mno
+                },
+                success: function (data) {
+                    alert(data);
+                    // 페이지 리로딩 또는 쪽지 목록 다시 불러오기 등의 동작 수행
+                    location.reload();
+                },
+                error: function () {
+                    alert('쪽지 삭제에 실패하였습니다.');
+                }
+            });
+        }
+    }
+</script>
 </head>
 <body>
 <div class="mypagemessagesend-nho" layout:fragment="content">
@@ -82,10 +103,10 @@
                   </div>
                 </div>
                 <div class="num-W9o" th:text="${message.mno}">0000</div>
-                <div class="id-Da1" th:text="${message.mid}">test</div>
+                <div class="id-Da1" th:text="${message.member.id}">test</div>
                 <div class="date-kZw" th:text="${message.regdate}">YYYY-MM-DD</div>
-                <div class="content-pph" th:text="${message.mcontent}">보낸 쪽지함 내용입니다.</div>
-                <img class="delete-Lo3" src="/assets/delete-mhT.png"/>
+                <div class="content-pph" th:text="${message.isDeletedBySender} ? '이 쪽지는 삭제되었습니다.' : ${message.mcontent}">보낸 쪽지함 내용입니다.</div>
+                <img class="delete-Lo3" src="/assets/delete-mhT.png" th:onclick="deleteMessage([[${message.mno}]])" />
               </div>
             </div>
           </div>
