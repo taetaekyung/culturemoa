@@ -385,6 +385,13 @@ html{
         }
      });
    }
+   
+   function goDetail(){
+		var eventno = $("#eventno").val();
+		location.href = "/event/eventdetail?eventno="+eventno;
+		
+	}		
+   
 </script>
 </head>
 <body>
@@ -509,11 +516,11 @@ html{
             <div class="eventList">
             <!--행사하나 -->
             <div class="poster-Qth myEvent list1" style="visibility: visible;">
-              <div class="poster-kSm "  th:each="e:${event1}" >
-            <input type="hidden" value="${e.eventno}">
+              <div class="poster-kSm " th:each="e:${event1}" >
+            <input type="hidden" id="eventno" name="eventno" th:value="${e.eventno}">
             <!-- 행사 사진-->
                 <div class="imgposter-VfF"  >
-               <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+               <img class="imgposter-VfF" onclick="goDetail()" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
               <!--공연 진행 여부 -->
@@ -525,11 +532,11 @@ html{
              </div>   
               <!--행사둘 -->
             <div class="poster-Qth myEvent list2">
-              <div class="poster-kSm "  th:each="e:${event2}" >
-            <input type="hidden" value="${e.eventno}">  
+              <div class="poster-kSm " th:each="e:${event2}" >
+            <input type="hidden" id="eventno" name="eventno" th:value="${e.eventno}">  
             <!-- 행사 사진-->
                 <div class="imgposter-VfF" >
-               <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+               <img class="imgposter-VfF" onclick="goDetail()" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
               <!--공연 진행 여부 -->
@@ -541,11 +548,11 @@ html{
              </div>   
               <!--행사셋 -->
             <div class="poster-Qth myEvent list3">
-              <div class="poster-kSm "  th:each="e:${event3}" >
-            <input type="hidden" value="${e.eventno}">
+              <div class="poster-kSm" th:each="e:${event3}" >
+            <input type="hidden" id="eventno" name="eventno" th:value="${e.eventno}">
             <!-- 행사 사진-->
                 <div class="imgposter-VfF">
-               <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+               <img class="imgposter-VfF" onclick="goDetail()" th:src="@{'./images/'+${e.eventfname}}"/>
                 </div>
                 <div class="frame-6-aaD">
               <!--공연 진행 여부 -->
