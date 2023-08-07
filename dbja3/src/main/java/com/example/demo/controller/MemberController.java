@@ -70,9 +70,11 @@ public class MemberController {
 	        if (message.getMid().equals(((Member) session.getAttribute("m")).getId())) {
 	            // 로그인 사용자가 보낸 쪽지인 경우
 	            message.setDeletedBySender(true);
+	            
 	        } else {
 	            // 로그인 사용자가 받은 쪽지인 경우
 	            message.setDeletedByReceiver(true);
+	            
 	        }
 	        messagedao_jpa.save(message);
 	        return "쪽지가 삭제되었습니다.";

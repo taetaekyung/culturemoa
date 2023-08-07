@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpSession;
 public class MainController {
    //로그인 했을때만 이용가능 
    //로그인 했을때 아이디
-   private String id="user01";
+   private String id="user04";
    private int nowNo; //현재 마지막 채팅 번호
    
    @Autowired
