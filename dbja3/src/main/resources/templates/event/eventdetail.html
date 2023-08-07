@@ -15,6 +15,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
 <link rel="stylesheet" th:href="@{/styles/eventdetail.css}"/>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f2916fe9be7d4973e1955c2e2aeff14"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>	
 	//현재 url 변수로 가져오기
@@ -56,7 +62,35 @@
             alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
         }
 	}	
+	
+	$(function() {
+		$("#map_txt").click(function() {
+			$("#map_txt").css("color", "#07b47f");
+			$("#map_txt").css("background-color", "#ffffff");
+			$("#find_txt").css("color", "#000000");
+			$("#find_txt").css("background-color", "#ececec");
+			
+		})
+		
+		$("#find_txt").click(function() {
+			$("#find_txt").css("color", "#07b47f");
+			$("#find_txt").css("background-color", "#ffffff");
+			$("#map_txt").css("color", "#000000");
+			$("#map_txt").css("background-color", "#ececec");
+			
+		})
+		
+		$("#modal_show").click(function() {
+			$("#map_txt").css("color", "#07b47f");
+			$("#map_txt").css("background-color", "#ffffff");
+			$("#find_txt").css("color", "#000000");
+			$("#find_txt").css("background-color", "#ececec");
+		})
+		
+	})
+	
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="eventdetail-d3F" layout:fragment="content">
@@ -153,10 +187,24 @@
         </div>
         <div class="divmap-jyK">
           <div class="auto-group-zqmt-tbK">
-            <div class="divlocationinfo-3UD">위치 안내</div>
-            <div class="divway-v2D">길찾기</div>
+            <div class="divlocationinfo-3UD" id="map_txt">위치 안내</div>
+            <button type="button" class="divway-v2D" id="find_txt" data-bs-toggle="modal" data-bs-target="#myModal">길찾기</button>
           </div>
-          <img class="divmap-Byj" src="/assets/divmap-BKX.png"/>
+          <div class="divmap-Byj" id="map">
+          <script>
+			  var container = document.getElementById('map');
+			  var options = {
+			  	center: new kakao.maps.LatLng('[[${event.eventlat}]]', '[[${event.eventlong}]]'),
+			  	level: 2
+		  	};
+		  	  var markerPosition  = new kakao.maps.LatLng('[[${event.eventlat}]]', '[[${event.eventlong}]]'); 
+			  var map = new kakao.maps.Map(container, options);
+			  var marker = new kakao.maps.Marker({
+    		  	position: markerPosition
+    		  })
+    		  marker.setMap(map);
+		  </script>
+		  </div>
         </div>
       </div>
       <div class="mainfooter-Kq3">
@@ -184,4 +232,35 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" id="dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">길 찾기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="100%" th:src="@{'https://map.kakao.com/link/to/'+${event.eventplace}+','+${event.eventlat}+','+${event.eventlong}}">
+			
+		</iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal_show">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script>
+        $(document).ready(function() {
+            $("#find_txt").click(function() {
+                $("#myModal").fadeIn();
+            });
+ 
+            $("#close_modal").click(function() {
+                $("#myModal").fadeOut();
+            });
+        });
+    </script>
 </body>

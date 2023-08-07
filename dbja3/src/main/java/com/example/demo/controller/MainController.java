@@ -75,7 +75,7 @@ public class MainController {
       model.addAttribute("list", boarddao_jpa.findAll());
 
       
-      System.out.println("되니?");
+    //  System.out.println("되니?");
       //주변행사소식 행사 리스트 출력
       List<EventVO> event=null;
       event=eventdao_mb.findTop();

@@ -123,7 +123,6 @@ public class EventController {
         // 조회수를 1 증가시킵니다.
         event.setEventhit(event.getEventhit() + 1); // 이벤트의 조회수를 1 증가시킵니다.
         eventdao_jpa.save(event); // 변경된 이벤트 엔티티를 저장합니다.
-
         model.addAttribute("event", event);
         model.addAttribute("state", state);
         return "/event/eventdetail"; // "/event/eventdetail" 페이지로 이동하도록 반환합니다.
