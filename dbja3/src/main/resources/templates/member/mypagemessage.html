@@ -72,7 +72,7 @@
         <!--받은 쪽지 목록-->
         <div class="messagelist-HcD">
 		  <!-- Thymeleaf iteration over the list of messages -->
-		  <div class="message-P9T" th:each="message : ${messageList}">
+		  <div class="message-P9T" th:each="message : ${messagePage.content}">
 		    <div class="auto-group-jmvt-7bF">
 		      <div class="btncheck-rYq">
 		        <div class="rectangle-137-C6u">
@@ -94,21 +94,29 @@
           <div class="item--iFb">쪽지쓰기</div>
         </div>
       </div>
-      <div class="paging-oXw">
-        <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
-        <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
-        <img class="item-1-ZfX" src="/assets/-Y1f.png"/>
-        <img class="item-2-UnV" src="/assets/-1dB.png"/>
-        <img class="item-3-pbT" src="/assets/-hSh.png"/>
-        <img class="item-4-mmb" src="/assets/-PqT.png"/>
-        <img class="item-5-Ko7" src="/assets/-NKK.png"/>
-        <img class="item-6-Scq" src="/assets/-ciM.png"/>
-        <img class="item-7-Q3s" src="/assets/-bMT.png"/>
-        <img class="item-8-x5P" src="/assets/-e3K.png"/>
-        <img class="item-9-tUq" src="/assets/-EtR.png"/>
-        <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
-        <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
-      </div>
+      
+      <!-- 페이징 처리 부분 -->
+		<div class="paging-oXw">
+		  <a th:href="@{/member/mypagemessage(page=0)}">
+		    <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
+		  </a>
+		  <a th:href="@{/member/mypagemessage(page=${currentPage - 1})}" th:unless="${currentPage == 0}">
+		    <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
+		  </a>
+		
+		  <!-- 페이지 번호 출력 -->
+		  <div th:each="pageNumber : ${#numbers.sequence(0, messagePage.totalPages - 1)}">
+		    <a th:href="@{/member/mypagemessage(page=${pageNumber})}" th:text="${pageNumber + 1}"
+		       th:classappend="${pageNumber == currentPage} ? 'currentPage'"></a>
+		  </div>
+		
+		  <a th:href="@{/member/mypagemessage(page=${currentPage + 1})}" th:unless="${currentPage == messagePage.totalPages - 1}">
+		    <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
+		  </a>
+		  <a th:href="@{/member/mypagemessage(page=${messagePage.totalPages - 1})}">
+		    <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
+		  </a>
+		</div>
     </div>
   </div>
 </div>

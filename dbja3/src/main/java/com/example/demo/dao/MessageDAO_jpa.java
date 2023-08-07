@@ -6,6 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
+
 import com.example.demo.entity.Message;
 @Repository
 public interface MessageDAO_jpa extends JpaRepository<Message, Integer> {
@@ -14,4 +18,12 @@ public interface MessageDAO_jpa extends JpaRepository<Message, Integer> {
 	
 	@Query(value = "select * from Message where mid=?1", nativeQuery = true)
 	List<Message> findBySendId(String id);
+	
+	// 새로운 메소드를 추가하여 페이징된 받은 쪽지들을 가져옴
+    @Query(value = "select * from Message where id=?1", countQuery = "select count(*) from Message where id=?1", nativeQuery = true)
+    Page<Message> findPagedReceivedMessages(String id, Pageable pageable);
+    
+    // 새로운 메소드를 추가하여 페이징된 보낸 쪽지들을 가져옴
+    @Query(value = "select * from Message where mid=?1", countQuery = "select count(*) from Message where mid=?1", nativeQuery = true)
+    Page<Message> findPagedSendedMessages(String id, Pageable pageable);
 }

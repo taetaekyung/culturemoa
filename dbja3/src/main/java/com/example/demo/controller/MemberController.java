@@ -23,6 +23,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.example.demo.dao.MemberDAO_jpa;
 import com.example.demo.dao.MessageDAO_jpa;
 import com.example.demo.entity.Member;
@@ -56,21 +61,37 @@ public class MemberController {
 	/* -----------마이페이지-쪽지함------------ */
 	
 	//마이페이지-받은 쪽지함
-    @GetMapping("/member/mypagemessage")
-    public String myPageMessage(Model model, HttpSession session) {
-    	String id = ((Member)session.getAttribute("m")).getId();
-    	List<Message> message = messagedao_jpa.findByReceiveId(id);
-    	model.addAttribute("messageList",message);
-    	return "/member/mypagemessage";
-    }
+	@GetMapping("/member/mypagemessage")
+	public String myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
+	    String id = ((Member) session.getAttribute("m")).getId();
+	    
+	    // 한 페이지에 보여줄 개수
+	    int pageSize = 25;
+	    
+	    // 받은 쪽지 목록을 페이지로 분할하여 가져옴
+	    Page<Message> messagePage = messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
+	    
+	    model.addAttribute("messagePage", messagePage);
+	    model.addAttribute("currentPage", page);
+	    
+	    return "/member/mypagemessage";
+	}
+
     
 	//마이페이지-보낸 쪽지함
 	@GetMapping("/member/mypagemessagesend")
-	public String messgagesend(Model model, HttpSession session) {
-		String id = ((Member)session.getAttribute("m")).getId();
-		List<Message> message = messagedao_jpa.findBySendId(id);
-		model.addAttribute("messageList",message);
-		return "/member/mypagemessagesend";
+	public String mypagemessagesend(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
+	    String id = ((Member) session.getAttribute("m")).getId();
+	    
+	    // 한 페이지에 보여줄 개수
+	    int pageSize = 25;
+	    
+	    // 받은 쪽지 목록을 페이지로 분할하여 가져옴
+	    Page<Message> messagePage = messagedao_jpa.findPagedSendedMessages(id, PageRequest.of(page, pageSize));
+	    model.addAttribute("messagePage", messagePage);
+	    model.addAttribute("currentPage", page);
+	    
+	    return "/member/mypagemessagesend";
 	}
 	
 	/* -----------마이페이지-위시리스트------------ */

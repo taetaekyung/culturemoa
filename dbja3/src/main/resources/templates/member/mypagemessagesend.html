@@ -66,7 +66,6 @@
               <div class="num-Cqw">번호</div>
               <div class="sendid-wHj">받는사람</div>
               <div class="senddate-47T">발신일</div>
-              <div class="read-b7P">읽은시간</div>
               <div class="content-7rR">내용</div>
               <div class="delete-ak1">삭제</div>
             </div>
@@ -75,7 +74,7 @@
           <!--보낸 쪽지 목록-->
           <div class="messagelist-Gsj">
 			  
-            <div class="message-puF" th:each="message : ${messageList}">
+            <div class="message-puF" th:each="message : ${messagePage.content}">
               <div class="auto-group-kpwf-wU5">
                 <div class="btncheck-FDs">
                   <div class="rectangle-137-yvZ">
@@ -85,7 +84,6 @@
                 <div class="num-W9o" th:text="${message.mno}">0000</div>
                 <div class="id-Da1" th:text="${message.mid}">test</div>
                 <div class="date-kZw" th:text="${message.regdate}">YYYY-MM-DD</div>
-                <div class="read-gyP" th:text="${message.regdate}">MM-DD-00:00</div>
                 <div class="content-pph" th:text="${message.mcontent}">보낸 쪽지함 내용입니다.</div>
                 <img class="delete-Lo3" src="/assets/delete-mhT.png"/>
               </div>
@@ -97,22 +95,35 @@
           <div class="item--LRf">쪽지쓰기</div>
         </div>
       </div>
-      <div class="paging-zFK">
-        <img class="btndoubleprevious-hfX" src="/assets/btndoubleprevious-K7f.png"/>
-        <img class="btnprevious-nKb" src="/assets/btnprevious-MiZ.png"/>
-        <img class="item-1-7Ms" src="/assets/-yey.png"/>
-        <img class="item-2-f8V" src="/assets/-PRb.png"/>
-        <img class="item-3-nD7" src="/assets/-NSd.png"/>
-        <img class="item-4-hqs" src="/assets/-D7F.png"/>
-        <img class="item-5-rim" src="/assets/-uEZ.png"/>
-        <img class="item-6-CXj" src="/assets/-1KF.png"/>
-        <img class="item-7-tvM" src="/assets/-Pgm.png"/>
-        <img class="item-8-qqb" src="/assets/-iY9.png"/>
-        <img class="item-9-Ps7" src="/assets/-fpM.png"/>
-        <img class="btnnext-ieV" src="/assets/btnnext-EP3.png"/>
-        <img class="btndoublenext-SaV" src="/assets/btndoublenext-Rtm.png"/>
-      </div>
+      
+      <!--페이징 번호 출력-->
+		<div class="paging-zFK">
+		  <!-- 이전 첫 페이지로 이동하는 버튼 -->
+		  <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessagesend(page=0)}">
+		    <img class="btndoubleprevious-hfX" src="/assets/btndoubleprevious-K7f.png"/>
+		  </a>
+		  <!-- 이전 페이지로 이동하는 버튼 -->
+		  <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessagesend(page=${messagePage.previousPageable().pageNumber})}">
+		    <img class="btnprevious-nKb" src="/assets/btnprevious-MiZ.png"/>
+		  </a>
+		  <!-- 페이지 번호 출력 -->
+		  <div th:if="${messagePage.totalPages > 0}">
+		    <div th:each="pageNum : ${#numbers.sequence(0, messagePage.totalPages-1)}" class="item-th" th:classappend="${pageNum == messagePage.number ? 'current' : ''}">
+		      <a th:href="@{/member/mypagemessagesend(page=${pageNum})}" th:text="${pageNum+1}"></a>
+		    </div>
+		  </div>
+		  <!-- 다음 페이지로 이동하는 버튼 -->
+		  <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessagesend(page=${messagePage.nextPageable().pageNumber})}">
+		    <img class="btnnext-ieV" src="/assets/btnnext-EP3.png"/>
+		  </a>
+		  <!-- 다음 마지막 페이지로 이동하는 버튼 -->
+		  <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessagesend(page=${messagePage.totalPages-1})}">
+		    <img class="btndoublenext-SaV" src="/assets/btndoublenext-Rtm.png"/>
+		  </a>
+		</div>
+
     </div>
   </div>
 </div>
 </body>
+</html>
