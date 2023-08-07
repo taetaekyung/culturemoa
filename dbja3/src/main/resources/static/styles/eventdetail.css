@@ -14,7 +14,8 @@ input {
 }
 body {
   width: 192rem;
-}.eventdetail-d3F {
+}
+.eventdetail-d3F {
   box-sizing: border-box;
   padding-bottom: 17.0717rem;
   width: 100%;
@@ -609,6 +610,8 @@ body {
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-bottom: 10rem;
+
 }
 
 #dialog{
