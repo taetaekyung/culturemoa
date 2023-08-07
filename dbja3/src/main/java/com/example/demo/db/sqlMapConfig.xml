@@ -8,7 +8,7 @@
 	<!-- entity -->
   	<typeAlias type="com.example.demo.entity.Message" alias="message"/>
 	<typeAlias type="com.example.demo.entity.Member" alias="member"/>
-	<typeAlias type="com.example.demo.entity.WishList" alias="wishList"/>
+	<typeAlias type="com.example.demo.entity.Wishlist" alias="wishList"/>
 	<typeAlias type="com.example.demo.entity.Event" alias="event"/>
 	<typeAlias type="com.example.demo.entity.Reviewboard" alias="reviewBoard"/>
 	<typeAlias type="com.example.demo.entity.ReviewComment" alias="reviewComment"/>

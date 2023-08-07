@@ -32,6 +32,32 @@
 		  alert("링크를 클립보드에 복사했습니다.");
 		})
 	}
+	
+	function insertLike(){ 
+		var data = {
+				eventno: $("#eventno").val()
+		};
+		$.ajax({
+			url:"/insertLike",
+			data: data,
+			success:function(n) {
+				if(n == 2) {
+					var add = confirm("관심목록에서 삭제하시겠습니까?");
+					if(add==1) {
+						$("#bookmark").attr("src", "/assets/blank_star.png");
+						alert("관심목록에서 삭제되었습니다. ")
+					}
+				}
+				else {
+					var add = confirm("관심목록에 추가하시겠습니까?");
+					if(add==1) {
+						$("#bookmark").attr("src", "/assets/bookmark-Bkd.png");
+						alert("관심목록에 추가되었습니다.")
+					}
+				}
+			}
+		});	
+	}
 		
 	//--------gnb드롭다운
 	//마우스가 올라오면 드롭다운
@@ -122,7 +148,8 @@
           <div class="eventdetail-fhK">행사상세</div>
         </div>
         <div class="frameicon-bay">
-          <img class="bookmark-Z21" src="/assets/bookmark-Bkd.png"/>
+          <img class="bookmark-Z21" id="bookmark" th:src="${cnt} == 0 ? '/assets/blank_star.png' : '/assets/bookmark-Bkd.png'" onclick="insertLike()"/>
+          <input type="hidden" th:value="${event.eventno}" name="eventno" id="eventno">
           <img class="sharing-5m3" src="/assets/sharing-pBb.png" onclick="copyUrl()"/>
         </div>
       </div>
@@ -132,7 +159,7 @@
 		<img class="maintitle-img" th:src="${event.eventfname == null ? '/images/white_background.png' : '/images/' + event.eventfname}" alt="행사 이미지">
 	</div>
       <div class="divhit-MTf">
-        <img class="iconhit-gVw" src="/assets/iconhit.png"/>
+        <img class="iconhit-gVw" id="iconhit" src="/assets/iconhit.png"/>
         <div class="hit-oaZ" th:text="${event.eventhit}"></div>
       </div>
       <div class="divposter-wwf">

@@ -40,6 +40,6 @@ public class Event {
 	private List<Reviewboard> reviewBoards = new ArrayList<>();
 	   
 	@OneToMany(mappedBy = "event", cascade=CascadeType.REMOVE)
-	private List<WishList> wishLists = new ArrayList<>();
+	private List<Wishlist> wishLists = new ArrayList<>();
 
 }

@@ -23,12 +23,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.EventDAO_jpa;
 import com.example.demo.dao.EventDAO_mb;
+import com.example.demo.dao.WishListDAO_jpa;
 import com.example.demo.entity.Event;
+import com.example.demo.entity.Member;
+import com.example.demo.entity.Wishlist;
 import com.example.demo.vo.EventVO;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.Setter;
 
@@ -40,6 +45,8 @@ public class EventController {
 	private EventDAO_jpa eventdao_jpa;
 	@Autowired
 	private EventDAO_mb eventdao_mb;
+	@Autowired
+	private WishListDAO_jpa wishlistdao_jpa;
 	//오늘 날짜
 	LocalDate currentDate = LocalDate.now();
 	
@@ -92,7 +99,9 @@ public class EventController {
     // 행사 상세 : <이벤트 번호>를 받아서 <전체 이벤트 정보>와 <공연진행상태>를 반환함.
     @GetMapping("/event/eventdetail")
     @Transactional // 추가: 조회수 업데이트를 위해 트랜잭션을 사용
-    public String eventDetail(@RequestParam int eventno, Model model) {
+    public String eventDetail(HttpSession session, @RequestParam int eventno, Model model) {
+    	
+    	String id = ((Member)session.getAttribute("m")).getId();
     	
     	//시간 생략을 위한 Formatter
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -116,13 +125,23 @@ public class EventController {
             model.addAttribute("eventEnd", null);
         }
         
-        
+        String eventlink = event.getEventlink();
+        if (eventlink != null && !eventlink.startsWith("http")) {
+            // Add 'http://' to the eventlink if it doesn't start with 'http'
+            eventlink = "http://" + eventlink;
+        }
+        event.setEventlink(eventlink);
         
         String state = calculateEventStatus(event);
 
         // 조회수를 1 증가시킵니다.
         event.setEventhit(event.getEventhit() + 1); // 이벤트의 조회수를 1 증가시킵니다.
         eventdao_jpa.save(event); // 변경된 이벤트 엔티티를 저장합니다.
+        
+        int cnt = wishlistdao_jpa.countByIdAndEventno(id, eventno);
+        
+        
+        model.addAttribute("cnt", cnt);
         model.addAttribute("event", event);
         model.addAttribute("state", state);
         return "/event/eventdetail"; // "/event/eventdetail" 페이지로 이동하도록 반환합니다.
@@ -400,4 +419,30 @@ public class EventController {
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
 	*/
+	
+	
+	// 관심목록 추가/삭제
+	@GetMapping("/insertLike")
+	@ResponseBody
+	public int insertLike(HttpSession session, int eventno) {
+		int re = -1;
+    	String id = ((Member)session.getAttribute("m")).getId();
+        int cnt = wishlistdao_jpa.countByIdAndEventno(id, eventno);
+        if(cnt == 0) {
+        	re = 1;
+        	Wishlist w = new Wishlist();
+        	int wishno = wishlistdao_jpa.getWishNo();
+        	w.setWishno(wishno+1);
+        	w.setMemberId(id);
+        	w.setEventEventno(eventno);
+        	wishlistdao_jpa.save(w);
+    		return re;
+        }
+        else {
+        	re = 2;
+        	wishlistdao_jpa.deleteByIdAndEventno(id, eventno);
+        	return re;
+        }
+
+	}
 }

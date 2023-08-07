@@ -45,6 +45,6 @@ public class Member {
 	private List<ReviewComment> reviewComments = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
-	private List<WishList> wishLists = new ArrayList<>();
+	private List<Wishlist> wishLists = new ArrayList<>();
 	
 }
