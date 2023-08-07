@@ -276,7 +276,6 @@ body {
   flex-shrink: 0;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq {
-  margin-bottom: 12.4rem;
   box-sizing: border-box;
   padding: 2.6rem 33.2rem 0rem 30rem;
   width: 100%;
@@ -286,14 +285,15 @@ body {
   flex-shrink: 0;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .headerframe-Q7j {
-  margin: 0rem 114.055rem 0.4rem 0rem;
+  margin: 0rem 114.855rem 0.4rem 0rem;
   height: 2rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .headerframe-Q7j .home-jQu {
-  margin-right: 1.1rem;
+  margin-left: 18rem;
+  margin-right: 0.8rem;
   display: flex;
   font-size: 1.4rem;
   line-height: 1.4285714286;
@@ -302,6 +302,10 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ -webkit-user-select: none;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .headerframe-Q7j .icon-Fu3 {
   margin: 0rem 0.6rem 0rem 0rem;
@@ -345,7 +349,6 @@ body {
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .headerframe-Q7j .message-xws {
   display: flex;
   font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.4285714286;
   letter-spacing: -0.07rem;
   color: #000000;
@@ -353,6 +356,23 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
+
+.mypagelike-exZ .main-iEu .auto-group-97pd-fvq .title{
+  margin: 0rem 0rem 7rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.16rem;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 100%;
+}
+
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .filter-6oB {
   margin-left: 109.6rem;
   display: flex;
@@ -360,12 +380,11 @@ body {
   flex-shrink: 0;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .filter-6oB .registration-C5X {
-  margin-right: 2.2rem;
+  margin-right: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
-  font-weight: 500;
   line-height: 2.8888888889;
   letter-spacing: -0.1rem;
   color: #a5a5a5;
@@ -381,7 +400,7 @@ body {
   flex-shrink: 0;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .filter-6oB .message-Enu {
-  margin-right: 0.9rem;
+  margin-right: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -395,7 +414,7 @@ body {
   flex-shrink: 0;
 }
 .mypagelike-exZ .main-iEu .auto-group-97pd-fvq .filter-6oB .middleline-a65 {
-  margin-right: 2rem;
+  margin-right: 0.7rem;
   width: 0.2rem;
   height: 1.8rem;
   background-color: #a5a5a5;
@@ -406,7 +425,6 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
-  font-weight: 500;
   line-height: 2.8888888889;
   letter-spacing: -0.1rem;
   color: #000000;
