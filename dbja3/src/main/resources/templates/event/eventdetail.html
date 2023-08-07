@@ -95,10 +95,10 @@
     </div>
     <div class="maintitle-pTj">
 	<div class="div_img">
-		<img class="maintitle-img" th:src="@{'/images/'}+${event.eventfname}">
+		<img class="maintitle-img" th:src="${event.eventfname == null ? '/images/white_background.png' : '/images/' + event.eventfname}" alt="행사 이미지">
 	</div>
       <div class="divhit-MTf">
-        <img class="iconhit-gVw" src="/assets/iconhit-DYu.png"/>
+        <img class="iconhit-gVw" src="/assets/iconhit.png"/>
         <div class="hit-oaZ" th:text="${event.eventhit}"></div>
       </div>
       <div class="divposter-wwf">
@@ -113,18 +113,39 @@
         <div class="divcontent-mZK">
           <div class="auto-group-9mhs-u9j">
             <div class="divdday-cpq">남은 / 지난 공연</div>
-            <div class="dday-uJ9" th:text="${state}">D-64</div>
+            <div class="dday-uJ9" th:text="${state}"></div>
           </div>
           <div class="auto-group-gt2u-S3B">
             <div class="divdate-Z7o">공연기간</div>
             <!-- 공연 기간 출력 -->
-            <div class="date-TU5" th:text="${event.eventstart}+'~'+${event.eventend}"></div>
+            <div class="date-TU5" th:text="${eventStart}+' ~ '+${eventEnd}"></div>
           </div>
           <div class="auto-group-9dqs-zD7">
             <div class="divlocation-JUh">공연장소</div>
             <!-- 공연 장소 출력 -->
             <div class="location-ax1" th:text="${event.eventplace}"></div>
           </div>
+          
+          <div class="div_addr">
+            <div class="addr_txt">공연주소</div>
+            <!-- 공연 장소 출력 -->
+            <div class="addr" th:text="${event.eventaddr}"></div>
+          </div>
+          
+          <div class="div_link">
+            <div class="link_txt">공연링크</div>
+            <!-- 공연 링크 출력 -->
+            <div class="link">
+				<a class="link" th:href="${event.eventlink}" target="_blank" th:text="${event.eventlink}"></a>
+			</div>
+          </div>
+          
+          <div class="div_park">
+            <div class="park_txt">주차장여부</div>
+            <!-- 주차장 여부 출력 -->
+            <div class="park" th:text="${event.parkplace == 'Y' ? '있음' : '없음'}"></div>
+          </div>
+          
           <div class="content-J7K" th:text="${event.eventcontent}">
           </div>
         </div>

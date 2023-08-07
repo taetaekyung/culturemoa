@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import java.time.LocalDate;
@@ -89,11 +93,32 @@ public class EventController {
     @GetMapping("/event/eventdetail")
     @Transactional // 추가: 조회수 업데이트를 위해 트랜잭션을 사용
     public String eventDetail(@RequestParam int eventno, Model model) {
-        // eventno를 사용하여 해당 이벤트를 조회합니다. (여기에서는 이벤트를 찾는 로직을 추가해야 합니다.)
+    	
+    	//시간 생략을 위한 Formatter
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        
+    	// eventno를 사용하여 해당 이벤트를 조회합니다. (여기에서는 이벤트를 찾는 로직을 추가해야 합니다.)
         Event event = eventdao_jpa.findByEventno(eventno);
+        
+        if(event.getEventstart() != null) {
+            String eventStart = formatter.format(event.getEventstart());
+            model.addAttribute("eventStart", eventStart);
+        }
+        else {
+            model.addAttribute("eventStart", null);
+        }
+        
+        if(event.getEventend() != null) {
+            String eventEnd = formatter.format(event.getEventend());
+            model.addAttribute("eventEnd", eventEnd);
+        }
+        else {
+            model.addAttribute("eventEnd", null);
+        }
+        
+        
+        
         String state = calculateEventStatus(event);
-        System.out.println(state);
-        System.out.println("오늘 날짜: " + currentDate);
 
         // 조회수를 1 증가시킵니다.
         event.setEventhit(event.getEventhit() + 1); // 이벤트의 조회수를 1 증가시킵니다.

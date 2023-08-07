@@ -38,8 +38,8 @@
 		<img class="pic" id="preview" th:src="@{'/profileImage/'+${session.m.fname}}"></img>
 		<br>
 		<input type="file" accept=".png, .jpeg, .jpg"  th:onchange="readURL(this)" class="selectfile" name="uploadFile">
-	    <div class="btnreset" onclick="deletepic()">프로필 사진 삭제</div>
 	    <input type="submit" class="btnchangepic" onclick="editcomplete()" value="프로필 사진 수정"></input>
+	    <div class="btnreset" onclick="deletepic()">프로필 사진 삭제</div>
     </div>
     </form>
 </body>

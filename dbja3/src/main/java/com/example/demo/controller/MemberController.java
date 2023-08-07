@@ -71,6 +71,7 @@ public class MemberController {
 	    // 받은 쪽지 목록을 페이지로 분할하여 가져옴
 	    Page<Message> messagePage = messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
 	    
+	    System.out.println(messagePage.getContent().get(1).getMemberId()); 
 	    model.addAttribute("messagePage", messagePage);
 	    model.addAttribute("currentPage", page);
 	    

@@ -22,5 +22,17 @@ public class Message {
 	@ManyToOne
 	@JoinColumn(name="id",insertable = true, updatable = true)
 	private Member member;
+	
+	public void setMemberId(String memberId) {
+		if(this.member==null) {
+			this.member = new Member();
+		}
+		this.member.setId(memberId);
+	}
+	
+	public String getMemberId() {
+		return this.member.getId();
+	}
+	
 	private Date regdate;
 }
