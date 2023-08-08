@@ -1,5 +1,7 @@
 package com.example.demo.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -49,4 +51,8 @@ public interface ReviewBoardDAO_jpa extends JpaRepository<Reviewboard, Integer> 
 	
 	 @Query(value = "select count(*) from Reviewboard where (reviewtitle like '%?1%' or reviewcontent like '%?1%')" , nativeQuery = true)
 	 public int getTotalRecord(String keyword);
+ 
+     @Query(value="select * from Reviewboard where reviewtitle like CONCAT(CONCAT('%', ?1), '%') or reviewcontent like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
+	 public List<Reviewboard> findByKeyword(String keyword);
+	 
 }

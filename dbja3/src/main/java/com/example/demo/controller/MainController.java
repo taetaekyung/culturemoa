@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.BoardDAO_jpa;
@@ -58,11 +60,7 @@ public class MainController {
 	public String main() {
 	   return "main";
 	}
-   
-   @GetMapping("/searchresult")
-   public void searchresult() {
-   }
-   
+
    
    //메인페이지를 열었을 때
    @GetMapping("/mainPage")
@@ -184,4 +182,13 @@ public class MainController {
    @GetMapping("/FAQ")
    public void FAQ() {
    } 
+   
+   
+   // 헤더의 검색창에서 검색했을 때
+   @PostMapping("/searchresult")
+   public void searchresult(String keyword_main) {
+	   
+   }
+   
+   
 }

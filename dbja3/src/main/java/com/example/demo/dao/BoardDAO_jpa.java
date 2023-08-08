@@ -60,4 +60,7 @@ public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
 			+ "where a.rown between 1 and 10", nativeQuery = true)
 	public List<Board> findAll();
 	
+	@Query(value="select * from Board where boardtitle like CONCAT(CONCAT('%', ?1), '%') or boardcontent like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
+	public List<Board> findByKeyword(String keyword);
+	
 }

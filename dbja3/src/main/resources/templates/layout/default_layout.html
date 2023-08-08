@@ -33,6 +33,28 @@
             alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
         }
 	}
+	
+	// 검색 버튼 클릭 시 검색결과 창으로 이동
+	function searchKeyword(){
+		if($("#keyword_main").val() == null || $("#keyword_main").val() == "") {
+			alert("검색어를 입력하세요.");
+		}
+		else {
+			var data = {
+				keyword : $("#keyword_main").val()
+			};
+			
+			$.ajax({
+				url:"/searchresult",
+				data: data,
+				success:function(n) {
+					sendNUM = eval(n); // 숫자로 변환
+				}
+		});	
+		}
+	}
+	
+	
 	</script>
 	
 	
@@ -52,14 +74,14 @@
 		    
 		    <!--searchbar div 시작-->
 		    <div class="searchbar">
-			  <input class="main_search" type="text" name="keyword_main" id="keyword_main" placeholder="검색어를 입력하세요.">
+		    <form action="/searchresult" method="post">
+			  <input class="main_search" type="text" required title="검색어를 입력해주세요." name="keyword_main" id="keyword_main" placeholder="검색어를 입력하세요.">
 			  <!-- searchicon div 시작 -->
-		      <button class="searchicon" id="searchicon" onclick="alert('반가워요!')">
+		      <button class="searchicon" id="searchicon" type="submit">
 		        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
 		      </button>
 		      <!-- searchicon div 끝 -->
-	
-		      
+   		    </form>
 		    </div>
 		    <!--searchbar div 끝-->
 		    
