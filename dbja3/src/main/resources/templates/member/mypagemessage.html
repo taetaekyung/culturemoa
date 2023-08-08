@@ -13,6 +13,36 @@
 <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
 <link rel="stylesheet" th:href="@{/styles/mypagemessage.css}"/>
 <script th:inline="javascript">
+	//체크박스+삭제버튼을 통한 삭제 기능
+	function deleteMessages() {
+	    const selectedMessageIds = [];
+	    const messageCheckboxes = document.querySelectorAll('input[name="messageCheckbox"]:checked');
+	    
+	    messageCheckboxes.forEach(function (checkbox) {
+	        selectedMessageIds.push(checkbox.value);
+	    });
+	
+	    if (selectedMessageIds.length > 0 && confirm('선택한 쪽지를 삭제하시겠습니까?')) {
+	        // 선택한 쪽지 ID를 AJAX를 통해 서버로 전송하여 삭제합니다.
+	        $.ajax({
+	            type: 'POST',
+	            url: '/member/deletemessages',
+	            data: {
+	                messageIds: selectedMessageIds // messageIds를 올바르게 설정해야 합니다.
+	            },
+	            traditional: true, // 배열 파라미터 전송을 위한 설정
+	            success: function (data) {
+	                alert(data);
+	                location.reload(); // 삭제 후 페이지 새로고침
+	            },
+	            error: function () {
+	                alert('쪽지 삭제에 실패하였습니다.');
+	            }
+	        });
+	    }
+	}
+
+	//휴지통 클릭을 통한 1개 삭제 기능
     function deleteMessage(mno) {
         if (confirm('쪽지를 삭제하시겠습니까?')) {
             $.ajax({
@@ -32,6 +62,19 @@
             });
         }
     }
+    
+    //전체 체크박스 선택 기능
+    document.addEventListener('DOMContentLoaded', function () {
+    const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+    const messageCheckboxes = document.querySelectorAll('input[name="messageCheckbox"]');
+    
+    selectAllCheckbox.addEventListener('change', function () {
+        const isChecked = selectAllCheckbox.checked;
+        messageCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = isChecked;
+        });
+    });
+});
 </script>
 </head>
 <body>
@@ -85,6 +128,7 @@
           <div class="name-U73">
             <div class="btncheck-RHB">
               <div class="rectangle-137-j2y">
+				  <input type="checkbox" id="selectAllCheckbox">
               </div>
             </div>
             <div class="num-rtH">번호</div>
@@ -116,33 +160,36 @@
 		</div>
 
         <div class="writebtn-Sos">
-          <img class="item--yYu" src="/assets/-UXb.png"/>
-          <div class="item--iFb">쪽지쓰기</div>
-        </div>
+		    <!-- '삭제' 버튼 추가 -->
+		    <div class="deletebtn" onclick="deleteMessages()">삭제</div>
+		    <img class="item--yYu" src="/assets/-UXb.png"/>
+		    <div class="item--iFb">쪽지쓰기</div>
+		</div>
       </div>
       
       <!-- 페이징 처리 부분 -->
 		<div class="paging-oXw">
-		  <a th:href="@{/member/mypagemessage(page=0)}">
-		    <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
-		  </a>
-		  <a th:href="@{/member/mypagemessage(page=${currentPage - 1})}" th:unless="${currentPage == 0}">
-		    <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
-		  </a>
-		
-		  <!-- 페이지 번호 출력 -->
-		  <div th:each="pageNumber : ${#numbers.sequence(0, messagePage.totalPages - 1)}">
-		    <a th:href="@{/member/mypagemessage(page=${pageNumber})}" th:text="${pageNumber + 1}"
-		       th:classappend="${pageNumber == currentPage} ? 'currentPage'"></a>
-		  </div>
-		
-		  <a th:href="@{/member/mypagemessage(page=${currentPage + 1})}" th:unless="${currentPage == messagePage.totalPages - 1}">
-		    <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
-		  </a>
-		  <a th:href="@{/member/mypagemessage(page=${messagePage.totalPages - 1})}">
-		    <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
-		  </a>
-		</div>
+	    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=0)}">
+	        <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
+	    </a>
+	    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=${messagePage.previousPageable().pageNumber})}">
+	        <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
+	    </a>
+	    
+	    <!-- 페이지 번호 출력 -->
+	    <div th:each="pageNum : ${#numbers.sequence(0, messagePage.totalPages - 1)}" class="item-th"
+	         th:classappend="${pageNum == currentPage} ? 'currentPage' : ''">
+	        <a th:href="@{/member/mypagemessage(page=${pageNum})}" th:text="${pageNum + 1}"></a>
+	    </div>
+	    
+	    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.nextPageable().pageNumber})}">
+	        <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
+	    </a>
+	    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.totalPages - 1})}">
+	        <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
+	    </a>
+	</div>
+
     </div>
   </div>
 </div>

@@ -718,6 +718,12 @@ body {
   align-items: center;
   flex-shrink: 0;
 }
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh .deletebtn {
+	display: inline-block;
+    margin-right: 10px; /* 조정 가능한 여백 설정 */
+    color: red; /* 버튼 색상 설정 */
+    cursor: pointer; /* 포인터 커서로 변경하여 사용자에게 클릭 가능함을 보여줌 */
+}
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh .item--oAq {
   margin: 0rem 1rem 0rem 0rem;
   width: 0.8892rem;
