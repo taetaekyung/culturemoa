@@ -4,7 +4,9 @@ package com.example.demo.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +61,75 @@ public class MemberController {
 	
 
 	/* -----------마이페이지-쪽지함------------ */
+	
+	//마이페이지-보낸 쪽지 팝업
+	@GetMapping("/member/messageboxsend")
+	public String sentMessage(Model model, @RequestParam int mno) {
+	    Message message = messagedao_jpa.findById(mno).orElse(null);
+        model.addAttribute("message", message);
+        return "/member/messageboxsend";
+	}
+	
+    // 마이페이지-받은 쪽지 팝업
+    @GetMapping("/member/messageboxreceive")
+    public String receivedMessage(Model model, @RequestParam int mno) {
+        Message message = messagedao_jpa.findById(mno).orElse(null);
+        if (message != null) {
+            String senderId = message.getMid();
+            Optional<Member> senderOptional = memberdao_jpa.findById(senderId);
+            if (senderOptional.isPresent()) {
+                Member sender = senderOptional.get();
+                model.addAttribute("senderNickname", sender.getNickname());
+            }
+            model.addAttribute("message", message);
+        }
+        return "/member/messageboxreceive";
+    }
+	
+	//마이페이지 - 쪽지 보내기
+	@PostMapping("/member/sendmessage")
+	@ResponseBody
+	public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
+	    // 세션에서 로그인된 사용자의 ID 가져오기
+	    String senderId = ((Member) session.getAttribute("m")).getId();
+	    
+	    // 발신 아이디, 닉네임을 가져와 Member 엔티티 조회
+	    Member sender = memberdao_jpa.findById(senderId).orElse(null);
+	    
+	    if (sender != null) {
+	        // 받는 사람 닉네임으로 Member 엔티티 조회
+	        Member receiver = memberdao_jpa.findByNickname(nickname).orElse(null);
+	        if (receiver == null) {
+	            return "받는 사람 닉네임을 확인해주세요.";
+	        }
+	        
+	        // Message 엔티티 생성 및 설정
+	        Message message = new Message();
+	        message.setMid(senderId);
+	        message.setMcontent(content);
+	        message.setMember(receiver); // 수신자 설정
+	        message.setRegdate(new Date()); // 현재 시각 설정
+	        message.setDeletedBySender(false);
+	        message.setDeletedByReceiver(false);
+	        
+	        // mno 설정 (mno 최대값 + 1)
+	        int maxMno = messagedao_jpa.findMaxMno();
+	        message.setMno(maxMno + 1);
+
+	        // 메시지 저장
+	        messagedao_jpa.save(message);
+	        
+	        return "쪽지가 성공적으로 보내졌습니다.";
+	    } else {
+	        return "쪽지 보내기에 실패하였습니다.";
+	    }
+	}
+	
+	//마이페이지-쪽지쓰기 팝업
+	@GetMapping("/member/messagesend")
+	public void sendMessage() {
+		
+	}
 	
 	//마이페이지-쪽지 삭제(체크박스 통해서 삭제)
 	@PostMapping("/member/deletemessages")

@@ -685,6 +685,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+.mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .content-s6Z:hover{
+	text-decoration: underline;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .deletebtn-kg9 {
   margin-bottom: 0.125rem;

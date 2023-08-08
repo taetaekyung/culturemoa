@@ -5,10 +5,10 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>message_box_send</title>
+  <title>보낸 쪽지</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="./styles/messageboxsend.css"/>
+  <link rel="stylesheet" href="/styles/messageboxsend.css"/>
 </head>
 <body>
 <div class="messageboxsend-fu3">
@@ -18,21 +18,16 @@
   </div>
   <div class="line-30-xFs">
   </div>
-  <div class="item--tfK">보낸쪽지</div>
-  <div class="item-0-50-yAy">
-    <span class="item-0-50-yAy-sub-0">0</span>
-    <span class="item-0-50-yAy-sub-1">/50</span>
-  </div>
-  <div class="id1234--11B">김소정(id_1234 / 닉네임)</div>
-  <div class="yy-mm-dd-00-00-heh">YY-MM-DD [00:00]</div>
   <div class="item--nw3">받는사람</div>
   <div class="item--Hso">보낸시간</div>
+  <div class="id1234--11B" th:text="${message.member.nickname}"></div>
+  <div class="yy-mm-dd-00-00-heh" th:text="${message.regdate}"></div>
+  <div class="item--ot5" th:text="${message.mcontent}"></div>
   <div class="frame-48-nZf">
     <div class="btnsend-uuB">삭제하기</div>
     <div class="btnback-ni5">취소</div>
   </div>
   <div class="line-30-fms">
   </div>
-  <div class="item--ot5">안녕하세요.</div>
 </div>
 </body>

@@ -13,6 +13,19 @@
 <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
 <link rel="stylesheet" th:href="@{/styles/mypagemessage.css}"/>
 <script th:inline="javascript">
+	//쪽지 보내기 팝업 열기 함수
+	function openSendMessagePopup() {
+	    // 팝업창을 여는 코드를 작성합니다.
+	    window.open('/member/messagesend', 'messagePopup', 'width=510,height=430');
+	}
+	//받은 쪽지 1개 내용 팝업 열기 함수
+	function openReceivedMessagePopup(mno) {
+	    const url = '/member/messageboxreceive?mno=' + mno;
+	    window.open(url, 'messagePopup', 'width=510,height=430');
+	}
+
+
+	
 	//체크박스+삭제버튼을 통한 삭제 기능
 	function deleteMessages() {
 	    const selectedMessageIds = [];
@@ -153,7 +166,9 @@
 		      <div class="num-7Ds" th:text="${message.mno}">0000</div>
 		      <div class="id-Qyf" th:text="${message.mid}">test</div>
 		      <div class="receivedate-Ypy" th:text="${message.regdate}">YYYY-MM-DD</div>
-		      <div class="content-s6Z" th:text="${message.isDeletedByReceiver} ? '이 쪽지는 삭제되었습니다.' : ${message.mcontent}">받은 쪽지함 내용입니다.</div>
+		      <div class="content-s6Z" th:text="${message.isDeletedByReceiver} ? '이 쪽지는 삭제되었습니다.' : ${message.mcontent}" 
+     th:onclick="|openReceivedMessagePopup('${message.mno}')|">받은 쪽지함 내용입니다.</div>
+
 		      <img class="deletebtn-kg9" src="/assets/deletebtn.png" th:onclick="deleteMessage([[${message.mno}]])" />
 		    </div>
 		  </div>
@@ -163,7 +178,8 @@
 		    <!-- '삭제' 버튼 추가 -->
 		    <div class="deletebtn" onclick="deleteMessages()">삭제</div>
 		    <img class="item--yYu" src="/assets/-UXb.png"/>
-		    <div class="item--iFb">쪽지쓰기</div>
+		    <!-- 쪽지쓰기 버튼에 팝업 이벤트 추가 -->
+		    <div class="item--iFb" onclick="openSendMessagePopup()">쪽지쓰기</div>
 		</div>
       </div>
       

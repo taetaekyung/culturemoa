@@ -1,14 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>message_send</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="./styles/messagesend.css"/>
+<meta charset="utf-8" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>쪽지 쓰기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+<link rel="stylesheet" th:href="@{/styles/messagesend.css}"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+  let isUnsavedChanges = false; // 변수를 사용하여 작성한 내용이 있는지 추적
+  
+  // 글자 수 체크 및 최대 글자 수 제한
+  function updateCharCount(textarea) {
+    const charCount = textarea.value.length;
+    document.getElementById('charCount').innerText = `(${charCount} / 900자)`;
+  }
+  
+  function checkMaxChar(textarea, maxChar) {
+    if (textarea.value.length > maxChar) {
+      textarea.value = textarea.value.substring(0, maxChar);
+    }
+  }
+
+  // 작성 중인 내용 추적
+  function trackUnsavedChanges() {
+    isUnsavedChanges = true;
+  }
+
+  // 쪽지 보내기
+  function sendMessage() {
+    // 쪽지 내용과 받는 사람 닉네임 가져오기
+    const content = document.querySelector('.frame-332-iQ1').value;
+    const nickname = document.querySelector('.id1234--tvm').value;
+    
+    // 입력한 내용이 없으면 전송 안됨
+    if (!content) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
+    
+    // AJAX를 이용해 쪽지 보내기 요청 전송
+    $.ajax({
+      type: 'POST',
+      url: '/member/sendmessage',
+      data: {
+        nickname: nickname,
+        content: content
+      },
+      success: function (data) {
+        // 서버 응답이 성공일 경우 팝업 닫고 내용 초기화
+        alert(data);
+        closePopup();
+      },
+      error: function () {
+        // 서버 응답이 실패일 경우 알림만 띄우고 팝업 닫지 않음
+        alert('쪽지 보내기에 실패하였습니다.');
+      }
+    });
+  }
+
+  // 팝업 닫기
+  function closePopup() {
+    if (isUnsavedChanges) {
+      const confirmation = confirm('작성 중인 내용이 있습니다. 취소하시겠습니까?');
+      if (!confirmation) {
+        return;
+      }
+    }
+    window.close();
+  }
+</script>
 </head>
 <body>
 <div class="messagesend-siq">
@@ -16,22 +80,16 @@
   </div>
   <div class="line-29-M8D">
   </div>
-  <div class="line-30-tP3">
-  </div>
-  <div class="item--qZB">보낸쪽지</div>
-  <div class="item-0-50-jeZ">
-    <span class="item-0-50-jeZ-sub-0">0</span>
-    <span class="item-0-50-jeZ-sub-1">/50</span>
-  </div>
-  <div class="id1234--tvm">김소정(id_1234 / 닉네임)</div>
-  <div class="yy-mm-dd-bqB">YY-MM-DD</div>
-  <div class="frame-332-iQ1">내용을입력하세요.</div>
+  <div class="item--qZB">쪽지쓰기</div>
   <div class="item--CKB">받는사람</div>
-  <div class="item--Jd7">날짜</div>
+  <input type="text" class="id1234--tvm" placeholder="닉네임을 입력하세요.">
+  <textarea class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;"></textarea>
   <div class="frame-48-RSq">
-    <div class="btnsend-MbP">보내기</div>
-    <div class="btnback-3UD">취소</div>
+    <div class="btnsend-MbP" onclick="sendMessage()">보내기</div>
+    <div class="btnback-3UD" onclick="closePopup()">취소</div>
   </div>
-  <div class="item-0-1000-jrq">(0 / 1000자)</div>
+  <!-- 글자 수 표시 -->
+  <div class="item-0-1000-jrq" id="charCount">(0 / 900자)</div>
 </div>
 </body>
+</html>

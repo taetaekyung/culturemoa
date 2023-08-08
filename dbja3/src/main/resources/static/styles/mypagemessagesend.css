@@ -702,6 +702,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .content-pph:hover {
+	text-decoration: underline;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .delete-Lo3 {
   margin-bottom: 0.125rem;

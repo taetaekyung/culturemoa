@@ -16,6 +16,8 @@ import jakarta.transaction.Transactional;
 
 @Repository
 public interface MemberDAO_jpa extends JpaRepository<Member, String> {
+    // 닉네임으로 회원을 조회하는 메소드
+    Optional<Member> findByNickname(String nickname);
 	
 	@Modifying
 	@Transactional
