@@ -198,7 +198,7 @@ public class EventController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
-	*/
+	
 	
 	
 	//국내공연 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
@@ -238,9 +238,337 @@ public class EventController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
-	
+	*/
+  //국내공연 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
+  	@GetMapping("/event/domesticconcertlist")
+  	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String eventArea, @RequestParam(required = false) String eventDate) throws ParseException {
+  	    int pageSize = 16;
+  	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
 
+  	    Page<Event> eventPage = null;
+  	    model.addAttribute("eventArea", "지역을 선택하세요");
+  	    
+  	    if (eventArea != null && !eventArea.isEmpty()) {
+  	    	if(eventArea.equals("all")) { //전체 클릭하면 카테고리만 받아서 전체 출력
+  	    		if(eventDate!=null&&!eventDate.equals("all")) { // //지역x, 행사날짜o
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateContainingAndCategoryNo(parsedEventDate, 1, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  	    			
+  	    		}else {//지역x, 행사날짜x
+  	    			System.out.println("2번");
+  	    			eventPage = eventdao_jpa.findByCategoryno(1, pageable);	
+  	    			
+  	    		}
+  	    	}else { // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져오도록 변경
+  	    		if(eventDate!=null&&!eventDate.equals("all")&&!eventDate.equals("날짜")) {//지역o, 행사날짜o
+  	    			System.out.println("3번");
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateAndAreaContainingAndCategoryNo(parsedEventDate, eventArea, 1, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}else { //지역o, 행사날짜x
+  	    			System.out.println("4번");
+  	    			eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(eventArea, 1, pageable);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}
+  	    		
+  	    	}
+  	    } else {
+  	    	eventPage = eventdao_jpa.findByCategoryno(1, pageable);
+  	    }
+  	    
+
+
+  	    List<List<EventVO>> rows = new ArrayList<>();
+  	    List<EventVO> currentRow = null;
+  	    
+  	   
+  	    
+  	    for (Event event : eventPage.getContent()) {
+  	    
+  	        String state = calculateEventStatus(event);
+  	        EventVO eventVO = changeEventtoeventvo(event);
+  	        eventVO.setEventState(state);
+
+  	        if (currentRow == null || currentRow.size() >= 4) {
+  	            currentRow = new ArrayList<>();
+  	            rows.add(currentRow);
+  	        }
+  	        currentRow.add(eventVO);
+  	    }
+
+  	    model.addAttribute("rows", rows);
+  	    model.addAttribute("currentPage", page);
+  	    model.addAttribute("totalPages", eventPage.getTotalPages());
+  	}
+  	
 	//내한공연 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
+  	@GetMapping("/event/koreaconcertlist")
+  	public void koreaconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String eventArea, @RequestParam(required = false) String eventDate) throws ParseException {
+  	    int pageSize = 16;
+  	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
+
+  	    Page<Event> eventPage = null;
+  	    model.addAttribute("eventArea", "지역을 선택하세요");
+  	    
+  	    if (eventArea != null && !eventArea.isEmpty()) {
+  	    	if(eventArea.equals("all")) { //전체 클릭하면 카테고리만 받아서 전체 출력
+  	    		if(eventDate!=null&&!eventDate.equals("all")) { // //지역x, 행사날짜o
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateContainingAndCategoryNo(parsedEventDate, 2, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  	    			
+  	    		}else {//지역x, 행사날짜x
+  	    			System.out.println("2번");
+  	    			eventPage = eventdao_jpa.findByCategoryno(2, pageable);	
+  	    			
+  	    		}
+  	    	}else { // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져오도록 변경
+  	    		if(eventDate!=null&&!eventDate.equals("all")&&!eventDate.equals("날짜")) {//지역o, 행사날짜o
+  	    			System.out.println("3번");
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateAndAreaContainingAndCategoryNo(parsedEventDate, eventArea, 2, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}else { //지역o, 행사날짜x
+  	    			System.out.println("4번");
+  	    			eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(eventArea, 2, pageable);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}
+  	    		
+  	    	}
+  	    } else {
+  	    	eventPage = eventdao_jpa.findByCategoryno(2, pageable);
+  	    }
+  	    
+
+
+  	    List<List<EventVO>> rows = new ArrayList<>();
+  	    List<EventVO> currentRow = null;
+  	    
+  	   
+  	    
+  	    for (Event event : eventPage.getContent()) {
+  	    
+  	        String state = calculateEventStatus(event);
+  	        EventVO eventVO = changeEventtoeventvo(event);
+  	        eventVO.setEventState(state);
+
+  	        if (currentRow == null || currentRow.size() >= 4) {
+  	            currentRow = new ArrayList<>();
+  	            rows.add(currentRow);
+  	        }
+  	        currentRow.add(eventVO);
+  	    }
+
+  	    model.addAttribute("rows", rows);
+  	    model.addAttribute("currentPage", page);
+  	    model.addAttribute("totalPages", eventPage.getTotalPages());
+  	}
+  //뮤지컬 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
+  	@GetMapping("/event/musicallist")
+  	public void musicallist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String eventArea, @RequestParam(required = false) String eventDate) throws ParseException {
+  	    int pageSize = 16;
+  	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
+
+  	    Page<Event> eventPage = null;
+  	    model.addAttribute("eventArea", "지역을 선택하세요");
+  	    
+  	    if (eventArea != null && !eventArea.isEmpty()) {
+  	    	if(eventArea.equals("all")) { //전체 클릭하면 카테고리만 받아서 전체 출력
+  	    		if(eventDate!=null&&!eventDate.equals("all")) { // //지역x, 행사날짜o
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateContainingAndCategoryNo(parsedEventDate, 3, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  	    			
+  	    		}else {//지역x, 행사날짜x
+  	    			System.out.println("2번");
+  	    			eventPage = eventdao_jpa.findByCategoryno(3, pageable);	
+  	    			
+  	    		}
+  	    	}else { // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져오도록 변경
+  	    		if(eventDate!=null&&!eventDate.equals("all")&&!eventDate.equals("날짜")) {//지역o, 행사날짜o
+  	    			System.out.println("3번");
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateAndAreaContainingAndCategoryNo(parsedEventDate, eventArea, 3, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}else { //지역o, 행사날짜x
+  	    			System.out.println("4번");
+  	    			eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(eventArea, 3, pageable);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}
+  	    		
+  	    	}
+  	    } else {
+  	    	eventPage = eventdao_jpa.findByCategoryno(3, pageable);
+  	    }
+  	    
+
+
+  	    List<List<EventVO>> rows = new ArrayList<>();
+  	    List<EventVO> currentRow = null;
+  	    
+  	   
+  	    
+  	    for (Event event : eventPage.getContent()) {
+  	    
+  	        String state = calculateEventStatus(event);
+  	        EventVO eventVO = changeEventtoeventvo(event);
+  	        eventVO.setEventState(state);
+
+  	        if (currentRow == null || currentRow.size() >= 4) {
+  	            currentRow = new ArrayList<>();
+  	            rows.add(currentRow);
+  	        }
+  	        currentRow.add(eventVO);
+  	    }
+
+  	    model.addAttribute("rows", rows);
+  	    model.addAttribute("currentPage", page);
+  	    model.addAttribute("totalPages", eventPage.getTotalPages());
+  	}
+  //연극 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
+  	@GetMapping("/event/playlist")
+  	public void playlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String eventArea, @RequestParam(required = false) String eventDate) throws ParseException {
+  	    int pageSize = 16;
+  	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
+
+  	    Page<Event> eventPage = null;
+  	    model.addAttribute("eventArea", "지역을 선택하세요");
+  	    
+  	    if (eventArea != null && !eventArea.isEmpty()) {
+  	    	if(eventArea.equals("all")) { //전체 클릭하면 카테고리만 받아서 전체 출력
+  	    		if(eventDate!=null&&!eventDate.equals("all")) { // //지역x, 행사날짜o
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateContainingAndCategoryNo(parsedEventDate, 4, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  	    			
+  	    		}else {//지역x, 행사날짜x
+  	    			System.out.println("2번");
+  	    			eventPage = eventdao_jpa.findByCategoryno(4, pageable);	
+  	    			
+  	    		}
+  	    	}else { // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져오도록 변경
+  	    		if(eventDate!=null&&!eventDate.equals("all")&&!eventDate.equals("날짜")) {//지역o, 행사날짜o
+  	    			System.out.println("3번");
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateAndAreaContainingAndCategoryNo(parsedEventDate, eventArea, 4, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}else { //지역o, 행사날짜x
+  	    			System.out.println("4번");
+  	    			eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(eventArea, 4, pageable);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}
+  	    		
+  	    	}
+  	    } else {
+  	    	eventPage = eventdao_jpa.findByCategoryno(4, pageable);
+  	    }
+  	    
+
+
+  	    List<List<EventVO>> rows = new ArrayList<>();
+  	    List<EventVO> currentRow = null;
+  	    
+  	   
+  	    
+  	    for (Event event : eventPage.getContent()) {
+  	    
+  	        String state = calculateEventStatus(event);
+  	        EventVO eventVO = changeEventtoeventvo(event);
+  	        eventVO.setEventState(state);
+
+  	        if (currentRow == null || currentRow.size() >= 4) {
+  	            currentRow = new ArrayList<>();
+  	            rows.add(currentRow);
+  	        }
+  	        currentRow.add(eventVO);
+  	    }
+
+  	    model.addAttribute("rows", rows);
+  	    model.addAttribute("currentPage", page);
+  	    model.addAttribute("totalPages", eventPage.getTotalPages());
+  	}
+  //페스티벌 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
+  	@GetMapping("/event/festivallist")
+  	public void festivallist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String eventArea, @RequestParam(required = false) String eventDate) throws ParseException {
+  	    int pageSize = 16;
+  	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
+
+  	    Page<Event> eventPage = null;
+  	    model.addAttribute("eventArea", "지역을 선택하세요");
+  	    if (eventArea != null && !eventArea.isEmpty()) {
+  	    	if(eventArea.equals("all")) { //전체 클릭하면 카테고리만 받아서 전체 출력
+  	    		if(eventDate!=null&&!eventDate.equals("all")) { // //지역x, 행사날짜o
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateContainingAndCategoryNo(parsedEventDate, 5, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  	    			
+  	    		}else {//지역x, 행사날짜x
+  	    			System.out.println("2번");
+  	    			eventPage = eventdao_jpa.findByCategoryno(5, pageable);	
+  	    			
+  	    		}
+  	    	}else { // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져오도록 변경
+  	    		if(eventDate!=null&&!eventDate.equals("all")&&!eventDate.equals("날짜")) {//지역o, 행사날짜o
+  	    			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  	    		    Date parsedEventDate = sdf.parse(eventDate);
+  		    		eventPage=eventdao_jpa.findByEventDateAndAreaContainingAndCategoryNo(parsedEventDate, eventArea, 5, pageable);
+  		    		model.addAttribute("eventDate", eventDate);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}else { //지역o, 행사날짜x
+  	    			eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(eventArea, 5, pageable);
+  		    		model.addAttribute("eventArea", eventArea);
+  	    			
+  	    		}
+  	    		
+  	    	}
+  	    } else {
+  	    	eventPage = eventdao_jpa.findByCategoryno(5, pageable);
+  	    }
+  	    
+  	    List<List<EventVO>> rows = new ArrayList<>();
+  	    List<EventVO> currentRow = null;
+  	    
+  	    for (Event event : eventPage.getContent()) {
+  	    
+  	        String state = calculateEventStatus(event);
+  	        EventVO eventVO = changeEventtoeventvo(event);
+  	        eventVO.setEventState(state);
+
+  	        if (currentRow == null || currentRow.size() >= 4) {
+  	            currentRow = new ArrayList<>();
+  	            rows.add(currentRow);
+  	        }
+  	        currentRow.add(eventVO);
+  	    }
+
+  	    model.addAttribute("rows", rows);
+  	    model.addAttribute("currentPage", page);
+  	    model.addAttribute("totalPages", eventPage.getTotalPages());
+  	}
+  	/*
 	@GetMapping("/event/koreaconcertlist")
 	public void koreaconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String area) {
 	    int pageSize = 16;
@@ -277,6 +605,7 @@ public class EventController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
+	
 	
 	//뮤지컬 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
 	@GetMapping("/event/musicallist")
@@ -391,7 +720,7 @@ public class EventController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", eventPage.getTotalPages());
 	}
-	
+	*/
 	/*
 	//페스티벌 행사리스트 : <페이지 번호>를 받아서 <카테고리>에 해당하는 <행사리스트 정보>,<현재페이지번호>,<전체 페이지 개수>를 반환
 	@GetMapping("/event/festivallist")

@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -36,4 +37,20 @@ public interface EventDAO_jpa extends JpaRepository<Event, Integer> {
     // 키워드 검색
 	@Query(value="select * from Event where eventname like CONCAT(CONCAT('%', ?1), '%') or eventcontent like CONCAT(CONCAT('%', ?1), '%') order by eventstart desc", nativeQuery=true)
 	public List<Event> findByKeyword(String keyword);
+	
+	//지역,카테고리,날짜 조회
+    @Query("SELECT e FROM Event e " +
+           "WHERE :eventDate BETWEEN e.eventstart AND e.eventend " +
+           "AND e.eventaddr LIKE %:area% " +
+           "AND e.categoryno = :categoryNo")
+    Page<Event> findByEventDateAndAreaContainingAndCategoryNo(
+            Date eventDate, String area, int categoryNo, Pageable pageable);
+    
+    //카테고리,날짜 조회
+    @Query("SELECT e FROM Event e " +
+           "WHERE :eventDate BETWEEN e.eventstart AND e.eventend " +
+           "AND e.categoryno = :categoryNo")
+    Page<Event> findByEventDateContainingAndCategoryNo(
+            Date eventDate, int categoryNo, Pageable pageable);
+  
 }

@@ -41,7 +41,46 @@
 	function removeHoverStyle(element) {
 	  element.classList.remove("hover");
 	}
+	//------------------------
+	var eventDate ="all"; //선택한 날짜
+	var eventArea="all";		//선택한 지역
+	var eventState="all";  //공연진행여부
+ 	//날짜 선택
+	 function selectDate(){
+		 var date=$("#eventDate").val();
+		 if (date !== null && date !== "날짜" && date !== "") {
+		    eventDate = date;
+		    $("#eventDate").val(eventDate);
+		}
+	    var Area=$("#selectedAreaText").html();
+	    if(Area!="지역을 선택하세요"){
+			eventArea=Area;
+		}
+		// URL 파라미터 생성
+	    var queryParams = "?eventDate=" + eventDate + "&eventArea=" + eventArea + "&eventState=" + eventState;
 	
+	    // 생성된 파라미터를 포함한 새 URL로 이동
+	    window.location.href = "/event/festivallist" + queryParams;
+	 }
+	 //지역선택
+	 function selectArea(area){
+       eventArea=area;
+       $("#selectedAreaText").html(eventArea);
+       
+       var date=$("#eventDate").val();
+      	console.log("날짜후 지역:"+date);
+       if (date !== null && date !== "날짜" && date !== "") {
+		    eventDate = date;
+		    $("#eventDate").val(eventDate);
+		}
+		// URL 파라미터 생성
+	    var queryParams = "?eventDate=" + eventDate + "&eventArea=" + eventArea + "&eventState=" + eventState;
+	    // 생성된 파라미터를 포함한 새 URL로 이동
+	    window.location.href = "/event/festivallist" + queryParams;
+     }
+	
+	
+	/*
 	//지역 선택 처리
 	 function selectArea(area) {
 	    // 서버로 선택한 지역 정보를 전송
@@ -122,7 +161,7 @@
       : '미정';
   document.getElementById('selectedStatusText').textContent = selectedStatusText;
 }
-*/
+
 
 	
 	document.addEventListener('DOMContentLoaded', function () {
@@ -152,7 +191,9 @@
           : '미정';
       document.getElementById('selectedStatusText').textContent = selectedStatusText;
     }
+    
   });
+  */
 //공연진행상태 끝ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
  
 	//--------gnb드롭다운
@@ -207,7 +248,7 @@
 			<!-- 지역 선택 드롭다운-->
               <div class="component-20-MtV">
                 <div class="auto-group-rq2q-7cm" onclick="openDrop()">
-                  <div class="selectarea-GEm" id="selectedAreaText">지역을 선택하세요.</div>
+                  <div class="selectarea-GEm" id="selectedAreaText" th:text="${eventArea}"></div>
                   <!--<img class="vector-1-PaH" src="./assets/vector-1-GTB.png"/>-->
                 </div>
                 <div class="line-3-isT"></div>
@@ -233,30 +274,31 @@
 			   </div>
               </div>
             </div>
+            
+           <!-- 날짜 선택 -->
+            <!-- 
           <div class="divdate-4ch">
             <div class="date-Pus">
 				<input type="date" />
 			</div>
-            <!--<img class="click-v97" src="/assets/click-JXj.png"/>-->
           </div>
-          
-          <!-- 드롭다운 div 여기 아래부터 복붙 -->
+          -->
+          <!-- 날짜 선택-->
 			<div class="dropdownarea-oMB">
-			  <!-- 공연상태 선택 드롭다운 -->
 			  <div class="component-20-MtV">
-			    <div class="auto-group-rq2q-7cm" onclick="openDropStatus()">
-			      <div class="selectarea-GEm" id="selectedStatusText">공연중/공연예정</div>
+			    <div class="auto-group-rq2q-7cm">
+					<!--
+			      <div class="selectarea-GEm" id="selectedStatusText">날짜</div>
+			      -->
+			      <input type="date" class="selectarea-GEm" id="eventDate" onchange="selectDate()" th:value="${eventDate}">
+			  
 			    </div>
 			    <div class="line-3-isT"></div>
-			    <!-- 공연상태 선택 -->
-			    <div class="drop-status" style="visibility: hidden;" onmouseleave="hideDropStatus()">
-			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('all')">전체</div>
-			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('공연예정')">공연예정</div>
-			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('공연중')">공연중</div>
-			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('공연종료')">공연종료</div>
-			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('미정')">미정</div>
-			    </div>
 			  </div>
+			</div>
+			
+          <!-- 드롭다운 div 여기 아래부터 복붙 -->
+			<div class="dropdownarea-oMB">
 			</div>
 
         </div>

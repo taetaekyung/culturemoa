@@ -56,7 +56,7 @@ public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
 	
 	//전체 게시물에서 최신순 10개
 	@Query(value="select a.* from ("
-			+ "select rownum as rown, boardno,boardtitle,regdate, bcategory,boardcontent,boardfname,boardhit,boardlikes,id from Board order by regdate desc)a "
+			+ "select rownum as rown, boardno,boardtitle,regdate, bcategory,boardcontent,boardhit,boardlikes,id from Board order by regdate desc)a "
 			+ "where a.rown between 1 and 10", nativeQuery = true)
 	public List<Board> findAll();
 	

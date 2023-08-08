@@ -48,18 +48,7 @@
 		localStorage.setItem('selectedStatus', 'all');
 	}
 	
-	//지역 선택 처리
-	function selectArea(area) {
-		// 서버로 선택한 지역 정보를 전송
-		window.location.href = "/event/domesticconcertlist?area=" + area;
-		// 선택한 지역 이름을 LocalStorage에 저장합니다.
-		localStorage.setItem('selectedArea', area);
-		// 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
-		var selectedAreaText = area === 'all' ? '지역을 선택하세요.' : area;
-		document.getElementById('selectedAreaText').textContent = selectedAreaText;
-	}
-
-
+	
 	  //공연진행상태ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	  var dropStatusIndex = 0;
 	  function openDropStatus() {
@@ -86,81 +75,52 @@
 	  function removeHoverStyle(element) {
 	    element.classList.remove("hover");
 	  }
+	//------------------------
+	var eventDate ="all"; //선택한 날짜
+	var eventArea="all";		//선택한 지역
+	var eventState="all";  //공연진행여부
+ 	//날짜 선택
+	 function selectDate(){
+		 var date=$("#eventDate").val();
+		 if (date !== null && date !== "날짜" && date !== "") {
+		    eventDate = date;
+		    $("#eventDate").val(eventDate);
+		}
+	    var Area=$("#selectedAreaText").html();
+	    if(Area!="지역을 선택하세요"){
+			eventArea=Area;
+		}
+		// URL 파라미터 생성
+	    var queryParams = "?eventDate=" + eventDate + "&eventArea=" + eventArea + "&eventState=" + eventState;
 	
-	// 초기화 함수
-	function initializeLocalStorage() {
-	  localStorage.setItem('selectedArea', 'all');
-	  localStorage.setItem('selectedStatus', 'all');
-	}
-	
-	// 공연 진행상태 처리
-	
-	function selectStatus(status) {
-		// 서버로 선택한 공연상태 정보를 전송
-		window.location.href = "/event/domesticconcertlist?eventstate=" + status;
-		// 선택한 공연상태 이름을 LocalStorage에 저장합니다.
-		localStorage.setItem('selectedStatus', status);
-		// 선택한 공연상태가 "all"이면 "공연중/공연예정"을 표시하고, 아니면 선택한 상태 이름으로 업데이트합니다.
-		var selectedStatusText = status === 'all' ? '공연중/공연예정' : status === '공연예정' ? '공연예정' : status === '공연중' ? '공연중' : status === '공연종료' ? '공연종료' : '미정';
-		document.getElementById('selectedStatusText').textContent = selectedStatusText;
-	}
-	
-	/*
-	function selectStatus(status) {
-  // 서버로 선택한 공연상태 정보를 전송하기 위해 URL 링크를 생성합니다.
-  const selectedArea = localStorage.getItem('selectedArea');
-  const url = `/event/domesticconcertlist?area=${selectedArea}&eventstate=${status}`;
-  // 생성한 URL로 페이지를 이동합니다.
-  window.location.href = url;
-
-  // 선택한 공연상태 이름을 LocalStorage에 저장합니다.
-  localStorage.setItem('selectedStatus', status);
-
-  // 선택한 공연상태가 "all"이면 "공연중/공연예정"을 표시하고, 아니면 선택한 상태 이름으로 업데이트합니다.
-  var selectedStatusText =
-    status === 'all'
-      ? '공연중/공연예정'
-      : status === '공연예정'
-      ? '공연예정'
-      : status === '공연중'
-      ? '공연중'
-      : status === '공연종료'
-      ? '공연종료'
-      : '미정';
-  document.getElementById('selectedStatusText').textContent = selectedStatusText;
-}
-*/
-
-	
-	document.addEventListener('DOMContentLoaded', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedArea = urlParams.get('area');
-    const selectedStatus = urlParams.get('eventstate');
-
-    // 저장된 지역이 있다면 <div class="selectarea-GEm">에 표시합니다.
-    if (selectedArea) {
-      // 선택한 지역이 "all"이면 "지역을 선택하세요."를 표시하고, 아니면 선택한 지역 이름으로 업데이트합니다.
-      var selectedAreaText = selectedArea === 'all' ? '지역을 선택하세요.' : selectedArea;
-      document.getElementById('selectedAreaText').textContent = selectedAreaText;
-    }
-
-    // 저장된 공연상태가 있다면 <div class="selectarea-GEm">에 표시합니다.
-    if (selectedStatus) {
-      // 선택한 공연상태를 적절한 텍스트로 업데이트합니다.
-      var selectedStatusText =
-        selectedStatus === 'all'
-          ? '공연중/공연예정'
-          : selectedStatus === '공연예정'
-          ? '공연예정'
-          : selectedStatus === '공연중'
-          ? '공연중'
-          : selectedStatus === '공연종료'
-          ? '공연종료'
-          : '미정';
-      document.getElementById('selectedStatusText').textContent = selectedStatusText;
-    }
-  });
-//공연진행상태 끝ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	    // 생성된 파라미터를 포함한 새 URL로 이동
+	    window.location.href = "/event/domesticconcertlist" + queryParams;
+	 }
+	 //지역선택
+	 function selectArea(area){
+       eventArea=area;
+       $("#selectedAreaText").html(eventArea);
+       
+       var date=$("#eventDate").val();
+      	console.log("날짜후 지역:"+date);
+       if (date !== null && date !== "날짜" && date !== "") {
+		    eventDate = date;
+		    $("#eventDate").val(eventDate);
+		}
+		// URL 파라미터 생성
+	    var queryParams = "?eventDate=" + eventDate + "&eventArea=" + eventArea + "&eventState=" + eventState;
+	    // 생성된 파라미터를 포함한 새 URL로 이동
+	    window.location.href = "/event/domesticconcertlist" + queryParams;
+     }
+ 	 function selectStatus(state){
+		eventState=state;
+		$("#selectedStatusText").html(eventState);
+		
+		// URL 파라미터 생성
+	    var queryParams = "?eventDate=" + eventDate + "&eventArea=" + eventArea + "&eventState=" + eventState;
+	    // 생성된 파라미터를 포함한 새 URL로 이동
+	    window.location.href = "/event/domesticconcertlist" + queryParams;
+	 }
  
 	//--------gnb드롭다운
 	//마우스가 올라오면 드롭다운
@@ -202,7 +162,7 @@
 	      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
 	      <img class="nexticon" src="/assets/icon-YJu.png"/>
 	      <div class="community">행사소식</div>
-	      <img class="nexticon2" src="/assets/icon-YJu.png"/>
+	      <img class="nexticon2" src="/assets/icon-umT.png"/>
 	      <div class="freelist_text">국내공연</div>
 	   </div>
 	    <!-- location div 끝 -->
@@ -214,7 +174,7 @@
 			<!-- 지역 선택 드롭다운-->
               <div class="component-20-MtV">
                 <div class="auto-group-rq2q-7cm" onclick="openDrop()">
-                  <div class="selectarea-GEm" id="selectedAreaText">지역을 선택하세요.</div>
+                  <div class="selectarea-GEm" id="selectedAreaText" th:text="${eventArea}"></div>
                   <!--<img class="vector-1-PaH" src="./assets/vector-1-GTB.png"/>-->
                 </div>
                 <div class="line-3-isT"></div>
@@ -255,7 +215,11 @@
 			<div class="dropdownarea-oMB">
 			  <div class="component-20-MtV">
 			    <div class="auto-group-rq2q-7cm">
+					<!--
 			      <div class="selectarea-GEm" id="selectedStatusText">날짜</div>
+			      -->
+			      <input type="date" class="selectarea-GEm" id="eventDate" onchange="selectDate()" th:value="${eventDate}">
+			  
 			    </div>
 			    <div class="line-3-isT"></div>
 			  </div>
@@ -263,13 +227,13 @@
 		    
           <!-- 드롭다운 div 여기 아래부터 복붙 -->
 			<div class="dropdownarea-oMB">
-			  <!-- 공연상태 선택 드롭다운 -->
+			  <!-- 공연상태 선택 드롭다운 
 			  <div class="component-20-MtV">
 			    <div class="auto-group-rq2q-7cm" onclick="openDropStatus()">
 			      <div class="selectarea-GEm" id="selectedStatusText">공연중/공연예정</div>
 			    </div>
 			    <div class="line-3-isT"></div>
-			    <!-- 공연상태 선택 -->
+			    <!-- 공연상태 선택 
 			    <div class="drop-status" style="visibility: hidden;" onmouseleave="hideDropStatus()">
 			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('all')">전체</div>
 			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('공연예정')">공연예정</div>
@@ -277,7 +241,7 @@
 			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('공연종료')">공연종료</div>
 			      <div class="area" onmouseover="addHoverStyle(this)" onmouseout="removeHoverStyle(this)" onclick="selectStatus('미정')">미정</div>
 			    </div>
-			  </div>
+			  </div>-->
 			</div>
 
         </div>

@@ -29,7 +29,6 @@ public class Board {
 	private String bcategory;
 	private String boardtitle;
 	private String boardcontent;
-	private String boardfname;
 	private int boardhit;
 
 	@ManyToOne(fetch = FetchType.LAZY)
