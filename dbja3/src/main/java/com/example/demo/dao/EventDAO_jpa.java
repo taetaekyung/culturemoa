@@ -34,6 +34,6 @@ public interface EventDAO_jpa extends JpaRepository<Event, Integer> {
     Page<Event> findByEventaddrContainingAndCategoryno(String area, int categoryNo, Pageable pageable);
     
     // 키워드 검색
-	@Query(value="select * from Event where eventname like CONCAT(CONCAT('%', ?1), '%') or eventcontent like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
+	@Query(value="select * from Event where eventname like CONCAT(CONCAT('%', ?1), '%') or eventcontent like CONCAT(CONCAT('%', ?1), '%') order by eventstart desc", nativeQuery=true)
 	public List<Event> findByKeyword(String keyword);
 }
