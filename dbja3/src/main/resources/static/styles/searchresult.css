@@ -1,0 +1,1070 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}
+
+.searchresult {
+    width: 100%;
+    height: 215.3rem;
+    position: relative;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.searchresult .maintitle {
+  width: 7.7rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+}
+.searchresult .div_main {
+  width: 128rem;
+  height: 171.9rem;
+
+}
+
+.searchresult .div_main .event_txt {
+  width: 7.6rem;
+  height: 3.2rem;
+  display: flex;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #fe7497;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+}
+
+
+.searchresult .div_main .board_txt {
+  width: 6.5rem;
+  height: 3.2rem;
+  position: absolute;
+  left: 32rem;
+  top: 63.3rem;
+  display: flex;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #fe7497;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+}
+.searchresult .div_main .FAQ_txt {
+  width: 4.3rem;
+  height: 3.2rem;
+  position: absolute;
+  left: 32rem;
+  top: 111.4rem;
+  display: flex;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #fe7497;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+}
+.searchresult .div_main .div_event {
+  width: 127.9rem;
+  height: 44.2rem;
+  display: flex;
+  column-gap: 5.3rem;
+  align-items: center;
+}
+.searchresult .div_main .div_event .event {
+  width: 28rem;
+  height: 100%;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_event .event .event_img {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 37.3rem;
+  background-color: #c4c4c4;
+}
+.searchresult .div_main .div_event .event .event_content {
+  width: 6.7rem;
+}
+.searchresult .div_main .div_event .event .event_content .event_type {
+  margin-bottom: 0.4rem;
+  width: 100%;
+  height: 2.9rem;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #ffffff;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #07b47f;
+  border-radius: 1.6rem;
+}
+.searchresult .div_main .div_event .event .event_content .event_name {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #000000;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.searchresult .div_main .div_event .frame-8-ZLd {
+  width: 28rem;
+  height: 100%;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_event .frame-8-ZLd .rectangle-7-iUR {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 37.3rem;
+  background-color: #c4c4c4;
+}
+.searchresult .div_main .div_event .frame-8-ZLd .frame-314-sMK {
+  width: 6.7rem;
+}
+.searchresult .div_main .div_event .frame-8-ZLd .frame-314-sMK .frame-315-qJ9 {
+  margin-bottom: 0.4rem;
+  width: 100%;
+  height: 2.9rem;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #ffffff;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #07b47f;
+  border-radius: 1.6rem;
+}
+.searchresult .div_main .div_event .frame-8-ZLd .frame-314-sMK .item--jeR {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #000000;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.searchresult .div_main .div_event .frame-8-GeM {
+  width: 28rem;
+  height: 100%;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_event .frame-8-GeM .rectangle-7-2dX {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 37.3rem;
+  background-color: #c4c4c4;
+}
+.searchresult .div_main .div_event .frame-8-GeM .frame-314-yof {
+  width: 6.7rem;
+}
+.searchresult .div_main .div_event .frame-8-GeM .frame-314-yof .frame-315-8wT {
+  margin-bottom: 0.4rem;
+  width: 100%;
+  height: 2.9rem;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #ffffff;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #07b47f;
+  border-radius: 1.6rem;
+}
+.searchresult .div_main .div_event .frame-8-GeM .frame-314-yof .item--qqs {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #000000;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.searchresult .div_main .div_event .frame-8-mzR {
+  width: 28rem;
+  height: 100%;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_event .frame-8-mzR .rectangle-7-wP7 {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 37.3rem;
+  background-color: #c4c4c4;
+}
+.searchresult .div_main .div_event .frame-8-mzR .frame-314-6Wu {
+  width: 6.7rem;
+}
+.searchresult .div_main .div_event .frame-8-mzR .frame-314-6Wu .frame-315-eYR {
+  margin-bottom: 0.4rem;
+  width: 100%;
+  height: 2.9rem;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.2575;
+  color: #ffffff;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #07b47f;
+  border-radius: 1.6rem;
+}
+.searchresult .div_main .div_event .frame-8-mzR .frame-314-6Wu .item--xJD {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #000000;
+  font-family: Noto Sans CJK KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.searchresult .div_main .div_line {
+  width: 128rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 31.9rem;
+  top: 58.3rem;
+  background-color: #c0c0c0;
+}
+.searchresult .div_main .div_line2 {
+  width: 128rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 31.9rem;
+  top: 106.4rem;
+  background-color: #c0c0c0;
+}
+.searchresult .div_main .div_line3 {
+  width: 128rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 31.9rem;
+  top: 152.1rem;
+  background-color: #c0c0c0;
+}
+.searchresult .div_main .div_more {
+  width: 5.8657rem;
+  height: 2.4rem;
+  left: 154.5rem;
+  top: 54.75rem;
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .div_more .more_txt {
+  margin-right: 0.9657rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.4475;
+  color: #018bf8;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_more .btndoublenext {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.searchresult .div_main .item--h2q {
+  width: 5.8657rem;
+  height: 2.4rem;
+  position: absolute;
+  left: 154.5rem;
+  top: 102.85rem;
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .item--h2q .item--Dms {
+  margin-right: 0.9657rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.4475;
+  color: #018bf8;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .item--h2q .btndoublenext-kG1 {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.searchresult .div_main .item--tND {
+  width: 5.8657rem;
+  height: 2.4rem;
+  position: absolute;
+  left: 154.5rem;
+  top: 148.55rem;
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .item--tND .item--QrM {
+  margin-right: 0.9657rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.4475;
+  color: #018bf8;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .item--tND .btndoublenext-YBs {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: relative;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.searchresult .div_main .board_head {
+  width: 129.9rem;
+  height: 6.5rem;
+  position: absolute;
+  left: 32rem;
+  top: 69.5rem;
+}
+.searchresult .div_main .board_head .head_color {
+  width: 128rem;
+  height: 6.5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(253, 208, 15, 0.200000003);
+}
+.searchresult .div_main .board_head .head_txts {
+  width: 116rem;
+  height: 2.6rem;
+  position: absolute;
+  left: 5.45rem;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .board_head .head_txts .bno_txt {
+  margin-right: 29.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .board_head .head_txts .title_txt {
+  margin-right: 34.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .board_head .head_txts .regdate_txt {
+  margin-right: 10.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .board_head .head_txts .id_txt {
+  margin-right: 11.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .board_head .head_txts .hit_txt {
+  margin-right: 13.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .board_head .head_txts .likes_txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board {
+  width: 114.9rem;
+  height: 15.2rem;
+  position: absolute;
+  left: 37.7rem;
+  top: 78.7rem;
+  overflow: hidden;
+}
+
+.searchresult .div_main .div_board  .board {
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .board .dno {
+  margin-right: 25.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .board .title {
+  margin-right: 26.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .board .regdate {
+  margin-right: 6.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .board .userid {
+  margin-right: 10.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .board .hit {
+  margin-right: 16.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  letter-spacing: -0.07rem;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .board .wish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #000000;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 .dno-fNH {
+  margin-right: 25.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 .title-QKs {
+  margin-right: 26.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 .regdate-k8q {
+  margin-right: 6.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 .id-goB {
+  margin-right: 9.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 .hit-qAH {
+  margin-right: 15.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  letter-spacing: -0.07rem;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board  .list2-ue1 .wish-y1b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #000000;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-hCV {
+  margin-bottom: 1.6rem;
+  width: 114.95rem;
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .div_board .list3-hCV .dno-ETK {
+  margin-right: 25.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-hCV .title-yQu {
+  margin-right: 26.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-hCV .regdate-upM {
+  margin-right: 6.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-hCV .id-F7X {
+  margin-right: 9.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-hCV .hit-PDj {
+  margin-right: 15.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  letter-spacing: -0.07rem;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-hCV .wish-79j {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #000000;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-3ZB {
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .div_board .list3-3ZB .dno-Cgy {
+  margin-right: 24.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-3ZB .title-96R {
+  margin-right: 25.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-3ZB .regdate-t41 {
+  margin-right: 7.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-3ZB .id-RJq {
+  margin-right: 10.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-3ZB .hit-AGR {
+  margin-right: 15.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  letter-spacing: -0.07rem;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_board .list3-3ZB .wish-tTK {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #000000;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .FAQ_head {
+  box-sizing: border-box;
+  padding: 2rem 5.45rem 1.9rem 5.45rem;
+  width: 128rem;
+  height: 6.5rem;
+  position: absolute;
+  left: 32rem;
+  top: 117.6rem;
+  background-color: rgba(253, 208, 15, 0.200000003);
+}
+.searchresult .div_main .FAQ_head .div_FAQ {
+  width: 71.65rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.searchresult .div_main .FAQ_head .div_FAQ .faqno_txt {
+  margin-right: 7.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .FAQ_head .div_FAQ .category_txt {
+  margin-right: 52.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .FAQ_head .div_FAQ .faqcategory_txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4444444444;
+  color: #191919;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq {
+  width: 77.55rem;
+  height: 15.2rem;
+  position: absolute;
+  left: 38.35rem;
+  top: 126.4rem;
+  row-gap: 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+.searchresult .div_main .div_faq .faq {
+  margin-right: 0.35rem;
+  width: calc(100% - 0.35rem);
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .faq .frame-326-UyF {
+  margin-right: 51.1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .faq .frame-326-UyF .faqno {
+  margin-right: 10.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .faq .frame-326-UyF .faqcategory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .faq .faqtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq  {
+  margin: 0rem 1.6rem 0rem 0.15rem;
+  width: calc(100% - 1.75rem);
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq  .frame-326-8wK {
+  margin-right: 50.85rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq  .frame-326-8wK .dno-ghw {
+  margin-right: 10.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq  .frame-326-8wK .title-crV {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq  .regdate-xQZ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-327-JDX {
+  margin: 0rem 4.9rem 0rem 0.25rem;
+  width: calc(100% - 5.15rem);
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-327-JDX .frame-326-pxZ {
+  margin-right: 49.05rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-327-JDX .frame-326-pxZ .dno-zMF {
+  margin-right: 9.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-327-JDX .frame-326-pxZ .title-8iM {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-327-JDX .regdate-57o {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-328-p5P {
+  margin-left: 0.45rem;
+  width: calc(100% - 0.45rem);
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-328-p5P .frame-326-kjj {
+  margin-right: 50.6rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-328-p5P .frame-326-kjj .dno-KH3 {
+  margin-right: 10.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-328-p5P .frame-326-kjj .title-eq7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.searchresult .div_main .div_faq .frame-328-p5P .regdate-oCD {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.625;
+  color: #222222;
+  font-family: 'Montserrat', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

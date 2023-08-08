@@ -1,0 +1,204 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 76rem;
+}.messageboxsend-fu3 {
+  width: 100%;
+  height: 63.6rem;
+  position: relative;
+  background-color: #ffffff;
+}
+.messageboxsend-fu3 .line-28-ZUd {
+  width: 76rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 0;
+  top: 6rem;
+  background-color: #eeeeee;
+}
+.messageboxsend-fu3 .line-29-FcM {
+  width: 76rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 0;
+  top: 12rem;
+  background-color: #eeeeee;
+}
+.messageboxsend-fu3 .line-30-xFs {
+  width: 76rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 0;
+  top: 18rem;
+  background-color: #eeeeee;
+}
+.messageboxsend-fu3 .item--tfK {
+  width: 6.3rem;
+  height: 2rem;
+  position: absolute;
+  left: 3.5rem;
+  top: 2rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.messageboxsend-fu3 .item-0-50-yAy {
+  width: 4.2rem;
+  height: 2rem;
+  position: absolute;
+  left: 12.9rem;
+  top: 2rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #191919;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: baseline;
+}
+.messageboxsend-fu3 .item-0-50-yAy .item-0-50-yAy-sub-0 {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #018bf8;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+.messageboxsend-fu3 .item-0-50-yAy .item-0-50-yAy-sub-1 {
+}
+.messageboxsend-fu3 .id1234--11B {
+  width: 19.3rem;
+  height: 2rem;
+  position: absolute;
+  left: 12.9rem;
+  top: 8rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #191919;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.messageboxsend-fu3 .yy-mm-dd-00-00-heh {
+  width: 15.9rem;
+  height: 2rem;
+  position: absolute;
+  left: 12.9rem;
+  top: 14rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #191919;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.messageboxsend-fu3 .item--nw3 {
+  width: 7.1rem;
+  height: 2rem;
+  position: absolute;
+  left: 3.5rem;
+  top: 8rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.messageboxsend-fu3 .item--Hso {
+  width: 7.1rem;
+  height: 2rem;
+  position: absolute;
+  left: 3.5rem;
+  top: 14rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.messageboxsend-fu3 .frame-48-nZf {
+  width: 20.1rem;
+  height: 4.6rem;
+  position: absolute;
+  left: 52.4rem;
+  top: 56.5rem;
+  display: flex;
+  align-items: center;
+}
+.messageboxsend-fu3 .frame-48-nZf .btnsend-uuB {
+  margin-right: 2rem;
+  width: 10.7rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #ffce00;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.messageboxsend-fu3 .frame-48-nZf .btnback-ni5 {
+  width: 7.4rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #c0c0c0;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.messageboxsend-fu3 .line-30-fms {
+  width: 76rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 0;
+  top: 54rem;
+  background-color: #eeeeee;
+}
+.messageboxsend-fu3 .item--ot5 {
+  width: 9.6rem;
+  height: 2rem;
+  position: absolute;
+  left: 4.5rem;
+  top: 22rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}

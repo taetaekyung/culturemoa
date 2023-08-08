@@ -60,6 +60,11 @@ public class MainController {
       return "main";
    }
    
+   @GetMapping("/searchresult")
+   public void searchresult() {
+   }
+   
+   
    //메인페이지를 열었을 때
    @GetMapping("/mainPage")
    public void mainPage(Model model, HttpSession session) {
