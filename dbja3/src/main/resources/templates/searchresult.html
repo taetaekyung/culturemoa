@@ -32,53 +32,36 @@
     <div class="eventlist">
     <!-- div_event 시작 -->
 	    <div class="div_event">
+			
 		  <!-- event 시작 -->
+		  <th:block th:each=" e : ${event_list}">
 	      <div class="event">
-	        <div class="event_img"></div>
+	        <img class="event_img" th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지"></img>
 	        <!-- event_content 시작 -->
 	        <div class="event_content">
-	          <div class="event_type">공연 종류</div>
-	          <div class="event_name">공연 이름</div>
+			  <th:block th:if="${e.categoryno == 1}">
+	        	  <div class="event_type" th:text="국내공연"></div>
+	          </th:block>
+	          <th:block th:if="${e.categoryno == 2}">
+	        	  <div class="event_type" th:text="내한공연"></div>
+	          </th:block>
+	          <th:block th:if="${e.categoryno == 3}">
+	        	  <div class="event_type" th:text="뮤지컬"></div>
+	          </th:block>
+	          <th:block th:if="${e.categoryno == 4}">
+	        	  <div class="event_type" th:text="연극"></div>
+	          </th:block>
+	          <th:block th:if="${e.categoryno == 5}">
+	        	  <div class="event_type" th:text="페스티벌"></div>
+	          </th:block>
+	          <div class="event_name" th:text="${e.eventname}"></div>
 	        </div>
 	        <!-- event_content 끝 -->
 	      </div>
+      	  </th:block>
+
 	      <!-- event 끝 -->
-	
-	      <!-- event 시작 -->
-	      <div class="event">
-	        <div class="event_img"></div>
-	        <!-- event_content 시작 -->
-	        <div class="event_content">
-	          <div class="event_type">공연 종류</div>
-	          <div class="event_name">공연 이름</div>
-	        </div>
-	        <!-- event_content 끝 -->
-	      </div>
-	      <!-- event 끝 -->
-	      
-	      <!-- event 시작 -->
-	      <div class="event">
-	        <div class="event_img"></div>
-	        <!-- event_content 시작 -->
-	        <div class="event_content">
-	          <div class="event_type">공연 종류</div>
-	          <div class="event_name">공연 이름</div>
-	        </div>
-	        <!-- event_content 끝 -->
-	      </div>
-	      <!-- event 끝 -->
-	      
-	      <!-- event 시작 -->
-	      <div class="event">
-	        <div class="event_img"></div>
-	        <!-- event_content 시작 -->
-	        <div class="event_content">
-	          <div class="event_type">공연 종류</div>
-	          <div class="event_name">공연 이름</div>
-	        </div>
-	        <!-- event_content 끝 -->
-	      </div>
-	      <!-- event 끝 -->
+		
       
       
       </div>
@@ -135,14 +118,16 @@
     <!-- div_board 시작 -->
     <div class="div_board">
 	  <!-- board 시작 -->
+	  <th:block th:each="b : ${list}">
       <div class="board">
-        <div class="dno">276</div>
-        <div class="title">고척돔 공연 후기 (0)</div>
-        <div class="regdate">2023-07-13</div>
-        <div class="userid">teddie</div>
-        <div class="hit">3</div>
-        <div class="wish">3</div>
+        <div class="dno" th:text="${b.no}"></div>
+        <div class="title" th:text="${b.title}"></div>
+        <div class="regdate" th:text="${b.regdate}"></div>
+        <div class="userid" th:text="${b.id}"></div>
+        <div class="hit" th:text="${b.hit}"></div>
+        <div class="wish" th:text="${b.likes}"></div>
       </div>
+	  </th:block>
       <!-- board 끝 -->
       
       <!-- board 시작 -->

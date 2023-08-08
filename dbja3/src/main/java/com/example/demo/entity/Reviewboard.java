@@ -46,6 +46,13 @@ public class Reviewboard {
 		 this.member.setId(id);
 	}
 	
+	public String getMemberId() {
+        if (this.member == null) {
+        	this.member=new Member();
+        }
+        return this.member.getId();
+    }
+	
 	public void setEventNo(int eventNo) {
 		if(this.event==null) {
 			this.event=new Event();

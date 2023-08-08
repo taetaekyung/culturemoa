@@ -51,10 +51,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @Setter
 public class BoardController {
-	//로그인 했을때만 이용가능 
-	//로그인 했을때 아이디
-	public String id="user02";
-	
+
 	public int pageSIZE = 25;
 	public int totalRecord;
 	public int totalPage;
@@ -88,7 +85,7 @@ public class BoardController {
 	
 	//게시물 수정 페이지 이동
 	@GetMapping("/boards/review/reviewUpdate")
-	public void reviewupdate(@RequestParam int reviewno,Model model) {
+	public void reviewupdate(HttpSession session, @RequestParam int reviewno,Model model) {
 		Reviewboard review=new Reviewboard();
 		review=reviewboarddao_jpa.findByNo(reviewno);
 		//후기 게시물 행사번호
@@ -96,6 +93,7 @@ public class BoardController {
 		//게시물 내용 가져오기
 		model.addAttribute("r", review);
 		//아이디
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
 		//공연정보
 		Event event=new Event();
@@ -109,10 +107,11 @@ public class BoardController {
 	}
 	//후기 게시글 수정
 	@PostMapping("/boardUpdate")
-	public ModelAndView boardUpdate(Reviewboard r,String Contents) {
+	public ModelAndView boardUpdate(HttpSession session, Reviewboard r,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewlist");
 		//게시물 작성하기
 		// Member 객체 생성 및 설정
+		String id = ((Member)session.getAttribute("m")).getId();
 		Member member = new Member();
 		member.setId(id);
 		// Reviewboard 객체에 Member 객체 설정
@@ -124,7 +123,7 @@ public class BoardController {
 	}
 	//게시물 상세 페이지 이동
 	@GetMapping("/boards/review/reviewDetail")
-	public String reviewDetail(@RequestParam int reviewno,Model model) {
+	public String reviewDetail(HttpSession session, @RequestParam int reviewno,Model model) {
 		Reviewboard review=new Reviewboard();
 		review=reviewboarddao_jpa.findByNo(reviewno);
 		//후기 게시물 행사번호
@@ -132,6 +131,7 @@ public class BoardController {
 		//게시물 내용 가져오기
 		model.addAttribute("r", review);
 		//아이디
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
 		//공연정보
 		Event event=new Event();
@@ -224,18 +224,20 @@ public class BoardController {
 	
 	//후기 게시글 작성 페이지
 	@GetMapping("/boards/review/insertBoard_review")
-	public void reivew(Model model) {
+	public void reivew(HttpSession session, Model model) {
 		model.addAttribute("list", eventdao_jpa.findAll());
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
 	}
 	
 	//후기 게시글 작성
 	@PostMapping("/board")
-	public ModelAndView board(Reviewboard r,String Contents) {
+	public ModelAndView board(HttpSession session, Reviewboard r,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewlist");
 		//게시물 작성하기
 		r.setReviewno(reviewboarddao_jpa.findNextNo());	
 		// Member 객체 생성 및 설정
+		String id = ((Member)session.getAttribute("m")).getId();
 		Member member = new Member();
 		member.setId(id);
 		// Reviewboard 객체에 Member 객체 설정
@@ -294,10 +296,11 @@ public class BoardController {
 	
 	//자유 게시글 수정
 	@PostMapping("/freeUpdate")
-	public ModelAndView freeUpdate(Board b,String Contents) {
+	public ModelAndView freeUpdate(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/freelist");
 		//게시물 작성하기
 		// Member 객체 생성 및 설정
+		String id = ((Member)session.getAttribute("m")).getId();
 		Member member = new Member();
 		member.setId(id);
 		b.setMember(member);
@@ -310,8 +313,8 @@ public class BoardController {
 	
 	//게시물 수정 페이지 이동
 	@GetMapping("/boards/board/updateFree")
-	public void boardupdate(@RequestParam int boardno,Model model) {
-
+	public void boardupdate(HttpSession session, @RequestParam int boardno,Model model) {
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
 		model.addAttribute("id", id);
 	}
@@ -331,25 +334,28 @@ public class BoardController {
 	
 	//게시물 상세 페이지 이동
 	@GetMapping("/boards/board/freeDetail")
-	public String freeDetail(@RequestParam int boardno,Model model) {
+	public String freeDetail(HttpSession session, @RequestParam int boardno,Model model) {
 		Board board=new Board();
 		board=boarddao_jpa.findByNo(boardno);
 		//게시물 내용 가져오기
 		model.addAttribute("b", board);
 		//아이디
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
 		return "/boards/board/freeDetail";
 	}
 	//게시글 작성 페이지
 	@GetMapping("/boards/board/insertBoard_free")
-	public void free(Model model) {
+	public void free(HttpSession session, Model model) {
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
 	}
 	//게시글 저장
 	@PostMapping("/free")
-	public ModelAndView free(Board b,String Contents) {
+	public ModelAndView free(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/freelist");
 		b.setBoardno(boarddao_jpa.findNextNo());
+		String id = ((Member)session.getAttribute("m")).getId();
 		Member member = new Member();
 		member.setId(id);
 		b.setMember(member);
@@ -442,14 +448,16 @@ public class BoardController {
 	//-----------------동행게시판
 	//게시글 작성 페이지
 	@GetMapping("/boards/board/insertBoard_together")
-	public void together(Model model) {
+	public void together(HttpSession session, Model model) {
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
 	}
 	//게시글 저장
 	@PostMapping("/together")
-	public ModelAndView together(Board b,String Contents) {
+	public ModelAndView together(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
 		b.setBoardno(boarddao_jpa.findNextNo());
+		String id = ((Member)session.getAttribute("m")).getId();
 		Member member = new Member();
 		member.setId(id);
 		b.setMember(member);
@@ -462,10 +470,11 @@ public class BoardController {
 	}
 	//동행 게시글 수정
 	@PostMapping("/togetherUpdate")
-	public ModelAndView togetherUpdate(Board b,String Contents) {
+	public ModelAndView togetherUpdate(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
 		//게시물 작성하기
 		// Member 객체 생성 및 설정
+		String id = ((Member)session.getAttribute("m")).getId();
 		Member member = new Member();
 		member.setId(id);
 		b.setMember(member);
@@ -484,20 +493,21 @@ public class BoardController {
 	
 	//게시물 수정 페이지 이동
 	@GetMapping("/boards/board/updateTogether")
-	public void updateTogether(@RequestParam int boardno,Model model) {
-
+	public void updateTogether(HttpSession session, @RequestParam int boardno,Model model) {
+		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
-		model.addAttribute("id", id);
 	}
 		
 	//게시물 상세 페이지 이동
 		@GetMapping("/boards/board/togetherDetail")
-		public String togetherDetail(@RequestParam int boardno,Model model) {
+		public String togetherDetail(HttpSession session, @RequestParam int boardno,Model model) {
 			Board board=new Board();
 			board=boarddao_jpa.findByNo(boardno);
 			//게시물 내용 가져오기
+			
 			model.addAttribute("b", board);
 			//아이디
+			String id = ((Member)session.getAttribute("m")).getId();
 			model.addAttribute("id", id);
 			return "/boards/board/togetherDetail";
 		}

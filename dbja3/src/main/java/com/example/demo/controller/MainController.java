@@ -4,23 +4,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.BoardDAO_jpa;
+import com.example.demo.dao.EventDAO_jpa;
 import com.example.demo.dao.EventDAO_mb;
+import com.example.demo.dao.FAQDAO_jpa;
 import com.example.demo.dao.MemberDAO_jpa;
+import com.example.demo.dao.ReviewBoardDAO_jpa;
 import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
+import com.example.demo.entity.Board;
+import com.example.demo.entity.Event;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Opentalk;
+import com.example.demo.entity.Reviewboard;
+import com.example.demo.vo.BoardVO;
 import com.example.demo.vo.EventVO;
 import com.example.demo.vo.OpentalkVO;
 
@@ -30,9 +35,11 @@ import jakarta.servlet.http.HttpSession;
 public class MainController {
    //로그인 했을때만 이용가능 
    //로그인 했을때 아이디
-   private String id="user01";
+   private String id="user06";
    private int nowNo; //현재 마지막 채팅 번호
    
+   @Autowired
+   private MemberDAO_jpa memberdao_jpa;
    @Autowired
    private opentalkDAO_jpa opentalkdao_jpa;
    @Autowired
@@ -42,7 +49,35 @@ public class MainController {
    @Autowired
    private BoardDAO_jpa boarddao_jpa;
    @Autowired
-   private MemberDAO_jpa memberdao_jpa;
+   private EventDAO_jpa eventdao_jpa;
+   @Autowired
+   private FAQDAO_jpa faqdao_jpa;
+   @Autowired
+   private ReviewBoardDAO_jpa reviewdao_jpa;
+
+   public BoardVO changeBoardVO(Board b) {
+	   BoardVO bvo = new BoardVO();
+	   bvo.setNo(b.getBoardno());
+	   bvo.setBcategory(b.getBcategory());
+	   bvo.setTitle(b.getBoardtitle());
+	   bvo.setRegdate(b.getRegdate());
+	   bvo.setId(b.getMemberId());
+	   bvo.setHit(b.getBoardhit());
+	   bvo.setLikes(b.getBoardlikes());
+	   return bvo;
+   }
+   
+   public BoardVO changeBoardVO(Reviewboard r) {
+	   BoardVO bvo = new BoardVO();
+	   bvo.setNo(r.getReviewno());
+	   bvo.setBcategory("후기");
+	   bvo.setTitle(r.getReviewtitle());
+	   bvo.setRegdate(r.getRegdate());
+	   bvo.setId(r.getMemberId());
+	   bvo.setHit(r.getReviewhit());
+	   bvo.setLikes(r.getReviewlike());
+	   return bvo;
+   }
    
    
    //캘린더 공연일정
@@ -186,8 +221,73 @@ public class MainController {
    
    // 헤더의 검색창에서 검색했을 때
    @PostMapping("/searchresult")
-   public void searchresult(String keyword_main) {
+   public void searchresult(Model model, String keyword_main) {  
 	   
+	   List<Event> event_list = eventdao_jpa.findByKeyword(keyword_main);
+	   if(event_list.size() > 4) {
+		   event_list = event_list.subList(0, 4);
+	   }
+	   
+	   
+	   List<Board> board_list = boarddao_jpa.findByKeyword(keyword_main);
+	   List<Reviewboard> review_list = reviewdao_jpa.findByKeyword(keyword_main);
+	   
+	   int boardsize = board_list.size();
+	   int reviewsize = review_list.size();
+	   
+	   List<BoardVO> searchlist = new ArrayList<BoardVO>();
+	   
+	   if(boardsize != 0 && reviewsize != 0) {
+		   int i = 0; // board_list의 인덱스
+		   int j = 0; // review_list의 인덱스
+
+
+		   while( i < boardsize && j < reviewsize && searchlist.size() <= 4) {
+			   System.out.println("리스트사이즈 "+searchlist.size());
+			   // 만약 board_list에 있는 date가 review에 있는 date보다 뒤이면 
+			   if(board_list.get(i).getRegdate().after(review_list.get(j).getRegdate())) {
+				   searchlist.add(changeBoardVO(board_list.get(i)));
+				   i++;
+			   }
+			   else {
+				   searchlist.add(changeBoardVO(review_list.get(j)));
+				   j++;
+			   }
+		   }
+		   if(i >= boardsize) {
+			   while(searchlist.size() <= 4) {
+				   searchlist.add(changeBoardVO(review_list.get(j)));
+				   j++;
+			   }
+		   }
+		   else if(j >= boardsize) {
+			   while(searchlist.size() <= 4) {
+				   searchlist.add(changeBoardVO(board_list.get(i)));
+				   i++;
+			   }
+		   }
+	   }
+	   
+	   
+	   else {
+		   if(boardsize != 0 && reviewsize == 0) {
+			   int i = 0;
+			   while(i < 4 && i < boardsize) {
+				   searchlist.add(changeBoardVO(board_list.get(i)));
+				   i++;
+			   }
+		   }
+		   else {
+			   int i = 0;
+			   while(i < 4 && i < reviewsize) {
+				   searchlist.add(changeBoardVO(review_list.get(i)));
+				   i++;
+			   }
+		   }
+	   }
+	   
+	   model.addAttribute("event_list", event_list);
+	   model.addAttribute("list", searchlist);
    }
    
    
