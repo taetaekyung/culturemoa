@@ -60,7 +60,29 @@ public class MemberController {
 
 	/* -----------마이페이지-쪽지함------------ */
 	
-	//마이페이지-쪽지 삭제 기능
+	//마이페이지-쪽지 삭제(체크박스 통해서 삭제)
+	@PostMapping("/member/deletemessages")
+	@ResponseBody
+	public String deleteMessages(@RequestParam("messageIds") List<Integer> messageIds, HttpSession session) {
+	    Member loggedInMember = (Member) session.getAttribute("m");
+	    for (int mno : messageIds) {
+	        Message message = messagedao_jpa.findById(mno).orElse(null);
+	        if (message != null) {
+	            if (message.getMid().equals(loggedInMember.getId())) {
+	                // 보낸 쪽지인 경우
+	                message.setDeletedBySender(true);
+	            } else {
+	                // 받은 쪽지인 경우
+	                message.setDeletedByReceiver(true);
+	            }
+	            messagedao_jpa.save(message);
+	        }
+	    }
+	    return "쪽지가 삭제되었습니다.";
+	}
+
+	
+	//마이페이지-쪽지 삭제(휴지통 이미지 클릭해서 1개 삭제)
 	@PostMapping("/member/deletemessage")
 	@ResponseBody
 	public String deleteMessage(@RequestParam("mno") int mno, HttpSession session) {
@@ -98,8 +120,9 @@ public class MemberController {
 
         return "/member/mypagemessage";
     }
-
-	@GetMapping("/member/mypagemessagesend")
+    
+    //	마이페이지-보낸 쪽지함
+    @GetMapping("/member/mypagemessagesend")
 	public String mypagemessagesend(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
 	    String id = ((Member) session.getAttribute("m")).getId();
 	    

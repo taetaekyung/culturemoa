@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpSession;
 public class MainController {
    //로그인 했을때만 이용가능 
    //로그인 했을때 아이디
-   private String id="user04";
+   private String id="user01";
    private int nowNo; //현재 마지막 채팅 번호
    
    @Autowired
@@ -54,11 +54,10 @@ public class MainController {
         return eventdao_mb.getEventTicketList();
  }
    
-   
-   @GetMapping("/")
-   public String main() {
-      return "main";
-   }
+	@GetMapping("/")
+	public String main() {
+	   return "main";
+	}
    
    @GetMapping("/searchresult")
    public void searchresult() {
@@ -75,12 +74,11 @@ public class MainController {
 	  }
 	  session.setAttribute("m", m);
 	   
-	   
-      //최신 10개 게시물
-      model.addAttribute("list", boarddao_jpa.findAll());
+	  //최신 10개 게시물
+	  model.addAttribute("list", boarddao_jpa.findAll());
 
       
-    //  System.out.println("되니?");
+	  //System.out.println("되니?");
       //주변행사소식 행사 리스트 출력
       List<EventVO> event=null;
       event=eventdao_mb.findTop();
