@@ -145,7 +145,7 @@ html{
    
    //-----------주변행사 소식 배너
    var slideIndex = 1;
-      showDivs(slideIndex);
+   showDivs(slideIndex);
    
    function plusDivs(n) {
      showDivs(slideIndex += n);
@@ -168,7 +168,15 @@ html{
      }
      
    }
-      
+   //행사 선택 시 상세 페이지로 이동
+	function goDetail(element){
+		// 클릭된 div 요소 안의 input 요소에서 eventno 값을 가져옵니다.
+        var eventno = element.querySelector('#eventno'+slideIndex).value;
+   		//페이지로 이동
+		location.href = "/event/eventdetail?eventno="+eventno;
+		
+	}   
+	
    //--------------메인배너 자동,버튼 슬라이드쇼
    var myIndex = 0;
    var slides = document.getElementsByClassName("mySlides");
@@ -386,11 +394,7 @@ html{
      });
    }
    
-   function goDetail(){
-		var eventno = $("#eventno").val();
-		location.href = "/event/eventdetail?eventno="+eventno;
-		
-	}		
+  		
    
 </script>
 </head>
@@ -515,54 +519,60 @@ html{
             
             <div class="eventList">
             <!--행사하나 -->
-            <div class="poster-Qth myEvent list1" style="visibility: visible;">
-              <div class="poster-kSm " th:each="e:${event1}" >
-            <input type="hidden" id="eventno" name="eventno" th:value="${e.eventno}">
-            <!-- 행사 사진-->
-                <div class="imgposter-VfF"  >
-               <img class="imgposter-VfF" onclick="goDetail()" th:src="@{'./images/'+${e.eventfname}}"/>
-                </div>
-                <div class="frame-6-aaD">
-              <!--공연 진행 여부 -->
-                  <div class="frame-3-jT7" th:text="${e.eventState}"></div>
-                  <!--공연이름 -->
-                  <div class="eventname-2BK" th:text="${e.eventname}"></div>
-                </div>
-              </div>              
+            <div class="poster-Qth myEvent list1" style="visibility: visible;" >
+			  	 <!-- 공연 상세-->
+             	 <div class="poster-kSm " th:each="e:${event1}" th:value="${e.eventno}" onclick=" goDetail(this)" >
+		            <input type="hidden" id="eventno1" name="eventno" th:value="${e.eventno}">
+		            <!-- 행사 사진-->
+	                <div class="imgposter-VfF"  >
+	                <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+	                </div>
+	                <div class="frame-6-aaD">
+	                <!--공연 진행 여부 -->
+	                <div class="frame-3-jT7" th:text="${e.eventState}"></div>
+	                <!--공연이름 -->
+	                 <div class="eventname-2BK" th:text="${e.eventname}"></div>
+	                </div>
+                 </div>            
+                 <!-- -->  
              </div>   
-              <!--행사둘 -->
+             
+            <!--행사둘 -->
             <div class="poster-Qth myEvent list2">
-              <div class="poster-kSm " th:each="e:${event2}" >
-            <input type="hidden" id="eventno" name="eventno" th:value="${e.eventno}">  
-            <!-- 행사 사진-->
-                <div class="imgposter-VfF" >
-               <img class="imgposter-VfF" onclick="goDetail()" th:src="@{'./images/'+${e.eventfname}}"/>
-                </div>
-                <div class="frame-6-aaD">
-              <!--공연 진행 여부 -->
-                  <div class="frame-3-jT7" th:text="${e.eventState}"></div>
-                  <!--공연이름 -->
-                  <div class="eventname-2BK" th:text="${e.eventname}"></div>
-                </div>
-              </div>              
-             </div>   
-              <!--행사셋 -->
+				<!--공연상세 -->	
+	            <div class="poster-kSm " th:each="e:${event2}" th:value="${e.eventno}" onclick=" goDetail(this)" >
+		            <input type="hidden" id="eventno2" name="eventno" th:value="${e.eventno}">  
+		            <!-- 행사 사진-->
+		            <div class="imgposter-VfF" >
+		               <img class="imgposter-VfF"  th:src="@{'./images/'+${e.eventfname}}"/>
+		            </div>
+		            <div class="frame-6-aaD">
+		            <!--공연 진행 여부 -->
+		            <div class="frame-3-jT7" th:text="${e.eventState}"></div>
+		            <!--공연이름 -->
+		            <div class="eventname-2BK" th:text="${e.eventname}"></div>
+		            </div>
+	            </div>              
+            </div>   
+            
+            <!--행사셋 -->
             <div class="poster-Qth myEvent list3">
-              <div class="poster-kSm" th:each="e:${event3}" >
-            <input type="hidden" id="eventno" name="eventno" th:value="${e.eventno}">
-            <!-- 행사 사진-->
-                <div class="imgposter-VfF">
-               <img class="imgposter-VfF" onclick="goDetail()" th:src="@{'./images/'+${e.eventfname}}"/>
-                </div>
-                <div class="frame-6-aaD">
-              <!--공연 진행 여부 -->
-                  <div class="frame-3-jT7" th:text="${e.eventState}"></div>
-                  <!--공연이름 -->
-                  <div class="eventname-2BK" th:text="${e.eventname}"></div>
-                </div>
-              </div>              
-             </div>   
-             </div>
+		   		<!--공연상세 -->
+	            <div class="poster-kSm" th:each="e:${event3}"  th:value="${e.eventno}" onclick=" goDetail(this)">
+		            <input type="hidden" id="eventno3" name="eventno" th:value="${e.eventno}">
+		            <!-- 행사 사진-->
+		            <div class="imgposter-VfF">
+		            <img class="imgposter-VfF" th:src="@{'./images/'+${e.eventfname}}"/>
+		            </div>
+		            <div class="frame-6-aaD">
+		            <!--공연 진행 여부 -->
+		            <div class="frame-3-jT7" th:text="${e.eventState}"></div>
+		            <!--공연이름 -->
+		            <div class="eventname-2BK" th:text="${e.eventname}"></div>
+		            </div>
+	            </div>              
+            </div>   
+            </div>
              
           </div>
         </div>
