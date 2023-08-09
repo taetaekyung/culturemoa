@@ -6,9 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>board_list_free</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/insertBoard_free.css}"/>
    <!-- include libraries(jQuery, bootstrap) -->
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -31,6 +34,44 @@ input[type="radio"], input[type="checkbox"] {
 }
 </style>
 <script>
+	//---기본 헤더 
+ 	//--------gnb드롭다운
+	//마우스가 올라오면 드롭다운
+	function showDropDown() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'visible';
+	}
+	//gnb에 마우스가 벗어나면 드롭다운 없애기
+	function hideDropDown() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'hidden';
+	}
+	//gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+	function cancelHide() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'visible';
+	}
+	
+	//-------- 검색 버튼 클릭 시 검색결과 창으로 이동
+	function searchKeyword(){
+		if($("#keyword_main").val() == null || $("#keyword_main").val() == "") {
+			alert("검색어를 입력하세요.");
+		}
+		else {
+			var data = {
+				keyword : $("#keyword_main").val()
+			};
+			
+			$.ajax({
+				url:"/searchresult",
+				data: data,
+				success:function(n) {
+					sendNUM = eval(n); // 숫자로 변환
+				}
+		});	
+		}
+	}
+    //-------------------------------------------------------
 	//파일이 있을 시 
 	var url;
 	//summernote 내용 입력하기
@@ -103,45 +144,104 @@ input[type="radio"], input[type="checkbox"] {
    });	
    //목록으로 이동하기
    function goReview(){
-	   var review = "/boards/review/reviewlist";
-       window.location.href = review;
+	   var together = "/boards/board/togetherlist";
+       window.location.href = together;
 		
 	}
 </script>
 <body>
 <div class="boardlistfree-2b3">
-  <div class="header-xDo">
-    <p class="logo-fe1">
+<!-- header_top div 시작 -->
+  <div class="header_top">
+	
+	<!--logo p 시작-->
+    <p class="logo" style="cursor: pointer;" onclick="location.href='/mainPage'">
     컬쳐
     <br/>
     모아
     </p>
-    <div class="searchbar-aky">
-      <div class="searchicon-FcD">
-        <img class="iconsearch-jnH" src="./assets/iconsearch-wLd.png"/>
-      </div>
-      <div class="searchtext-NqF">검색어를 입력하세요.</div>
-      <div class="divsearch-Y7T">
-      </div>
+    <!--logo p 끝-->
+    
+    <!--searchbar div 시작-->
+    <div class="searchbar">
+    <form action="/searchresult" method="post">
+	  <input class="main_search" type="text" required title="검색어를 입력해주세요." name="keyword_main" id="keyword_main" placeholder="검색어를 입력하세요.">
+	  <!-- searchicon div 시작 -->
+      <button class="searchicon" id="searchicon" type="submit">
+        <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
+      </button>
+      <!-- searchicon div 끝 -->
+    </form>
     </div>
-    <div class="login-egH">로그인</div>
-    <div class="signup-huT">회원가입</div>
+    <!--searchbar div 끝-->
+    
+    <div class="div_login" style="cursor: pointer;" onclick="location.href='/login'">로그인</div>
+    <div class="div_signup"  style="cursor: pointer;" onclick="location.href='/signup'">회원가입</div>
+    
   </div>
-  <div class="gnb-yry">
-    <div class="divintro-JPT">소개</div>
-    <div class="divevent-QxH">행사소식</div>
-    <div class="divcommunity-XX7">커뮤니티</div>
-    <div class="divfaq-3kM">FAQ</div>
-    <div class="divmypage-mgM">마이페이지</div>
-    <div class="divopentalk-f13">
-      <img class="iconopentalk-AyP" src="./assets/iconopentalk-VZb.png"/>
-      <div class="opentalk-7td">오픈톡</div>
+  <!-- header_top div 끝 -->
+    <!--gnb -->
+    <div class="gnb-EhX"  onmouseover="showDropDown()"  onmouseout="hideDropDown()">
+      <div class="divintro-9pV">소개</div>
+      <div class="divevent-3Q5">행사소식</div>
+      <div class="divcommunity-xG9">커뮤니티</div>
+      <div class="divfaq-fwF">FAQ</div>
+      <div class="divmypage-o1s" onclick="location.href='/member/mypage'">마이페이지</div>
+      <div class="divopentalk-DLV">
+        <img class="iconopentalk-vEu" src="/assets/iconopentalk-2m7.png"/>
+        <div class="opentalk-GJm" onclick="opentalk()">오픈톡</div>
+      </div>
+      <div class="divmessage-aaM">
+        <img class="iconmessage-VBX" src="/assets/iconmessage-2Bj.png"/>
+        <div class="message-Rqs" onclick="location.href=''">쪽지</div>
+      </div>
     </div>
-    <div class="divmessage-boo">
-      <img class="iconmessage-hbw" src="./assets/iconmessage-DpD.png"/>
-      <div class="message-S3j">쪽지</div>
+
+  <!-- header 끝 -->
+  <!--dropdown_main 시작-->
+  <div class="dropdown_main">
+	<!-- gnb 드롭다운 시작 -->
+    <div class="gnb_dropdown"  style="visibility: hidden;" id="gnbDropdown"  onmouseover="cancelHide()" onmouseout="hideDropDown()">
+      
+      <!--div_introduce 시작-->
+      <div class="div_introduce">
+        <div class="pageinfo pointer" onclick="location.href='/pageinfo'">페이지소개</div>
+        <div class="teaminfo pointer" onclick="location.href='/teaminfo'">팀원소개</div>
+      </div>
+      <!--div_introduce 끝-->
+      
+      <!--div_eventlist 시작-->
+      <div class="div_eventlist">
+        <div class="domestic pointer" onclick="location.href='/event/domesticconcertlist'">국내공연</div>
+        <div class="overseas pointer" onclick="location.href='/event/koreaconcertlist'">내한공연</div>
+        <div class="musical pointer" onclick="location.href='/event/musicallist'">뮤지컬</div>
+        <div class="localfestival pointer" onclick="location.href='/event/playlist'">연극</div>
+        <div class="festival pointer" onclick="location.href='/event/festivallist'">페스티벌</div>
+
+      </div>
+      <!--div_eventlist 끝-->
+      
+      <!--div_boardlist 시작-->
+      <div class="div_boardlist">
+        <div class="freelist_text pointer" onclick="location.href='/boards/board/freelist'">자유게시판</div>
+        <div class="reviewlist pointer" onclick="location.href='/boards/review/reviewlist'">후기게시판</div>
+        <div class="togetherlist pointer" onclick="location.href='/boards/board/togetherlist'">동행게시판</div>
+      </div>
+      <!--div_boardlist 끝-->
+      
+      <div class="faq pointer" onclick="location.href='/FAQ'">FAQ</div>
+      
+      <!--div_infolist 시작-->
+      <div class="div_infolist">
+        <div class="memberinfo pointer" onclick="location.href='/member/mypage'">회원정보</div>
+        <div class="message pointer" onclick="location.href='/member/mypagemessage'">쪽지함</div>
+        <div class="wishlist pointer" onclick="location.href='/member/mypagelike'">관심목록</div>
+      </div>
+      <!--div_infolist 끝-->
     </div>
-  </div>
+	<!-- gnb 드롭다운 끝 -->
+	</div>	
+ <!--메인페이지 --> 
   <div class="main-uCD">
 		
     <div class="paddingleft-Sxq">

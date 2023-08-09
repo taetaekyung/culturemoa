@@ -393,8 +393,7 @@ html{
         }
      });
    }
-   
-  		
+ 	
    
 </script>
 </head>
@@ -448,16 +447,16 @@ html{
               <div class="item--ZM3">사이트 소개</div>
             </div>
             <div class="event-FzZ">
-              <div class="icon02-c4R">
+              <a class="icon02-c4R" th:href="@{/event/domesticconcertlist}">
                 <img class="item--wcV" src="./assets/-4Fj.png"/>
-              </div>
-              <div class="item--FNH">국내 공연</div>
+              </a>
+              <a class="item--FNH" th:href="@{/event/domesticconcertlist}">국내 공연</a>
             </div>
             <div class="eventreview-xnV">
-              <div class="icon03-7QV">
+              <a class="icon03-7QV" th:href="@{/boards/review/reviewlist}">
                 <img class="item--4ad" src="./assets/-ukV.png"/>
-              </div>
-              <div class="item--Adf">공연 후기</div>
+              </a>
+              <a class="item--Adf" th:href="@{/boards/review/reviewlist}">공연 후기</a>
             </div>
             <div class="faq-GRo">
               <div class="icon04-2A5">
@@ -466,10 +465,10 @@ html{
               <div class="faq-ujf">FAQ</div>
             </div>
             <div class="freeboard-3ay">
-              <div class="icon05-Peq">
+              <a class="icon05-Peq" th:href="@{/boards/board/freelist}"> 
                 <img class="open-talk-9tu" src="./assets/open-talk.png"/>
-              </div>
-              <div class="item--5Xf">자유게시판</div>
+              </a>
+              <a th:href="@{/boards/board/freelist}" class="item--5Xf">자유게시판</a>
             </div>
           </div>
         </div>
