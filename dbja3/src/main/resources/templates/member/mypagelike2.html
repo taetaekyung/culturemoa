@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>관심목록</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A500"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C500%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+CJK+KR%3A400%2C500"/>
+  <link rel="stylesheet" th:href="@{/styles/mypagelike.css}"/></head>
+</head>
+<body>
+<div class="mypagelike-exZ" layout:fragment="content">
+  <div class="main-iEu">
+    <div class="auto-group-97pd-fvq">
+      <div class="headerframe-Q7j">
+		<a th:href="@{/mainPage}">
+        	<div class="home-jQu">홈</div>
+        </a>
+        <img class="icon-Fu3" src="/assets/icon-d5T.png"/>
+        <div class="auto-group-nbuu-C3b">
+          <div class="mypage-Wa5">마이페이지</div>
+          <img class="icon-EFB" src="/assets/icon-d5T.png"/>
+        </div>
+        <a th:href="@{/member/mypagelike}">
+        	<div class="message-xws">관심목록</div>
+        </a>
+      </div>
+      <div class="filter-6oB">
+		<a th:href="@{/member/mypage}">
+        	<div class="registration-C5X">회원정보</div>
+        </a>
+        <div class="middleline-vGR">
+        </div>
+        <a th:href="@{/member/mypagemessage}">
+        	<div class="message-Enu">쪽지함</div>
+        </a>
+        <div class="middleline-a65">
+        </div>
+        <a th:href="@{/member/mypagelike}">
+        	<div class="like-XGD">관심목록</div>
+        </a>
+      </div>
+      
+      <div class="title">관심목록</div>
+
+    </div>
+    
+    <!--main -->
+    <div class="divmain-S8H">
+	  <!-- 관심목록 공연 리스트-->
+      <div class="posterlist-Aa5">
+		<!-- 공연리스트-->
+        <div class="posterrow1-Wtq">
+		  <!--공연하나-->
+          <div class="poster01-T3P">
+            <div class="poster-z3K">
+            </div>
+            <div class="diveventcontent-gRw">
+              <div class="auto-group-95w7-d6H">
+                <div class="frameeventstate-M2H">공연 종류</div>
+                <div class="eventname-n7b">공연 이름</div>
+              </div>
+              <img class="heart-UWD" src="/assets/heart-8Bb.png"/>
+            </div>
+          </div>
+          <!-- -->
+        
+        </div>
+        <!-- -->
+      <!--페이징 -->
+      <div class="auto-group-qxmp-2T3">
+        <div class="bottomline-MkD">
+        </div>
+        <div class="paging-F4u">
+          <img class="btndoubleprevious-9g5" src="/assets/btndoubleprevious-yHs.png"/>
+          <img class="btnprevious-UCZ" src="/assets/btnprevious-WRw.png"/>
+          <img class="item-1-1iH" src="/assets/-dtV.png"/>
+          <img class="item-2-8nu" src="/assets/-Fmb.png"/>
+          <img class="item-3-rU1" src="/assets/-zhP.png"/>
+          <img class="item-4-QVX" src="/assets/-e3b.png"/>
+          <img class="item-5-MvZ" src="/assets/-TBw.png"/>
+          <img class="item-6-Tih" src="/assets/-wbw.png"/>
+          <img class="item-7-1kD" src="/assets/-Wuw.png"/>
+          <img class="item-8-9Ld" src="/assets/-85F.png"/>
+          <img class="item-9-f45" src="/assets/-Sdf.png"/>
+          <img class="btnnext-1Nq" src="/assets/btnnext-yfP.png"/>
+          <img class="btndoublenext-KuK" src="/assets/btndoublenext-Spq.png"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

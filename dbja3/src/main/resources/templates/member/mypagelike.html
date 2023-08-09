@@ -46,11 +46,15 @@
       
       <div class="title">관심목록</div>
 
-      
     </div>
+    
+    <!--main -->
     <div class="divmain-S8H">
+	  <!-- 관심목록 공연 리스트-->
       <div class="posterlist-Aa5">
-        <div class="posterrow1-Wtq">
+		<!-- 공연리스트-->
+        <div class="eventlist-im7">
+		  <!--공연하나
           <div class="poster01-T3P">
             <div class="poster-z3K">
             </div>
@@ -62,126 +66,66 @@
               <img class="heart-UWD" src="/assets/heart-8Bb.png"/>
             </div>
           </div>
-          <div class="poster01-mkD">
-            <div class="poster-8Ks">
-            </div>
-            <div class="diveventcontent-3Bw">
-              <div class="auto-group-ix2r-nQR">
-                <div class="frameeventstate-vWd">공연 종류</div>
-                <div class="eventname-N7j">공연 이름</div>
-              </div>
-              <img class="heart-tLy" src="/assets/heart-JhX.png"/>
-            </div>
-          </div>
-          <div class="poster01-pkR">
-            <div class="poster-MkM">
-            </div>
-            <div class="diveventcontent-xEM">
-              <div class="auto-group-hx7j-hBw">
-                <div class="frameeventstate-FUM">공연 종류</div>
-                <div class="eventname-fny">공연 이름</div>
-              </div>
-              <img class="heart-1bw" src="/assets/heart-Pvy.png"/>
-            </div>
-          </div>
-          <div class="poster01-xGH">
-            <div class="poster-WYh">
-            </div>
-            <div class="diveventcontent-ppH">
-              <div class="auto-group-jz4r-mjX">
-                <div class="frameeventstate-i8y">공연 종류</div>
-                <div class="eventname-QGh">공연 이름</div>
-              </div>
-              <img class="heart-hWh" src="/assets/heart-LWV.png"/>
-            </div>
-          </div>
-          <div class="poster01-qso">
-            <div class="poster-QR7">
-            </div>
-            <div class="diveventcontent-KHB">
-              <div class="auto-group-9c5o-zu7">
-                <div class="frameeventstate-A2u">공연 종류</div>
-                <div class="eventname-Ka1">공연 이름</div>
-              </div>
-              <img class="heart-S8q" src="/assets/heart-oQD.png"/>
-            </div>
-          </div>
+          -->
+        <!-- 각 행 별로 반복,여행 정보 4(?)줄 담긴 거 1줄씩 row 에 담음 -->
+		<div class="row1-dt5" th:each="row : ${rows}">
+		  <!-- 한 행에 4개의 열을 출력,1줄에 담긴 최대4개 중에서 1개의 이벤트 정보를 e 에 담음. -->
+		  <div class="divposter-At1" th:each="e : ${row}">
+		    <div class="posterimage-8K3"><!-- 1개의 이벤트의 포스터 처리-->
+		      <a th:href="@{/event/eventdetail(eventno=${e.eventno})}"> <!-- (이벤트 번호) 주고,(공연정보)+(상태 반환) -->
+		        <!-- eventfname이 null인 경우 togetready.png를 출력, 그렇지 않은 경우 eventfname을 출력 -->
+		        <img th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지" class="posterimage-8K3"/>
+		      </a>
+		    </div>
+		    <div class="eventtitle-Gw3"><!-- 공연상태,공연 이름 처리-->
+		      <div class="diveventcategory-dWh" th:text="${e.eventState}">공연 종료</div>
+		      <!-- 수정된 부분: 행사 이름에 링크를 추가하고 eventno를 매개변수로 넘겨줍니다. -->
+		      <a class="eventname-i2M" th:href="@{/event/eventdetail(eventno=${e.eventno})}" th:text="${e.eventname}">
+		      </a>
+		    </div>
+		  </div><!-- 1줄 속 1개 처리 끝-->
+		</div><!-- 4(?)줄 속 1줄 처리 끝-->
+        
         </div>
-        <div class="posterrow2-aF3">
-          <div class="poster01-7Vs">
-            <div class="poster-Fc5">
-            </div>
-            <div class="diveventcontent-k33">
-              <div class="auto-group-ygeu-gxH">
-                <div class="frameeventstate-SwT">공연 종류</div>
-                <div class="eventname-jff">공연 이름</div>
-              </div>
-              <img class="heart-V93" src="/assets/heart-NZP.png"/>
-            </div>
-          </div>
-          <div class="poster01-z5o">
-            <div class="poster-9Db">
-            </div>
-            <div class="diveventcontent-rdo">
-              <div class="auto-group-btrp-zzu">
-                <div class="frameeventstate-w9T">공연 종류</div>
-                <div class="eventname-bUu">공연 이름</div>
-              </div>
-              <img class="heart-Kfo" src="/assets/heart-oVj.png"/>
-            </div>
-          </div>
-          <div class="poster01-psT">
-            <div class="poster-P9s">
-            </div>
-            <div class="diveventcontent-hRT">
-              <div class="auto-group-ykfo-2yX">
-                <div class="frameeventstate-nxh">공연 종류</div>
-                <div class="eventname-qvy">공연 이름</div>
-              </div>
-              <img class="heart-Zry" src="/assets/heart.png"/>
-            </div>
-          </div>
-          <div class="poster01-7db">
-            <div class="poster-54d">
-            </div>
-            <div class="diveventcontent-xu7">
-              <div class="auto-group-nlro-7GD">
-                <div class="frameeventstate-o93">공연 종류</div>
-                <div class="eventname-gTj">공연 이름</div>
-              </div>
-              <img class="heart-q5j" src="/assets/heart-mJ1.png"/>
-            </div>
-          </div>
-          <div class="poster01-9s7">
-            <div class="poster-iQR">
-            </div>
-            <div class="diveventcontent-Rpd">
-              <div class="auto-group-48st-MCV">
-                <div class="frameeventstate-JdX">공연 종류</div>
-                <div class="eventname-NNV">공연 이름</div>
-              </div>
-              <img class="heart-tbj" src="/assets/heart-u7X.png"/>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- -->
+      <!--페이징 -->
       <div class="auto-group-qxmp-2T3">
         <div class="bottomline-MkD">
         </div>
+        <!-- 페이징-->
         <div class="paging-F4u">
-          <img class="btndoubleprevious-9g5" src="/assets/btndoubleprevious-yHs.png"/>
-          <img class="btnprevious-UCZ" src="/assets/btnprevious-WRw.png"/>
-          <img class="item-1-1iH" src="/assets/-dtV.png"/>
-          <img class="item-2-8nu" src="/assets/-Fmb.png"/>
-          <img class="item-3-rU1" src="/assets/-zhP.png"/>
-          <img class="item-4-QVX" src="/assets/-e3b.png"/>
-          <img class="item-5-MvZ" src="/assets/-TBw.png"/>
-          <img class="item-6-Tih" src="/assets/-wbw.png"/>
-          <img class="item-7-1kD" src="/assets/-Wuw.png"/>
-          <img class="item-8-9Ld" src="/assets/-85F.png"/>
-          <img class="item-9-f45" src="/assets/-Sdf.png"/>
-          <img class="btnnext-1Nq" src="/assets/btnnext-yfP.png"/>
-          <img class="btndoublenext-KuK" src="/assets/btndoublenext-Spq.png"/>
+			
+        <!-- 처음으로 버튼 -->
+		<a th:if="${currentPage > 1}" th:href="@{/member/mypagelike(page=1)}">
+		  <img class="btndoubleprevious-gWm" src="/assets/btndoubleprevious-zc9.png"/>
+		</a>
+		<!-- 이전 버튼 -->
+		<a th:if="${currentPage > 1}" th:href="@{/member/mypagelike(page=${currentPage - 1})}">
+		  <img class="btnprevious-pN5" src="/assets/btnprevious-fUm.png"/>
+		</a>
+		<!-- 페이지 숫자 출력 및 클릭 가능한 링크로 설정 -->
+		<div class="div_page" th:if="${totalPages > 1}">
+		  <th:block th:with="startPage=${(currentPage-1) / 10 * 10 + 1}">
+		    <th:block th:with="endPage=${(startPage + 9) < totalPages ? (startPage + 9) : totalPages}">
+		      <th:block th:each="pageNum : ${#numbers.sequence(startPage, endPage)}">
+		        <!-- 페이지 숫자를 담는 div -->
+		        <div class="page1">
+		          <a class="pages" th:href="@{/member/mypagelike(page=${pageNum})}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'selected' : ''">
+		          </a>
+		        </div> 
+		      </th:block>
+		    </th:block>
+		  </th:block>
+		</div>
+		<!-- 다음 버튼 -->
+		<a th:if="${currentPage < totalPages}" th:href="@{/member/mypagelike(page=${currentPage + 1})}">
+		  <img class="btnnext-2W5" src="/assets/btnnext-zrm.png"/>
+		</a>
+		<!-- 마지막으로 버튼 -->
+		<a th:if="${currentPage < totalPages}" th:href="@{/member/mypagelike(page=${totalPages})}">
+		  <img class="btndoublenext-ZW1" src="/assets/btndoublenext-Y7s.png"/>
+		</a>
+          
         </div>
       </div>
     </div>

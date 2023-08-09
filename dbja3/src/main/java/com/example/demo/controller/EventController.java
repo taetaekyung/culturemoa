@@ -145,104 +145,13 @@ public class EventController {
         model.addAttribute("event", event);
         model.addAttribute("state", state);
         return "/event/eventdetail"; // "/event/eventdetail" 페이지로 이동하도록 반환합니다.
-    }
-	/*
-	@GetMapping("/event/domesticconcertlist")
-	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String area, @RequestParam(required = false) String eventstate) {
-	    int pageSize = 16;
-	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
-
-	    Page<Event> eventPage;
-
-	    List<List<EventVO>> rows = new ArrayList<>();
-	    List<EventVO> currentRow = null;
-	    String state="";
-	    for (Event event : eventPage.getContent()) {
-	        state = calculateEventStatus(event);
-	        EventVO eventVO = changeEventtoeventvo(event);
-	        eventVO.setEventState(state);
-
-	        if (currentRow == null || currentRow.size() >= 4) {
-	            currentRow = new ArrayList<>();
-	            rows.add(currentRow);
-	        }
-	        currentRow.add(eventVO);
-	    }
-	    
-	    if (area != null && !area.isEmpty() && !eventstate.isEmpty()) {
-	        if (area.equals("all")) {
-	            // 전체 지역과 공연상태 선택 시 해당 카테고리의 행사 리스트를 가져옴
-	            eventPage = eventdao_jpa.findByCategorynoAndEventstate(1, state, pageable);
-	        } else {
-	            // 선택한 지역과 공연상태가 모두 있는 경우 해당 지역과 공연상태에 맞는 행사 리스트를 가져옴
-	            eventPage = eventdao_jpa.findByEventaddrContainingAndEventstateAndCategoryno(area, eventstate, 1, pageable);
-	        }
-	    } else if (area != null && !area.isEmpty()) {
-	        if (area.equals("all")) {
-	            // 전체 지역 선택 시 해당 카테고리의 행사 리스트를 가져옴
-	            eventPage = eventdao_jpa.findByCategoryno(1, pageable);
-	        } else {
-	            // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져옴
-	            eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(area, 1, pageable);
-	        }
-	    } else if (!eventstate.isEmpty()) {
-	        // 선택한 지역이 없지만 공연상태만 선택한 경우 해당 공연상태에 맞는 행사 리스트를 가져옴
-	        eventPage = eventdao_jpa.findByEventstateAndCategoryno(eventstate, 1, pageable);
-	    } else {
-	        // 선택한 지역과 공연상태가 없는 경우 전체 행사 리스트를 가져옴
-	        eventPage = eventdao_jpa.findByCategoryno(1, pageable);
-	    }
-
-
-	    model.addAttribute("rows", rows);
-	    model.addAttribute("currentPage", page);
-	    model.addAttribute("totalPages", eventPage.getTotalPages());
-	}
+    }	
 	
 	
-	
-	//국내공연 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
-	@GetMapping("/event/domesticconcertlist")
-	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String area) {
-	    int pageSize = 16;
-	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
-
-	    Page<Event> eventPage;
-	    if (area != null && !area.isEmpty()) {
-	    	if(area.equals("all")) { //전체 클릭하면 카테고리만 받아서 전체 출력
-	    		eventPage = eventdao_jpa.findByCategoryno(1, pageable);	
-	    	}else { // 선택한 지역이 있으면 해당 지역의 행사 리스트를 가져오도록 변경
-	    		eventPage = eventdao_jpa.findByEventaddrContainingAndCategoryno(area, 1, pageable);
-	    	}
-	    } else {
-	        // 선택한 지역이 없으면 전체 행사 리스트를 가져옴
-	        eventPage = eventdao_jpa.findByCategoryno(1, pageable);
-	    }
-
-	    List<List<EventVO>> rows = new ArrayList<>();
-	    List<EventVO> currentRow = null;
-
-	    for (Event event : eventPage.getContent()) {
-	        String state = calculateEventStatus(event);
-	        EventVO eventVO = changeEventtoeventvo(event);
-	        eventVO.setEventState(state);
-
-	        if (currentRow == null || currentRow.size() >= 4) {
-	            currentRow = new ArrayList<>();
-	            rows.add(currentRow);
-	        }
-	        currentRow.add(eventVO);
-	    }
-
-	    model.addAttribute("rows", rows);
-	    model.addAttribute("currentPage", page);
-	    model.addAttribute("totalPages", eventPage.getTotalPages());
-	}
-	*/
-  //국내공연 :<페이지번호,지역>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
+  //국내공연 :<페이지번호,지역,날짜>매개변수 받아서<행사정보,현재 페이지,전체 페이지 개수>반환 
   	@GetMapping("/event/domesticconcertlist")
   	public void domesticconcertlist(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String eventArea, @RequestParam(required = false) String eventDate) throws ParseException {
-  	    int pageSize = 16;
+  		int pageSize = 16;
   	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
 
   	    Page<Event> eventPage = null;
@@ -290,7 +199,6 @@ public class EventController {
   	   
   	    
   	    for (Event event : eventPage.getContent()) {
-  	    
   	        String state = calculateEventStatus(event);
   	        EventVO eventVO = changeEventtoeventvo(event);
   	        eventVO.setEventState(state);

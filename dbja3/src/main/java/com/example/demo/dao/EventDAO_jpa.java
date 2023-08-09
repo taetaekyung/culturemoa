@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,6 +19,10 @@ import com.example.demo.entity.Event;
 
 @Repository
 public interface EventDAO_jpa extends JpaRepository<Event, Integer> {
+	// 회원관심목록 속 행사 조회
+    @Query(value = "select * from event where eventno in (select eventno from wishlist where id = :id)", nativeQuery = true)
+    Page<Event> findWishListById(@Param("id") String id, Pageable pageable);
+	
 	//크롤링한 숫자 조회에 사용
 	@Query("select count(*) from Event where eventname=?1")
 	int countByEventname(String eventname);

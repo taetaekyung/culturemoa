@@ -4,6 +4,10 @@ package com.example.demo.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -28,12 +32,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.dao.EventDAO_jpa;
 import com.example.demo.dao.MemberDAO_jpa;
 import com.example.demo.dao.MessageDAO_jpa;
+import com.example.demo.entity.Event;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Message;
+import com.example.demo.vo.EventVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -49,6 +57,9 @@ public class MemberController {
 	
 	@Autowired
 	private MailSender mailSender;
+	
+	@Autowired
+	private EventDAO_jpa eventdao_jpa;
 	
 	
 	/* -----------마이페이지-회원정보------------ */
@@ -246,9 +257,78 @@ public class MemberController {
 	/* -----------마이페이지-위시리스트------------ */
 
 	@GetMapping("/member/mypagelike")
-	public void messagelike() {
+	public void messagelike(HttpSession session,Model model, @RequestParam(defaultValue = "1") int page) {
+		// 세션에서 로그인된 사용자의 ID 가져오기
+	    String id = ((Member) session.getAttribute("m")).getId();
+	    //관심목록 가져오기
+	    int pageSize = 8;
+	    Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("eventno").descending());
+	    Page<Event> eventPage;
+	    eventPage=eventdao_jpa.findWishListById(id, pageable);
+	    List<List<EventVO>> rows = new ArrayList<>();
+	    List<EventVO> currentRow = null;
+
+	    for (Event event : eventPage.getContent()) {
+	        String state = calculateEventStatus(event);
+	        EventVO eventVO = changeEventtoeventvo(event);
+	        eventVO.setEventState(state);
+
+	        if (currentRow == null || currentRow.size() >= 4) {
+	            currentRow = new ArrayList<>();
+	            rows.add(currentRow);
+	        }
+	        currentRow.add(eventVO);
+	    }
+	    
+	    model.addAttribute("rows", rows);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", eventPage.getTotalPages());
+	    
 	}
-	
+	//공연중 상태 확인
+    public String calculateEventStatus(Event event) {
+        LocalDate currentDate = LocalDate.now(); // 현재 날짜를 가져옵니다.
+
+        if (event.getEventstart() != null && event.getEventend() != null) {
+            if (currentDate.isBefore((LocalDate)(event.getEventstart().toInstant()
+            	      .atZone(ZoneId.systemDefault())
+            	      .toLocalDate()))) {
+                // 이벤트 시작일과 현재 날짜를 비교하여 D-day를 계산합니다.
+                long daysUntilEvent = ChronoUnit.DAYS.between(currentDate, event.getEventstart().toInstant()
+                	      .atZone(ZoneId.systemDefault())
+                	      .toLocalDate());
+                return ("D-" + daysUntilEvent);
+            } else if (currentDate.isAfter(event.getEventend().toInstant().atZone(ZoneId.systemDefault())
+            	      .toLocalDate())) {
+            	return "공연종료";
+            } else {
+            	return "공연중";
+            }
+        } else {
+            return "미정";
+        }
+    }
+  //event 엔티티 eventvo 로 이동. 공연 진행 상태 추가해서 쓰려고
+  	public EventVO changeEventtoeventvo(Event event) {
+  		EventVO eventVO = new EventVO();
+  		eventVO.setEventno(event.getEventno());
+  		eventVO.setCategoryno(event.getCategoryno());
+  		eventVO.setEventname(event.getEventname());
+  		eventVO.setEventaddr(event.getEventaddr());
+  		eventVO.setEventplace(event.getEventplace());
+  		eventVO.setEventcontent(event.getEventcontent());
+  		eventVO.setEventstart(event.getEventstart());
+  		eventVO.setEventend(event.getEventend());
+  		eventVO.setEventlat(event.getEventlat());
+  		eventVO.setEventlong(event.getEventlong());
+  		eventVO.setEventhit(event.getEventhit());
+  		eventVO.setEventlink(event.getEventlink());
+  		eventVO.setEventfname(event.getEventfname());
+  		eventVO.setEventticket(event.getEventticket());
+  		eventVO.setEventprice(event.getEventprice());
+  		eventVO.setParkplace(event.getParkplace());
+  		return eventVO;
+  	}
 	
 	/* -----------마이페이지-회원정보 수정------------ */
 		
