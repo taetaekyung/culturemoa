@@ -223,10 +223,13 @@ public class MainController {
    @PostMapping("/searchresult")
    public void searchresult(Model model, String keyword_main) {  
 	   
+	   
 	   List<Event> event_list = eventdao_jpa.findByKeyword(keyword_main);
-	   if(event_list.size() > 4) {
-		   event_list = event_list.subList(0, 4);
-	   }
+	   int event_list_size = event_list.size();
+
+	//   if(event_list.size() > 4) {
+	//	   event_list = event_list.subList(0, 4);
+	//   }
 	   
 	   
 	   List<Board> board_list = boarddao_jpa.findByKeyword(keyword_main);
@@ -234,6 +237,7 @@ public class MainController {
 	   
 	   int boardsize = board_list.size();
 	   int reviewsize = review_list.size();
+	   int board_list_size = boardsize + reviewsize;
 	   
 	   List<BoardVO> searchlist = new ArrayList<BoardVO>();
 	   
@@ -242,8 +246,7 @@ public class MainController {
 		   int j = 0; // review_list의 인덱스
 
 
-		   while( i < boardsize && j < reviewsize && searchlist.size() <= 4) {
-			   System.out.println("리스트사이즈 "+searchlist.size());
+		   while( i < boardsize && j < reviewsize) {
 			   // 만약 board_list에 있는 date가 review에 있는 date보다 뒤이면 
 			   if(board_list.get(i).getRegdate().after(review_list.get(j).getRegdate())) {
 				   searchlist.add(changeBoardVO(board_list.get(i)));
@@ -255,13 +258,13 @@ public class MainController {
 			   }
 		   }
 		   if(i >= boardsize) {
-			   while(searchlist.size() <= 4) {
+			   while(j < reviewsize) {
 				   searchlist.add(changeBoardVO(review_list.get(j)));
 				   j++;
 			   }
 		   }
-		   else if(j >= boardsize) {
-			   while(searchlist.size() <= 4) {
+		   else if(j >= reviewsize) {
+			   while(i < boardsize) {
 				   searchlist.add(changeBoardVO(board_list.get(i)));
 				   i++;
 			   }
@@ -272,20 +275,24 @@ public class MainController {
 	   else {
 		   if(boardsize != 0 && reviewsize == 0) {
 			   int i = 0;
-			   while(i < 4 && i < boardsize) {
+			   while(i < boardsize) {
 				   searchlist.add(changeBoardVO(board_list.get(i)));
 				   i++;
 			   }
 		   }
 		   else {
 			   int i = 0;
-			   while(i < 4 && i < reviewsize) {
+			   while(i < reviewsize) {
 				   searchlist.add(changeBoardVO(review_list.get(i)));
 				   i++;
 			   }
 		   }
 	   }
 	   
+	   
+	   model.addAttribute("keyword_main", keyword_main);
+	   model.addAttribute("board_list_size", board_list_size);
+	   model.addAttribute("event_list_size", event_list_size);
 	   model.addAttribute("event_list", event_list);
 	   model.addAttribute("list", searchlist);
    }

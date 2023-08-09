@@ -17,6 +17,23 @@
 		  display: block;
 	  }
   </style>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	 function gotoBoardDetail(bcategory, bno){
+		if(bcategory == "자유") {
+			location.href="/boards/board/freeDetail?boardno="+bno;
+		}
+		else if(bcategory == "동행") {
+			location.href="/boards/board/togetherDetail?boardno="+bno;
+		}
+		else {
+			location.href="/boards/review/reviewDetail?reviewno="+bno;
+		}
+	//	
+	} 
+  </script>
+  
 </head>
 <body>
 <!-- searchresult 시작 -->
@@ -32,10 +49,13 @@
     <div class="eventlist">
     <!-- div_event 시작 -->
 	    <div class="div_event">
-			
+		    <th:block th:if="${event_list_size == 0}">
+				<div class="no_result">일치하는 결과가 없습니다.</div>
+		    </th:block>
+
 		  <!-- event 시작 -->
 		  <th:block th:each=" e : ${event_list}">
-	      <div class="event">
+	      <div class="event" th:onclick="'location.href=\'' + @{/event/eventdetail(eventno=${e.eventno})} + '\''">
 	        <img class="event_img" th:src="${e.eventfname == null ? '/images/togetready.png' : '/images/' + e.eventfname}" alt="행사 이미지"></img>
 	        <!-- event_content 시작 -->
 	        <div class="event_content">
@@ -68,12 +88,6 @@
     <!-- div_event 끝 -->
 
 
-    <!-- div_more 시작 -->
-    <div class="div_more">
-      <div class="more_txt">더보기</div>
-      <img class="btndoublenext" src="./assets/btndoublenext-HJq.png"/>
-    </div>
-    <!-- div_more 끝 -->
     
     </div>
 	<!-- eventlist 끝 -->
@@ -98,80 +112,50 @@
     
     <div class="board_txt">게시판</div>
     
-    <!-- board_head 시작 -->
-    <div class="board_head">
-      <div class="head_color"></div>
-      
-      <!-- head_txts 시작 -->
-      <div class="head_txts">
-        <div class="bno_txt">글번호</div>
-        <div class="title_txt">제목</div>
-        <div class="regdate_txt">작성일</div>
-        <div class="id_txt">ID</div>
-        <div class="hit_txt">조회수</div>
-        <div class="likes_txt">좋아요</div>
-      </div>
-      <!-- head_txts 끝 -->
-    </div>
-    <!-- board_head 끝 -->
-   
-    <!-- div_board 시작 -->
-    <div class="div_board">
-	  <!-- board 시작 -->
-	  <th:block th:each="b : ${list}">
-      <div class="board">
-        <div class="dno" th:text="${b.no}"></div>
-        <div class="title" th:text="${b.title}"></div>
-        <div class="regdate" th:text="${b.regdate}"></div>
-        <div class="userid" th:text="${b.id}"></div>
-        <div class="hit" th:text="${b.hit}"></div>
-        <div class="wish" th:text="${b.likes}"></div>
-      </div>
-	  </th:block>
-      <!-- board 끝 -->
-      
-      <!-- board 시작 -->
-      <div class="board">
-        <div class="dno">276</div>
-        <div class="title">고척돔 공연 후기 (0)</div>
-        <div class="regdate">2023-07-13</div>
-        <div class="userid">teddie</div>
-        <div class="hit">3</div>
-        <div class="wish">3</div>
-      </div>
-      <!-- board 끝 -->
-      
-      <!-- board 시작 -->
-      <div class="board">
-        <div class="dno">276</div>
-        <div class="title">고척돔 공연 후기 (0)</div>
-        <div class="regdate">2023-07-13</div>
-        <div class="userid">teddie</div>
-        <div class="hit">3</div>
-        <div class="wish">3</div>
-      </div>
-      <!-- board 끝 -->
-      
-      <!-- board 시작 -->
-      <div class="board">
-        <div class="dno">276</div>
-        <div class="title">고척돔 공연 후기 (0)</div>
-        <div class="regdate">2023-07-13</div>
-        <div class="userid">teddie</div>
-        <div class="hit">3</div>
-        <div class="wish">3</div>
-      </div>
-      <!-- board 끝 -->
-    </div>
-    <!-- div_board 끝 -->
-        
-    <!-- div_more 시작 -->
-    <div class="div_more2">
-      <div class="more_txt">더보기</div>
-      <img class="btndoublenext" src="./assets/btndoublenext-HJq.png"/>
-    </div>
-    <!-- div_more 끝 -->
+    <th:block th:if="${board_list_size == 0}">
+		<div class="no_result_board">일치하는 결과가 없습니다.</div>
+    </th:block>
 
+    
+    <!-- board_head 시작 -->
+    <th:block th:if="${board_list_size != 0}">
+
+	    <div class="board_head">
+	      <div class="head_color"></div>
+	      
+	      <!-- head_txts 시작 -->
+	      <div class="head_txts">
+	        <div class="bno_txt">글번호</div>
+	        <div class="title_txt">제목</div>
+	        <div class="regdate_txt">작성일</div>
+	        <div class="id_txt">ID</div>
+	        <div class="hit_txt">조회수</div>
+	        <div class="likes_txt">좋아요</div>
+	      </div>
+	      <!-- head_txts 끝 -->
+	    </div>
+	    <!-- board_head 끝 -->
+	   
+	    <!-- div_board 시작 -->
+	    <div class="div_board">
+		  <!-- board 시작 -->
+		  <th:block th:each="b : ${list}">
+	      <div class="board" th:bcategory="${b.bcategory}" th:bno="${b.no}" th:onclick="gotoBoardDetail(this.getAttribute('bcategory'), this.getAttribute('bno'))">
+	        <div class="bno" th:text="${b.no}"></div>
+	        <div class="title" th:text="${b.title}"></div>
+	        <div class="regdate" th:text="${b.regdate}"></div>
+	        <div class="userid" th:text="${b.id}"></div>
+	        <div class="hit" th:text="${b.hit}"></div>
+	        <div class="wish" th:text="${b.likes}"></div>
+	      </div>
+		  </th:block>
+	      <!-- board 끝 -->
+	      
+	    </div>
+	    <!-- div_board 끝 -->
+	        
+
+ 	</th:block>
 
     
     <div class="FAQ_txt">FAQ</div>
@@ -226,12 +210,12 @@
     </div>
     <!-- div_faq 끝 -->
     
-    <!-- div_more 시작 -->
+<!--     div_more 시작 
     <div class="div_more3">
       <div class="more_txt">더보기</div>
       <img class="btndoublenext" src="./assets/btndoublenext-HJq.png"/>
     </div>
-    <!-- div_more 끝 -->
+     div_more 끝 -->
     
   </div>
   <!-- div_main 끝 -->

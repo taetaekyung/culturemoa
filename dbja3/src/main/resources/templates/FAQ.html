@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>FAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/faq.css}"/>
 </head>
 <body>
-<h2>임시 FAQ 게시판</h2>
+<div class="faq" layout:fragment="content">
+  <div class="main">	
+	
+	  <!-- location div 시작 -->
+	  <div class="location">
+	      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
+	      <img class="nexticon" src="/assets/icon-YJu.png"/>
+	      <div class="community">FAQ</div>
+	      <img class="nexticon2" src="/assets/icon-YJu.png"/>
+	      <div class="freelist_text">FAQ</div>
+	  </div>
+	  <!-- location div 끝 -->
+	  
+	  <div class="title">FAQ</div>
+		<!-- main_searchbar div 시작 -->
+	  <div class="main_searchbar">
+		  <!--main_searchtext div 시작-->
+		  <div class="main_searchtext">
+			  <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
+		  	  <!-- searchbtn button 시작 -->
+		      <button class="searchbtn" id="searchbtn">
+		        <img class="search_icon" src="/assets/icon-YCy.png"/>
+		      </button>
+			  <!-- searchbtn button 끝 -->
+		  </div>
+		  <!--main_searchtext div 끝-->
+	  </div>
+		<!-- main_searchbar div 끝 -->
+		
+		
+	  <div class="div_content">
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+		  <!-- div_faq 시작 -->
+		  <div class="div_faq">
+			  <div class="faqtitle">비밀번호를 까먹었어요</div>
+			  <div class="faqmore"></div>
+		  </div>
+		  <!-- div_faq 끝 -->
+	  </div>
+	  
+  </div>
+</div>
 </body>
-</html>
