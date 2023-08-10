@@ -1,10 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>registration</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/signup.css}"/>
 </head>
 <body>
-<h2>임시 회원가입 페이지</h2>
+<!-- signup 시작 -->
+<div class="signup" layout:fragment="content">
+  
+  <div class="title">회원 가입</div>
+  
+  <!-- div_main 시작 -->
+  <div class="div_main">
+	  
+    <!-- div_idToPhone 시작 -->
+    <div class="div_idToPhone">
+<!-- 	  div_lines 시작
+	        <div class="div_lines">
+	          <div class="line1"></div>
+	          <div class="line2"></div>
+	          <div class="line3"></div>
+	          <div class="line4"></div>
+	          <div class="line5"></div>
+	          <div class="line6"></div>
+	          <div class="line7"></div>
+	        </div>
+	        div_lines 끝 -->
+      
+      <div class="userid">
+        <div class="userid_txt">아이디</div>
+        <div class="chkid">
+			<input type="text" class="inputid" name="id" id="userid" required/> 
+			<div class="check_txt">중복확인</div>
+		</div>
+        <div class="resultCheck">사용 가능한 아이디입니다.</div>
+      </div>
+      
+      <div class="userpwd">
+        <div class="pwd_txt">비밀번호</div>
+        <div class="chkpwd">
+			<input type="password" class="inputpwd" name="pwd" id="pwd" required placeholder="영어, 숫자, 특수문자 포함 8자 이상"/> 
+		</div>
+      </div>
+     
+      <div class="pwdCheck">
+        <div class="pwdCheck_txt">비밀번호 확인</div>
+        <div class="chkchkpwd">
+			<input type="password" class="inputchkpwd" name="chkpwd" id="chkpwd" required placeholder="영어, 숫자, 특수문자 포함 8자 이상"/>
+			<div class="check_txt">확인</div> 
+		</div>
+        <div class="resultCheckPwd">비밀번호가 일치합니다.</div>
+      </div>
+     
+      
+      <div class="username">
+        <div class="name_txt">이름</div>
+        <div class="chkname">
+			<input type="text" class="inputname" name="name" id="name" required/>
+        </div>
+      </div>
+      
+      <div class="nickname">
+        <div class="nickname_txt">닉네임</div>
+        <div class="nicknameCheck">중복확인</div>
+        <div class="resultNickname">사용 가능한 닉네임입니다.</div>
+      </div>
+      
+      <div class="sex">
+        <div class="sex_txt">성별</div>
+        <div class="btnradio_m">
+          
+          <div class="male_txt">남자</div> 
+        </div>
+        
+        <div class="btnradio_w">
+          
+          <div class="female_txt">여자</div>
+        </div>
+      </div>
+      
+      
+      <div class="birth">
+        <div class="birth_txt">생년월일</div>
+        <div class="year">
+          
+          <div class="inputyear">년(4자)</div>
+        </div>
+        년
+        <div class="month">
+		  <div class="inputmonth">월</div>
+
+        </div>
+        월
+        <div class="day">
+          <div class="inputday">일</div>
+        </div>
+        일
+      </div>
+      
+      
+      <div class="phonenumber">
+        <div class="phone_txt">휴대전화번호</div>
+        <div class="inputbox01">
+        </div>
+        <div class="hyphe01">-</div>
+        <div class="inputbox02">
+        </div>
+        <div class="hyphen02">-</div>
+        <div class="inputbox03">
+        </div>
+      </div>
+      
+    </div>
+    <!-- div_idToPhone -->
+    
+    
+    <div class="email">
+      <div class="useremail">
+        <div class="email_txt">이메일</div>
+        <div class="inputemail">
+        </div>
+        <div class="emailCheck">확인</div>
+      </div>
+      
+      <div class="checkemail">
+        <div class="inputcheckemail">인증번호 4자리 입력</div>
+        <div class="btncheckemail">확인</div>
+      </div>
+    </div>
+    
+    
+   <!-- <div class="top-line"></div> -->
+    <div class="buttons">
+      <div class="btnsignup">회원가입</div>
+      <div class="btnback">뒤로가기</div>
+    </div>
+   <!-- <div class="bottom-line"></div> -->
+  </div>
+  <!-- div_main 끝 -->
+</div>
+<!-- signup 끝 -->
 </body>
-</html>

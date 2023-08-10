@@ -1,0 +1,864 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.signup {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.signup .title {
+  margin-top: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1.1428571429;
+  color: #fdd00f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main {
+  width: 100%;
+  height: 212.1rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.signup .div_main .bottom-line {
+  width: 90.8rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 50.6rem;
+  top: 94.6rem;
+  background-color: #727272;
+}
+.signup .div_main .div_idToPhone {
+  width: 84rem;
+  height: 57.7rem;
+  position: absolute;
+  left: 54rem;
+  top: 9.3rem;
+}
+.signup .div_main .div_idToPhone .div_lines {
+  box-sizing: border-box;
+  padding: 7.2rem 0;
+  width: 84rem;
+  height: 57.7rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  row-gap: 7.1rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border-top: solid 0.1rem #eeeeee;
+  border-bottom: solid 0.1rem #eeeeee;
+}
+.signup .div_main .div_idToPhone .div_lines .line1 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .div_lines .line2 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .div_lines .line3 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .div_lines .line4 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .div_lines .line5 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .div_lines .line6 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .div_lines .line7 {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #eeeeee;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .phonenumber {
+  width: 64.8rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 51.1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.6rem;
+}
+.signup .div_main .div_idToPhone .phonenumber .phone_txt {
+  margin-right: 18.5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .phonenumber .inputbox01 {
+  margin-right: 0.5rem;
+  width: 11.9rem;
+  height: 5.8rem;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .phonenumber .hyphe01 {
+  margin-right: 0.5rem;
+  text-align: right;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .phonenumber .inputbox02 {
+  margin-right: 0.5rem;
+  width: 12.1rem;
+  height: 5.8rem;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .phonenumber .hyphen02 {
+  margin-right: 0.5rem;
+  text-align: right;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .phonenumber .inputbox03 {
+  width: 12.1rem;
+  height: 5.8rem;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .birth {
+  width: 60.4rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 43.9rem;
+  display: flex;
+  align-items: center;
+}
+.signup .div_main .div_idToPhone .birth .birth_txt {
+  margin-right: 20.7rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .birth .year {
+  margin-right: 2.3rem;
+  width: 11.5rem;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .birth .year .inputyear {
+  width: 5.9rem;
+  height: 2.2rem;
+  position: absolute;
+  left: 7rem;
+  top: 1.8rem;
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 1.375;
+  color: #727272;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.signup .div_main .div_idToPhone .birth .year .img_vector {
+  width: 1.4rem;
+  height: 0.7rem;
+  position: absolute;
+  left: 8.6rem;
+  top: 2.8rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.signup .div_main .div_idToPhone .birth .year .box-fCm {
+  width: 11.5rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+}
+.signup .div_main .div_idToPhone .birth .month {
+  margin-right: 2.3rem;
+  width: 9.5rem;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .birth .month .inputmonth {
+  width: 1rem;
+  height: 2.2rem;
+  position: absolute;
+  left: 7rem;
+  top: 1.8rem;
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 1.375;
+  color: #727272;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.signup .div_main .div_idToPhone .birth .month .vector-r2M {
+  width: 1.4rem;
+  height: 0.7rem;
+  position: absolute;
+  left: 6.6rem;
+  top: 2.8rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.signup .div_main .div_idToPhone .birth .month .inputmonth {
+  width: 9.5rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+}
+.signup .div_main .div_idToPhone .birth .day {
+  width: 9.5rem;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .birth .day .inputday {
+  width: 1rem;
+  height: 2.2rem;
+  position: absolute;
+  left: 7rem;
+  top: 1.8rem;
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 1.375;
+  color: #727272;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.signup .div_main .div_idToPhone .birth .day .vector-aMf {
+  width: 1.4rem;
+  height: 0.7rem;
+  position: absolute;
+  left: 6.6rem;
+  top: 2.8rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.signup .div_main .div_idToPhone .birth .day .box-7sP {
+  width: 9.5rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+}
+.signup .div_main .div_idToPhone .sex {
+  width: 41.4rem;
+  height: 2.3rem;
+  position: absolute;
+  left: 7rem;
+  top: 38.3rem;
+  display: flex;
+  align-items: flex-end;
+}
+.signup .div_main .div_idToPhone .sex .sex_txt {
+  margin: 0rem 23.1rem 0.3rem 0rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_m {
+  margin-right: 3rem;
+  box-sizing: border-box;
+  padding-right: 1.2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_m .group-34-SHP {
+  margin-right: 0.8rem;
+  width: 2rem;
+  height: 100%;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_m .group-34-SHP .rectangle-137-zJu {
+  width: 100%;
+  height: 2rem;
+  border: solid 0.2rem #cdcdcd;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 10rem;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_m .male_txt {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #727272;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_w {
+  box-sizing: border-box;
+  padding-right: 1.2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_w .group-34-b3o {
+  margin-right: 0.8rem;
+  width: 2rem;
+  height: 100%;
+  border-radius: 10rem;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_w .group-34-b3o .rectangle-137-8pR {
+  width: 100%;
+  height: 2rem;
+  border: solid 0.2rem #cdcdcd;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 10rem;
+}
+.signup .div_main .div_idToPhone .sex .btnradio_w .female_txt {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: #727272;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .nickname {
+  width: 79.1rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 29.5rem;
+  display: flex;
+  align-items: center;
+}
+.signup .div_main .div_idToPhone .nickname .nickname_txt {
+  margin-right: 22rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .nickname .nicknameCheck {
+  margin-right: 1.2rem;
+  box-sizing: border-box;
+  padding: 1.9rem 2rem 1.9rem 26.7rem;
+  height: 100%;
+  text-align: right;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  border: solid 0.1rem #c0c0c0;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .nickname .resultNickname {
+  margin: 2.1rem 0;
+  width: 17.5rem;
+  height: calc(100% - 4.2rem);
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #018bf8;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .username {
+  width: 60.4rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 22.3rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.8rem;
+}
+.signup .div_main .div_idToPhone .username .name_txt {
+  margin-right: 21.6rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .username .chkname {
+  width: 35rem;
+  height: 5.8rem;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+}
+
+.signup .div_main .div_idToPhone .username .chkname .inputname {
+    margin-left: 1rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    width: 350px;
+    color: #000000;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+}
+
+.signup .div_main .div_idToPhone .pwdCheck {
+  width: 79.4rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 15.1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.8rem;
+}
+.signup .div_main .div_idToPhone .pwdCheck .pwdCheck_txt {
+  margin-right: 13.2rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .pwdCheck .chkchkpwd {
+  margin-right: 1.2rem;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  border: solid 0.1rem #c0c0c0;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+  width: 400px;
+}
+
+.signup .div_main .div_idToPhone .pwdCheck .chkchkpwd .check_txt {
+  margin-top: 1.7rem;
+  padding-right: 1.5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+
+.signup .div_main .div_idToPhone .pwdCheck .chkchkpwd .inputchkpwd {
+    margin-left: 1rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    width: 350px;
+    color: #000000;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+
+}
+
+.inputchkpwd:focus {
+	outline: none;
+	border: none;
+}
+
+.signup .div_main .div_idToPhone .pwdCheck .resultCheckPwd {
+  margin: 2.1rem 0;
+  width: 17.8rem;
+  height: calc(100% - 4.2rem);
+  display: none;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #018bf8;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .userpwd {
+  width: 60.4rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 7.9rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.8rem;
+}
+.signup .div_main .div_idToPhone .userpwd .pwd_txt {
+  margin-right: 17.25rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .userpwd .chkpwd {
+  margin-right: 1.2rem;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  border: solid 0.1rem #c0c0c0;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+  width: 400px;
+}
+
+.signup .div_main .div_idToPhone .userpwd .chkpwd .inputpwd {
+    margin-left: 1rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    width: 300px;
+    color: #000000;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+
+}
+
+.inputpwd:focus {
+	outline: none;
+	border: none;
+}
+
+.signup .div_main .div_idToPhone .userpwd .chkpwd .check_txt {
+  margin-top: 1.7rem;
+  padding-right: 1.5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.signup .div_main .div_idToPhone .userid {
+  width: 80.9rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 7rem;
+  top: 0.7rem;
+  display: flex;
+  align-items: center;
+}
+.signup .div_main .div_idToPhone .userid .userid_txt {
+  margin-right: 19rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .div_idToPhone .userid .chkid {
+  margin-right: 1.2rem;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  border: solid 0.1rem #c0c0c0;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.signup .div_main .div_idToPhone .userid .chkid .inputid {
+  margin-left: 1.2rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  width: 200px;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+
+.inputid:focus {
+	outline: none;
+	border: none;
+}
+
+.signup .div_main .div_idToPhone .userid .chkid .check_txt {
+  margin-top: 1.7rem;
+  padding-right: 1.5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.signup .div_main .div_idToPhone .userid .resultCheck {
+  margin: 2.1rem 0;
+  width: 19.3rem;
+  height: calc(100% - 4.2rem);
+  display: none;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #018bf8;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .email {
+  width: 71.8rem;
+  height: 13rem;
+  position: absolute;
+  left: 61rem;
+  top: 67.6rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.signup .div_main .email .useremail {
+  margin-bottom: 1.4rem;
+  width: 100%;
+  height: 5.8rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup .div_main .email .useremail .email_txt {
+  margin-right: 20.5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .email .useremail .inputemail {
+  margin-right: 0.7rem;
+  width: 16.2rem;
+  height: 5.8rem;
+  border: solid 0.1rem #c0c0c0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+
+.signup .div_main .email .useremail .emailCheck {
+  box-sizing: border-box;
+  padding: 1.8rem 2rem 1.8rem 21.4rem;
+  height: 100%;
+  text-align: right;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  border: solid 0.1rem #c0c0c0;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+.signup .div_main .email .checkemail {
+  margin: 0rem 11.4rem 0rem 25.4rem;
+  box-sizing: border-box;
+  padding: 1.8rem 2rem;
+  width: calc(100% - 36.8rem);
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem #c0c0c0;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+}
+.signup .div_main .email .checkemail .inputcheckemail {
+  margin-right: 14.7rem;
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 1.375;
+  color: #727272;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .email .checkemail .btncheckemail {
+  text-align: right;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.signup .div_main .top-line {
+  width: 90.8rem;
+  height: 0.1rem;
+  position: absolute;
+  left: 50.6rem;
+  top: 6.3rem;
+  background-color: #727272;
+}
+.signup .div_main .buttons {
+  width: 84rem;
+  height: 5rem;
+  position: absolute;
+  left: 54rem;
+  top: 86.6rem;
+  display: flex;
+  align-items: center;
+}
+.signup .div_main .buttons .btnsignup {
+  margin-right: 1.2rem;
+  width: 41.4rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #07b47f;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+.signup .div_main .buttons .btnback {
+  width: 41.4rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #c0c0c0;
+  border-radius: 1rem;
+  flex-shrink: 0;	
+}
