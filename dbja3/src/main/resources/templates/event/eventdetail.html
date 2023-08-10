@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
-<head>
+<head th:fragment="mainHeader">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
@@ -32,6 +32,7 @@
 		  alert("링크를 클립보드에 복사했습니다.");
 		})
 	}
+	
 	
 	function insertLike(){ 
 		var data = {
@@ -126,20 +127,20 @@
       </div>
     </div>
     <div class="maintitle-pTj">
-	<div class="div_img">
-		<img class="maintitle-img" th:src="${event.eventfname == null ? '/images/white_background.png' : '/images/' + event.eventfname}" alt="행사 이미지">
-	</div>
-      <div class="divhit-MTf">
-        <img class="iconhit-gVw" id="iconhit" src="/assets/iconhit.png"/>
-        <div class="hit-oaZ" th:text="${event.eventhit}"></div>
-      </div>
+		<div class="div_img">
+			<img class="maintitle-img" th:src="${event.eventfname == null ? '/images/white_background.png' : '/images/' + event.eventfname}" alt="행사 이미지"/>
+		</div>
+        <div class="divhit-MTf">
+          <img class="iconhit-gVw" id="iconhit" src="/assets/iconhit.png"/>
+          <div class="hit-oaZ" th:text="${event.eventhit}"></div>
+        </div>
       <div class="divposter-wwf">
         <div class="postertitle-uNh" th:text="${event.eventname}"></div>
-        <div class="poster-pVf">
+       <!-- <div class="poster-pVf"> -->
 			<img th:src="${event.eventfname == null ? '/images/togetready.png' : '/images/' + event.eventfname}" alt="행사 이미지" class="poster-pVf"/>
-        </div>
+        <!-- </div> -->
       </div>
-    </img>
+    </div>
     <div class="auto-group-nltz-hpM">
       <div class="maincontent-S1F">
         <div class="divcontent-mZK">
