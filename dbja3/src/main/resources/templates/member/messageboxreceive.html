@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>받은 쪽지</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" th:href="@{/styles/messageboxreceive.css}"/>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script>
-	  // 팝업 닫기
-	  function closePopup() {
-	    window.close();
-	  }
-  </script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>받은 쪽지</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+<link rel="stylesheet" th:href="@{/styles/messageboxreceive.css}"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+	//받은 쪽지 1개 내용 팝업 열기 함수
+	function openReplyMessagePopup(mno) {
+		const url = '/member/messagereply?mno=' + mno;
+		window.open(url, 'messagePopup', 'width=510,height=430');
+	}
+	
+	// 팝업 닫기
+	function closePopup() {
+		window.close();
+	}
+</script>
 </head>
 <body>
 <div class="messageboxreceive-rGq">
@@ -30,7 +36,7 @@
   <div class="item--epH">보낸사람</div>
   <div class="item--v17">보낸시간</div>
   <div class="frame-48-PQV">
-    <div class="btnsend-GDP">답장하기</div>
+    <div class="btnsend-GDP" th:onclick="|openReplyMessagePopup('${message.mno}')|">답장하기</div>
     <div class="btnback-Vrq" onclick="closePopup()">취소</div>
   </div>
 </div>

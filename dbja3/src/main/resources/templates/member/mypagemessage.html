@@ -140,13 +140,13 @@
         <div class="listth-Xhb">
           <div class="name-U73">
             <div class="btncheck-RHB">
-              <div class="rectangle-137-j2y">
+              <!--<div class="rectangle-137-j2y">-->
 				  <input type="checkbox" id="selectAllCheckbox">
-              </div>
+              <!--</div>-->
             </div>
-            <div class="num-rtH">번호</div>
+            <!--<div class="num-rtH">번호</div>-->
             <div class="sendid-o2q">보낸사람</div>
-            <div class="date-u5s">날짜</div>
+            <div class="date-u5s">받은 날짜</div>
             <div class="content-S5o">내용</div>
             <div class="delete-NVF">삭제</div>
           </div>
@@ -158,13 +158,13 @@
 		  <div class="message-P9T" th:each="message : ${messagePage.content}">
 		    <div class="auto-group-jmvt-7bF">
 		      <div class="btncheck-rYq">
-		        <div class="rectangle-137-C6u">
+		        <!--<div class="rectangle-137-C6u">-->
 		          <input type="checkbox" name="messageCheckbox" th:value="${message.mno}">
-		        </div>
+		        <!--</div>-->
 		      </div>
 		      <!-- Display the message details -->
-		      <div class="num-7Ds" th:text="${message.mno}">0000</div>
-		      <div class="id-Qyf" th:text="${message.mid}">test</div>
+		      <!--<div class="num-7Ds" th:text="${message.mno}">0000</div>-->
+		      <div class="id-Qyf" th:text="${senderNicknames[message.mid]}">test</div>
 		      <div class="receivedate-Ypy" th:text="${message.regdate}">YYYY-MM-DD</div>
 		      <div class="content-s6Z" th:text="${message.isDeletedByReceiver} ? '이 쪽지는 삭제되었습니다.' : ${message.mcontent}" 
 		      th:onclick="|openReceivedMessagePopup('${message.mno}')|">받은 쪽지함 내용입니다.</div>

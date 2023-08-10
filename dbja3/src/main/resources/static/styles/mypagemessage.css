@@ -363,8 +363,6 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
-
-
 .mypagemessage-Y2V .main-KcD .divmain-85o .auto-group-wxay-UQZ .title{
   margin: 0rem 0rem 7rem 0rem;
   display: flex;
@@ -618,7 +616,7 @@ body {
   align-items: center;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .btncheck-rYq {
-  margin: 0.3rem 6.05rem 0.3rem 0rem;
+  margin: 0.3rem 6.9rem 0.3rem 0rem;
   width: 2rem;
   height: calc(100% - 0.6rem);
   cursor: pointer;
@@ -646,20 +644,26 @@ body {
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .id-Qyf {
-  margin-right: 8.05rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  line-height: 1.625;
-  letter-spacing: -0.07rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
+  /*margin-right: 8.05rem;*/
+ 	display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    line-height: 1.625;
+    letter-spacing: -0.07rem;
+    color: #222222;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+    width: 100px;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .receivedate-Ypy {
-  margin-right: 30.45rem;
+  margin-right: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -671,23 +675,29 @@ body {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  width: 210px;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .content-s6Z {
-  margin-right: 34.15rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.625;
-  letter-spacing: -0.07rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-  cursor: pointer;
-  text-decoration: none;
-  transition: text-decoration 0.3s;
+  margin-right: 16rem;
+  display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.625;
+    letter-spacing: -0.07rem;
+    color: #222222;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    width: 500px;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T .auto-group-jmvt-7bF .content-s6Z:hover{
 	text-decoration: underline;
@@ -699,6 +709,7 @@ body {
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .writebtn-Sos {
   margin: 0rem 0.055rem 0rem 118.755rem;
@@ -720,6 +731,7 @@ body {
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .writebtn-Sos .item--iFb {
   display: flex;
@@ -731,6 +743,7 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .paging-oXw {
   margin: 0rem 48.778rem 0rem 48.6rem;

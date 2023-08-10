@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>보낸 쪽지</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="/styles/messageboxsend.css"/>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script>
-	  // 팝업 닫기
-	  function closePopup() {
-	    window.close();
-	  }
-  </script>
+<meta charset="utf-8" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>보낸 쪽지</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+<link rel="stylesheet" href="/styles/messageboxsend.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+	// 휴지통 클릭을 통한 1개 삭제 기능
+	function deleteMessage(mno) {
+	    if (confirm('쪽지를 삭제하시겠습니까?')) {
+	        $.ajax({
+	            type: 'POST',
+	            url: '/member/deletemessage',
+	            data: {
+	                mno: mno
+	            },
+	            success: function (data) {
+	                alert(data);
+	                // 부모 창 새로고침
+	                window.opener.location.reload();
+	                window.close(); // 팝업 닫기
+	            },
+	            error: function () {
+	                alert('쪽지 삭제에 실패하였습니다.');
+	            }
+	        });
+	    }
+	}
+	  
+	// 팝업 닫기
+	function closePopup() {
+	  window.close();
+	}
+</script>
 </head>
 <body>
 <div class="messageboxsend-fu3">
@@ -31,7 +53,7 @@
   <div class="yy-mm-dd-00-00-heh" th:text="${message.regdate}"></div>
   <div class="item--ot5" th:text="${message.mcontent}"></div>
   <div class="frame-48-nZf">
-    <div class="btnsend-uuB">삭제하기</div>
+    <div class="btnsend-uuB" th:onclick="deleteMessage([[${message.mno}]])">삭제하기</div>
     <div class="btnback-ni5" onclick="closePopup()">취소</div>
   </div>
   <div class="line-30-fms">

@@ -270,7 +270,7 @@ body {
 }
 .mypagemessagesend-nho .main-Vms {
   box-sizing: border-box;
-  padding: 2.6rem 27.755rem 0rem 30rem;
+  padding: 2.6rem 32rem 0rem 30rem;
   width: 100%;
   align-items: center;
   display: flex;
@@ -278,7 +278,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .headerframe-SSD {
-  margin: 0rem 119.499rem 0.4rem 0rem;
+  margin: 0rem 114.855rem 0.4rem 0rem;
   height: 2rem;
   display: flex;
   align-items: center;
@@ -347,7 +347,7 @@ body {
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 {
   margin-left: 2rem;
-  width: 132.2446rem;
+  width: 128rem;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -355,15 +355,30 @@ body {
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd {
   box-sizing: border-box;
-  padding: 0rem 5.445rem 6rem 49.5rem;
+  padding: 0rem 0.7rem 6rem 0rem;
   width: 100%;
-  align-items: center;
+  align-items: flex-end;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .title{
+  margin: 0rem 0rem 7rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.16rem;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 100%;
+}
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .filter-EYR {
-  margin: 0rem 0rem 5.6rem 58.1rem;
+  margin-left: 109.6rem;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -424,35 +439,16 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .messagebtn-wzZ {
-  margin-right: 48.3rem;
-  width: calc(100% - 48.3rem);
+  margin-right: 49rem;
   height: 7.2rem;
   display: flex;
   align-items: center;
   background-color: #888888;
   border-radius: 1rem;
   flex-shrink: 0;
+  justify-content: center;	
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .messagebtn-wzZ .receivebtn-55B {
-  width: 14.5rem;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 3.5;
-  letter-spacing: -0.08rem;
-  color: #ffffff;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  background-color: #018bf8;
-  border-radius: 1rem 0 0 1rem;
-  flex-shrink: 0;
-}
-.mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .messagebtn-wzZ .sendbtn-ZFF {
   width: 14.5rem;
   height: 100%;
   cursor: pointer;
@@ -469,8 +465,27 @@ body {
   border-radius: 1rem;
   flex-shrink: 0;
 }
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .messagebtn-wzZ .sendbtn-ZFF {
+  width: 14.5rem;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 3.5;
+  letter-spacing: -0.08rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #018bf8;
+  border-radius: 0 1rem 1rem 0;
+  flex-shrink: 0;
+}
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs {
-  margin-bottom: 5.8rem;
+  margin-bottom: 4.5rem;
   width: 100%;
   align-items: flex-end;
   display: flex;
@@ -488,7 +503,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelistth-6uP {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
   box-sizing: border-box;
   padding: 0rem 4.05rem 0rem 3.5rem;
   width: 100%;
@@ -546,7 +561,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelistth-6uP .name-bbF .senddate-47T {
-  margin-right: 12rem;
+ margin-right: 40rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -574,7 +589,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelistth-6uP .name-bbF .content-7rR {
-  margin-right: 30.55rem;
+  margin-right: 39.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -601,6 +616,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj {
+  margin-bottom: 61.2rem;
   width: 100%;
   /*height: 4.7rem;*/
   overflow: hidden;
@@ -621,7 +637,7 @@ body {
   align-items: center;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .btncheck-FDs {
-  margin: 0.3rem 6.05rem 0.3rem 0rem;
+  margin: 0.3rem 6.9rem 0.3rem 0rem;
   width: 2rem;
   height: calc(100% - 0.6rem);
   cursor: pointer;
@@ -649,20 +665,26 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .id-Da1 {
-  margin-right: 8.05rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  line-height: 1.625;
-  letter-spacing: -0.07rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
+  /*margin-right: 8.05rem;*/
+ 	display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    line-height: 1.625;
+    letter-spacing: -0.07rem;
+    color: #222222;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+    width: 100px;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .date-kZw {
-  margin-right: 6.1rem;
+   margin-right: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -674,6 +696,7 @@ body {
   font-family: Montserrat, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  width: 210px;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .read-gyP {
   margin-right: 22.25rem;
@@ -690,21 +713,26 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .content-pph {
-  margin-right: 25.45rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.625;
-  letter-spacing: -0.07rem;
-  color: #222222;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-  cursor: pointer;
-  text-decoration: none;
-  transition: text-decoration 0.3s;
+  margin-right: 16rem;
+  display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.625;
+    letter-spacing: -0.07rem;
+    color: #222222;
+    font-family: Noto Sans KR, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    width: 500px;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF .auto-group-kpwf-wU5 .content-pph:hover {
 	text-decoration: underline;
@@ -716,6 +744,7 @@ body {
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh {
   margin-left: 123.0554rem;
@@ -737,6 +766,7 @@ body {
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh .item--LRf {
   display: flex;
@@ -748,6 +778,7 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK {
   margin: 0rem 53.023rem 0rem 48.6rem;

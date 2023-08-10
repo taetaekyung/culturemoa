@@ -9,7 +9,9 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -73,6 +75,22 @@ public class MemberController {
 
 	/* -----------마이페이지-쪽지함------------ */
 	
+	//마이페이지-답장 보내기 팝업
+	@GetMapping("/member/messagereply")
+	public String replyMessage(Model model,@RequestParam int mno) {
+		Message message = messagedao_jpa.findById(mno).orElse(null);
+		if (message != null) {
+            String senderId = message.getMid();
+            Optional<Member> senderOptional = memberdao_jpa.findById(senderId);
+            if (senderOptional.isPresent()) {
+                Member sender = senderOptional.get();
+                model.addAttribute("senderNickname", sender.getNickname());
+            }
+            model.addAttribute("message", message);
+        }
+		return "/member/messagereply";
+	}
+	
 	//마이페이지-보낸 쪽지 팝업
 	@GetMapping("/member/messageboxsend")
 	public String sentMessage(Model model, @RequestParam int mno) {
@@ -97,7 +115,7 @@ public class MemberController {
         return "/member/messageboxreceive";
     }
 	
-	//마이페이지 - 쪽지 보내기
+	//마이페이지-쪽지 보내기
 	@PostMapping("/member/sendmessage")
 	@ResponseBody
 	public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
@@ -187,28 +205,39 @@ public class MemberController {
 	    }
 	}
 	
-    // 마이페이지-받은 쪽지함
-    @GetMapping("/member/mypagemessage")
-    public String myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
-        String id = ((Member) session.getAttribute("m")).getId();
+	//마이페이지-받은 쪽지함
+	@GetMapping("/member/mypagemessage")
+	public String myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
+	    String id = ((Member) session.getAttribute("m")).getId();
 
-        // 한 페이지에 보여줄 개수
-        int pageSize = 25;
+	    int pageSize = 25;
 
-        // 받은 쪽지 목록을 페이지로 분할하여 가져옴 (삭제 여부 검사)
-        Page<Message> messagePage = messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
-        model.addAttribute("messagePage", messagePage);
-        model.addAttribute("currentPage", page);
+	    Page<Message> messagePage = messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
 
-        return "/member/mypagemessage";
-    }
-    
-    //	마이페이지-보낸 쪽지함
+	    //mid 기준 닉네임 출력하기 위한 코드
+	    List<Message> messages = messagePage.getContent();
+	    Map<String, String> senderNicknames = new HashMap<String, String>();
+
+	    for (Message message : messages) {
+	        String senderId = message.getMid();
+	        Optional<Member> senderMember = memberdao_jpa.findById(senderId);
+	        String senderNickname = senderMember.map(Member::getNickname).orElse("");
+	        senderNicknames.put(senderId, senderNickname);
+	    }
+
+	    model.addAttribute("messagePage", messagePage);
+	    model.addAttribute("senderNicknames", senderNicknames);
+	    model.addAttribute("currentPage", page);
+
+	    return "/member/mypagemessage";
+	}
+
+    //마이페이지-보낸 쪽지함
     @GetMapping("/member/mypagemessagesend")
 	public String mypagemessagesend(@RequestParam(name = "page", defaultValue = "0") int page, Model model, HttpSession session) {
 	    String id = ((Member) session.getAttribute("m")).getId();
 	    
-	    // 한 페이지에 보여줄 개수
+	    //한 페이지에 보여줄 개수
 	    int pageSize = 25;
 	    
 	    // 보낸 쪽지 목록을 페이지로 분할하여 가져옴 (삭제되지 않은 쪽지만 조회)
@@ -218,41 +247,6 @@ public class MemberController {
 	    
 	    return "/member/mypagemessagesend";
 	}
-	
-	/*
-	 * //마이페이지-받은 쪽지함
-	 * 
-	 * @GetMapping("/member/mypagemessage") public String
-	 * myPageMessage(@RequestParam(name = "page", defaultValue = "0") int page,
-	 * Model model, HttpSession session) { String id = ((Member)
-	 * session.getAttribute("m")).getId();
-	 * 
-	 * // 한 페이지에 보여줄 개수 int pageSize = 25;
-	 * 
-	 * // 받은 쪽지 목록을 페이지로 분할하여 가져옴 Page<Message> messagePage =
-	 * messagedao_jpa.findPagedReceivedMessages(id, PageRequest.of(page, pageSize));
-	 * model.addAttribute("messagePage", messagePage);
-	 * model.addAttribute("currentPage", page);
-	 * 
-	 * return "/member/mypagemessage"; }
-	 * 
-	 * 
-	 * //마이페이지-보낸 쪽지함
-	 * 
-	 * @GetMapping("/member/mypagemessagesend") public String
-	 * mypagemessagesend(@RequestParam(name = "page", defaultValue = "0") int page,
-	 * Model model, HttpSession session) { String id = ((Member)
-	 * session.getAttribute("m")).getId();
-	 * 
-	 * // 한 페이지에 보여줄 개수 int pageSize = 25;
-	 * 
-	 * // 받은 쪽지 목록을 페이지로 분할하여 가져옴 Page<Message> messagePage =
-	 * messagedao_jpa.findPagedSentMessages(id, PageRequest.of(page, pageSize));
-	 * model.addAttribute("messagePage", messagePage);
-	 * model.addAttribute("currentPage", page);
-	 * 
-	 * return "/member/mypagemessagesend"; }
-	 */
 	
 	/* -----------마이페이지-위시리스트------------ */
 

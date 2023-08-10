@@ -19,10 +19,10 @@ public interface MessageDAO_jpa extends JpaRepository<Message, Integer> {
     Integer findMaxMno();
 	
 	// 새로운 메소드를 추가하여 페이징된 받은 쪽지들을 가져옴 (삭제 여부 검사 추가)
-	@Query(value = "SELECT * FROM message WHERE id = ?1 AND is_deleted_by_receiver_boolean = 0", countQuery = "SELECT count(*) FROM message WHERE id = ?1 AND is_deleted_by_receiver_boolean = 0", nativeQuery = true)
+	@Query(value = "SELECT * FROM message WHERE id = ?1 AND is_deleted_by_receiver_boolean = 0 order by mno desc", countQuery = "SELECT count(*) FROM message WHERE id = ?1 AND is_deleted_by_receiver_boolean = 0 order by mno desc", nativeQuery = true)
 	Page<Message> findPagedReceivedMessages(String id, Pageable pageable);
 	
 	// 새로운 메소드를 추가하여 페이징된 보낸 쪽지들을 가져옴 (삭제 여부 검사 추가)
-	@Query(value = "SELECT * FROM message WHERE mid = ?1 AND is_deleted_by_sender_boolean = 0", countQuery = "SELECT count(*) FROM message WHERE mid = ?1 AND is_deleted_by_sender_boolean = 0", nativeQuery = true)
+	@Query(value = "SELECT * FROM message WHERE mid = ?1 AND is_deleted_by_sender_boolean = 0 order by mno desc", countQuery = "SELECT count(*) FROM message WHERE mid = ?1 AND is_deleted_by_sender_boolean = 0 order by mno desc", nativeQuery = true)
 	Page<Message> findPagedSentMessages(String mid, Pageable pageable);
 }

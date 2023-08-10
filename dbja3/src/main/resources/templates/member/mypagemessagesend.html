@@ -121,13 +121,14 @@
           	<div class="like-sUu">관심목록</div>
           </a>
         </div>
+        
+        <div class="title">쪽지함</div>
+        
         <div class="messagebtn-wzZ">
 		  <a th:href="@{/member/mypagemessage}">
           	<div class="receivebtn-55B">받은 쪽지함</div>
           </a>
-          <a th:href="@{/meeber/mypagemessagesend}">
-          	<div class="sendbtn-ZFF">보낸 쪽지함</div>
-          </a>
+         <div class="sendbtn-ZFF">보낸 쪽지함</div>
         </div>
       </div>
       <div class="divlist-QFs">
@@ -135,13 +136,13 @@
           <div class="messagelistth-6uP">
             <div class="name-bbF">
               <div class="btncheck-jBf">
-                <div class="rectangle-137-4jj">
+                <!--<div class="rectangle-137-4jj">-->
 					<input type="checkbox" id="selectAllCheckbox">
-                </div>
+                <!--</div>-->
               </div>
-              <div class="num-Cqw">번호</div>
+              <!--<div class="num-Cqw">번호</div>-->
               <div class="sendid-wHj">받는사람</div>
-              <div class="senddate-47T">발신일</div>
+              <div class="senddate-47T">보낸 날짜</div>
               <div class="content-7rR">내용</div>
               <div class="delete-ak1">삭제</div>
             </div>
@@ -153,12 +154,12 @@
             <div class="message-puF" th:each="message : ${messagePage.content}">
               <div class="auto-group-kpwf-wU5">
                 <div class="btncheck-FDs">
-                  <div class="rectangle-137-yvZ">
+                  <!--<div class="rectangle-137-yvZ">-->
 					  <input type="checkbox" name="messageCheckbox" th:value="${message.mno}">
-                  </div>
+                  <!--</div>-->
                 </div>
-                <div class="num-W9o" th:text="${message.mno}">0000</div>
-                <div class="id-Da1" th:text="${message.member.id}">test</div>
+                <!--<div class="num-W9o" th:text="${message.mno}">0000</div>-->
+                <div class="id-Da1" th:text="${message.member.nickname}">test</div>
                 <div class="date-kZw" th:text="${message.regdate}">YYYY-MM-DD</div>
                 <div class="content-pph" th:text="${message.isDeletedBySender} ? '이 쪽지는 삭제되었습니다.' : ${message.mcontent}" 
      th:onclick="|openSentMessagePopup('${message.mno}')|">보낸 쪽지함 내용입니다.</div>
