@@ -16,6 +16,18 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>
 	//---기본 헤더 
+	//--------------오픈톡
+	//버튼 선택시 오픈톡 새창 띄우기
+	function opentalk(){
+		// 새 창을 띄우기 위한 옵션 설정
+        var windowFeatures = 'width=697px,height=724px';
+        // 새 창 열기
+        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}
  	//--------gnb드롭다운
 	//마우스가 올라오면 드롭다운
 	function showDropDown() {
@@ -154,6 +166,56 @@
 			return false;
 		}
 	}
+
+	// 수정 버튼 클릭시 댓글 input이 변경되는 함수
+	  function commentEdit(comno, comcontent) {
+	    var updateInput = $("#c_content_" + comno);
+
+	    updateInput.removeAttr('readonly');
+	    //수정 버튼 사라지게 하기
+	    $(".commnetUpdate[data-comment-id='" + comno + "']").hide();
+	    //수정 완료 버튼 나타나기~
+	    $(".commnetUpdateComplete[data-comment-id='" + comno + "']").show();
+	  }
+	 //수정 완료 버튼 눌렀을 시 
+	  function commentEditComplete(comno) {
+	  	//수정된 댓글 내용 
+	    var updatedContent = $("#c_content_" + comno).val();
+	    
+	    $.ajax({
+	      url: "/freeCommentUpdate", 
+	      data: { comno: comno, comcontent: updatedContent},
+	      success: function (data) {
+	        // 수정이 완료되면 다시 readonly 속성 추가
+	        $("#c_content_" + comno).attr('readonly', 'readonly');
+	
+	        // "수정" 버튼 보이기
+	        $(".commnetUpdate[data-comment-id='" + comno + "']").show();
+	
+	        // "수정완료" 버튼 숨기기
+	        $(".commnetUpdateComplete[data-comment-id='" + comno + "']").hide();
+	      },
+	      error: function (error) {
+	        console.error("댓글 업데이트 실패");
+	        console.error(error);
+	      }
+	    });
+	    
+	  }
+ //댓글 삭제하기
+ function commentDelete(comno,boardno) {
+	    var re = confirm('정말로 삭제할까요?');
+	    if (re == true) {
+			$.ajax({
+				type:"GET",
+				url:"/freerCommentDelete?comno=" + comno,
+				success:function(){
+					alert("삭제되었습니다");
+					window.location.href="/boards/board/freeDetail?boardno="+boardno;
+				}
+			});
+	    }
+	  }
 </script>
 <body>
 <div class="boardtogetherdetail-7Ey">
@@ -304,6 +366,44 @@
       <div class="divcontent-vnd">
         <div class="content-mYM" th:utext="${b.boardcontent}"></div>
       </div>
+      
+       <!--댓글 작성하기 중간 라인-->
+      <div class="middleline"></div>
+      
+      <!--댓글하나 -->
+      <div class="commentDiv" th:each="c:${com}">
+	      <!--댓글 작성자, 작성일 -->
+	      <div class="comment" th:value="${c.comno}">
+		      <div class="commentId" th:text="${c.member.id}"></div>
+		      <!--제목 -->
+		      <div class="commentRegdate" th:text="${c.regdate}"></div>
+		      <!-- 만약 댓글 작성자라면 -->
+		      <div class="comBtn" th:if="${c.member.id eq id}">
+				  <div class="commnetUpdate" th:attr="onclick='commentEdit(\'' + ${c.comno} + '\', \'' + ${c.comcontent} + '\')'" th:data-comment-id="${c.comno}">수정하기</div>
+				  <div class="commnetUpdateComplete" style="display: none;" th:attr="onclick='commentEditComplete(\'' + ${c.comno} + '\')'" th:data-comment-id="${c.comno}">수정완료</div>
+			      <div class="commentDelete"><a href="#" th:attr="onclick='commentDelete(\'' + ${c.comno} + '\' , \'' + ${b.boardno} + '\')'">삭제하기</a></div>
+		      </div>
+	      </div>
+	      <!--댓글 내용 -->
+	      <input  th:id="'c_content_' + ${c.comno}" class="commentContent" th:value="${c.comcontent}" type="text" readonly="readonly" th:data-comment-id="${c.comno}">
+	  </div>  
+	  
+	  <!--댓글 작성하기 -->	
+	  <div style="width: 100%;">
+	  	  <form action="/freeInsertComment" method="post">
+			  <input type="hidden" name="boardno" th:value="${b.boardno}">
+			  <!--댓글 작성하기 -->	
+			  <div class="insertCom">
+				<!--댓글 작성하기 -->  
+		      	<div class="insertComTitle">댓글쓰기</div>
+		      	<input type="submit" class="insertComBtn" value="작성하기"></input>
+		      </div>
+		      <!--댓글 내용 작성 -->
+		      <textarea class="insertComContent" placeholder="댓글을 작성해주세요" name="comcontent"></textarea>
+	      </form>
+      </div>
+      
+      
       <!--버튼 --> 
       <div class="mainfooter-5ow">
         <div class="updatebtn-Rcu" onclick="update()">수정하기</div>
