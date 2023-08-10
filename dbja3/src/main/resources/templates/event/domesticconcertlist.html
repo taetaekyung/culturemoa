@@ -122,35 +122,7 @@
 	    window.location.href = "/event/domesticconcertlist" + queryParams;
 	 }
  
-	//--------gnb드롭다운
-	//마우스가 올라오면 드롭다운
-	function showDropDown() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'visible';
-	}
-	//gnb에 마우스가 벗어나면 드롭다운 없애기
-	function hideDropDown() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'hidden';
-	}
-	//gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
-	function cancelHide() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'visible';
-	}
-     
-    //--------------오픈톡
-	//버튼 선택시 오픈톡 새창 띄우기
-	function opentalk(){
-		// 새 창을 띄우기 위한 옵션 설정
-        var windowFeatures = 'width=550px,height=550px';
-        // 새 창 열기
-        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
-        // 새 창이 차단되었을 경우 알림
-        if (!newWindow) {
-            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
-        }
-	}	
+
 </script>
 </head>
 <body>
@@ -162,7 +134,7 @@
 	      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
 	      <img class="nexticon" src="/assets/icon-YJu.png"/>
 	      <div class="community">행사소식</div>
-	      <img class="nexticon2" src="/assets/icon-umT.png"/>
+	      <img class="nexticon2" src="/assets/icon-YJu.png"/>
 	      <div class="freelist_text">국내공연</div>
 	   </div>
 	    <!-- location div 끝 -->
