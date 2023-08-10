@@ -13,11 +13,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
   <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/faq.css}"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="text/javascript">
+	 function showContent(faq){
+		var index = faq.getAttribute("idx");
+		var id = "#faqcontent"+index;
+		var img = "#faqimg"+index;
+		
+		if($(id).css("display") == "block") {
+			$(id).css("display", "none");
+			$(img).attr("src", "/assets/more2.png");
+		}
+		else {
+			$(id).css("display", "block");
+			$(img).attr("src", "/assets/close.png");
+		} 
+	}
+	
+	$(function() {
+		$("#searchbtn").click(function() {
+			var keyword = $("#keyword").val();
+			if(keyword!=null && keyword!='') {
+				url = "/FAQ/"+keyword;
+			}
+			else {
+				url = "/FAQ";
+			}
+			location.href = url;
+		})
+	})	 
+  </script>
 </head>
 <body>
 <div class="faq" layout:fragment="content">
   <div class="main">	
-	
 	  <!-- location div 시작 -->
 	  <div class="location">
 	      <a th:href="@{/mainPage}" class="home" th:text="홈"></a>
@@ -46,78 +75,20 @@
 		
 		
 	  <div class="div_content">
+		  
+		  <th:block th:each="f:${list}">
 		  <!-- div_faq 시작 -->
 		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
+			  <div class="faq_top" th:idx="${f.faqno}" onclick="showContent(this)">
+				  <div class="faqtitle" th:text="${f.faqtitle}"></div>
+				  <div class="faqmore">
+					  <img class="more_img" th:id="'faqimg'+${f.faqno}" src="/assets/more2.png" />
+				  </div>
+			  </div>
+			  <div class="faqcontent" th:idx="${f.faqno}" th:id="'faqcontent'+${f.faqno}"  th:text="${f.faqcontent}"></div>
 		  </div>
 		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
-		  <!-- div_faq 시작 -->
-		  <div class="div_faq">
-			  <div class="faqtitle">비밀번호를 까먹었어요</div>
-			  <div class="faqmore"></div>
-		  </div>
-		  <!-- div_faq 끝 -->
+		  </th:block>
 	  </div>
 	  
   </div>

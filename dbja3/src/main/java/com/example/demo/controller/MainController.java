@@ -214,10 +214,6 @@ public class MainController {
       return list;
       }
 
-   @GetMapping("/FAQ")
-   public void FAQ() {
-   } 
-   
    
    // 헤더의 검색창에서 검색했을 때
    @PostMapping("/searchresult")

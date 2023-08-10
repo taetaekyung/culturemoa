@@ -22,6 +22,20 @@ input:focus {
 	border-color: #FFFFFF;
 }
 
+.div_content::-webkit-scrollbar {
+    width: 10px;  
+}
+
+.div_content::-webkit-scrollbar-thumb {
+    background: #07b47f; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.div_content::-webkit-scrollbar-track {
+    background: rgba(7, 180, 127, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+
 body {
   width: 192rem;
 }
@@ -172,26 +186,32 @@ body {
 
 .faq .main .div_content {
   margin-left: 2rem;
+  padding-right: 2rem;
   width: 128rem;
   height: 87.3rem;
   position: relative;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
-  border: 0.1rem solid black;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .faq .main .div_faq {
   width: 100%;
-  height: 6rem;
-  border: 0.1rem solid black;
-  display: flex;
-  justify-content: space-between;
+  border-bottom: 0.1rem solid #a5a5a5;
 }
 
+.faq .main .div_faq .faq_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
 .faq .main .div_faq .faqtitle {
-  width: calc(100%-10rem);
   font-size: 2.2rem;
   font-weight: 400;
   line-height: 2.3636363636;
@@ -204,5 +224,54 @@ body {
 .faq .main .div_faq .faqmore {
   width: 100px;
   height: 100%;
-  border: 0.1rem solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.faq .main .div_faq .more_img {
+  width: 35%;
+  height: 50%;
+}
+
+.faq .main .div_faq .faqcontent {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 500px;
+  display: none;
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+  font-size: 3.3rem;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+}
+
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
