@@ -171,6 +171,56 @@
 			}
 		});
 	});
+	
+	// 수정 버튼 클릭시 댓글 input이 변경되는 함수
+	  function commentEdit(rcomno, rcomcontent) {
+	    var updateInput = $("#c_content_" + rcomno);
+
+	    updateInput.removeAttr('readonly');
+	    //수정 버튼 사라지게 하기
+	    $(".commnetUpdate[data-comment-id='" + rcomno + "']").hide();
+	    //수정 완료 버튼 나타나기~
+	    $(".commnetUpdateComplete[data-comment-id='" + rcomno + "']").show();
+	  }
+	 //수정 완료 버튼 눌렀을 시 
+	  function commentEditComplete(rcomno) {
+	  	//수정된 댓글 내용 
+	    var updatedContent = $("#c_content_" + rcomno).val();
+	    
+	    $.ajax({
+	      url: "/reviewCommentUpdate", 
+	      data: { rcomno: rcomno, rcomcontent: updatedContent},
+	      success: function (data) {
+	        // 수정이 완료되면 다시 readonly 속성 추가
+	        $("#c_content_" + rcomno).attr('readonly', 'readonly');
+	
+	        // "수정" 버튼 보이기
+	        $(".commnetUpdate[data-comment-id='" + rcomno + "']").show();
+	
+	        // "수정완료" 버튼 숨기기
+	        $(".commnetUpdateComplete[data-comment-id='" + rcomno + "']").hide();
+	      },
+	      error: function (error) {
+	        console.error("댓글 업데이트 실패");
+	        console.error(error);
+	      }
+	    });
+	    
+	  }
+ //댓글 삭제하기
+ function commentDelete(rcomno,reviewno) {
+	    var re = confirm('정말로 삭제할까요?');
+	    if (re == true) {
+			$.ajax({
+				type:"GET",
+				url:"/reviewCommentDelete?rcomno=" + rcomno,
+				success:function(){
+					alert("삭제되었습니다");
+					window.location.href="/boards/review/reviewDetail?reviewno="+reviewno;
+				}
+			});
+	    }
+	  }	
 </script>
 <body>
 <div class="boardreviewdetail-XaZ">
@@ -344,6 +394,45 @@
         <div class="file-tbK" th:utext="${r.reviewcontent}">
         </div>
       </div>
+      
+       <!--댓글 작성하기 중간 라인-->
+      <div class="middleline"></div>
+      
+      <!--댓글하나 -->
+      <div class="commentDiv" th:each="c:${com}">
+	      <!--댓글 작성자, 작성일 -->
+	      <div class="comment" th:value="${c.rcomno}">
+		      <div class="commentId" th:text="${c.member.id}"></div>
+		      <!--제목 -->
+		      <div class="commentRegdate" th:text="${c.regdate}"></div>
+		      <!-- 만약 댓글 작성자라면 -->
+		      <div class="comBtn" th:if="${c.member.id eq id}">
+				  <div class="commnetUpdate" th:attr="onclick='commentEdit(\'' + ${c.rcomno} + '\', \'' + ${c.rcomcontent} + '\')'" th:data-comment-id="${c.rcomno}">수정하기</div>
+				  <div class="commnetUpdateComplete" style="display: none;" th:attr="onclick='commentEditComplete(\'' + ${c.rcomno} + '\')'" th:data-comment-id="${c.rcomno}">수정완료</div>
+			      <div class="commentDelete"><a href="#" th:attr="onclick='commentDelete(\'' + ${c.rcomno} + '\' , \'' + ${r.reviewno} + '\')'">삭제하기</a></div>
+		      </div>
+	      </div>
+	      <!--댓글 내용 -->
+	      <input  th:id="'c_content_' + ${c.rcomno}" class="commentContent" th:value="${c.rcomcontent}" type="text" readonly="readonly" th:data-comment-id="${c.rcomno}">
+	  </div>  
+	  
+	  <!--댓글 작성하기 -->	
+	  <div style="width: 100%;">
+	  	  <form action="/reviewInsertComment" method="post">
+			  <input type="hidden" name="reviewno" th:value="${r.reviewno}">
+			  <!--댓글 작성하기 -->	
+			  <div class="insertCom">
+				<!--댓글 작성하기 -->  
+		      	<div class="insertComTitle">댓글쓰기</div>
+		      	<input type="submit" class="insertComBtn" value="작성하기"></input>
+		      </div>
+		      <!--댓글 내용 작성 -->
+		      <textarea class="insertComContent" placeholder="댓글을 작성해주세요" name="rcomcontent"></textarea>
+	      </form>
+      </div>
+      
+      
+      
       <!--버튼 -->
       <div class="mainfooter-m9K" >
         <div class="updatebtn-Jf3" onclick="update()">수정하기</div>

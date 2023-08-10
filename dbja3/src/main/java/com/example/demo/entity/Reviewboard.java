@@ -37,7 +37,7 @@ public class Reviewboard {
 	private Integer reviewlike;
 	
 	@OneToMany(mappedBy = "reviewboard", cascade=CascadeType.REMOVE)
-	private List<ReviewComment> reviewcomments = new ArrayList<>();
+	private List<Reviewcomment> reviewcomments = new ArrayList<>();
 	
 	public void setId(String id) {
 		 if (this.member == null) {

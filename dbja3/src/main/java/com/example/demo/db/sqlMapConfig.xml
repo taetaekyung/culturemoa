@@ -11,7 +11,7 @@
 	<typeAlias type="com.example.demo.entity.Wishlist" alias="wishList"/>
 	<typeAlias type="com.example.demo.entity.Event" alias="event"/>
 	<typeAlias type="com.example.demo.entity.Reviewboard" alias="reviewBoard"/>
-	<typeAlias type="com.example.demo.entity.ReviewComment" alias="reviewComment"/>
+	<typeAlias type="com.example.demo.entity.Reviewcomment" alias="reviewComment"/>
 	<typeAlias type="com.example.demo.entity.Board" alias="board"/>
 	<typeAlias type="com.example.demo.entity.Comments" alias="comments"/>
 	<typeAlias type="com.example.demo.entity.FAQ" alias="faq"/>

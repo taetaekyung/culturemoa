@@ -24,6 +24,7 @@ import com.example.demo.entity.Board;
 import com.example.demo.entity.Comments;
 import com.example.demo.entity.Event;
 import com.example.demo.entity.Member;
+import com.example.demo.entity.Reviewcomment;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -71,6 +72,50 @@ public class BoardController {
 	private ReviewCommentDAO_jpa reveiwcommentdao_jpa;
 	
 	//-----------------------후기 게시판
+	 //댓글 수정하기
+    @GetMapping("/reviewCommentUpdate")
+    @ResponseBody
+    public void reviewCommentUpdate(int rcomno,String rcomcontent) {
+    	reveiwcommentdao_jpa.updateByRcomno(rcomno, rcomcontent);
+    }
+    
+    //댓글 삭제하기
+    @GetMapping("/reviewCommentDelete")
+    @ResponseBody
+    public void reviewCommentDelete(@RequestParam int rcomno) {
+    	reveiwcommentdao_jpa.deleteById(rcomno);
+    }
+    
+    //댓글 추가하기
+    @PostMapping("/reviewInsertComment")
+    public ModelAndView reviewInsertComment(Reviewcomment c,int reviewno,HttpSession session) {
+    	//게시글 번호
+    	Reviewboard rb=new Reviewboard();
+    	rb.setReviewno(reviewno);
+    	c.setReviewboard(rb);
+    	
+    	//작성자 
+        String id = ((Member)session.getAttribute("m")).getId();
+        Member member=new Member();
+        member.setId(id);
+        c.setMember(member);
+        
+        //작성일
+        c.setRegdate(new Date());
+    	
+        //댓글 번호
+        c.setRcomno(reveiwcommentdao_jpa.findByNext());
+        
+        //댓글 저장
+        reveiwcommentdao_jpa.save(c);
+        
+        System.out.println("c:"+c);
+        
+    	ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewDetail?reviewno="+reviewno);
+    	
+    	
+    	return mav;
+    }
 	//조회수 추가
 	@GetMapping("/updateHit")
 	@ResponseBody
@@ -146,6 +191,8 @@ public class BoardController {
 		event= eventdao_jpa.findByEventno(eventno);
 		model.addAttribute("event", event);
 		
+		//게시물 댓글 가져오기
+		model.addAttribute("com", reveiwcommentdao_jpa.findByReviewBoardNo(reviewno));
 		
 		String start=event.getEventstart().toString();
 		String end=event.getEventend().toString();
@@ -462,7 +509,7 @@ public class BoardController {
     }
     
     //댓글 삭제하기
-    @GetMapping("/freerCommentDelete")
+    @GetMapping("/freeCommentDelete")
     @ResponseBody
     public void freeCommentDelete(@RequestParam int comno) {
     	commentsdao_jpa.deleteById(comno);
