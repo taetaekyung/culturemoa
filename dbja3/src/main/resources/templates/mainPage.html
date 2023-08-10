@@ -381,6 +381,21 @@ html{
         }
      });
    }
+   
+   // 사이트소개 페이지로 이동
+   function gotoInfo() {
+	   location.href = "/pageinfo";
+   }
+   
+   // FAQ 페이지로 이동
+   function gotoFAQ() {
+	   location.href = "/FAQ";
+   }
+   
+   // 자유게시판 페이지로 이동
+   function gotoBoard(bno) {
+	   location.href = "/boards/board/freeDetail?boardno="+bno;
+   }
  	
    
 </script>
@@ -422,42 +437,49 @@ html{
 
       <!--주요 서비스 -->
       <div class="auto-group-ejdf-2Y9">
+		  
         <div class="service-XUu">
           <div class="auto-group-qtm3-qEh">
             <div class="servicetitle-Y97">주요서비스</div>
             <div class="servicesubtitle-Qh7">문화포털의 주요서비스를 바로 만나보세요!</div>
           </div>
           <div class="servicelist-649">
-            <div class="siteintro-Ccy">
+			  
+            <div class="siteintro-Ccy" onclick="gotoInfo()">
               <div class="icon01-jN1">
                 <img class="item--sj7" src="./assets/-6CZ.png"/>
               </div>
               <div class="item--ZM3">사이트 소개</div>
             </div>
+            
             <div class="event-FzZ">
               <a class="icon02-c4R" th:href="@{/event/domesticconcertlist}">
                 <img class="item--wcV" src="./assets/-4Fj.png"/>
               </a>
               <a class="item--FNH" th:href="@{/event/domesticconcertlist}">국내 공연</a>
             </div>
+            
             <div class="eventreview-xnV">
               <a class="icon03-7QV" th:href="@{/boards/review/reviewlist}">
                 <img class="item--4ad" src="./assets/-ukV.png"/>
               </a>
               <a class="item--Adf" th:href="@{/boards/review/reviewlist}">공연 후기</a>
             </div>
-            <div class="faq-GRo">
+            
+            <div class="faq-GRo" onclick="gotoFAQ()">
               <div class="icon04-2A5">
                 <img class="faq-PFX" src="./assets/faq.png"/>
               </div>
               <div class="faq-ujf">FAQ</div>
             </div>
+            
             <div class="freeboard-3ay">
               <a class="icon05-Peq" th:href="@{/boards/board/freelist}"> 
                 <img class="open-talk-9tu" src="./assets/open-talk.png"/>
               </a>
               <a th:href="@{/boards/board/freelist}" class="item--5Xf">자유게시판</a>
             </div>
+            
           </div>
         </div>
         <!-- 주변 행사 소식-->
@@ -638,7 +660,7 @@ html{
             <div class="boardlist-yeq">
            <!--게시글 -->   
               <div class="list-LkH" th:each="b:${list}" >
-                <div class="title-6zM" th:text="${b.boardtitle}"></div>
+                <div class="title-6zM" th:boardno="${b.boardno}" th:onclick="gotoBoard(this.getAttribute('boardno'))" th:text="${b.boardtitle}"></div>
                 <div class="regdate-S2d" th:text="${b.regdate}"></div> 
                 <div class="id" th:text="${b.member.id}"></div> 
               </div>

@@ -14,6 +14,12 @@ input {
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
 
 }
+
+textarea:focus {
+	outline: none;
+	border: none;
+}
+
 body {
   width: 192.1rem;
   height: 600rem;
@@ -654,7 +660,7 @@ body {
   word-wrap: break-word;
   width: 22rem;
   overflow: hidden;
-  height: 5rem;
+  height: 10rem;
 }
 .main-mVB .main-Fpu .auto-group-ejdf-2Y9 .news-z8q .auto-group-zqav-fXo .poster-Qth .poster-m8u {
   height: 100%;
@@ -1201,6 +1207,7 @@ textarea {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .main-mVB .main-Fpu .board-7qb .auto-group-pu6z-srh .boardtable-ESM .boardlist-yeq .list-LkH .regdate-S2d {
   display: flex;
