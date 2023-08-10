@@ -34,23 +34,6 @@ input[type="radio"], input[type="checkbox"] {
 }
 </style>
 <script>
-	//---기본 헤더 
- 	//--------gnb드롭다운
-	//마우스가 올라오면 드롭다운
-	function showDropDown() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'visible';
-	}
-	//gnb에 마우스가 벗어나면 드롭다운 없애기
-	function hideDropDown() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'hidden';
-	}
-	//gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
-	function cancelHide() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'visible';
-	}
 	
 	//-------- 검색 버튼 클릭 시 검색결과 창으로 이동
 	function searchKeyword(){
