@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>board_list_free</title>
@@ -25,163 +26,132 @@
 </head>
 <style>
 .note-editor.note-frame, .note-editor.note-airframe{
-	margin-top:22rem;
-}	
+   margin-top:22rem;
+}   
 
 </style>
 <script>
-   //---기본 헤더 
-	//--------------오픈톡
-	//버튼 선택시 오픈톡 새창 띄우기
-	function opentalk(){
-		// 새 창을 띄우기 위한 옵션 설정
-        var windowFeatures = 'width=697px,height=724px';
-        // 새 창 열기
-        var newWindow = window.open('/opentalk', '_blank', windowFeatures);
-        // 새 창이 차단되었을 경우 알림
-        if (!newWindow) {
-            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
-        }
-	}
- 	//--------gnb드롭다운
-	//마우스가 올라오면 드롭다운
-	function showDropDown() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'visible';
-	}
-	//gnb에 마우스가 벗어나면 드롭다운 없애기
-	function hideDropDown() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'hidden';
-	}
-	//gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
-	function cancelHide() {
-		const gnbDropdown = document.getElementById('gnbDropdown');
-		gnbDropdown.style.visibility = 'visible';
-	}
-	
-	//-------- 검색 버튼 클릭 시 검색결과 창으로 이동
-	function searchKeyword(){
-		if($("#keyword_main").val() == null || $("#keyword_main").val() == "") {
-			alert("검색어를 입력하세요.");
-		}
-		else {
-			var data = {
-				keyword : $("#keyword_main").val()
-			};
-			
-			$.ajax({
-				url:"/searchresult",
-				data: data,
-				success:function(n) {
-					sendNUM = eval(n); // 숫자로 변환
-				}
-		});	
-		}
-	}
-	//-------- 검색 버튼 클릭 시 검색결과 창으로 이동
-	function searchKeyword(){
-		if($("#keyword_main").val() == null || $("#keyword_main").val() == "") {
-			alert("검색어를 입력하세요.");
-		}
-		else {
-			var data = {
-				keyword : $("#keyword_main").val()
-			};
-			
-			$.ajax({
-				url:"/searchresult",
-				data: data,
-				success:function(n) {
-					sendNUM = eval(n); // 숫자로 변환
-				}
-		});	
-		}
-	}		
-	//파일이 있을 시 
-	var url;
-	//summernote 내용 입력하기
-	 $(document).ready(function() {
-	//여기 아래 부분
-	$('#summernote').summernote({
-		  toolbar: [
-			    ['fontname', ['fontname']],
-			    ['fontsize', ['fontsize']],
-			    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-			    ['color', ['forecolor','color']],
-			    ['table', ['table']],
-			    ['para', ['ul', 'ol', 'paragraph']],
-			    ['height', ['height']],
-			    ['insert',['picture']],
-			    ['view', ['fullscreen', 'help']]
-			  ],
-			height: 920,                 // 에디터 높이
-			minHeight: 800,             // 최소 높이
-			maxHeight: null,             // 최대 높이
-			focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-			lang: "ko-KR",					// 한글 설정
-			placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
-			callbacks: {	//여기 부분이 이미지를 첨부하는 부분
-				onImageUpload : function(files) {
-					//console.log(files)
-					uploadSummernoteImageFile(files[0],this);
-				},
-				onPaste: function (e) {
-					var clipboardData = e.originalEvent.clipboardData;
-					if (clipboardData && clipboardData.items && clipboardData.items.length) {
-						var item = clipboardData.items[0];
-						if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
-							e.preventDefault();
-						}
-					}
-				}
-			}
-		});
-		
-	});
+    //---기본 헤더 
+    //--------gnb드롭다운
+   //마우스가 올라오면 드롭다운
+   function showDropDown() {
+      const gnbDropdown = document.getElementById('gnbDropdown');
+      gnbDropdown.style.visibility = 'visible';
+   }
+   //gnb에 마우스가 벗어나면 드롭다운 없애기
+   function hideDropDown() {
+      const gnbDropdown = document.getElementById('gnbDropdown');
+      gnbDropdown.style.visibility = 'hidden';
+   }
+   //gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+   function cancelHide() {
+      const gnbDropdown = document.getElementById('gnbDropdown');
+      gnbDropdown.style.visibility = 'visible';
+   }
+   
+   //-------- 검색 버튼 클릭 시 검색결과 창으로 이동
+   function searchKeyword(){
+      if($("#keyword_main").val() == null || $("#keyword_main").val() == "") {
+         alert("검색어를 입력하세요.");
+      }
+      else {
+         var data = {
+            keyword : $("#keyword_main").val()
+         };
+         
+         $.ajax({
+            url:"/searchresult",
+            data: data,
+            success:function(n) {
+               sendNUM = eval(n); // 숫자로 변환
+            }
+      });   
+      }
+   }      
+   //파일이 있을 시 
+   var url;
+   //summernote 내용 입력하기
+    $(document).ready(function() {
+   //여기 아래 부분
+   $('#summernote').summernote({
+        toolbar: [
+             ['fontname', ['fontname']],
+             ['fontsize', ['fontsize']],
+             ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+             ['color', ['forecolor','color']],
+             ['table', ['table']],
+             ['para', ['ul', 'ol', 'paragraph']],
+             ['height', ['height']],
+             ['insert',['picture']],
+             ['view', ['fullscreen', 'help']]
+           ],
+         height: 920,                 // 에디터 높이
+         minHeight: 800,             // 최소 높이
+         maxHeight: null,             // 최대 높이
+         focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+         lang: "ko-KR",               // 한글 설정
+         placeholder: '최대 2048자까지 쓸 수 있습니다',   //placeholder 설정
+         callbacks: {   //여기 부분이 이미지를 첨부하는 부분
+            onImageUpload : function(files) {
+               //console.log(files)
+               uploadSummernoteImageFile(files[0],this);
+            },
+            onPaste: function (e) {
+               var clipboardData = e.originalEvent.clipboardData;
+               if (clipboardData && clipboardData.items && clipboardData.items.length) {
+                  var item = clipboardData.items[0];
+                  if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+                     e.preventDefault();
+                  }
+               }
+            }
+         }
+      });
+      
+   });
 
 
-	function uploadSummernoteImageFile(file, editor) {
-		data = new FormData();
-		data.append("file", file);
-		$.ajax({
-			data : data,
-			type : "POST",
-			url : "/uploadSummernoteImageFile",
-			enctype: 'multipart/form-data',
-			contentType : false,
-			processData : false,
-			success : function(response) {
-				// JSON 문자열을 JSON 객체로 파싱
-	            var jsonResponse = JSON.parse(response);
-	            url=jsonResponse.url;
-	            console.log(url);
-	            // url에 접근하여 이미지 삽입
-	            $(editor).summernote('insertImage', jsonResponse.url);
-				
-			}
-		});
-	}
-	$("div.note-editable").on('drop',function(e){
+   function uploadSummernoteImageFile(file, editor) {
+      data = new FormData();
+      data.append("file", file);
+      $.ajax({
+         data : data,
+         type : "POST",
+         url : "/uploadSummernoteImageFile",
+         enctype: 'multipart/form-data',
+         contentType : false,
+         processData : false,
+         success : function(response) {
+            // JSON 문자열을 JSON 객체로 파싱
+               var jsonResponse = JSON.parse(response);
+               url=jsonResponse.url;
+               console.log(url);
+               // url에 접근하여 이미지 삽입
+               $(editor).summernote('insertImage', jsonResponse.url);
+            
+         }
+      });
+   }
+   $("div.note-editable").on('drop',function(e){
          for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
-         	uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
+            uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
          }
         e.preventDefault();
-   });	
+   });   
    
    //목록으로 이동하기
    function goReview(){
-	   var free = "/boards/board/freelist";
+      var free = "/boards/board/freelist";
        window.location.href = free;
-		
-	}
+      
+   }
 </script>
 <body>
-<div class="boardlistfree-2b3" >
-	 <!-- header_top div 시작 -->
+<div class="boardlistfree-2b3">
+<!-- header_top div 시작 -->
   <div class="header_top">
-	
-	<!--logo p 시작-->
+   
+   <!--logo p 시작-->
     <p class="logo" style="cursor: pointer;" onclick="location.href='/mainPage'">
     컬쳐
     <br/>
@@ -192,8 +162,8 @@
     <!--searchbar div 시작-->
     <div class="searchbar">
     <form action="/searchresult" method="post">
-	  <input class="main_search" type="text" required title="검색어를 입력해주세요." name="keyword_main" id="keyword_main" placeholder="검색어를 입력하세요.">
-	  <!-- searchicon div 시작 -->
+     <input class="main_search" type="text" required title="검색어를 입력해주세요." name="keyword_main" id="keyword_main" placeholder="검색어를 입력하세요.">
+     <!-- searchicon div 시작 -->
       <button class="searchicon" id="searchicon" type="submit">
         <img class="iconsearch-tj3" src="/assets/iconsearch-wow.png"/>
       </button>
@@ -227,7 +197,7 @@
   <!-- header 끝 -->
   <!--dropdown_main 시작-->
   <div class="dropdown_main">
-	<!-- gnb 드롭다운 시작 -->
+   <!-- gnb 드롭다운 시작 -->
     <div class="gnb_dropdown"  style="visibility: hidden;" id="gnbDropdown"  onmouseover="cancelHide()" onmouseout="hideDropDown()">
       
       <!--div_introduce 시작-->
@@ -266,23 +236,22 @@
       </div>
       <!--div_infolist 끝-->
     </div>
-	<!-- gnb 드롭다운 끝 -->
-	</div>	
-
+   <!-- gnb 드롭다운 끝 -->
+   </div>      
   <!--메인페이지 -->
   <div class="main-uCD">
-		
+      
     <div class="paddingleft-Sxq">
     </div>
     
     <div class="divmain-QPs">
-		<form id="board" role="form" action="/freeUpdate" method="post"> 
-		<!-- 게시글 번호 -->
-		<input type="hidden" name="boardno" th:value="${b.boardno}">
-		<input type="hidden" name="boardlikes" th:value="${b.boardlikes}">
-		<input type="hidden" name="boardhit" th:value="${b.boardhit}">
-		<div class="auto-group-zphp-V5s">
-		<!-- 작성자 -->	
+      <form id="board" role="form" action="/freeUpdate" method="post"> 
+      <!-- 게시글 번호 -->
+      <input type="hidden" name="boardno" th:value="${b.boardno}">
+      <input type="hidden" name="boardlikes" th:value="${b.boardlikes}">
+      <input type="hidden" name="boardhit" th:value="${b.boardhit}">
+      <div class="auto-group-zphp-V5s">
+      <!-- 작성자 -->   
         <div class="divwriter-RVK">
           <div class="writertitle-YK3">작성자</div>
           <div class="writerinput-ecy" name="member.id" th:text="${b.member.id}"></div>
@@ -290,7 +259,7 @@
         
         <div class="divcategory-ZE9">
           <div class="categorytitle-6zm">카테고리</div>
- 		  <div class="category"  th:text="${b.bcategory}"></div>
+         <div class="category"  th:text="${b.bcategory}"></div>
         </div>
       </div>
       
