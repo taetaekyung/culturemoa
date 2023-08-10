@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
   <link rel="stylesheet" th:href="@{/styles/messageboxreceive.css}"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+	  // 팝업 닫기
+	  function closePopup() {
+	    window.close();
+	  }
+  </script>
 </head>
 <body>
 <div class="messageboxreceive-rGq">
@@ -24,7 +31,7 @@
   <div class="item--v17">보낸시간</div>
   <div class="frame-48-PQV">
     <div class="btnsend-GDP">답장하기</div>
-    <div class="btnback-Vrq">취소</div>
+    <div class="btnback-Vrq" onclick="closePopup()">취소</div>
   </div>
 </div>
 </body>

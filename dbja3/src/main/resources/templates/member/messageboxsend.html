@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
   <link rel="stylesheet" href="/styles/messageboxsend.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+	  // 팝업 닫기
+	  function closePopup() {
+	    window.close();
+	  }
+  </script>
 </head>
 <body>
 <div class="messageboxsend-fu3">
@@ -25,7 +32,7 @@
   <div class="item--ot5" th:text="${message.mcontent}"></div>
   <div class="frame-48-nZf">
     <div class="btnsend-uuB">삭제하기</div>
-    <div class="btnback-ni5">취소</div>
+    <div class="btnback-ni5" onclick="closePopup()">취소</div>
   </div>
   <div class="line-30-fms">
   </div>

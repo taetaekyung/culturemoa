@@ -185,6 +185,7 @@ body {
   background-color: #ffce00;
   border-radius: 0.6rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .messageboxreceive-rGq .frame-48-PQV .btnback-Vrq {
   width: 7.4rem;
@@ -201,4 +202,5 @@ body {
   background-color: #c0c0c0;
   border-radius: 0.6rem;
   flex-shrink: 0;
+  cursor: pointer;
 }

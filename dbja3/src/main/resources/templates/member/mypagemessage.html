@@ -167,8 +167,7 @@
 		      <div class="id-Qyf" th:text="${message.mid}">test</div>
 		      <div class="receivedate-Ypy" th:text="${message.regdate}">YYYY-MM-DD</div>
 		      <div class="content-s6Z" th:text="${message.isDeletedByReceiver} ? '이 쪽지는 삭제되었습니다.' : ${message.mcontent}" 
-     th:onclick="|openReceivedMessagePopup('${message.mno}')|">받은 쪽지함 내용입니다.</div>
-
+		      th:onclick="|openReceivedMessagePopup('${message.mno}')|">받은 쪽지함 내용입니다.</div>
 		      <img class="deletebtn-kg9" src="/assets/deletebtn.png" th:onclick="deleteMessage([[${message.mno}]])" />
 		    </div>
 		  </div>
