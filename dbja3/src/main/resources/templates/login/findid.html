@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>아이디 찾기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+<link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/styles/findid.css}"/>
+</head>
+<body>
+<div class="findid-XtD" layout:fragment="content">
+  <div class="title-Mdb">아이디 찾기</div>
+  <div class="auto-group-nk73-5pV">
+    <div class="new-password-Q65">
+      <div class="item--Yxy">이름</div>
+      <div class="rectangle-144-3eq">
+      </div>
+    </div>
+    <div class="new-passwordconfirm-ZdB">
+      <div class="item--WoK">이메일</div>
+      <div class="auto-group-fs1o-2Wm">확인</div>
+    </div>
+    <div class="inputverificationcode-VQM">
+      <div class="item--3Ay">인증번호 입력</div>
+      <div class="inputverificationcode-YNd">
+      </div>
+    </div>
+    <div class="questionfindpassword-Hb7">
+      <div class="item--22u">비밀번호가 기억나지 않는다면?</div>
+      <a th:href="@{/login/findpassword}">
+      	<div class="item--u6h">비밀번호 찾기</div>
+      </a>
+    </div>
+    <div class="btnfindid-nwB">아이디 찾기</div>
+    <div class="btnback-V4u">뒤로가기</div>
+  </div>
+</div>
+</body>
