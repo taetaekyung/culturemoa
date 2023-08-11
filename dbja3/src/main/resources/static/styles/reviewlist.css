@@ -10,12 +10,7 @@ html {
 a {
   text-decoration-line : none;
 }
-.idDiv{
-	align-items: center;
-	display: flex;
-	flex-direction: column;
-}
-.message{
+.listById{
 	width: 8.3rem;
 	height: 2rem;
 	display: flex;
@@ -25,8 +20,37 @@ a {
 	border: solid 0.1rem #a5a5a5;
 	border-radius: 0.5rem;
 	position: absolute;
-	margin-top:2.5rem;
+	margin-top:4.2rem;
 	background-color: white;
+	z-index: 1;
+}
+.idDiv{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+.sendMessage{
+	width: 8.3rem;
+	height: 2rem;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	border: solid 0.1rem #a5a5a5;
+	border-radius: 0.5rem;
+	position: absolute;
+	background-color: white;
+	z-index: 1;
+}
+.message{
+	width: 8.3rem;
+	height: 4rem;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	margin-top:1.5rem;
 	z-index: 1;
 }
 .pointer{

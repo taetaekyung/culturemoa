@@ -189,7 +189,10 @@
 		            <div class="regdate" th:text="${b.regdate}"></div>
 		            <div class="idDiv">
 		            	<div th:attr="onclick='message(\'' + ${b.member.id} + '\', \'' + ${b.reviewno} + '\')'" class="userid" th:text="${b.member.id}"></div>
-		                <div class="message"  th:value="${b.member.id}" th:id="'message'+${b.reviewno}">쪽지보내기</div>
+		                <div class="message"  th:id="'message'+${b.reviewno}">
+			                 <div class="sendMessage"  th:value="${b.member.id}" >쪽지보내기</div>
+			                 <div class="listById"  th:value="${b.member.id}" >게시물 보기</div>
+		                 </div>
 		            </div>  
 		            <div class="hit" th:text="${b.reviewhit}"></div>
 		            <div class="likes" th:text="${b.reviewlike}"></div>
