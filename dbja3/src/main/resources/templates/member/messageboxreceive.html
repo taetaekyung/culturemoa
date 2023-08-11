@@ -24,17 +24,15 @@
 </head>
 <body>
 <div class="messageboxreceive-rGq">
-  <div class="line-29-SF3">
-  </div>
-  <div class="line-30-YYy">
-  </div>
-  <div class="id1234--4hf" th:text="${senderNickname}"></div>
-  <div class="yy-mm-dd-00-00-x2M" th:text="${message.regdate}"></div>
-  <div class="item--FGM" th:text="${message.mcontent}"></div>
-  <div class="line-30-wQ5">
-  </div>
   <div class="item--epH">보낸사람</div>
+  <div class="id1234--4hf" th:text="${senderNickname}"></div>
+  <div class="line-29-SF3"></div>
   <div class="item--v17">보낸시간</div>
+  <div class="yy-mm-dd-00-00-x2M" th:text="${message.regdate}"></div>
+  <div class="line-30-YYy"></div>
+  <!--<div class="item--FGM" th:text="${message.mcontent}"></div>-->
+  <pre class="item--FGM" th:text="${message.mcontent}"></pre>
+  <div class="line-30-wQ5"></div>
   <div class="frame-48-PQV">
     <div class="btnsend-GDP" th:onclick="|openReplyMessagePopup('${message.mno}')|">답장하기</div>
     <div class="btnback-Vrq" onclick="closePopup()">취소</div>

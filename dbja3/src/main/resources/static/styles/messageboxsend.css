@@ -191,8 +191,8 @@ body {
   background-color: #eeeeee;
 }
 .messageboxsend-fu3 .item--ot5 {
-  width: 9.6rem;
-  height: 2rem;
+  width: 700px;
+  height: 300px;
   position: absolute;
   left: 4.5rem;
   top: 22rem;
@@ -202,5 +202,7 @@ body {
   line-height: 1;
   color: #000000;
   font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
+  overflow: hidden; /* 가로 스크롤 제거 */
+  overflow-y: auto; /* 세로 스크롤 생성 */
+  white-space: pre-wrap;
 }

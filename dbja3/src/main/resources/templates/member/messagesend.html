@@ -53,7 +53,7 @@
       success: function (data) {
         // 서버 응답이 성공일 경우 팝업 닫고 내용 초기화
         alert(data);
-        closePopup();
+        window.close();
       },
       error: function () {
         // 서버 응답이 실패일 경우 알림만 띄우고 팝업 닫지 않음
