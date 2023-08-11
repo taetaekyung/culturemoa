@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>로그인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
+<link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/styles/login.css}"/>
+</head>
+<body>
+<div class="login-usF" layout:fragment="content">
+  <div class="title-azd">LOG IN</div>
+  <div class="auto-group-zjz7-WNV">
+    <div class="btnlogin-3tD">로그인</div>
+    <div class="btns-vSD">
+	  <a th:href="@{/login/findid}">
+      	<div class="item--EC1">아이디 찾기</div>
+      </a>
+      <div class="line-14-XS1">
+      </div>
+      <a th:href="@{/login/findpassword}">
+      	<div class="item--3v9">비밀번호 찾기</div>
+      </a>
+      <div class="line-15-kpZ">
+      </div>
+      <a th:href="@{/signup}">
+      	<div class="item--hE1">회원 가입</div>
+      </a>
+    </div>
+    <div class="auto-group-8m69-1Vb">
+      <img class="user-WhF" src="/assets/user-KJR.png"/>
+      <div class="item--SL1">아이디</div>
+    </div>
+    <div class="auto-group-gbqs-8Tj">
+      <img class="lock-RSq" src="/assets/lock-pZ7.png"/>
+      <div class="item--a4q">비밀번호</div>
+    </div>
+    <div class="saveid-5XP">
+      <div class="btncheck-1R3">
+        <div class="rectangle-137-m9K">
+        </div>
+      </div>
+      <div class="item--tzd">아이디 저장</div>
+    </div>
+    <div class="loginsns-2L9">
+      <div class="linesns-ZL5">
+        <div class="line-17-WFK">
+        </div>
+        <div class="sns--TAZ">SNS 계정으로 로그인하기</div>
+        <div class="line-16-ZUV">
+        </div>
+      </div>
+      <div class="auto-group-ftkm-VN9">
+        <div class="btnlogingoogle-dDT">
+          <img class="item--aeV" src="/assets/-Xk5.png"/>
+          <div class="item--uRs">구글 로그인</div>
+        </div>
+        <div class="btnloginnaver-1Uu">
+          <img class="naver-png-N4Z" src="/assets/naver-png-ru7.png"/>
+          <div class="item--4TB">네이버 로그인</div>
+        </div>
+        <div class="btnloginkakao-Zeq">
+          <img class="item--7gM" src="/assets/-stM.png"/>
+          <div class="item--F1s">카카오 로그인</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

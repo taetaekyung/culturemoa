@@ -1,0 +1,392 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.findidcomplete-bVs {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.findidcomplete-bVs .header-91b {
+  box-sizing: border-box;
+  padding: 3.1rem 32.9rem 0.7rem 32rem;
+  width: 100%;
+  height: 15.4rem;
+  display: flex;
+  align-items: center;
+  background-color: #fdd00f;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .header-91b .logo-fEq {
+  margin-right: 27.4rem;
+  max-width: 5.6rem;
+  font-size: 4.6rem;
+  font-weight: 500;
+  line-height: 1.2575;
+  color: #ffffff;
+  font-family: Gmarket Sans, 'Source Sans Pro';
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .header-91b .searchbar-nKT {
+  margin: 2rem 14.9rem 4.4rem 0rem;
+  width: 62rem;
+  height: calc(100% - 6.4rem);
+  position: relative;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .header-91b .searchbar-nKT .searchicon-hSR {
+  box-sizing: border-box;
+  padding: 1.6rem 2.144rem 1.558rem 2.2rem;
+  width: 6.5rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 55.5rem;
+  top: 0;
+  background-color: #ffffff;
+  border-radius: 0 1rem 1rem 0;
+}
+.findidcomplete-bVs .header-91b .searchbar-nKT .searchicon-hSR .iconsearch-cpH {
+  width: 2.1558rem;
+  height: 2.0424rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.findidcomplete-bVs .header-91b .searchbar-nKT .searchtext-wLm {
+  box-sizing: border-box;
+  padding: 0 2.4rem;
+  width: 55.5rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 2.1666666667;
+  letter-spacing: -0.1rem;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #ffffff;
+  border-radius: 1rem 0 0 1rem;
+}
+.findidcomplete-bVs .header-91b .searchbar-nKT .divsearch-PiZ {
+  width: 62rem;
+  height: 5.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 1rem;
+}
+.findidcomplete-bVs .header-91b .login-8RF {
+  margin: 0rem 4.3rem 2.4rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.6;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .header-91b .signup-EjB {
+  margin-bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.6;
+  letter-spacing: -0.1rem;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF {
+  margin-bottom: 12rem;
+  box-sizing: border-box;
+  padding: 0.1rem 32rem 0rem 32rem;
+  width: 100%;
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.200000003);
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divintro-SqF {
+  margin-right: 18.4rem;
+  width: 3.6rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divevent-rPB {
+  margin-right: 13.2rem;
+  width: 7.1rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divcommunity-Mqj {
+  margin-right: 15.8rem;
+  width: 7.1rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divfaq-g7K {
+  margin-right: 15.8rem;
+  width: 3.7rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divmypage-PGd {
+  margin-right: 13.7rem;
+  width: 9.9rem;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.15;
+  letter-spacing: -0.1rem;
+  color: #222222;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divopentalk-tjB {
+  margin: 1.6rem 4.303rem 1.7rem 0rem;
+  box-sizing: border-box;
+  padding: 0rem 2.4rem 0rem 1.1rem;
+  height: calc(100% - 3.3rem);
+  display: flex;
+  align-items: center;
+  background-color: #f796af;
+  border-radius: 100rem;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divopentalk-tjB .iconopentalk-1J1 {
+  margin-right: 0.5rem;
+  width: 1.7971rem;
+  height: 1.3rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divopentalk-tjB .opentalk-kFb {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divmessage-GUq {
+  margin: 1.6rem 0rem 1.7rem 0rem;
+  box-sizing: border-box;
+  padding: 0rem 1rem 0rem 1.1rem;
+  height: calc(100% - 3.3rem);
+  display: flex;
+  align-items: center;
+  background-color: #46c3d3;
+  border-radius: 100rem;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divmessage-GUq .iconmessage-ni5 {
+  margin-right: 0.5rem;
+  width: 1.7rem;
+  height: 1.1rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .gnb-9bF .divmessage-GUq .message-Wty {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .title-oNH {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1.1428571429;
+  color: #fdd00f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .item--8fT {
+  margin-bottom: 3.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .checkcircle-Qss {
+  margin-right: 0.1rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 {
+  box-sizing: border-box;
+  padding: 3.3rem 75.3rem 46.4rem 75.3rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .frame-330-G9P {
+  margin: 0rem 10.1rem 7.7rem 10.95rem;
+  width: calc(100% - 21.05rem);
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .frame-330-G9P .item--C33 {
+  margin-right: 1.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .frame-330-G9P .nameid1234-7Qu {
+  display: flex;
+  font-size: 2rem;
+  line-height: 1;
+  color: #000000;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .group-43-M4M {
+  margin: 0rem 4.15rem 3rem 2.45rem;
+  width: calc(100% - 6.6rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .group-43-M4M .item--Uuf {
+  margin-right: 4.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.1111111111;
+  color: #c0c0c0;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .group-43-M4M .item--ZgD {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  line-height: 1.1111111111;
+  letter-spacing: -0.07rem;
+  color: #07b47f;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.findidcomplete-bVs .auto-group-vb4m-Yz5 .btnlogin-sgu {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.07rem;
+  color: #ffffff;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #07b47f;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}

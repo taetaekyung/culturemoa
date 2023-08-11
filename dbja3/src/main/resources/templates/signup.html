@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>registration</title>
+  <title>회원가입</title>
  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
@@ -48,14 +48,14 @@
       <div class="userpwd">
         <div class="pwd_txt">비밀번호</div>
         <div class="chkpwd">
-			<input type="password" class="inputpwd" name="pwd" id="pwd" required placeholder="영어, 숫자, 특수문자 포함 8자 이상"/> 
+			<input type="password" class="inputpwd" name="pwd" id="pwd" required placeholder="영어, 숫자, 특문 포함 8자 이상"/> 
 		</div>
       </div>
      
       <div class="pwdCheck">
         <div class="pwdCheck_txt">비밀번호 확인</div>
         <div class="chkchkpwd">
-			<input type="password" class="inputchkpwd" name="chkpwd" id="chkpwd" required placeholder="영어, 숫자, 특수문자 포함 8자 이상"/>
+			<input type="password" class="inputchkpwd" name="chkpwd" id="chkpwd" required placeholder="영어, 숫자, 특문 포함 8자 이상"/>
 			<div class="check_txt">확인</div> 
 		</div>
         <div class="resultCheckPwd">비밀번호가 일치합니다.</div>
@@ -71,52 +71,32 @@
       
       <div class="nickname">
         <div class="nickname_txt">닉네임</div>
-        <div class="nicknameCheck">중복확인</div>
+        <div class="chknickname">
+			<input type="text" class="inputnickname" name="nickname" id="nickname" required/>
+			<div class="nicknameCheck">중복확인</div>
+		</div>
         <div class="resultNickname">사용 가능한 닉네임입니다.</div>
       </div>
       
-      <div class="sex">
-        <div class="sex_txt">성별</div>
-        <div class="btnradio_m">
-          
-          <div class="male_txt">남자</div> 
-        </div>
-        
+      <div class="gender">
+        <div class="gender_txt">성별</div>
         <div class="btnradio_w">
-          
-          <div class="female_txt">여자</div>
+          <input type="radio" class="inputgender_m" name="gender" value="male" checked>남자</input> 
+          <input type="radio" class="inputgender_w" name="gender" value="female" >여자</input> 
         </div>
       </div>
       
       
       <div class="birth">
         <div class="birth_txt">생년월일</div>
-        <div class="year">
-          
-          <div class="inputyear">년(4자)</div>
-        </div>
-        년
-        <div class="month">
-		  <div class="inputmonth">월</div>
-
-        </div>
-        월
-        <div class="day">
-          <div class="inputday">일</div>
-        </div>
-        일
+        <input class="inputbirth" type="date" name="birth" required>
       </div>
       
       
       <div class="phonenumber">
         <div class="phone_txt">휴대전화번호</div>
-        <div class="inputbox01">
-        </div>
-        <div class="hyphe01">-</div>
-        <div class="inputbox02">
-        </div>
-        <div class="hyphen02">-</div>
-        <div class="inputbox03">
+        <div class="chkphone">
+        	<input type="tel" class="inputphone" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required/>
         </div>
       </div>
       
@@ -127,14 +107,19 @@
     <div class="email">
       <div class="useremail">
         <div class="email_txt">이메일</div>
-        <div class="inputemail">
+        <div class="chkemail">
+	        <input type="email" class="inputemail" name="email" required></input>
+	        <div class="emailCheck">확인</div>
         </div>
-        <div class="emailCheck">확인</div>
+        <div class="sendAuthNum">인증번호를 발송하였습니다.</div>
       </div>
       
       <div class="checkemail">
-        <div class="inputcheckemail">인증번호 4자리 입력</div>
-        <div class="btncheckemail">확인</div>
+		<div class="chkchkemail">
+			<input type="number" class="inputcheckemail" name="chkemail" id="chkemail" required placeholder="인증번호 4자리 입력"/>
+	        <div class="btncheckemail">확인</div>
+        </div>
+        <div class="chkAuthNum">인증번호가 일치합니다.</div>
       </div>
     </div>
     
@@ -142,7 +127,7 @@
    <!-- <div class="top-line"></div> -->
     <div class="buttons">
       <div class="btnsignup">회원가입</div>
-      <div class="btnback">뒤로가기</div>
+      <div class="btnback">메인으로 가기</div>
     </div>
    <!-- <div class="bottom-line"></div> -->
   </div>
