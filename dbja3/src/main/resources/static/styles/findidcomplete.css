@@ -370,6 +370,7 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .findidcomplete-bVs .auto-group-vb4m-Yz5 .btnlogin-sgu {
   width: 100%;
@@ -387,4 +388,5 @@ body {
   background-color: #07b47f;
   border-radius: 1rem;
   flex-shrink: 0;
+  cursor: pointer;
 }

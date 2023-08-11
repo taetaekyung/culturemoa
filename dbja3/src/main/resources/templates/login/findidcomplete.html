@@ -25,9 +25,13 @@
     </div>
     <div class="group-43-M4M">
       <div class="item--Uuf">비밀번호가 기억나지 않는다면?</div>
-      <div class="item--ZgD">비밀번호 찾기</div>
+      <a th:href="@{/login/findpassword}">
+      	<div class="item--ZgD">비밀번호 찾기</div>
+      </a>
     </div>
-    <div class="btnlogin-sgu">로그인</div>
+    <a th:href="@{login/login}">
+    	<div class="btnlogin-sgu">로그인</div>
+    </a>
   </div>
 </div>
 </body>
