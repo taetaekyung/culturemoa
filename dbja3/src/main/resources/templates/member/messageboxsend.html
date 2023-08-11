@@ -51,7 +51,8 @@
   <div class="item--Hso">보낸시간</div>
   <div class="id1234--11B" th:text="${message.member.nickname}"></div>
   <div class="yy-mm-dd-00-00-heh" th:text="${message.regdate}"></div>
-  <div class="item--ot5" th:text="${message.mcontent}"></div>
+  <!--<div class="item--ot5" th:text="${message.mcontent}"></div>-->
+  <pre class="item--ot5" th:text="${message.mcontent}"></pre>
   <div class="frame-48-nZf">
     <div class="btnsend-uuB" th:onclick="deleteMessage([[${message.mno}]])">삭제하기</div>
     <div class="btnback-ni5" onclick="closePopup()">취소</div>

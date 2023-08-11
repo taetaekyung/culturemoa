@@ -126,6 +126,7 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   border: solid 0.1rem #adafaa;
+  resize: none;
 }
 .messagesend-siq .item--CKB {
   width: 7.1rem;

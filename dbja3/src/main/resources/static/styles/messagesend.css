@@ -126,6 +126,7 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   border: solid 0.1rem #adafaa;
+  resize:none;
 }
 .messagesend-siq .item--CKB {
   width: 7.1rem;
@@ -180,6 +181,7 @@ body {
   background-color: #ffce00;
   border-radius: 0.6rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .messagesend-siq .frame-48-RSq .btnback-3UD {
   width: 7.4rem;
@@ -196,6 +198,7 @@ body {
   background-color: #c0c0c0;
   border-radius: 0.6rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .messagesend-siq .item-0-1000-jrq {
   width: 9.2rem;

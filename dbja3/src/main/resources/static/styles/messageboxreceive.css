@@ -111,8 +111,8 @@ body {
   white-space: nowrap;
 }
 .messageboxreceive-rGq .item--FGM {
-  width: 9.6rem;
-  height: 2rem;
+  width: 700px;
+  height: 300px;
   position: absolute;
   left: 4.5rem;
   top: 22rem;
@@ -122,8 +122,11 @@ body {
   line-height: 1;
   color: #000000;
   font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
+  overflow: hidden; /* 가로 스크롤 제거 */
+  overflow-y: auto; /* 세로 스크롤 생성 */
+  white-space: pre-wrap;
 }
+
 .messageboxreceive-rGq .line-30-wQ5 {
   width: 76rem;
   height: 0.1rem;
