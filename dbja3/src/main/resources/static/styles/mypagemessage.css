@@ -595,7 +595,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD {
-  margin-bottom: 61.2rem;
+  /*margin-bottom: 61.2rem;*/
   width: 100%;
   /*height: 4.7rem;*/
   overflow: hidden;
@@ -713,16 +713,32 @@ body {
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .writebtn-Sos {
   margin: 0rem 0.055rem 0rem 118.755rem;
-  width: calc(100% - 118.8107rem);
+  /*width: calc(100% - 118.8107rem);*/
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .writebtn-Sos .deletebtn{
-	display: inline-block;
-    margin-right: 10px; /* 조정 가능한 여백 설정 */
-    color: red; /* 버튼 색상 설정 */
-    cursor: pointer; /* 포인터 커서로 변경하여 사용자에게 클릭 가능함을 보여줌 */
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.8888888889;
+  letter-spacing: -0.1rem;
+  color: #7d7d7d;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .writebtn-Sos .middleline-eyF{
+  margin-right: 0.7rem;
+  margin-left: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  width: 0.2rem;
+  height: 1.8rem;
+  background-color: #a5a5a5;
+  flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .writebtn-Sos .item--yYu {
   margin: 0rem 1rem 0rem 0rem;
@@ -750,21 +766,34 @@ body {
   width: calc(100% - 97.3784rem);
   display: flex;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+.mypagemessage-Y2V .main-KcD .divmain-85o .paging-oXw .item-th{
+  margin-right: 2rem;
+  margin-bottom: 0.7rem;
+  width: 14px;
+  height: 14px;
+  font-size: 18px;
+  object-fit: contain;
+  vertical-align: top;
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .paging-oXw .btndoubleprevious-JDo {
-  margin-right: 0.8313rem;
-  width: 0.8rem;
-  height: 0.8rem;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .paging-oXw .btnprevious-ckH {
-  margin-right: 2.5rem;
-  width: 0.4rem;
-  height: 0.8rem;
+  margin: 0rem 2.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
@@ -842,16 +871,17 @@ body {
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .paging-oXw .btnnext-E2u {
-  margin-right: 0.6656rem;
-  width: 0.4rem;
-  height: 0.8rem;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
 .mypagemessage-Y2V .main-KcD .divmain-85o .paging-oXw .btndoublenext-AhF {
-  width: 0.8rem;
-  height: 0.8rem;
+  margin-bottom: 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;

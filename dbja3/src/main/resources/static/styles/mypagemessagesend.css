@@ -285,7 +285,8 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .headerframe-SSD .home-mjP {
-  margin-right: 1.1rem;
+  margin-left: 16rem;
+  margin-right: 0.8rem;
   display: flex;
   font-size: 1.4rem;
   line-height: 1.4285714286;
@@ -384,7 +385,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .filter-EYR .registration-wxd {
-  margin-right: 2.2rem;
+  margin-right: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -405,7 +406,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .filter-EYR .message-cYy {
-  margin-right: 0.9rem;
+  margin-right: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -419,7 +420,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .auto-group-ujdf-MUd .filter-EYR .middleline-9J1 {
-  margin-right: 2rem;
+  margin-right: 0.7rem;
   width: 0.2rem;
   height: 1.8rem;
   background-color: #a5a5a5;
@@ -493,9 +494,9 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf {
-  margin-right: 4.2446rem;
+  /*margin-right: 4.2446rem;*/
   box-sizing: border-box;
-  padding-bottom: 59.3rem;
+  /*padding-bottom: 59.3rem;*/
   width: 128rem;
   align-items: center;
   display: flex;
@@ -547,7 +548,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelistth-6uP .name-bbF .sendid-wHj {
-  margin-right: 9.9rem;
+  margin-right: 10.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -616,7 +617,7 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj {
-  margin-bottom: 61.2rem;
+  /*margin-bottom: 61.2rem;*/
   width: 100%;
   /*height: 4.7rem;*/
   overflow: hidden;
@@ -747,17 +748,33 @@ body {
   cursor: pointer;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh {
-  margin-left: 123.0554rem;
-  width: calc(100% - 123.0554rem);
+  margin: 0rem 0.055rem 0rem 118.755rem;
+  /*width: calc(100% - 118.8107rem);*/
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh .deletebtn {
-	display: inline-block;
-    margin-right: 10px; /* 조정 가능한 여백 설정 */
-    color: red; /* 버튼 색상 설정 */
-    cursor: pointer; /* 포인터 커서로 변경하여 사용자에게 클릭 가능함을 보여줌 */
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.8888888889;
+  letter-spacing: -0.1rem;
+  color: #7d7d7d;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh .middleline-Gk1{
+  margin-right: 0.7rem;
+  margin-left: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  width: 0.2rem;
+  height: 1.8rem;
+  background-color: #a5a5a5;
+  flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .writebtn-qzh .item--oAq {
   margin: 0rem 1rem 0rem 0rem;
@@ -781,25 +798,38 @@ body {
   cursor: pointer;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK {
-  margin: 0rem 53.023rem 0rem 48.6rem;
-  width: calc(100% - 101.623rem);
+  margin: 0rem 48.778rem 0rem 48.6rem;
+  width: calc(100% - 97.3784rem);
   display: flex;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK .item-th{
+  margin-right: 2rem;
+  margin-bottom: 0.7rem;
+  width: 14px;
+  height: 14px;
+  font-size: 18px;
+  object-fit: contain;
+  vertical-align: top;
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK .btndoubleprevious-hfX {
-  margin-right: 0.8313rem;
-  width: 0.8rem;
-  height: 0.8rem;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK .btnprevious-nKb {
-  margin-right: 2.5rem;
-  width: 0.4rem;
-  height: 0.8rem;
+  margin: 0rem 2.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
@@ -877,16 +907,17 @@ body {
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK .btnnext-ieV {
-  margin-right: 0.6656rem;
-  width: 0.4rem;
-  height: 0.8rem;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .paging-zFK .btndoublenext-SaV {
-  width: 0.8rem;
-  height: 0.8rem;
+  margin-bottom: 0rem;
+  width: 14px;
+  height: 14px;
   position: relative;
   object-fit: contain;
   vertical-align: top;

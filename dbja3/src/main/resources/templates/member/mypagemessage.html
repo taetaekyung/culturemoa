@@ -176,7 +176,8 @@
         <div class="writebtn-Sos">
 		    <!-- '삭제' 버튼 추가 -->
 		    <div class="deletebtn" onclick="deleteMessages()">삭제</div>
-		    <img class="item--yYu" src="/assets/-UXb.png"/>
+		    <!--<img class="item--yYu" src="/assets/-UXb.png"/>-->
+		    <div class="middleline-eyF"></div>
 		    <!-- 쪽지쓰기 버튼에 팝업 이벤트 추가 -->
 		    <div class="item--iFb" onclick="openSendMessagePopup()">쪽지쓰기</div>
 		</div>
@@ -184,26 +185,30 @@
       
       <!-- 페이징 처리 부분 -->
 		<div class="paging-oXw">
-	    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=0)}">
-	        <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
-	    </a>
-	    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=${messagePage.previousPageable().pageNumber})}">
-	        <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
-	    </a>
-	    
-	    <!-- 페이지 번호 출력 -->
-	    <div th:each="pageNum : ${#numbers.sequence(0, messagePage.totalPages - 1)}" class="item-th"
-	         th:classappend="${pageNum == currentPage} ? 'currentPage' : ''">
-	        <a th:href="@{/member/mypagemessage(page=${pageNum})}" th:text="${pageNum + 1}"></a>
-	    </div>
-	    
-	    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.nextPageable().pageNumber})}">
-	        <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
-	    </a>
-	    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.totalPages - 1})}">
-	        <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
-	    </a>
-	</div>
+			<!-- 이전 첫 페이지로 이동하는 버튼 -->
+		    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=0)}">
+		        <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>
+		    </a>
+		    <!-- 이전 페이지로 이동하는 버튼 -->
+		    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=${messagePage.previousPageable().pageNumber})}">
+		        <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
+		    </a>
+		    
+		    <!-- 페이지 번호 출력 -->
+		    <div th:each="pageNum : ${#numbers.sequence(0, messagePage.totalPages - 1)}" class="item-th"
+		         th:classappend="${pageNum == currentPage} ? 'currentPage' : ''">
+		        <a th:href="@{/member/mypagemessage(page=${pageNum})}" th:text="${pageNum + 1}"></a>
+		    </div>
+		    
+		    <!-- 다음 페이지로 이동하는 버튼 -->
+		    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.nextPageable().pageNumber})}">
+		        <img class="btnnext-E2u" src="/assets/btnnext-EuF.png"/>
+		    </a>
+		    <!-- 다음 마지막 페이지로 이동하는 버튼 -->
+		    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.totalPages - 1})}">
+		        <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
+		    </a>
+		</div>
 
     </div>
   </div>
