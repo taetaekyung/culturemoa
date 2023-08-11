@@ -12,6 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
   <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/freelist.css}"/>
+  <style>
+  .message{
+	  visibility: hidden;
+  }	  
+  </style>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script type="text/javascript">
 	$(function() {
@@ -41,6 +46,33 @@
 		var freeDetail = '/boards/board/freeDetail?boardno=' + boardno;
         window.location.href = freeDetail;
 	} 
+	//게시글 작성자에게 메세지 보내기
+	var messageIndex=0;
+	function message(id, boardno){
+		console.log(id);
+		console.log(boardno);
+		if(messageIndex==0){ //쪽지 보내기 창이 닫혀 있으면
+			const message=document.querySelector("#message"+boardno);
+		    message.style.visibility="visible";
+		    messageIndex=boardno;
+		}else{ //쪽지 보내기 창이 열려 있으면
+			if(messageIndex==boardno){ //열려있던 창을 닫으려고 할때
+				//기존 창 닫고
+				const message=document.querySelector("#message"+messageIndex);
+			    message.style.visibility="hidden";
+			    messageIndex=0;
+			}else{ //새로운 창을 열고자 할때
+				//기존 창 닫고
+				const message=document.querySelector("#message"+messageIndex);
+			    message.style.visibility="hidden";
+			    messageIndex=0;
+			    //선택한 창 열고
+			    const message2=document.querySelector("#message"+boardno);
+			    message2.style.visibility="visible";
+			    messageIndex=boardno;
+			}
+		}
+	}
   </script>
 </head>
 	<body>
@@ -123,11 +155,14 @@
 	        <div class="list">
 			  <span th:each="b:${list}">
 				  <!-- div_list 시작 -->
-		          <div class="div_list" onclick="goReview(this)" th:value="${b.boardno}">
+		          <div class="div_list"  th:value="${b.boardno}">
 		            <div class="dno" th:text="${b.boardno}"></div>
-		            <div class="title" th:text="${b.boardtitle}"></div>
+		            <div class="title" onclick="goReview(this)" th:text="${b.boardtitle}" th:value="${b.boardno}"></div>
 		            <div class="regdate" th:text="${b.regdate}"></div>
-		            <div class="userid" th:text="${b.member.id}"></div>
+		            <div class="idDiv">
+		            	<div th:attr="onclick='message(\'' + ${b.member.id} + '\', \'' + ${b.boardno} + '\')'" class="userid" th:text="${b.member.id}"></div>
+		                <div class="message"  th:value="${b.member.id}" th:id="'message'+${b.boardno}">쪽지보내기</div>
+		            </div>  
 		            <div class="hit" th:text="${b.boardhit}"></div>
 		            <div class="likes" th:text="${b.boardlikes}"></div>
 		          </div>
