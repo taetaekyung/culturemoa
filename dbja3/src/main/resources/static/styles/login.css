@@ -11,6 +11,7 @@ ul, li {
 }
 input {
 	border: none;
+	font-size: larger;
 }
 body {
   width: 192rem;
