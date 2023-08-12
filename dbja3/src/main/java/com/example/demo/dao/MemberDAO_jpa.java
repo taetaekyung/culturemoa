@@ -30,6 +30,9 @@ public interface MemberDAO_jpa extends JpaRepository<Member, String> {
 	@Query(value = "select count(*) from member where nickname=?1", nativeQuery = true)
 	public int countByNickname(String nickname);
 	
+	@Query(value = "select * from member where id=?1", nativeQuery = true)
+	public Member findByUserId(String id);
+	
 	Optional<Member> findById(String id);
 	
 	@Query(value = "select nickname from member where id=?1", nativeQuery = true)

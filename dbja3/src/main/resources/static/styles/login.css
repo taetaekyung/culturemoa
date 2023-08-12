@@ -293,7 +293,7 @@ body {
   height: 5rem;
   position: absolute;
   left: 75.3rem;
-  top: 24rem;
+  top: 23rem;
   display: flex;
   font-size: 2rem;
   font-weight: 500;
@@ -307,6 +307,7 @@ body {
   background-color: #07b47f;
   border-radius: 1rem;
   cursor: pointer;
+  border: none;
 }
 .login-usF .auto-group-zjz7-WNV .btns-vSD {
   width: 29.35rem;

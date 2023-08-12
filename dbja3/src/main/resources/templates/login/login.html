@@ -15,9 +15,13 @@
 </head>
 <body>
 <div class="login-usF" layout:fragment="content">
+  <th:block th:if="${msg != null}">
+	  <script>
+			alert("[[${msg}]]");
+	  </script>
+  </th:block>
   <div class="title-azd">LOG IN</div>
   <div class="auto-group-zjz7-WNV">
-    <div class="btnlogin-3tD">로그인</div>
     <div class="btns-vSD">
 	  <a th:href="@{/login/findid}">
       	<div class="item--EC1">아이디 찾기</div>
@@ -33,16 +37,22 @@
       	<div class="item--hE1">회원 가입</div>
       </a>
     </div>
+    
     <!--아이디 입력 -->
-    <div class="auto-group-8m69-1Vb">
-      <img class="user-WhF" src="/assets/user-KJR.png"/>
-      <input class="item--SL1" placeholder="아이디"></input>
-    </div>
-    <!--비밀번호 입력 -->
-    <div class="auto-group-gbqs-8Tj">
-      <img class="lock-RSq" src="/assets/lock-pZ7.png"/>
-      <input class="item--a4q" placeholder="비밀번호"></input>
-    </div>
+    <form action="/login/login" method="post">
+	    <div class="auto-group-8m69-1Vb">
+	      <img class="user-WhF" src="/assets/user-KJR.png"/>
+	      <input class="item--SL1" type="text" name="id" required placeholder="아이디"></input>
+	    </div>
+	    <!--비밀번호 입력 -->
+	    <div class="auto-group-gbqs-8Tj">
+	      <img class="lock-RSq" src="/assets/lock-pZ7.png"/>
+	      <input class="item--a4q" type="password" name="password" required placeholder="비밀번호"></input>
+	    </div>
+	    
+	    <button type="submit" class="btnlogin-3tD" >로그인</button>
+	</form>
+
     <div class="loginsns-2L9">
       <div class="linesns-ZL5">
         <div class="line-17-WFK">

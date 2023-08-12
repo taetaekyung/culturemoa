@@ -85,7 +85,14 @@
 		    </div>
 		    <!--searchbar div 끝-->
 		    
-		    <div class="div_login" style="cursor: pointer;" onclick="location.href='/login/login'">로그인</div>
+		    <th:block th:if="${session.m == null}">
+		    	<div class="div_login" style="cursor: pointer;" onclick="location.href='/login/login'">로그인</div>
+			</th:block>
+			
+			<th:block th:if="${session.m != null}">
+		    	<div class="div_login" style="cursor: pointer;" onclick="location.href='/login/logout'">로그아웃</div>
+			</th:block>
+			
 		    <div class="div_signup"  style="cursor: pointer;" onclick="location.href='/signup'">회원가입</div>
 		    
 		  </div>
