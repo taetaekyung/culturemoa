@@ -12,6 +12,9 @@ ul, li {
 input {
 	border: none;
 }
+input::placeholder{
+	color:#c0c0c0;
+}
 body {
   width: 192rem;
 }

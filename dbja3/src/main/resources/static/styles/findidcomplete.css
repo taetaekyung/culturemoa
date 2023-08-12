@@ -15,6 +15,9 @@ input {
 body {
   width: 192rem;
 }
+input::placeholder{
+	color:#c0c0c0;
+}
 .findidcomplete-bVs {
   width: 100%;
   align-items: center;
