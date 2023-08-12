@@ -48,6 +48,13 @@ public class LoginController {
 		return mav;
 	}
 	
+	//로그아웃 기능
+	@GetMapping("/login/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // 로그아웃 시 세션파기
+		return "redirect:/mainPage";
+	}
+	
 	//아이디 찾기
 	@GetMapping("/login/findid")
 	public void findid() {
