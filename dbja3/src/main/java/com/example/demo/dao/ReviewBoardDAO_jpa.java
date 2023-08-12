@@ -43,16 +43,16 @@ public interface ReviewBoardDAO_jpa extends JpaRepository<Reviewboard, Integer> 
 	 @Query("select nvl(Max(r.reviewno),0)+1 from Reviewboard r ")
 	 public int findNextNo();
 	 
-	 @Query(value = "select * from Reviewboard where reviewtitle like CONCAT(CONCAT('%', :keyword), '%') or reviewcontent like CONCAT(CONCAT('%', :keyword), '%')", nativeQuery=true)
+	 @Query(value = "select * from Reviewboard  where reviewtitle like CONCAT(CONCAT('%', :keyword), '%') or reviewcontent like CONCAT(CONCAT('%', :keyword), '%') or id like CONCAT(CONCAT('%', :keyword), '%')", nativeQuery=true)
 	 public Page<Reviewboard> findByBcategory(@Param("keyword") String keyword, Pageable pageable);
 
 	 @Query(value = "select count(*) from Reviewboard ", nativeQuery = true)
 	 public int getTotalRecord();
 	
-	 @Query(value = "select count(*) from Reviewboard where (reviewtitle like '%?1%' or reviewcontent like '%?1%')" , nativeQuery = true)
+	 @Query(value = "select count(*) from Reviewboard where (reviewtitle like '%?1%' or reviewcontent like '%?1%' or id like '%?1%')" , nativeQuery = true)
 	 public int getTotalRecord(String keyword);
  
-     @Query(value="select * from Reviewboard where reviewtitle like CONCAT(CONCAT('%', ?1), '%') or reviewcontent like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
+     @Query(value="select * from Reviewboard where reviewtitle like CONCAT(CONCAT('%', ?1), '%') or reviewcontent like CONCAT(CONCAT('%', ?1), '%') or id like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
 	 public List<Reviewboard> findByKeyword(String keyword);
 	 
 }

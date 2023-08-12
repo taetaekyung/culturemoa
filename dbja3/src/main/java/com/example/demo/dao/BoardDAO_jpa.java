@@ -44,7 +44,7 @@ public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
 	 @Query("select nvl(Max(b.boardno),0)+1 from Board b ")
 	 public int findNextNo();
 	 
-	 @Query(value = "select b from Board b where b.bcategory=?1 and (b.boardtitle like CONCAT(CONCAT('%', ?2), '%') or b.boardcontent like CONCAT(CONCAT('%', ?2), '%'))")
+	 @Query(value = "select b from Board b where b.bcategory=?1 and (b.boardtitle like CONCAT(CONCAT('%', ?2), '%') or b.boardcontent like CONCAT(CONCAT('%', ?2), '%') or b.member.id like CONCAT(CONCAT('%', ?2), '%'))")
 	 public Page<Board> findByBcategory(String bcategory, String keyword, Pageable pageable);
 
 
@@ -60,7 +60,8 @@ public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
 			+ "where a.rown between 1 and 10", nativeQuery = true)
 	public List<Board> findAll();
 	
-	@Query(value="select * from Board where boardtitle like CONCAT(CONCAT('%', ?1), '%') or boardcontent like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
+	//검색어로 찾기 
+	@Query(value="select * from Board where boardtitle like CONCAT(CONCAT('%', ?1), '%') or boardcontent like CONCAT(CONCAT('%', ?1), '%') or b.member.id like CONCAT(CONCAT('%', ?1), '%') order by regdate desc", nativeQuery=true)
 	public List<Board> findByKeyword(String keyword);
 	
 }

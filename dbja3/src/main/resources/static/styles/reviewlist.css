@@ -10,6 +10,15 @@ html {
 a {
   text-decoration-line : none;
 }
+.rno{
+  font-size: 1.6rem;
+  line-height: 1.625;
+  letter-spacing: -0.07rem;
+  color: #222222;
+  font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 .listById{
 	width: 8.3rem;
 	height: 2rem;
@@ -28,6 +37,8 @@ a {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	position: absolute;
+	margin-left: 78rem;
 }
 .sendMessage{
 	width: 8.3rem;
@@ -458,7 +469,6 @@ body {
 .freelist .main .main_content .main_content_middle .list {
   margin: 0rem 0rem 105.2rem 0rem;
   width: 100%;
-  overflow: hidden;
   position: relative;
   row-gap: 1rem;
   align-items: center;
@@ -501,6 +511,8 @@ body {
   font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
+  position: absolute;
+  margin-left: 5rem;
 }
 .freelist .main .main_content .main_content_middle .list .div_list .regdate {
   width: 19rem;
@@ -515,6 +527,8 @@ body {
   font-family: 'Montserrat', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
+  position: absolute;
+  margin-left: 59rem;
 }
 .freelist .main .main_content .main_content_middle .list .div_list .userid {
   width: 20rem;
@@ -543,6 +557,8 @@ body {
   font-family: 'Montserrat', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
+  position: absolute;
+  margin-left: 98rem;
 }
 .freelist .main .main_content .main_content_middle .list .div_list .likes {
   width: 10rem;
@@ -557,6 +573,8 @@ body {
   font-family: 'Montserrat', 'Source Sans 3', sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
+  position: absolute;
+  margin-left:108rem;
 }
 .freelist .main .main_content .main_content_bottom {
   box-sizing: border-box;

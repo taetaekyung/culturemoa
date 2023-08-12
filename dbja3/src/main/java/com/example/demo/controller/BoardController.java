@@ -618,7 +618,7 @@ public class BoardController {
 	//게시글 list
 	@GetMapping(value={"/boards/board/togetherlist", "/boards/board/togetherlist/", "/boards/board/togetherlist/{page}", 
 			"/boards/board/togetherlist/{keyword}/{page}", "/boards/board/togetherlist/{keyword}/{page}/{orderby}"})
-	public ModelAndView togetherlist(HttpSession session, @PathVariable(required=false) String keyword, 
+	public ModelAndView togetherlist(HttpSession session, @PathVariable(required=false) String keyword,
 			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
 		ModelAndView mav = new ModelAndView("/boards/board/togetherlist");
 
