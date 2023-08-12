@@ -564,6 +564,8 @@ body {
   vertical-align: top;
   border-radius: 0.05rem;
   flex-shrink: 0;
+  position: absolute;
+  left: 33rem;
 }
 .main-mVB .main-Fpu .auto-group-ejdf-2Y9 .news-z8q .auto-group-9job-9Gd .dropdownarea-oMB .component-20-MtV .line-3-isT {
   width: 100%;
