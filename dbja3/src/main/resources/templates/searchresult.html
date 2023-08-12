@@ -30,7 +30,11 @@
 		else {
 			location.href="/boards/review/reviewDetail?reviewno="+bno;
 		}
-	//	
+	}
+		
+	function gotoFAQ(){
+		var key = '[[${keyword_main}]]';
+		location.href='/FAQ/'+key;
 	} 
   </script>
   
@@ -38,6 +42,7 @@
 <body>
 <!-- searchresult 시작 -->
 <div class="searchresult" layout:fragment="content">
+  <input type="hidden" id="keyword_main" th:value="${keyword_main}"/>
 
   <div class="maintitle">검색결과</div>
   
@@ -159,55 +164,39 @@
 
     
     <div class="FAQ_txt">FAQ</div>
-    
-    <!-- FAQ_head 시작 -->
-    <div class="FAQ_head">
-	  <!-- div_FAQ 시작 -->
-      <div class="div_FAQ">
-        <div class="faqno_txt">글번호</div>
-        <div class="category_txt">카테고리</div>
-        <div class="faqcategory_txt">제목</div>
-      </div>
-      <!-- div_FAQ 끝 -->
-    </div>
-    <!-- FAQ_head 끝 -->
-    
-    <!-- div_faq 시작 -->
-    <div class="div_faq">
-		
-	  <!-- faq 시작 -->
-      <div class="faq">
-          <div class="faqno">12</div>
-          <div class="faqcategory">동행</div>
-          <div class="faqtitle">블랙리스트는 따로 없나요?</div>
-      </div>
-      <!-- faq 끝 -->
-      
-      <!-- faq 시작 -->
-      <div class="faq">
-          <div class="faqno">12</div>
-          <div class="faqcategory">동행</div>
-          <div class="faqtitle">블랙리스트는 따로 없나요?</div>
-      </div>
-      <!-- faq 끝 -->
-      
-      <!-- faq 시작 -->
-      <div class="faq">
-          <div class="faqno">12</div>
-          <div class="faqcategory">동행</div>
-          <div class="faqtitle">블랙리스트는 따로 없나요?</div>
-      </div>
-      <!-- faq 끝 -->
-      
-      <!-- faq 시작 -->
-      <div class="faq">
-          <div class="faqno">12</div>
-          <div class="faqcategory">동행</div>
-          <div class="faqtitle">블랙리스트는 따로 없나요?</div>
-      </div>
-      <!-- faq 끝 -->
-      
-    </div>
+    <th:block th:if="${FAQ_list_size == 0}">
+				<div class="no_result_FAQ">일치하는 결과가 없습니다.</div>
+	</th:block>
+	
+	<th:block th:if="${FAQ_list_size != 0}">
+	    <!-- FAQ_head 시작 -->
+	    <div class="FAQ_head">
+		  <!-- div_FAQ 시작 -->
+	      <div class="div_FAQ">
+	        <div class="faqno_txt">FAQ 번호</div>
+	        <div class="category_txt">카테고리</div>
+	        <div class="faqcategory_txt">제목</div>
+	      </div>
+	      <!-- div_FAQ 끝 -->
+	    </div>
+	    <!-- FAQ_head 끝 -->
+	    
+	    <!-- div_faq 시작 -->
+	    <div class="div_faq">
+		    
+		  <!-- faq 시작 -->
+		  <th:block th:each="f : ${faqlist}">
+		      <div class="faq" onclick="gotoFAQ()">
+		          <div class="faqno" th:text="${f.faqno}"></div>
+		          <div class="faqcategory" th:text="${f.faqcategory}"></div>
+		          <div class="faqtitle" th:text="${f.faqtitle}"></div>
+		      </div>
+	      </th:block>
+	      <!-- faq 끝 -->
+	
+	      
+	    </div>
+	</th:block>
     <!-- div_faq 끝 -->
     
 <!--     div_more 시작 

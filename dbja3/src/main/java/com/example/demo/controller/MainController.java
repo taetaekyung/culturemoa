@@ -22,6 +22,7 @@ import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
 import com.example.demo.entity.Board;
 import com.example.demo.entity.Event;
+import com.example.demo.entity.FAQ;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Opentalk;
 import com.example.demo.entity.Reviewboard;
@@ -293,12 +294,16 @@ public class MainController {
 		   }
 	   }
 	   
-	   
+	   // FAQ list
+	   List<FAQ> faqlist = faqdao_jpa.findByKeyword(keyword_main);
+
 	   model.addAttribute("keyword_main", keyword_main);
 	   model.addAttribute("board_list_size", board_list_size);
 	   model.addAttribute("event_list_size", event_list_size);
+	   model.addAttribute("FAQ_list_size", faqlist.size());
 	   model.addAttribute("event_list", event_list);
 	   model.addAttribute("list", searchlist);
+	   model.addAttribute("faqlist", faqlist);
    }
    
    
