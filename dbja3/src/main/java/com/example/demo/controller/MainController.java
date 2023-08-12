@@ -36,7 +36,6 @@ import jakarta.servlet.http.HttpSession;
 public class MainController {
    //로그인 했을때만 이용가능 
    //로그인 했을때 아이디
-   private String id="user01";
    private int nowNo; //현재 마지막 채팅 번호
    
    @Autowired
@@ -104,11 +103,14 @@ public class MainController {
    @GetMapping("/mainPage")
    public void mainPage(Model model, HttpSession session) {
 	  //session으로 Member Entity 전달하기
-	   Member m = null;
+	 
+	/*  Member m = null;
 	  if(id != null && !id.equals("") && memberdao_jpa.countById(id) != 0) {
 		  m = memberdao_jpa.findById(id).get();
-	  }
-	  session.setAttribute("m", m);
+	  } */
+	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+		  model.addAttribute("log", "complete");
+	  };
 	   
 	  //최신 10개 게시물
 	  List<BoardVO> blist = new ArrayList<BoardVO>();
@@ -195,14 +197,19 @@ public class MainController {
    //------------채팅을 입력했을 때
    @GetMapping("main_insertTalk")
    @ResponseBody
-   public void insertTalk(String talk) {
-      int next=opentalkdao_jpa.nextNo();
-      nowNo=next;  //현재 마지막 채팅 번호 업데이트
-      Opentalk o=new Opentalk();
-      o.setTalkcontent(talk);
-      o.setTalkno(next);
-      o.setMemberId(id); 
-      opentalkdao_jpa.insert(o);
+   public void insertTalk(HttpSession session, String talk) {
+	  
+	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+		  String id = ((Member) session.getAttribute("m")).getId();
+	      int next=opentalkdao_jpa.nextNo();
+	      nowNo=next;  //현재 마지막 채팅 번호 업데이트
+	      Opentalk o=new Opentalk();
+	      o.setTalkcontent(talk);
+	      o.setTalkno(next);
+	      o.setMemberId(id); 
+	      opentalkdao_jpa.insert(o);
+	  }
+	  
    }
    
    //------------채팅창 업데이트
