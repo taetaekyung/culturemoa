@@ -140,23 +140,24 @@ public class BoardController {
 			// likeboard 객체 만들어 db에 추가
 			likeboard.setLikeno(likeboarddao_jpa.getLikeno());
 			likeboard.setMemberId(id);
-			likeboard.setBoardno(reviewno);
+			likeboard.setReviewno(reviewno);
 			likeboarddao_jpa.save(likeboard);
 			
 			// 좋아요 +1 
-			boarddao_jpa.updatefreeLike(like+1, reviewno);
+			reviewboarddao_jpa.plusLike(like+1, reviewno);
 			
 			// 반환값 1
 			return 1;
 		}
 		
 		// 해당 id를 가진 사람이 좋아요를 눌렀다면
-		else {
-			
+		else {		
 			// likeboard db에서 삭제
-			likeboarddao_jpa.deleteByIdAndBoardno(id, reviewno);
+			likeboarddao_jpa.deleteByIdAndReviewno(id, reviewno);
+			
 			// 좋아요 -1
-			boarddao_jpa.updatefreeLike(like-1, reviewno);
+			reviewboarddao_jpa.plusLike(like-1, reviewno);
+			
 			// 반환값 2
 			return 2;
 		}		

@@ -27,4 +27,9 @@ public interface LikeBoardDAO_jpa extends JpaRepository<Likeboard, Integer> {
 	@Transactional
 	@Query(value = "delete from Likeboard where id=?1 and boardno=?2", nativeQuery = true)
 	public void deleteByIdAndBoardno(String id, int boardno);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "delete from Likeboard where id=?1 and reviewno=?2", nativeQuery = true)
+	public void deleteByIdAndReviewno(String id, int reviewno);
 }
