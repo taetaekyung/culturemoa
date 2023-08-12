@@ -75,32 +75,32 @@
 		var like=$(".like").text();
 		like=parseInt(like);
 		//likIndex가 0이면 빈 별 1이면 채워진 별
-		if(likeIndex==0){
-			//별이 빈별에서 채워진 별로 바뀜
-			$(".star").attr("src","/assets/bookmark-Bkd.png");
-			//개수 추가
-			like=like+1;		
-			//페이지에 반영
-			$(".like").text(like);
-			likeIndex=1;
 			
-		}else{
-			$(".star").attr("src","/assets/star2.png");
-			like=like-1;
-			$(".like").text(like);
-			likeIndex=0;
-		}
-		
-		//db변경
-		$.ajax({
-			type:"GET",
-			url:"/updatefreeLike",
-			data:{like:like,boardno:boardno},
-			success:function(){
-				
-			}
+			
+		//db변경	
+		$.ajax({	
+			type:"GET",	
+			url:"/updatefreeLike",	
+			data:{like:like,boardno:boardno},	
+			success:function(re){	
+				// 반환값 1 : 좋아요 없다 -> 추가한다	
+				if (re == 1) {	
+					$(".star").attr("src","/assets/component-57-on.png");	
+					alert("좋아요 등록되었습니다.");	
+					window.location.href = '/boards/board/freeDetail?boardno='+boardno;	
+				}	
+				// 반환값 2 : 좋아요 있다 -> 삭제한다	
+				else {	
+					$(".star").attr("src","/assets/component-57-off.png");	
+					alert("좋아요 취소하였습니다.")	
+					window.location.href = '/boards/board/freeDetail?boardno='+boardno;	
+				}	
+					
+					
+			}	
 		});
 	}	
+	
 	//조회수 업데이트
 	$(document).ready(function(){
 		//게시물 번호
@@ -336,8 +336,7 @@
           <!--좋아요 수-->
           <div class="like" th:text="${b.boardlikes}"></div>
           <!--좋아요별-->
-          <img class="star" src="/assets/star2.png" onclick="pluslike()">
-        </div>
+		  <img class="star" th:src="${likeboard == 0 ? '/assets/component-57-off.png' : '/assets/component-57-on.png'}" onclick="pluslike()">        </div>
         <div class="divsubtitle-RX7">
           <div class="auto-group-mqft-ZtD">
 		    <!--작성자 -->  

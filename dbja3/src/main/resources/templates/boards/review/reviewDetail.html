@@ -66,9 +66,7 @@
 		}
 	}
     //-------------------------------------------------------
-	//좋아요 index
-	var likeIndex=0;
-	
+
 	//목록으로 돌아가기
 	function goReview(){
 		var review = "/boards/review/reviewlist";
@@ -124,34 +122,30 @@
 		var like=$(".like").text();
 		like=parseInt(like);
 		
-		//likeIndex가 0이면 빈 별 1이면 채워진 별
-		if(likeIndex==0){
-			//별이 빈별에서 채워진 별로 바뀜
-			$(".star").attr("src","/assets/bookmark-Bkd.png");
-			//개수 추가
-			like=like+1;		
-			//페이지에 반영
-			$(".like").text(like);
-			likeIndex=1;
-			
-		}else{
-			$(".star").attr("src","/assets/star2.png");
-			like=like-1;
-			$(".like").text(like);
-			likeIndex=0;
-		}
-		
 		//db변경
 		$.ajax({
 			type:"GET",
-			url:"/plusLike",
+			url:"/updateReviewLike",
 			data:{like:like,reviewno:reviewno},
-			success:function(){
+			success:function(re){
+				// 반환값 1 : 좋아요 없다 -> 추가한다
+				if (re == 1) {
+					$(".star").attr("src","/assets/component-57-on.png");
+					alert("좋아요 등록되었습니다.");
+					window.location.href = '/boards/review/reviewDetail?reviewno='+reviewno;
+				}
+				// 반환값 2 : 좋아요 있다 -> 삭제한다
+				else {
+					$(".star").attr("src","/assets/component-57-off.png");
+					alert("좋아요 취소하였습니다.")
+					window.location.href = '/boards/review/reviewDetail?reviewno='+reviewno;
+				}
+				
 				
 			}
 		});
-		
 	}
+	
 	//조회수 업데이트
 	$(document).ready(function(){
 		//게시물 번호
@@ -341,7 +335,7 @@
           <div class="category-Luw">[후기]</div>
           <div class="title-3pM" th:text="${r.reviewtitle}"></div>
             <div class="like" th:text="${r.reviewlike}"></div>
-	        <img class="star" src="/assets/star2.png" onclick="pluslike()">
+            <img class="star" th:src="${likeboard == 0 ? '/assets/component-57-off.png' : '/assets/component-57-on.png'}" onclick="pluslike()">
         </div>
         <div class="divsubtitle-b5B">
           <div class="auto-group-m8ty-v7T">

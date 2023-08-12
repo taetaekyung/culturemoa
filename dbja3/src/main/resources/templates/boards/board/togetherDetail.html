@@ -74,6 +74,8 @@
 		//좋아요 개수 
 		var like=$(".like").text();
 		like=parseInt(like);
+		
+		/*
 		//likIndex가 0이면 빈 별 1이면 채워진 별
 		if(likeIndex==0){
 			//별이 빈별에서 채워진 별로 바뀜
@@ -90,13 +92,24 @@
 			$(".like").text(like);
 			likeIndex=0;
 		}
-		
+		 */
 		//db변경
 		$.ajax({
 			type:"GET",
 			url:"/updatefreeLike",
 			data:{like:like,boardno:boardno},
-			success:function(){
+			success:function(re){
+				if (re == 1) {
+					$(".star").attr("src","/assets/component-57-on.png");
+					alert("좋아요 등록되었습니다.");
+					window.location.href = '/boards/board/togetherDetail?boardno='+boardno;
+				}
+				else {
+					$(".star").attr("src","/assets/component-57-off.png");
+					alert("좋아요 취소하였습니다.")
+					window.location.href = '/boards/board/togetherDetail?boardno='+boardno;
+				}
+				
 				
 			}
 		});
@@ -311,7 +324,7 @@
   <!--메인페이지 -->
   <div class="main-QuX">
     <div class="auto-group-hjvh-aZ7">
-      <div class="maintitle-XDT">게시판</div>
+      <div class="maintitle-XDT">동행게시판</div>
       <div class="mainheader-mdb">
         <div class="framemainheader-Hbw">
           <div class="framelocation-ehP">
@@ -331,13 +344,13 @@
 		  <input id="boardno" type="hidden" th:value="${b.boardno}">
 		  <!--id -->
 		  <input type="hidden" id="id" th:value="${id}"> 
-          <div class="category-P4d">[자유]</div>
+          <div class="category-P4d">[동행]</div>
            <!--제목 -->
           <div class="title-gZX" th:text="${b.boardtitle}"></div>
           <!--좋아요 수-->
           <div class="like" th:text="${b.boardlikes}"></div>
           <!--좋아요별-->
-          <img class="star" src="/assets/star2.png" onclick="pluslike()">
+          <img class="star" th:src="${likeboard == 0 ? '/assets/component-57-off.png' : '/assets/component-57-on.png'}" onclick="pluslike()">
         </div>
         <div class="divsubtitle-RX7">
           <div class="auto-group-mqft-ZtD">

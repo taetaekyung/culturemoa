@@ -20,9 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.dao.BoardDAO_jpa;
 import com.example.demo.dao.CommentsDAO_jpa;
 import com.example.demo.dao.EventDAO_jpa;
+import com.example.demo.dao.LikeBoardDAO_jpa;
 import com.example.demo.entity.Board;
 import com.example.demo.entity.Comments;
 import com.example.demo.entity.Event;
+import com.example.demo.entity.Likeboard;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Reviewcomment;
 
@@ -70,6 +72,8 @@ public class BoardController {
 	private CommentsDAO_jpa commentsdao_jpa;
 	@Autowired
 	private ReviewCommentDAO_jpa reveiwcommentdao_jpa;
+	@Autowired
+	private LikeBoardDAO_jpa likeboarddao_jpa;
 	
 	//-----------------------후기 게시판
 	 //댓글 수정하기
@@ -122,12 +126,42 @@ public class BoardController {
 	public void updateHit(int hit,int reviewno) {
 		int re=reviewboarddao_jpa.updateHit(hit, reviewno);
 	}
+	
 	//좋아요 개수 추가
-	@GetMapping("/plusLike")
+	@GetMapping("/updateReviewLike")
 	@ResponseBody
-	public void plusLike(int like,int reviewno) {
-		int re=reviewboarddao_jpa.plusLike(like, reviewno);
+	public int plusLike(HttpSession session, int like,int reviewno) {
+		String id = ((Member)session.getAttribute("m")).getId();
+		
+		// 만약 해당 id를 가진 사람이 좋아요를 누르지 않았다면
+		if(likeboarddao_jpa.countByIdAndReviewno(id, reviewno) == 0) {
+			Likeboard likeboard = new Likeboard();
+			
+			// likeboard 객체 만들어 db에 추가
+			likeboard.setLikeno(likeboarddao_jpa.getLikeno());
+			likeboard.setMemberId(id);
+			likeboard.setBoardno(reviewno);
+			likeboarddao_jpa.save(likeboard);
+			
+			// 좋아요 +1 
+			boarddao_jpa.updatefreeLike(like+1, reviewno);
+			
+			// 반환값 1
+			return 1;
+		}
+		
+		// 해당 id를 가진 사람이 좋아요를 눌렀다면
+		else {
+			
+			// likeboard db에서 삭제
+			likeboarddao_jpa.deleteByIdAndBoardno(id, reviewno);
+			// 좋아요 -1
+			boarddao_jpa.updatefreeLike(like-1, reviewno);
+			// 반환값 2
+			return 2;
+		}		
 	}
+
 	
 	//게시글 삭제
 	@GetMapping("/deleteReview")
@@ -194,6 +228,9 @@ public class BoardController {
 		//게시물 댓글 가져오기
 		model.addAttribute("com", reveiwcommentdao_jpa.findByReviewBoardNo(reviewno));
 		
+		// 좋아요 여부 가져오기
+		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(id, reviewno));
+		
 		String start=event.getEventstart().toString();
 		String end=event.getEventend().toString();
 		String day=start.substring(0, start.indexOf(" "))+" ~ "+end.substring(0, end.indexOf(" "));
@@ -201,6 +238,7 @@ public class BoardController {
 		return "/boards/review/reviewDetail";
 	}
 	
+	// 리뷰 게시판 검색/페이징/정렬
 	@GetMapping(value={"/boards/review/reviewlist", "/boards/review/reviewlist", "/boards/review/reviewlist/{page}", 
 			"/boards/review/reviewlist/{keyword}/{page}", "/boards/review/reviewlist/{keyword}/{page}/{orderby}"})
 	public ModelAndView reviewlist(HttpSession session, @PathVariable(required=false) String keyword, 
@@ -383,8 +421,36 @@ public class BoardController {
 	//좋아요 개수 추가
 	@GetMapping("/updatefreeLike")
 	@ResponseBody
-	public void updatefreeLike(int like,int boardno) {
-		int re=boarddao_jpa.updatefreeLike(like, boardno);
+	public int updatefreeLike(HttpSession session, int like,int boardno) {
+		String id = ((Member)session.getAttribute("m")).getId();
+		
+		// 만약 해당 id를 가진 사람이 좋아요를 누르지 않았다면
+		if(likeboarddao_jpa.countByIdAndBoardno(id, boardno) == 0) {
+			Likeboard likeboard = new Likeboard();
+			
+			// likeboard 객체 만들어 db에 추가
+			likeboard.setLikeno(likeboarddao_jpa.getLikeno());
+			likeboard.setMemberId(id);
+			likeboard.setBoardno(boardno);
+			likeboarddao_jpa.save(likeboard);
+			
+			// 좋아요 +1 
+			boarddao_jpa.updatefreeLike(like+1, boardno);
+			
+			// 반환값 1
+			return 1;
+		}
+		
+		// 해당 id를 가진 사람이 좋아요를 눌렀다면
+		else {
+			
+			// likeboard db에서 삭제
+			likeboarddao_jpa.deleteByIdAndBoardno(id, boardno);
+			// 좋아요 -1
+			boarddao_jpa.updatefreeLike(like-1, boardno);
+			// 반환값 2
+			return 2;
+		}		
 	}
 	
 	//게시물 상세 페이지 이동
@@ -400,6 +466,10 @@ public class BoardController {
 		
 		//게시물 댓글 가져오기
 		model.addAttribute("com", commentsdao_jpa.findByBoardNo(boardno));
+
+		// 좋아요 여부 가져오기
+		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(id, boardno));
+		
 		return "/boards/board/freeDetail";
 	}
 	//게시글 작성 페이지
@@ -612,6 +682,8 @@ public class BoardController {
 		
 		//게시물 댓글 가져오기
 		model.addAttribute("com", commentsdao_jpa.findByBoardNo(boardno));
+		// 좋아요 여부 가져오기
+		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(id, boardno));
 		
 		return "/boards/board/togetherDetail";
 	}
