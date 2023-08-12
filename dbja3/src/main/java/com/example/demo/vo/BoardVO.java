@@ -6,11 +6,13 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-	private int no;
+	private int boardno;
 	private String bcategory;
-	private String title;
+	private String boardtitle;
+	private String boardcontent;
 	private Date regdate;
 	private String id;
-	private int hit;
-	private int likes;
+	private String nickname;
+	private int boardhit;
+	private int boardlikes;
 }

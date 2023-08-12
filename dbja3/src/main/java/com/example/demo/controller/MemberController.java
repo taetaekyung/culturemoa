@@ -44,6 +44,7 @@ import com.example.demo.entity.Event;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Message;
 import com.example.demo.vo.EventVO;
+import com.example.demo.vo.MessageVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -62,6 +63,19 @@ public class MemberController {
 	
 	@Autowired
 	private EventDAO_jpa eventdao_jpa;
+	
+	// Message에 닉네임 띄우기 위해서 VO로 변환
+	public MessageVO messageToMessageVO(Message m) {
+		MessageVO mvo = new MessageVO();
+		mvo.setMno(m.getMno());
+		mvo.setMid(m.getMid());
+		mvo.setMcontent(m.getMcontent());
+		mvo.setId(m.getMemberId());
+		mvo.setNickname(memberdao_jpa.findNicknameById(m.getMemberId()));
+		mvo.setRegdate(m.getRegdate());
+		return mvo;
+	}
+	
 	
 	
 	/* -----------마이페이지-회원정보------------ */
@@ -157,10 +171,11 @@ public class MemberController {
 	//마이페이지-쪽지쓰기 팝업
 	@GetMapping("/member/messagesend")
 	public void sendMessage(@RequestParam String id,Model model) {
-		if(id==null||id.equals("")) {
-			id="";
+		String nickname = "";
+		if(id != null && !id.equals("")) {
+			nickname = memberdao_jpa.findNicknameById(id);
 		}
-		model.addAttribute("id", id);
+		model.addAttribute("nickname", nickname);
 	}
 	
 	//마이페이지-쪽지 삭제(체크박스 통해서 삭제)

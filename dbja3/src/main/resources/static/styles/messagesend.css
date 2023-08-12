@@ -80,8 +80,7 @@ body {
   color: #018bf8;
   font-family: Noto Sans KR, 'Source Sans Pro';
 }
-.messagesend-siq .item-0-50-jeZ .item-0-50-jeZ-sub-1 {
-}
+
 .messagesend-siq .id1234--tvm {
   width: 19.3rem;
   height: 2rem;
@@ -96,6 +95,12 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
 }
+
+.id1234--tvm:focus {
+	outline: none;
+	border: none;
+}
+
 .messagesend-siq .yy-mm-dd-bqB {
   width: 9.1rem;
   height: 2rem;

@@ -90,13 +90,13 @@
 	}
 	//본인이 작성한 글일 경우 '수정,삭제,목록' 아닐경우 '목록'만 보이기
 	$(function(){
-		var id=$("#id").val();
+		var nickname=$("#nickname").val();
 		var writer=$(".inputwriter-Y8q").text();
 		//수정버튼
 		const btn1 = document.querySelector(".updatebtn-Jf3"); 
 		//삭제버튼
         const btn2 = document.querySelector(".deletebtn-kG9");
-		if(id==writer){
+		if(nickname==nickname){
 		   
 	        btn1.style.visibility = 'visible';
 	        btn2.style.visibility = 'visible';
@@ -327,6 +327,7 @@
     <!--main -->
     <!-- 회원 id -->
     <input type="hidden" id="id" th:value="${id}"> 
+    <input type="hidden" id="nickname" th:value="${session.m.nickname}"> 
     <input type="hidden" id="reviewno" th:value="${r.reviewno}">
     <div class="divmain-bZ3">
       <div class="divtitle-uJq">
@@ -342,7 +343,7 @@
 			<!-- 작성자 --> 
             <div class="divwrtier-faq">
               <div class="writer-zt1">작성자</div>
-              <div class="inputwriter-Y8q" th:text="${r.member.id}"></div>
+              <div class="inputwriter-Y8q" th:text="${r.nickname}"></div>
             </div>
             <div class="line1-TFo">
             </div>
@@ -395,11 +396,11 @@
       <div class="commentDiv" th:each="c:${com}">
 	      <!--댓글 작성자, 작성일 -->
 	      <div class="comment" th:value="${c.rcomno}">
-		      <div class="commentId" th:text="${c.member.id}"></div>
+		      <div class="commentId" th:text="${c.nickname}"></div>
 		      <!--제목 -->
 		      <div class="commentRegdate" th:text="${c.regdate}"></div>
 		      <!-- 만약 댓글 작성자라면 -->
-		      <div class="comBtn" th:if="${c.member.id eq id}">
+		      <div class="comBtn" th:if="${c.id eq id}">
 				  <div class="commnetUpdate" th:attr="onclick='commentEdit(\'' + ${c.rcomno} + '\', \'' + ${c.rcomcontent} + '\')'" th:data-comment-id="${c.rcomno}">수정하기</div>
 				  <div class="commnetUpdateComplete" style="display: none;" th:attr="onclick='commentEditComplete(\'' + ${c.rcomno} + '\')'" th:data-comment-id="${c.rcomno}">수정완료</div>
 			      <div class="commentDelete"><a href="#" th:attr="onclick='commentDelete(\'' + ${c.rcomno} + '\' , \'' + ${r.reviewno} + '\')'">삭제하기</a></div>

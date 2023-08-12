@@ -57,25 +57,27 @@ public class MainController {
 
    public BoardVO changeBoardVO(Board b) {
 	   BoardVO bvo = new BoardVO();
-	   bvo.setNo(b.getBoardno());
+	   bvo.setBoardno(b.getBoardno());
 	   bvo.setBcategory(b.getBcategory());
-	   bvo.setTitle(b.getBoardtitle());
+	   bvo.setBoardtitle(b.getBoardtitle());
 	   bvo.setRegdate(b.getRegdate());
 	   bvo.setId(b.getMemberId());
-	   bvo.setHit(b.getBoardhit());
-	   bvo.setLikes(b.getBoardlikes());
+	   bvo.setNickname(memberdao_jpa.findNicknameById(b.getMemberId()));
+	   bvo.setBoardhit(b.getBoardhit());
+	   bvo.setBoardlikes(b.getBoardlikes());
 	   return bvo;
    }
    
    public BoardVO changeBoardVO(Reviewboard r) {
 	   BoardVO bvo = new BoardVO();
-	   bvo.setNo(r.getReviewno());
+	   bvo.setBoardno(r.getReviewno());
 	   bvo.setBcategory("후기");
-	   bvo.setTitle(r.getReviewtitle());
+	   bvo.setBoardtitle(r.getReviewtitle());
 	   bvo.setRegdate(r.getRegdate());
 	   bvo.setId(r.getMemberId());
-	   bvo.setHit(r.getReviewhit());
-	   bvo.setLikes(r.getReviewlike());
+	   bvo.setNickname(memberdao_jpa.findNicknameById(r.getMemberId()));
+	   bvo.setBoardhit(r.getReviewhit());
+	   bvo.setBoardlikes(r.getReviewlike());
 	   return bvo;
    }
    

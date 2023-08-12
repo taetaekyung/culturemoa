@@ -76,10 +76,10 @@
 	}
 	//작성자 게시물 보기
 	function listById(id){
-		var keyword=id;
-		url = "/boards/board/freelist/"+keyword+"/1/regdate";
+		url = "/boards/board/freelist/"+id+"/1/regdate";
 		location.href=url;
 	}
+	
 	//메시지 보내기
 	function sendMessage(id){
 		// 메시지 보내기 팝업
@@ -172,12 +172,12 @@
 		            <div class="title" onclick="goReview(this)" th:text="${b.boardtitle}" th:value="${b.boardno}"></div>
 		            <div class="regdate" th:text="${b.regdate}"></div>
 		            <div class="idDiv">
-		            	<div th:attr="onclick='message(\'' + ${b.member.id} + '\', \'' + ${b.boardno} + '\')'" class="userid" th:text="${b.member.id}"></div>
+		            	<div th:attr="onclick='message(\'' + ${b.id} + '\', \'' + ${b.boardno} + '\')'" class="userid" th:text="${b.nickname}"></div>
 		            	<div class="messageDiv"  th:id="'message'+${b.boardno}">
 			                <!--작성자에게 쪽지보내기 -->
-			                <div class="sendMessage"  th:value="${b.member.id}" th:attr="onclick='sendMessage(\''+${b.member.id}+'\')'">쪽지보내기</div>
+			                <div class="sendMessage"  th:value="${b.id}" th:attr="onclick='sendMessage(\''+${b.id}+'\')'">쪽지보내기</div>
 			                <!--작성자 게시물 보기 -->  
-			                <div class="listById"  th:value="${b.member.id}"  th:attr="onclick='listById(\''+${b.member.id}+'\')'">게시물 보기</div>
+			                <div class="listById"  th:value="${b.id}"  th:attr="onclick='listById(\''+${b.id}+'\')'">게시물 보기</div>
 		                </div>
 		            </div>  
 		            <div class="hit" th:text="${b.boardhit}"></div>

@@ -21,12 +21,17 @@ import com.example.demo.dao.BoardDAO_jpa;
 import com.example.demo.dao.CommentsDAO_jpa;
 import com.example.demo.dao.EventDAO_jpa;
 import com.example.demo.dao.LikeBoardDAO_jpa;
+import com.example.demo.dao.MemberDAO_jpa;
 import com.example.demo.entity.Board;
 import com.example.demo.entity.Comments;
 import com.example.demo.entity.Event;
 import com.example.demo.entity.Likeboard;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Reviewcomment;
+import com.example.demo.vo.BoardVO;
+import com.example.demo.vo.CommentsVO;
+import com.example.demo.vo.ReviewboardVO;
+import com.example.demo.vo.ReviewcommentVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -71,23 +76,158 @@ public class BoardController {
 	@Autowired
 	private CommentsDAO_jpa commentsdao_jpa;
 	@Autowired
-	private ReviewCommentDAO_jpa reveiwcommentdao_jpa;
+	private ReviewCommentDAO_jpa reviewcommentdao_jpa;
 	@Autowired
 	private LikeBoardDAO_jpa likeboarddao_jpa;
+	@Autowired
+	private MemberDAO_jpa memberdao_jpa;
+	
+    public BoardVO boardToBoardVO(Board b) {
+	    BoardVO bvo = new BoardVO();
+	    bvo.setBoardno(b.getBoardno());
+	    bvo.setBcategory(b.getBcategory());
+	    bvo.setBoardtitle(b.getBoardtitle());
+	    bvo.setBoardcontent(b.getBoardcontent());
+	    bvo.setRegdate(b.getRegdate());
+	    bvo.setId(b.getMemberId());
+	    bvo.setNickname(memberdao_jpa.findNicknameById(b.getMemberId()));
+	    bvo.setBoardhit(b.getBoardhit());
+	    bvo.setBoardlikes(b.getBoardlikes());
+	    return bvo;
+    }
+    
+	public CommentsVO commentsToCommentsVO(Comments c) {
+		CommentsVO cvo = new CommentsVO();
+		cvo.setComno(c.getComno());
+		cvo.setComcontent(c.getComcontent());
+		cvo.setRegdate(c.getRegdate());
+		cvo.setId(c.getMember().getId());
+		cvo.setNickname(memberdao_jpa.findNicknameById(c.getMember().getId()));
+		cvo.setBoardno(c.getBoard().getBoardno());
+		return cvo;
+	}
+	
+    
+	
+	public ReviewboardVO reviewToReviewVO(Reviewboard r) {
+		ReviewboardVO rvo = new ReviewboardVO();
+		rvo.setReviewno(r.getReviewno());
+		rvo.setReviewtitle(r.getReviewtitle());
+		rvo.setReviewcontent(r.getReviewcontent());
+		rvo.setReviewhit(r.getReviewhit());
+		rvo.setId(r.getMemberId());
+		rvo.setNickname(memberdao_jpa.findNicknameById(r.getMemberId()));
+		rvo.setEventno(r.getEventno());
+		rvo.setRegdate(r.getRegdate());
+		rvo.setReviewlike(r.getReviewlike());
+		return rvo;
+	}
+	
+	public ReviewcommentVO rcommentToRcommentVO(Reviewcomment rc) {
+		ReviewcommentVO rcvo = new ReviewcommentVO();
+		rcvo.setRcomno(rc.getRcomno());
+		rcvo.setRcomcontent(rc.getRcomcontent());
+		rcvo.setRegdate(rc.getRegdate());
+		rcvo.setId(rc.getMember().getId());
+		rcvo.setNickname(memberdao_jpa.findNicknameById(rc.getMember().getId()));
+		rcvo.setReviewno(rc.getReviewboard().getReviewno());
+		return rcvo;
+	}
 	
 	//-----------------------후기 게시판
+	
+	// 후기 게시판 검색/페이징/정렬
+	@GetMapping(value={"/boards/review/reviewlist", "/boards/review/reviewlist", "/boards/review/reviewlist/{page}", 
+			"/boards/review/reviewlist/{keyword}/{page}", "/boards/review/reviewlist/{keyword}/{page}/{orderby}"})
+	public ModelAndView reviewlist(HttpSession session, @PathVariable(required=false) String keyword, 
+			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
+		ModelAndView mav = new ModelAndView("/boards/review/reviewlist");
+
+		if(orderby == null) {
+			if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
+				orderby = (String) session.getAttribute("orderby");
+			}
+			else {
+				orderby="regdate";
+			}	
+		}
+		String key = "all";
+		if(page == null) {
+			page = 1;
+		}
+		if(keyword == null) {
+			key = "all";
+		}
+
+		Page<Reviewboard> list;
+		
+		if(session.getAttribute("keyword")!=null) {
+			key = (String)session.getAttribute("keyword");
+		}
+		if(keyword != null) {
+			key = keyword;
+		}
+		
+		Pageable pageable;
+		
+		if(key.equals("all")) {
+			if(orderby.equals("regdate")) {
+				pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
+			}
+			else {
+			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("reviewhit").descending());
+			}
+			list = reviewboarddao_jpa.findByBcategory("", pageable);
+		}
+		else {
+			if(orderby.equals("regdate")) {
+			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
+			}
+			else {
+			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("reviewhit").descending());
+			}
+			list = reviewboarddao_jpa.findByBcategory(keyword, pageable);
+
+		}
+		
+	    List<List<ReviewboardVO>> rows = new ArrayList<>();
+	    List<ReviewboardVO> reviewlist = new ArrayList<ReviewboardVO>();
+	    List<ReviewboardVO> currentRow = null;
+		session.setAttribute("keyword", key);
+		session.setAttribute("orderby", orderby);
+		
+	    for (Reviewboard review : list.getContent()) {
+	    	
+	    	ReviewboardVO reviewvo = reviewToReviewVO(review);
+	    	
+	    	reviewlist.add(reviewvo);
+	        if (currentRow == null || currentRow.size() >= 4) {
+	            currentRow = new ArrayList<>();
+	            rows.add(currentRow);
+	        }
+	        currentRow.add(reviewvo);
+	    }
+		
+		mav.addObject("list", reviewlist);
+		mav.addObject("currentPage", page);
+		mav.addObject("totalPages", list.getTotalPages());
+
+		return mav;
+	}
+	
+	
 	 //댓글 수정하기
     @GetMapping("/reviewCommentUpdate")
     @ResponseBody
     public void reviewCommentUpdate(int rcomno,String rcomcontent) {
-    	reveiwcommentdao_jpa.updateByRcomno(rcomno, rcomcontent);
+    	reviewcommentdao_jpa.updateByRcomno(rcomno, rcomcontent);
     }
     
     //댓글 삭제하기
     @GetMapping("/reviewCommentDelete")
     @ResponseBody
     public void reviewCommentDelete(@RequestParam int rcomno) {
-    	reveiwcommentdao_jpa.deleteById(rcomno);
+    	reviewcommentdao_jpa.deleteById(rcomno);
     }
     
     //댓글 추가하기
@@ -108,18 +248,20 @@ public class BoardController {
         c.setRegdate(new Date());
     	
         //댓글 번호
-        c.setRcomno(reveiwcommentdao_jpa.findByNext());
+        c.setRcomno(reviewcommentdao_jpa.findByNext());
         
         //댓글 저장
-        reveiwcommentdao_jpa.save(c);
+        reviewcommentdao_jpa.save(c);
         
-        System.out.println("c:"+c);
+    //    System.out.println("c:"+c);
         
     	ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewDetail?reviewno="+reviewno);
     	
     	
     	return mav;
     }
+    
+    
 	//조회수 추가
 	@GetMapping("/updateHit")
 	@ResponseBody
@@ -193,6 +335,8 @@ public class BoardController {
 		//행사리스트
 		model.addAttribute("list", eventdao_jpa.findAll());
 	}
+	
+	
 	//후기 게시글 수정
 	@PostMapping("/boardUpdate")
 	public ModelAndView boardUpdate(HttpSession session, Reviewboard r,String Contents) {
@@ -209,25 +353,48 @@ public class BoardController {
 		reviewboarddao_jpa.save(r);
 		return mav;
 	}
+	
 	//게시물 상세 페이지 이동
 	@GetMapping("/boards/review/reviewDetail")
 	public String reviewDetail(HttpSession session, @RequestParam int reviewno,Model model) {
-		Reviewboard review=new Reviewboard();
-		review=reviewboarddao_jpa.findByNo(reviewno);
+		Reviewboard review = reviewboarddao_jpa.findByNo(reviewno);
+		
+		// 닉네임 있는 vo로 변경
+		ReviewboardVO rvo = reviewToReviewVO(review);
+		
+		
 		//후기 게시물 행사번호
 		int eventno=review.getEventno();  
+		
 		//게시물 내용 가져오기
-		model.addAttribute("r", review);
+		model.addAttribute("r", rvo);
 		//아이디
 		String id = ((Member)session.getAttribute("m")).getId();
 		model.addAttribute("id", id);
+		
 		//공연정보
 		Event event=new Event();
 		event= eventdao_jpa.findByEventno(eventno);
 		model.addAttribute("event", event);
 		
-		//게시물 댓글 가져오기
-		model.addAttribute("com", reveiwcommentdao_jpa.findByReviewBoardNo(reviewno));
+		//게시물 댓글 가져오기 (반복문 돌리면서 cvo로 바꾸기)
+		List<Reviewcomment> comlist = reviewcommentdao_jpa.findByReviewBoardNo(reviewno);
+		List<ReviewcommentVO> comvolist = new ArrayList<ReviewcommentVO>();
+		
+		// 만약 댓글이 없다면 그대로 넘겨줌
+		if(comlist.size()== 0) {
+			model.addAttribute("com", comlist);
+		}
+		
+		// 댓글이 있다면 바꿔줌
+		else {
+			for( Reviewcomment rc : comlist) {
+				ReviewcommentVO rcvo = rcommentToRcommentVO(rc);
+				comvolist.add(rcvo);
+			}
+			model.addAttribute("com", comvolist);
+		}
+		
 		
 		// 좋아요 여부 가져오기
 		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(id, reviewno));
@@ -239,82 +406,7 @@ public class BoardController {
 		return "/boards/review/reviewDetail";
 	}
 	
-	// 리뷰 게시판 검색/페이징/정렬
-	@GetMapping(value={"/boards/review/reviewlist", "/boards/review/reviewlist", "/boards/review/reviewlist/{page}", 
-			"/boards/review/reviewlist/{keyword}/{page}", "/boards/review/reviewlist/{keyword}/{page}/{orderby}"})
-	public ModelAndView reviewlist(HttpSession session, @PathVariable(required=false) String keyword, 
-			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
-		ModelAndView mav = new ModelAndView("/boards/review/reviewlist");
-
-		if(orderby == null) {
-			if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
-				orderby = (String) session.getAttribute("orderby");
-			}
-			else {
-				orderby="regdate";
-			}	
-		}
-		String key = "all";
-		if(page == null) {
-			page = 1;
-		}
-		if(keyword == null) {
-			key = "all";
-		}
-
-		Page<Reviewboard> list;
-		
-		if(session.getAttribute("keyword")!=null) {
-			key = (String)session.getAttribute("keyword");
-		}
-		if(keyword != null) {
-			key = keyword;
-		}
-		
-		Pageable pageable;
-		
-		if(key.equals("all")) {
-			if(orderby.equals("regdate")) {
-				pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
-			}
-			else {
-			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("reviewhit").descending());
-			}
-			list = reviewboarddao_jpa.findByBcategory("", pageable);
-		}
-		else {
-			if(orderby.equals("regdate")) {
-			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
-			}
-			else {
-			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("reviewhit").descending());
-			}
-			list = reviewboarddao_jpa.findByBcategory(keyword, pageable);
-
-		}
-		
-	    List<List<Reviewboard>> rows = new ArrayList<>();
-	    List<Reviewboard> boardlist = new ArrayList<Reviewboard>();
-	    List<Reviewboard> currentRow = null;
-		session.setAttribute("keyword", key);
-		session.setAttribute("orderby", orderby);
-		
-	    for (Reviewboard board : list.getContent()) {
-	    	
-	    	boardlist.add(board);
-	        if (currentRow == null || currentRow.size() >= 4) {
-	            currentRow = new ArrayList<>();
-	            rows.add(currentRow);
-	        }
-	        currentRow.add(board);
-	    }
-		
-		mav.addObject("list", boardlist);
-		mav.addObject("currentPage", page);
-		mav.addObject("totalPages", list.getTotalPages());
-
-		return mav;
-	}
+	
 	
 	//후기 게시글 작성 페이지
 	@GetMapping("/boards/review/insertBoard_review")
@@ -378,9 +470,88 @@ public class BoardController {
 		
 		return jsonString;
 	}
+	
 	//-----------------------
 	//-----------------------자유게시판
 
+	//게시글 list
+	@GetMapping(value={"/boards/board/freelist", "/boards/board/freelist/", "/boards/board/freelist/{page}", 
+			"/boards/board/freelist/{keyword}/{page}", "/boards/board/freelist/{keyword}/{page}/{orderby}"})
+	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 
+			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
+		ModelAndView mav = new ModelAndView("/boards/board/freelist");
+
+		if(orderby == null) {
+			if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
+				orderby = (String) session.getAttribute("orderby");
+			}
+			else {
+				orderby="regdate";
+			}	
+		}
+		String key = "all";
+		if(page == null) {
+			page = 1;
+		}
+		if(keyword == null) {
+			key = "all";
+		}
+
+		Page<Board> list;
+		
+		if(session.getAttribute("keyword")!=null) {
+			key = (String)session.getAttribute("keyword");
+		}
+		if(keyword != null) {
+			key = keyword;
+		}
+		
+		Pageable pageable;
+		
+		if(key.equals("all")) {
+			if(orderby.equals("regdate")) {
+				pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
+			}
+			else {
+			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
+			}
+			list = boarddao_jpa.findByBcategory("자유", "", pageable);
+		}
+		else {
+			if(orderby.equals("regdate")) {
+			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
+			}
+			else {
+			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
+			}
+			list = boarddao_jpa.findByBcategory("자유", keyword, pageable);
+
+		}
+		
+	    List<List<BoardVO>> rows = new ArrayList<>();
+	    List<BoardVO> boardlist = new ArrayList<BoardVO>();
+	    List<BoardVO> currentRow = null;
+		session.setAttribute("keyword", key);
+		session.setAttribute("orderby", orderby);
+		
+	    for (Board board : list.getContent()) {
+	    	BoardVO bvo = new BoardVO();
+	    	bvo = boardToBoardVO(board);
+	    	boardlist.add(bvo);
+	        if (currentRow == null || currentRow.size() >= 4) {
+	            currentRow = new ArrayList<>();
+	            rows.add(currentRow);
+	        }
+	        currentRow.add(bvo);
+	    }
+	    
+		mav.addObject("list", boardlist);
+		mav.addObject("currentPage", page);
+		mav.addObject("totalPages", list.getTotalPages());
+
+		return mav;
+	}
+	
 	//게시글 삭제
 	@GetMapping("/deletefree")
 	@ResponseBody
@@ -459,17 +630,35 @@ public class BoardController {
 	public String freeDetail(HttpSession session, @RequestParam int boardno,Model model) {
 		Board board=new Board();
 		board=boarddao_jpa.findByNo(boardno);
-		//게시물 내용 가져오기
-		model.addAttribute("b", board);
-		//아이디
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("id", id);
+		BoardVO bvo = boardToBoardVO(board);
 		
-		//게시물 댓글 가져오기
-		model.addAttribute("com", commentsdao_jpa.findByBoardNo(boardno));
-
+		//게시물 내용 가져오기
+		model.addAttribute("b", bvo);
+		//아이디
+		Member m = (Member)session.getAttribute("m");
+		model.addAttribute("m", m);
+		
+		//게시물 댓글 가져오기 (반복문 돌리면서 cvo로 바꾸기)
+		List<Comments> comlist = commentsdao_jpa.findByBoardNo(boardno);
+		List<CommentsVO> comvolist = new ArrayList<CommentsVO>();
+		
+		// 만약 댓글이 없다면 그대로 넘겨줌
+		if(comlist.size()== 0) {
+			model.addAttribute("com", comlist);
+		}
+		
+		// 댓글이 있다면 바꿔줌
+		else {
+			for(Comments c : comlist) {
+				CommentsVO cvo = commentsToCommentsVO(c);
+				comvolist.add(cvo);
+			}
+			model.addAttribute("com", comvolist);
+		}
+		
+		
 		// 좋아요 여부 가져오기
-		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(id, boardno));
+		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(m.getId(), boardno));
 		
 		return "/boards/board/freeDetail";
 	}
@@ -496,82 +685,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	//게시글 list
-	@GetMapping(value={"/boards/board/freelist", "/boards/board/freelist/", "/boards/board/freelist/{page}", 
-			"/boards/board/freelist/{keyword}/{page}", "/boards/board/freelist/{keyword}/{page}/{orderby}"})
-	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 
-			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
-		ModelAndView mav = new ModelAndView("/boards/board/freelist");
-
-		if(orderby == null) {
-			if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
-				orderby = (String) session.getAttribute("orderby");
-			}
-			else {
-				orderby="regdate";
-			}	
-		}
-		String key = "all";
-		if(page == null) {
-			page = 1;
-		}
-		if(keyword == null) {
-			key = "all";
-		}
-
-		Page<Board> list;
-		
-		if(session.getAttribute("keyword")!=null) {
-			key = (String)session.getAttribute("keyword");
-		}
-		if(keyword != null) {
-			key = keyword;
-		}
-		
-		Pageable pageable;
-		
-		if(key.equals("all")) {
-			if(orderby.equals("regdate")) {
-				pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
-			}
-			else {
-			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
-			}
-			list = boarddao_jpa.findByBcategory("자유", "", pageable);
-		}
-		else {
-			if(orderby.equals("regdate")) {
-			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("regdate").descending());
-			}
-			else {
-			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
-			}
-			list = boarddao_jpa.findByBcategory("자유", keyword, pageable);
-
-		}
-		
-	    List<List<Board>> rows = new ArrayList<>();
-	    List<Board> boardlist = new ArrayList<Board>();
-	    List<Board> currentRow = null;
-		session.setAttribute("keyword", key);
-		session.setAttribute("orderby", orderby);
-		
-	    for (Board board : list.getContent()) {
-	    	
-	    	boardlist.add(board);
-	        if (currentRow == null || currentRow.size() >= 4) {
-	            currentRow = new ArrayList<>();
-	            rows.add(currentRow);
-	        }
-	        currentRow.add(board);
-	    }
-	    
-		mav.addObject("list", boardlist);
-		mav.addObject("currentPage", page);
-		mav.addObject("totalPages", list.getTotalPages());
-
-		return mav;
-	}
+	
 	  //댓글 수정하기
     @GetMapping("/freeCommentUpdate")
     @ResponseBody
@@ -617,77 +731,9 @@ public class BoardController {
 	
 	//--------------------------------------
 	//-----------------동행게시판
-	//게시글 작성 페이지
-	@GetMapping("/boards/board/insertBoard_together")
-	public void together(HttpSession session, Model model) {
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("id", id);
-	}
-	//게시글 저장
-	@PostMapping("/together")
-	public ModelAndView together(HttpSession session, Board b,String Contents) {
-		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
-		b.setBoardno(boarddao_jpa.findNextNo());
-		String id = ((Member)session.getAttribute("m")).getId();
-		Member member = new Member();
-		member.setId(id);
-		b.setMember(member);
-		b.setBoardlikes(0);
-		b.setRegdate(new Date());
-		b.setBoardhit(1);
-		b.setBoardcontent(Contents);
-		boarddao_jpa.save(b);
-		return mav;
-	}
-	//동행 게시글 수정
-	@PostMapping("/togetherUpdate")
-	public ModelAndView togetherUpdate(HttpSession session, Board b,String Contents) {
-		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
-		//게시물 작성하기
-		// Member 객체 생성 및 설정
-		String id = ((Member)session.getAttribute("m")).getId();
-		Member member = new Member();
-		member.setId(id);
-		b.setMember(member);
-		b.setRegdate(new Date());
-		b.setBoardcontent(Contents);
-		b.setBcategory("동행");
-		boarddao_jpa.save(b);
-		return mav;
-	}
-	//게시글 삭제
-	@GetMapping("/deleteTogether")
-	@ResponseBody
-	public void deleteTogether(@RequestParam int boardno) {
-		int re=boarddao_jpa.deleteByNo(boardno);
-	}
+    
+    
 	
-	//게시물 수정 페이지 이동
-	@GetMapping("/boards/board/updateTogether")
-	public void updateTogether(HttpSession session, @RequestParam int boardno,Model model) {
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
-	}
-		
-	//게시물 상세 페이지 이동
-	@GetMapping("/boards/board/togetherDetail")
-	public String togetherDetail(HttpSession session, @RequestParam int boardno,Model model) {
-		Board board=new Board();
-		board=boarddao_jpa.findByNo(boardno);
-		//게시물 내용 가져오기
-		
-		model.addAttribute("b", board);
-		//아이디
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("id", id);
-		
-		//게시물 댓글 가져오기
-		model.addAttribute("com", commentsdao_jpa.findByBoardNo(boardno));
-		// 좋아요 여부 가져오기
-		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(id, boardno));
-		
-		return "/boards/board/togetherDetail";
-	}
 	//게시글 list
 	@GetMapping(value={"/boards/board/togetherlist", "/boards/board/togetherlist/", "/boards/board/togetherlist/{page}", 
 			"/boards/board/togetherlist/{keyword}/{page}", "/boards/board/togetherlist/{keyword}/{page}/{orderby}"})
@@ -742,20 +788,21 @@ public class BoardController {
 
 		}
 		
-	    List<List<Board>> rows = new ArrayList<>();
-	    List<Board> boardlist = new ArrayList<Board>();
-	    List<Board> currentRow = null;
+	    List<List<BoardVO>> rows = new ArrayList<>();
+	    List<BoardVO> boardlist = new ArrayList<BoardVO>();
+	    List<BoardVO> currentRow = null;
 		session.setAttribute("keyword", key);
 		session.setAttribute("orderby", orderby);
 		
 	    for (Board board : list.getContent()) {
-	    	
-	    	boardlist.add(board);
+	    	BoardVO bvo = new BoardVO();
+	    	bvo = boardToBoardVO(board);
+	    	boardlist.add(bvo);
 	        if (currentRow == null || currentRow.size() >= 4) {
 	            currentRow = new ArrayList<>();
 	            rows.add(currentRow);
 	        }
-	        currentRow.add(board);
+	        currentRow.add(bvo);
 	    }
 	    
 		mav.addObject("list", boardlist);
@@ -764,6 +811,111 @@ public class BoardController {
 
 		return mav;
 	}
+    
+    
+	//게시글 작성 페이지
+	@GetMapping("/boards/board/insertBoard_together")
+	public void together(HttpSession session, Model model) {
+		String id = ((Member)session.getAttribute("m")).getId();
+		model.addAttribute("id", id);
+	}
+	
+	
+	//게시글 저장
+	@PostMapping("/together")
+	public ModelAndView together(HttpSession session, Board b,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
+		b.setBoardno(boarddao_jpa.findNextNo());
+		String id = ((Member)session.getAttribute("m")).getId();
+		Member member = new Member();
+		member.setId(id);
+		b.setMember(member);
+		b.setBoardlikes(0);
+		b.setRegdate(new Date());
+		b.setBoardhit(1);
+		b.setBoardcontent(Contents);
+		boarddao_jpa.save(b);
+		return mav;
+	}
+	
+	
+
+	
+	
+	//게시글 삭제
+	@GetMapping("/deleteTogether")
+	@ResponseBody
+	public void deleteTogether(@RequestParam int boardno) {
+		int re=boarddao_jpa.deleteByNo(boardno);
+	}
+	
+	//게시물 수정 페이지 이동
+	@GetMapping("/boards/board/updateTogether")
+	public void updateTogether(HttpSession session, @RequestParam int boardno,Model model) {
+		String id = ((Member)session.getAttribute("m")).getId();
+		model.addAttribute("b", boarddao_jpa.findByNo(boardno));
+	}
+	
+	//동행 게시글 수정
+	@PostMapping("/togetherUpdate")
+	public ModelAndView togetherUpdate(HttpSession session, Board b,String Contents) {
+		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
+		//게시물 작성하기
+		// Member 객체 생성 및 설정
+		String id = ((Member)session.getAttribute("m")).getId();
+		Member member = new Member();
+		member.setId(id);
+		b.setMember(member);
+		b.setRegdate(new Date());
+		b.setBoardcontent(Contents);
+		b.setBcategory("동행");
+		boarddao_jpa.save(b);
+		return mav;
+	}
+	
+		
+	//게시물 상세 페이지 이동
+	@GetMapping("/boards/board/togetherDetail")
+	public String togetherDetail(HttpSession session, @RequestParam int boardno,Model model) {
+		Board board=new Board();
+		board=boarddao_jpa.findByNo(boardno);
+		BoardVO bvo = boardToBoardVO(board);
+		//게시물 내용 가져오기
+		
+		model.addAttribute("b", bvo);
+		//아이디
+		String id = ((Member)session.getAttribute("m")).getId();
+		model.addAttribute("id", id);
+		
+		//게시물 댓글 가져오기 (반복문 돌리면서 cvo로 바꾸기)
+		List<Comments> comlist = commentsdao_jpa.findByBoardNo(boardno);
+		List<CommentsVO> comvolist = new ArrayList<CommentsVO>();
+		
+		// 만약 댓글이 없다면 그대로 넘겨줌
+		if(comlist.size()== 0) {
+			model.addAttribute("com", comlist);
+		}
+		
+		// 댓글이 있다면 바꿔줌
+		else {
+			for(Comments c : comlist) {
+				CommentsVO cvo = commentsToCommentsVO(c);
+				comvolist.add(cvo);
+			}
+			model.addAttribute("com", comvolist);
+		}
+				
+		
+		
+		
+		// 좋아요 여부 가져오기
+		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(id, boardno));
+		
+		return "/boards/board/togetherDetail";
+	}
+	
+
+	
     //댓글 수정하기
     @GetMapping("/togetherCommentUpdate")
     @ResponseBody
