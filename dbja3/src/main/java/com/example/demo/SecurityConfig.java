@@ -12,8 +12,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filerChain(HttpSecurity http) throws Exception {
-		http
-        .csrf().disable();
+		http.csrf().disable();
+        
 		//security가 제공해주는 로그인 폼 말고 우리가 만들거야
 		http.authorizeHttpRequests() //내가 원하는 인증과 인가에 대한 설정을 한다
 	//	.requestMatchers("/","/member/login","/join").permitAll() //이 요청은 모두 사용가능

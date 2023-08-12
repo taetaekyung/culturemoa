@@ -14,12 +14,14 @@ input {
 }
 body {
   width: 192rem;
-}.login-usF {
+}
+.login-usF {
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  padding-top: 15rem;
 }
 .login-usF .header-GC1 {
   box-sizing: border-box;
@@ -291,7 +293,7 @@ body {
   height: 5rem;
   position: absolute;
   left: 75.3rem;
-  top: 27rem;
+  top: 24rem;
   display: flex;
   font-size: 2rem;
   font-weight: 500;
@@ -310,8 +312,8 @@ body {
   width: 29.35rem;
   height: 2rem;
   position: absolute;
-  left: 80.95rem;
-  top: 35.2rem;
+  left: 79.95rem;
+  top: 30.2rem;
   display: flex;
   align-items: center;
 }
@@ -398,10 +400,15 @@ body {
   justify-content: center;
   font-size: 2rem;
   line-height: 1.1;
-  color: #c0c0c0;
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  height: 4rem;
+  
+}
+.item--SL1:focus {
+	outline:none;
+	border: none;
 }
 .login-usF .auto-group-zjz7-WNV .auto-group-gbqs-8Tj {
   box-sizing: border-box;
@@ -429,17 +436,21 @@ body {
   display: flex;
   font-size: 2rem;
   line-height: 1.1;
-  color: #c0c0c0;
+  height: 4rem;
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+}
+.item--a4q:focus{
+	border: none;
+	outline: none;
 }
 .login-usF .auto-group-zjz7-WNV .saveid-5XP {
   width: 11.5rem;
   height: 2rem;
   position: absolute;
   left: 75.3rem;
-  top: 23.7rem;
+  top: 23rem;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -473,7 +484,7 @@ body {
   height: 14.9rem;
   position: absolute;
   left: 78.3rem;
-  top: 46.2rem;
+  top: 38.2rem;
   align-items: center;
   display: flex;
   flex-direction: column;

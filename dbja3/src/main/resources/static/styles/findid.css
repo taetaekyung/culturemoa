@@ -14,12 +14,14 @@ input {
 }
 body {
   width: 192rem;
-}.findid-XtD {
+}
+.findid-XtD {
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  padding-top: 15rem;
 }
 .findid-XtD .header-G57 {
   box-sizing: border-box;
@@ -315,6 +317,10 @@ body {
   box-sizing: border-box;
   border-radius: 1rem;
   flex-shrink: 0;
+  font-size: 2rem;
+  line-height: 1.1;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  padding-left: 1rem;
 }
 .findid-XtD .auto-group-nk73-5pV .new-passwordconfirm-ZdB {
   margin-bottom: 1.3rem;
@@ -336,20 +342,31 @@ body {
 }
 .findid-XtD .auto-group-nk73-5pV .new-passwordconfirm-ZdB .auto-group-fs1o-2Wm {
   box-sizing: border-box;
-  padding: 2rem 2.7rem 2.1rem 34.8rem;
   width: 100%;
-  text-align: right;
   display: flex;
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 1.1;
-  color: #07b47f;
-  font-family: Noto Sans KR, 'Source Sans Pro';
-  white-space: nowrap;
   border: solid 0.2rem #c0c0c0;
   border-radius: 1rem;
   flex-shrink: 0;
+  height: 6.3rem;
+  
+  
 }
+.inputEmail{
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  height: 6.3rem;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.emailCheckBtn{
+  color: #07b47f;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+}
+
 .findid-XtD .auto-group-nk73-5pV .inputverificationcode-VQM {
   margin-bottom: 3rem;
   width: 100%;
@@ -373,6 +390,9 @@ body {
   height: 6.3rem;
   border-radius: 1rem;
   flex-shrink: 0;
+   border: solid 0.2rem #c0c0c0;
+  border-radius: 1rem;
+ 
 }
 .findid-XtD .auto-group-nk73-5pV .questionfindpassword-Hb7 {
   margin: 0rem 4.15rem 3rem 2.45rem;

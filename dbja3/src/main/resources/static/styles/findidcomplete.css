@@ -14,12 +14,14 @@ input {
 }
 body {
   width: 192rem;
-}.findidcomplete-bVs {
+}
+.findidcomplete-bVs {
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+   padding-top: 15rem;
 }
 .findidcomplete-bVs .header-91b {
   box-sizing: border-box;
