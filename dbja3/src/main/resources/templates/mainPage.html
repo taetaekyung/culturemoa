@@ -281,7 +281,7 @@ html{
                   }
                   pro_div.append(id);
                
-                    var content_div=$("<div></div>").addClass("textcontent-ub7").html(data[i].talkcontent);
+                  var content_div=$("<div></div>").addClass("textcontent-ub7").html(data[i].talkcontent);
                   var textbox=$("<div></div>").addClass("textbox");
                   var datebox=$("<div></div>").addClass("datebox");
                   var datetext=$("<p></p>").addClass("datetext").html(data[i].day);
@@ -351,12 +351,18 @@ html{
    // 주변 행사 소식 > 행사 지역 선택
    function selectArea(area){
       var column=area;
-      console.log(column);
+      if(column=="all"){
+		  $(".selectarea-GEm").html("지역을 선택하세요");
+	  }else{
+		  $(".selectarea-GEm").html(column);
+	  }
+      
+      
      $.ajax({
         url:"selectArea",
         data:{area:column},
         success:function(data){
-         console.log(data);
+         
          $(".eventList").empty();
          for(var i=0;i<data.length;i++){
             var div=$("<div></div>").addClass("list"+(i+1)).addClass("poster-Qth").addClass("myEvent");
@@ -365,15 +371,17 @@ html{
                     div.css("visibility", "visible");
                 }
             for(var j=0;j<data[i].length;j++){
-               var event=$("<div></div>").addClass("poster-kSm");
+               var event=$("<div></div>").addClass("poster-kSm").attr("onclick", "goDetail(this)");
                var divimg=$("<div></div>").addClass("imgposter-VfF");
                var img=$("<img></img>").addClass("imgposter-VfF").attr("src","./images/"+data[i][j].eventfname);
                divimg.append(img);
                var divstate=$("<div></div>").addClass("frame-6-aaD");
                var eventstate=$("<div></div>").addClass("frame-3-jT7").html(data[i][j].eventState);
                var eventname=$("<div></div>").addClass("eventname-2BK").html(data[i][j].eventname);
+               var eventno=$("<input></inpu>").attr("id","eventno"+(i+1)).attr("value",data[i][j].eventno).attr("type","hidden");
+               
                divstate.append(eventstate).append(eventname);
-               event.append(divimg).append(divstate);
+               event.append(divimg).append(divstate).append(eventno);
                div.append(event);
              }
              $(".eventList").append(div);

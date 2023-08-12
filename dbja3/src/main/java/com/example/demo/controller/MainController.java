@@ -120,8 +120,6 @@ public class MainController {
 	  }
 	  model.addAttribute("list", blist);
 
-      
-	  //System.out.println("되니?");
       //주변행사소식 행사 리스트 출력
       List<EventVO> event=null;
       event=eventdao_mb.findTop();
@@ -237,11 +235,6 @@ public class MainController {
 	   
 	   List<Event> event_list = eventdao_jpa.findByKeyword(keyword_main);
 	   int event_list_size = event_list.size();
-
-	//   if(event_list.size() > 4) {
-	//	   event_list = event_list.subList(0, 4);
-	//   }
-	   
 	   
 	   List<Board> board_list = boarddao_jpa.findByKeyword(keyword_main);
 	   List<Reviewboard> review_list = reviewdao_jpa.findByKeyword(keyword_main);
