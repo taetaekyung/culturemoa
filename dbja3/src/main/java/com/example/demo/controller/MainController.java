@@ -110,7 +110,12 @@ public class MainController {
 	  session.setAttribute("m", m);
 	   
 	  //최신 10개 게시물
-	  model.addAttribute("list", boarddao_jpa.findAll());
+	  List<BoardVO> blist = new ArrayList<BoardVO>();
+	  for(Board b : boarddao_jpa.findAll()) {
+		  BoardVO bvo = changeBoardVO(b);
+		  blist.add(bvo);
+	  }
+	  model.addAttribute("list", blist);
 
       
 	  //System.out.println("되니?");
@@ -247,6 +252,7 @@ public class MainController {
 		   while( i < boardsize && j < reviewsize) {
 			   // 만약 board_list에 있는 date가 review에 있는 date보다 뒤이면 
 			   if(board_list.get(i).getRegdate().after(review_list.get(j).getRegdate())) {
+				   System.out.println(changeBoardVO(board_list.get(i)).getNickname());
 				   searchlist.add(changeBoardVO(board_list.get(i)));
 				   i++;
 			   }

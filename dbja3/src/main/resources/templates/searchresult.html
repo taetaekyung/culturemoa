@@ -140,13 +140,13 @@
 	    <div class="div_board">
 		  <!-- board 시작 -->
 		  <th:block th:each="b : ${list}">
-	      <div class="board" th:bcategory="${b.bcategory}" th:bno="${b.no}" th:onclick="gotoBoardDetail(this.getAttribute('bcategory'), this.getAttribute('bno'))">
-	        <div class="bno" th:text="${b.no}"></div>
-	        <div class="title" th:text="${b.title}"></div>
+	      <div class="board" th:bcategory="${b.bcategory}" th:bno="${b.boardno}" th:onclick="gotoBoardDetail(this.getAttribute('bcategory'), this.getAttribute('bno'))">
+	        <div class="bno" th:text="${b.boardno}"></div>
+	        <div class="title" th:text="${b.boardtitle}"></div>
 	        <div class="regdate" th:text="${b.regdate}"></div>
-	        <div class="userid" th:text="${b.id}"></div>
-	        <div class="hit" th:text="${b.hit}"></div>
-	        <div class="wish" th:text="${b.likes}"></div>
+	        <div class="userid" th:text="${b.nickname}"></div>
+	        <div class="hit" th:text="${b.boardhit}"></div>
+	        <div class="wish" th:text="${b.boardlikes}"></div>
 	      </div>
 		  </th:block>
 	      <!-- board 끝 -->

@@ -662,7 +662,7 @@ html{
               <div class="list-LkH" th:each="b:${list}" >
                 <div class="title-6zM" th:boardno="${b.boardno}" th:onclick="gotoBoard(this.getAttribute('boardno'))" th:text="${b.boardtitle}"></div>
                 <div class="regdate-S2d" th:text="${b.regdate}"></div> 
-                <div class="id" th:text="${b.member.id}"></div> 
+                <div class="id" th:text="${b.nickname}"></div> 
               </div>
               
             </div>
