@@ -15,8 +15,9 @@
 <script th:inline="javascript">
 	//쪽지 보내기 팝업 열기 함수
 	function openSendMessagePopup() {
+		var id="";
 	    // 팝업창을 여는 코드를 작성합니다.
-	    window.open('/member/messagesend', 'messagePopup', 'width=510,height=430');
+	    window.open('/member/messagesend?id='+id, 'messagePopup', 'width=510,height=430');
 	}
 	//받은 쪽지 1개 내용 팝업 열기 함수
 	function openReceivedMessagePopup(mno) {

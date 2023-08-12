@@ -82,7 +82,7 @@
   </div>
   <div class="item--qZB">쪽지쓰기</div>
   <div class="item--CKB">받는사람</div>
-  <input type="text" class="id1234--tvm" placeholder="닉네임을 입력하세요.">
+  <input type="text" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${id}">
   <textarea class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;"></textarea>
   <div class="frame-48-RSq">
     <div class="btnsend-MbP" onclick="sendMessage()">보내기</div>

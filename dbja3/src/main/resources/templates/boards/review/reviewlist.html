@@ -13,7 +13,7 @@
   <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/reviewlist.css}"/>
   <style>
-  .message{
+  .messageDiv{
 	  visibility: hidden;
   }	  
   </style>
@@ -106,6 +106,11 @@
 		url = "/boards/review/reviewlist/"+keyword+"/1/regdate";
 		location.href=url;
 	}
+	//메시지 보내기
+	function sendMessage(id){
+		// 메시지 보내기 팝업
+	    window.open('/member/messagesend?id='+id, 'messagePopup', 'width=510,height=430');
+	}
 </script>
 </head>
 	<body>
@@ -195,9 +200,9 @@
 		            <div class="regdate" th:text="${b.regdate}"></div>
 		            <div class="idDiv">
 		            	<div th:attr="onclick='message(\'' + ${b.member.id} + '\', \'' + ${b.reviewno} + '\')'" class="userid" th:text="${b.member.id}"></div>
-		                <div class="message"  th:id="'message'+${b.reviewno}">
+		                <div class="messageDiv"  th:id="'message'+${b.reviewno}">
 			                 <!--작성자에게 쪽지보내기 -->
-			                 <div class="sendMessage"  th:value="${b.member.id}" >쪽지보내기</div>
+			                 <div class="sendMessage"  th:value="${b.member.id}" th:attr="onclick='sendMessage(\''+${b.member.id}+'\')'" >쪽지보내기</div>
 			                 <!--작성자 게시물 보기 -->
 			                 <div class="listById"  th:value="${b.member.id}"  th:attr="onclick='listById(\''+${b.member.id}+'\')'">게시물 보기</div>
 		                 </div>

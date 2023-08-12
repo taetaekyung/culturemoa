@@ -156,8 +156,11 @@ public class MemberController {
 	
 	//마이페이지-쪽지쓰기 팝업
 	@GetMapping("/member/messagesend")
-	public void sendMessage() {
-		
+	public void sendMessage(@RequestParam String id,Model model) {
+		if(id==null||id.equals("")) {
+			id="";
+		}
+		model.addAttribute("id", id);
 	}
 	
 	//마이페이지-쪽지 삭제(체크박스 통해서 삭제)
