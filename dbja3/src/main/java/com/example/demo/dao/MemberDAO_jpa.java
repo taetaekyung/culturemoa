@@ -30,5 +30,19 @@ public interface MemberDAO_jpa extends JpaRepository<Member, String> {
 	@Query(value = "select count(*) from member where nickname=?1", nativeQuery = true)
 	public int countByNickname(String nickname);
 	
+	@Query(value = "select * from member where id=?1", nativeQuery = true)
+	public Member findByUserId(String id);
+	
 	Optional<Member> findById(String id);
+	
+	@Query(value = "select nickname from member where id=?1", nativeQuery = true)
+	public String findNicknameById(String id);
+	
+	//아이디 중복확인
+	@Query("select m.id from Member m where m.id=?1")
+	public String findId(String id);
+	
+	//닉네임 중복확인
+	@Query("select m.nickname from Member m where m.nickname=?1")
+	public String findNickname(String nickname);
 }

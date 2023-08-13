@@ -11,7 +11,7 @@ import lombok.Data;
 public class FAQ {
 	@Id
 	private int faqno;
-	
 	private String faqtitle;
 	private String faqcontent;
+	private String faqcategory;
 }

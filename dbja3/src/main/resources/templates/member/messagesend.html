@@ -11,7 +11,38 @@
 <link rel="stylesheet" th:href="@{/styles/messagesend.css}"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>
-  let isUnsavedChanges = false; // 변수를 사용하여 작성한 내용이 있는지 추적
+  // 닉네임 체크 함수
+  function checkNickname() {
+    const nicknameInput = $('.id1234--tvm');
+    const nickname = nicknameInput.val();
+
+	//닉네임 없으면 중단.
+    if (!nickname) {
+      return;
+    }
+
+    $.ajax({
+      type: 'GET',
+      url: '/member/checkNickname', // 실제 서버 경로로 변경해야 함
+      data: {
+        nickname: nickname
+      },
+      success: function (data) {
+        const resultDiv = $('.nicknameCheckResult');
+        if (data.exists) {
+          resultDiv.text('존재하는 닉네임입니다.');
+        } else {
+          resultDiv.text('존재하지 않는 닉네임입니다.');
+        }
+      },
+      error: function () {
+        alert('닉네임 체크에 실패하였습니다.');
+      }
+    });
+  }
+
+  // 변수를 사용하여 작성한 내용이 있는지 추적
+  let isUnsavedChanges = false; 
   
   // 글자 수 체크 및 최대 글자 수 제한
   function updateCharCount(textarea) {
@@ -82,7 +113,9 @@
   </div>
   <div class="item--qZB">쪽지쓰기</div>
   <div class="item--CKB">받는사람</div>
-  <input type="text" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${id}">
+  <input type="text" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${nickname}">
+  <div class="btnconfirm" onclick="checkNickname()">확인</div>
+  <div class="nicknameCheckResult"></div>
   <textarea class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;"></textarea>
   <div class="frame-48-RSq">
     <div class="btnsend-MbP" onclick="sendMessage()">보내기</div>

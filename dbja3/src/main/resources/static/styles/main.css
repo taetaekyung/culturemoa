@@ -25,6 +25,24 @@ body {
   height: 600rem;
 
 }
+
+
+
+
+.divchat-BNH::-webkit-scrollbar {
+    width: 10px;  
+}
+
+.divchat-BNH::-webkit-scrollbar-thumb {
+    background: #fdd00f; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.divchat-BNH::-webkit-scrollbar-track {
+    background: rgba(253, 208, 15, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+
 .fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title{
 	color: #191919;
 	cursor: pointer;
@@ -546,6 +564,8 @@ body {
   vertical-align: top;
   border-radius: 0.05rem;
   flex-shrink: 0;
+  position: absolute;
+  left: 33rem;
 }
 .main-mVB .main-Fpu .auto-group-ejdf-2Y9 .news-z8q .auto-group-9job-9Gd .dropdownarea-oMB .component-20-MtV .line-3-isT {
   width: 100%;

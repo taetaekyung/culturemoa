@@ -13,6 +13,19 @@ input {
 	border: none;
 }
 
+.frameopentalk-hgm::-webkit-scrollbar {
+    width: 10px;  
+}
+
+.frameopentalk-hgm::-webkit-scrollbar-thumb {
+    background: #07b47f; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.frameopentalk-hgm::-webkit-scrollbar-track {
+    background: rgba(7, 180, 127, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
 textarea {
    font-family: 'Noto Sans KR', 'Source Sans 3', sans-serif;
    height: 6rem;

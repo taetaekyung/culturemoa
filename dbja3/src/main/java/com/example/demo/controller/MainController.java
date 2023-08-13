@@ -22,6 +22,7 @@ import com.example.demo.dao.opentalkDAO_jpa;
 import com.example.demo.dao.opentalkDAO_mb;
 import com.example.demo.entity.Board;
 import com.example.demo.entity.Event;
+import com.example.demo.entity.FAQ;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Opentalk;
 import com.example.demo.entity.Reviewboard;
@@ -35,7 +36,6 @@ import jakarta.servlet.http.HttpSession;
 public class MainController {
    //로그인 했을때만 이용가능 
    //로그인 했을때 아이디
-   private String id="user01";
    private int nowNo; //현재 마지막 채팅 번호
    
    @Autowired
@@ -57,25 +57,27 @@ public class MainController {
 
    public BoardVO changeBoardVO(Board b) {
 	   BoardVO bvo = new BoardVO();
-	   bvo.setNo(b.getBoardno());
+	   bvo.setBoardno(b.getBoardno());
 	   bvo.setBcategory(b.getBcategory());
-	   bvo.setTitle(b.getBoardtitle());
+	   bvo.setBoardtitle(b.getBoardtitle());
 	   bvo.setRegdate(b.getRegdate());
 	   bvo.setId(b.getMemberId());
-	   bvo.setHit(b.getBoardhit());
-	   bvo.setLikes(b.getBoardlikes());
+	   bvo.setNickname(memberdao_jpa.findNicknameById(b.getMemberId()));
+	   bvo.setBoardhit(b.getBoardhit());
+	   bvo.setBoardlikes(b.getBoardlikes());
 	   return bvo;
    }
    
    public BoardVO changeBoardVO(Reviewboard r) {
 	   BoardVO bvo = new BoardVO();
-	   bvo.setNo(r.getReviewno());
+	   bvo.setBoardno(r.getReviewno());
 	   bvo.setBcategory("후기");
-	   bvo.setTitle(r.getReviewtitle());
+	   bvo.setBoardtitle(r.getReviewtitle());
 	   bvo.setRegdate(r.getRegdate());
 	   bvo.setId(r.getMemberId());
-	   bvo.setHit(r.getReviewhit());
-	   bvo.setLikes(r.getReviewlike());
+	   bvo.setNickname(memberdao_jpa.findNicknameById(r.getMemberId()));
+	   bvo.setBoardhit(r.getReviewhit());
+	   bvo.setBoardlikes(r.getReviewlike());
 	   return bvo;
    }
    
@@ -101,17 +103,23 @@ public class MainController {
    @GetMapping("/mainPage")
    public void mainPage(Model model, HttpSession session) {
 	  //session으로 Member Entity 전달하기
-	   Member m = null;
+	 
+	/*  Member m = null;
 	  if(id != null && !id.equals("") && memberdao_jpa.countById(id) != 0) {
 		  m = memberdao_jpa.findById(id).get();
-	  }
-	  session.setAttribute("m", m);
+	  } */
+	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+		  model.addAttribute("log", "complete");
+	  };
 	   
 	  //최신 10개 게시물
-	  model.addAttribute("list", boarddao_jpa.findAll());
+	  List<BoardVO> blist = new ArrayList<BoardVO>();
+	  for(Board b : boarddao_jpa.findAll()) {
+		  BoardVO bvo = changeBoardVO(b);
+		  blist.add(bvo);
+	  }
+	  model.addAttribute("list", blist);
 
-      
-	  //System.out.println("되니?");
       //주변행사소식 행사 리스트 출력
       List<EventVO> event=null;
       event=eventdao_mb.findTop();
@@ -187,14 +195,19 @@ public class MainController {
    //------------채팅을 입력했을 때
    @GetMapping("main_insertTalk")
    @ResponseBody
-   public void insertTalk(String talk) {
-      int next=opentalkdao_jpa.nextNo();
-      nowNo=next;  //현재 마지막 채팅 번호 업데이트
-      Opentalk o=new Opentalk();
-      o.setTalkcontent(talk);
-      o.setTalkno(next);
-      o.setMemberId(id); 
-      opentalkdao_jpa.insert(o);
+   public void insertTalk(HttpSession session, String talk) {
+	  
+	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+		  String id = ((Member) session.getAttribute("m")).getId();
+	      int next=opentalkdao_jpa.nextNo();
+	      nowNo=next;  //현재 마지막 채팅 번호 업데이트
+	      Opentalk o=new Opentalk();
+	      o.setTalkcontent(talk);
+	      o.setTalkno(next);
+	      o.setMemberId(id); 
+	      opentalkdao_jpa.insert(o);
+	  }
+	  
    }
    
    //------------채팅창 업데이트
@@ -222,11 +235,6 @@ public class MainController {
 	   
 	   List<Event> event_list = eventdao_jpa.findByKeyword(keyword_main);
 	   int event_list_size = event_list.size();
-
-	//   if(event_list.size() > 4) {
-	//	   event_list = event_list.subList(0, 4);
-	//   }
-	   
 	   
 	   List<Board> board_list = boarddao_jpa.findByKeyword(keyword_main);
 	   List<Reviewboard> review_list = reviewdao_jpa.findByKeyword(keyword_main);
@@ -245,6 +253,7 @@ public class MainController {
 		   while( i < boardsize && j < reviewsize) {
 			   // 만약 board_list에 있는 date가 review에 있는 date보다 뒤이면 
 			   if(board_list.get(i).getRegdate().after(review_list.get(j).getRegdate())) {
+				   System.out.println(changeBoardVO(board_list.get(i)).getNickname());
 				   searchlist.add(changeBoardVO(board_list.get(i)));
 				   i++;
 			   }
@@ -285,12 +294,16 @@ public class MainController {
 		   }
 	   }
 	   
-	   
+	   // FAQ list
+	   List<FAQ> faqlist = faqdao_jpa.findByKeyword(keyword_main);
+
 	   model.addAttribute("keyword_main", keyword_main);
 	   model.addAttribute("board_list_size", board_list_size);
 	   model.addAttribute("event_list_size", event_list_size);
+	   model.addAttribute("FAQ_list_size", faqlist.size());
 	   model.addAttribute("event_list", event_list);
 	   model.addAttribute("list", searchlist);
+	   model.addAttribute("faqlist", faqlist);
    }
    
    

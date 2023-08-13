@@ -44,6 +44,7 @@ import com.example.demo.entity.Event;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.Message;
 import com.example.demo.vo.EventVO;
+import com.example.demo.vo.MessageVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -62,6 +63,19 @@ public class MemberController {
 	
 	@Autowired
 	private EventDAO_jpa eventdao_jpa;
+	
+	// Message에 닉네임 띄우기 위해서 VO로 변환
+	public MessageVO messageToMessageVO(Message m) {
+		MessageVO mvo = new MessageVO();
+		mvo.setMno(m.getMno());
+		mvo.setMid(m.getMid());
+		mvo.setMcontent(m.getMcontent());
+		mvo.setId(m.getMemberId());
+		mvo.setNickname(memberdao_jpa.findNicknameById(m.getMemberId()));
+		mvo.setRegdate(m.getRegdate());
+		return mvo;
+	}
+	
 	
 	
 	/* -----------마이페이지-회원정보------------ */
@@ -129,7 +143,7 @@ public class MemberController {
 	        // 받는 사람 닉네임으로 Member 엔티티 조회
 	        Member receiver = memberdao_jpa.findByNickname(nickname).orElse(null);
 	        if (receiver == null) {
-	            return "받는 사람 닉네임을 확인해주세요.";
+	            return "닉네임이 존재하지 않습니다. 쪽지 수신자 닉네임을 확인해 주세요.";
 	        }
 	        
 	        // Message 엔티티 생성 및 설정
@@ -157,11 +171,22 @@ public class MemberController {
 	//마이페이지-쪽지쓰기 팝업
 	@GetMapping("/member/messagesend")
 	public void sendMessage(@RequestParam String id,Model model) {
-		if(id==null||id.equals("")) {
-			id="";
+		String nickname = "";
+		if(id != null && !id.equals("")) {
+			nickname = memberdao_jpa.findNicknameById(id);
 		}
-		model.addAttribute("id", id);
+		model.addAttribute("nickname", nickname);
 	}
+	
+	// 마이페이지-닉네임 중복 체크
+    @GetMapping("/member/checkNickname")
+    @ResponseBody
+    public Map<String, Boolean> checkNickname(@RequestParam String nickname) {
+        Map<String, Boolean> response = new HashMap<>();
+        int count = memberdao_jpa.countByNickname(nickname);
+        response.put("exists", count > 0);
+        return response;
+    }
 	
 	//마이페이지-쪽지 삭제(체크박스 통해서 삭제)
 	@PostMapping("/member/deletemessages")

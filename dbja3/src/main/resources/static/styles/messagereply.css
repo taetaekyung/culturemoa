@@ -96,6 +96,23 @@ body {
   font-family: Noto Sans KR, 'Source Sans Pro';
   white-space: nowrap;
 }
+.messagesend-siq .btnconfirm {
+  width: 8rem;
+  height: 2rem;
+  position: absolute;
+  left: calc(12.9rem + 19.3rem + 1rem); /* input 왼쪽 위치 + input 너비 + 여백 */
+  top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #07b47f; /* 예시 색상, 원하는 색상으로 변경 가능 */
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
 .messagesend-siq .yy-mm-dd-bqB {
   width: 9.1rem;
   height: 2rem;

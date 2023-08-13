@@ -23,7 +23,7 @@ public interface CommentsDAO_jpa extends JpaRepository<Comments, Integer> {
 	public void updateByComno(int comno,String comcontent);
 	
 	//댓글 번호 조회
-	@Query("select max(c.comno)+1 from Comments c")
+	@Query("select nvl(max(c.comno)+1, 1) from Comments c")
 	public int findByNext();
 	
 }

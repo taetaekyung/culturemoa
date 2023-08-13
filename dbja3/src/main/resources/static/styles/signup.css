@@ -456,7 +456,18 @@ body {
   margin: 2.1rem 0;
   width: 17.8rem;
   height: calc(100% - 4.2rem);
-  display: none;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #018bf8;
+  font-family: Noto Sans KR, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.password-status{
+  margin: 2.1rem 0;
+  width: 17.8rem;
+  height: calc(100% - 4.2rem);
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1;
@@ -594,7 +605,6 @@ body {
   margin: 2.1rem 0;
   width: 19.3rem;
   height: calc(100% - 4.2rem);
-  display: none;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1;
@@ -772,10 +782,11 @@ body {
   top: 86.6rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .signup .div_main .buttons .btnsignup {
   margin-right: 1.2rem;
-  width: 41.4rem;
+  width: 31.4rem;
   height: 100%;
   display: flex;
   align-items: center;
@@ -793,7 +804,7 @@ body {
   cursor: pointer;
 }
 .signup .div_main .buttons .btnback {
-  width: 41.4rem;
+  width: 31.4rem;
   height: 100%;
   display: flex;
   align-items: center;
