@@ -209,7 +209,6 @@ public class MemberController {
 	    return "쪽지가 삭제되었습니다.";
 	}
 
-	
 	//마이페이지-쪽지 삭제(휴지통 이미지 클릭해서 1개 삭제)
 	@PostMapping("/member/deletemessage")
 	@ResponseBody

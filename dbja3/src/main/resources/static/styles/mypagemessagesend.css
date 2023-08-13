@@ -624,6 +624,13 @@ body {
   position: relative;
   flex-shrink: 0;
 }
+.mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
 .mypagemessagesend-nho .main-Vms .divmain-oi1 .divlist-QFs .messagelist-ZPf .messagelist-Gsj .message-puF {
   box-sizing: border-box;
   padding: 0rem 4.35rem 0rem 3.5rem;

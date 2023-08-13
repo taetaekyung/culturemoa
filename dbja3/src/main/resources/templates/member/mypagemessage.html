@@ -156,6 +156,7 @@
         <!--받은 쪽지 목록-->
         <div class="messagelist-HcD">
 		  <!-- Thymeleaf iteration over the list of messages -->
+		  <div th:if="${messagePage.empty}" class="no-messages">쪽지가 없습니다.</div>
 		  <div class="message-P9T" th:each="message : ${messagePage.content}">
 		    <div class="auto-group-jmvt-7bF">
 		      <div class="btncheck-rYq">
@@ -185,7 +186,7 @@
       </div>
       
       <!-- 페이징 처리 부분 -->
-		<div class="paging-oXw">
+		<div class="paging-oXw" th:if="${messagePage.totalPages > 0}">
 			<!-- 이전 첫 페이지로 이동하는 버튼 -->
 		    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=0)}">
 		        <img class="btndoubleprevious-JDo" src="/assets/btndoubleprevious-W89.png"/>

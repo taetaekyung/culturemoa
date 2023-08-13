@@ -151,7 +151,7 @@
           
           <!--보낸 쪽지 목록-->
           <div class="messagelist-Gsj">
-			  
+			<div th:if="${messagePage.empty}" class="no-messages">쪽지가 없습니다.</div>
             <div class="message-puF" th:each="message : ${messagePage.content}">
               <div class="auto-group-kpwf-wU5">
                 <div class="btncheck-FDs">
@@ -180,7 +180,7 @@
       </div>
       
       <!--페이징 번호 출력-->
-		<div class="paging-zFK">
+		<div class="paging-zFK" th:if="${messagePage.totalPages > 0}">
 		  <!-- 이전 첫 페이지로 이동하는 버튼 -->
 		  <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessagesend(page=0)}">
 		    <img class="btndoubleprevious-hfX" src="/assets/btndoubleprevious-K7f.png"/>

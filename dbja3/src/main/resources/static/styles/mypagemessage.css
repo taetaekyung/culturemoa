@@ -602,6 +602,13 @@ body {
   position: relative;
   flex-shrink: 0;
 }
+.mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .no-messages{
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
 .mypagemessage-Y2V .main-KcD .divmain-85o .divlist-CQR .messagelist-HcD .message-P9T {
   box-sizing: border-box;
   padding: 0rem 4.35rem 0rem 3.5rem;
