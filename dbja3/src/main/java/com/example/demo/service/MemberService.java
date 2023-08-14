@@ -29,7 +29,7 @@ public class MemberService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails user=null;
 		// 비밀번호 암호화
-		System.out.println("로그인 m "+username);
+
 		Member m = memberdao.findById(username).get();
 		if(m == null) {
 			try {
@@ -43,6 +43,7 @@ public class MemberService implements UserDetailsService {
 					.password(m.getPwd()).roles(m.getRole()).build();
 		}
 		
+		System.out.println(user.getPassword());
 		return user;
 	}
 
