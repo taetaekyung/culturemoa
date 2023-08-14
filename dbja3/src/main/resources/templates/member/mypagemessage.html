@@ -155,7 +155,6 @@
         
         <!--받은 쪽지 목록-->
         <div class="messagelist-HcD">
-		  <!-- Thymeleaf iteration over the list of messages -->
 		  <div th:if="${messagePage.empty}" class="no-messages">쪽지가 없습니다.</div>
 		  <div class="message-P9T" th:each="message : ${messagePage.content}">
 		    <div class="auto-group-jmvt-7bF">
@@ -193,7 +192,7 @@
 		    </a>
 		    <!-- 이전 페이지로 이동하는 버튼 -->
 		    <a th:if="${messagePage.hasPrevious()}" th:href="@{/member/mypagemessage(page=${messagePage.previousPageable().pageNumber})}">
-		        <img class="btnprevious-ckH" src="/assets/btnprevious-4eV.png"/>
+		        <img class="btnprevious-nKb" src="/assets/btnprevious-MiZ.png"/>
 		    </a>
 		    
 		    <!-- 페이지 번호 출력 -->
@@ -208,7 +207,7 @@
 		    </a>
 		    <!-- 다음 마지막 페이지로 이동하는 버튼 -->
 		    <a th:if="${messagePage.hasNext()}" th:href="@{/member/mypagemessage(page=${messagePage.totalPages - 1})}">
-		        <img class="btndoublenext-AhF" src="/assets/btndoublenext-PcV.png"/>
+		        <img class="btndoublenext-SaV" src="/assets/btndoublenext-Rtm.png"/>
 		    </a>
 		</div>
 
