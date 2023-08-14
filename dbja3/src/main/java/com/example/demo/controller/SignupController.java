@@ -21,9 +21,11 @@ public class SignupController {
 	@GetMapping("/signup")
 	public void signup() {
 	}
+	
 	//회원가입
 	@PostMapping("/sign")
 	public ModelAndView sign(Member m) {
+		System.out.println(m);
 		ModelAndView mav=new ModelAndView("redirect:/login/login");
 		m.setRole("user");
 		//회원가입

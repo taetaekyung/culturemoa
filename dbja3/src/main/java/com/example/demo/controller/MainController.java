@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -93,22 +96,35 @@ public class MainController {
         return eventdao_mb.getEventTicketList();
  }
    
-	@GetMapping("/")
-	public String main() {
-	   return "main";
-	}
-
+	/*
+	 * @GetMapping("/") public String main() { return "redirect:/mainPage"; }
+	 */
    
    //메인페이지를 열었을 때
-   @GetMapping("/mainPage")
-   public void mainPage(Model model, HttpSession session) {
+   @GetMapping(value = {"/mainPage", "/"})
+   public String mainPage(Model model, HttpSession session) {
 	  //session으로 Member Entity 전달하기
 	 
 	/*  Member m = null;
 	  if(id != null && !id.equals("") && memberdao_jpa.countById(id) != 0) {
 		  m = memberdao_jpa.findById(id).get();
 	  } */
+	   	  
+	  
+	  
+	  
 	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+		// 로그인된 회원의 정보를 가져오기 위하여 
+			// 시큐리티의 인증 객체 필요
+		  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		  // 위의 인증 객체를 통해 로그인된 user 객체를 받아옴
+		  User user = (User) authentication.getPrincipal();
+		  
+		  // user를 통해 로그인한 회원의 id 가져옴
+		  String userid = user.getUsername();
+		  Member m = memberdao_jpa.findByUserId(userid);
+		  session.setAttribute("m", m);
 		  model.addAttribute("log", "complete");
 	  };
 	   
@@ -150,6 +166,7 @@ public class MainController {
       list=opentalkdao_mb.findAllTalk();
       model.addAttribute("talk", list);
       model.addAttribute("now", nowNo);
+      return "/mainPage";
    }
    
    //주변행사지역 > 행사지역 선택했을 때

@@ -273,8 +273,9 @@ public class BoardController {
 	@GetMapping("/updateReviewLike")
 	@ResponseBody
 	public int plusLike(HttpSession session, int like,int reviewno) {
-		String id = ((Member)session.getAttribute("m")).getId();
 		
+		String id = ((Member)session.getAttribute("m")).getId();
+			
 		// 만약 해당 id를 가진 사람이 좋아요를 누르지 않았다면
 		if(likeboarddao_jpa.countByIdAndReviewno(id, reviewno) == 0) {
 			Likeboard likeboard = new Likeboard();
@@ -303,6 +304,8 @@ public class BoardController {
 			// 반환값 2
 			return 2;
 		}		
+
+		
 	}
 
 	
@@ -369,8 +372,21 @@ public class BoardController {
 		//게시물 내용 가져오기
 		model.addAttribute("r", rvo);
 		//아이디
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("id", id);
+		if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+			String id = ((Member)session.getAttribute("m")).getId();
+			model.addAttribute("id", id);
+			// 좋아요 여부 가져오기
+			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(id, reviewno));
+		}
+		else {
+			Member m = new Member();
+			m.setId("null");
+			m.setNickname("null");
+			model.addAttribute("m", m);
+			model.addAttribute("id", m.getId());
+			model.addAttribute("likeboard", 0);
+		}
+		
 		
 		//공연정보
 		Event event=new Event();
@@ -396,8 +412,7 @@ public class BoardController {
 		}
 		
 		
-		// 좋아요 여부 가져오기
-		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(id, reviewno));
+		
 		
 		String start=event.getEventstart().toString();
 		String end=event.getEventend().toString();
@@ -635,11 +650,23 @@ public class BoardController {
 		//게시물 내용 가져오기
 		model.addAttribute("b", bvo);
 		//아이디
-		Member m = (Member)session.getAttribute("m");
-		model.addAttribute("m", m);
 		
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("id", id);
+		if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+			Member m = (Member)session.getAttribute("m");
+			model.addAttribute("m", m);
+			model.addAttribute("id", m.getId());
+			// 좋아요 여부 가져오기
+			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(m.getId(), boardno));
+		}
+		else {
+			Member m = new Member();
+			m.setId("null");
+			m.setNickname("null");
+			model.addAttribute("m", m);
+			model.addAttribute("id", m.getId());
+			model.addAttribute("likeboard", 0);
+		}
+		
 		
 		//게시물 댓글 가져오기 (반복문 돌리면서 cvo로 바꾸기)
 		List<Comments> comlist = commentsdao_jpa.findByBoardNo(boardno);
@@ -659,9 +686,6 @@ public class BoardController {
 			model.addAttribute("com", comvolist);
 		}
 		
-		
-		// 좋아요 여부 가져오기
-		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(m.getId(), boardno));
 		
 		return "/boards/board/freeDetail";
 	}
@@ -824,7 +848,7 @@ public class BoardController {
 	}
 	
 	
-	//게시글 저장
+	//게시글 추가
 	@PostMapping("/together")
 	public ModelAndView together(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
@@ -887,8 +911,23 @@ public class BoardController {
 		
 		model.addAttribute("b", bvo);
 		//아이디
-		String id = ((Member)session.getAttribute("m")).getId();
-		model.addAttribute("id", id);
+		
+		if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+			Member m = (Member)session.getAttribute("m");
+			model.addAttribute("m", m);
+			model.addAttribute("id", m.getId());
+			// 좋아요 여부 가져오기
+			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(m.getId(), boardno));
+		}
+		else {
+			Member m = new Member();
+			m.setId("null");
+			m.setNickname("null");
+			model.addAttribute("m", m);
+			model.addAttribute("id", m.getId());
+			model.addAttribute("likeboard", 0);
+		}
+		
 		
 		//게시물 댓글 가져오기 (반복문 돌리면서 cvo로 바꾸기)
 		List<Comments> comlist = commentsdao_jpa.findByBoardNo(boardno);
@@ -909,10 +948,7 @@ public class BoardController {
 		}
 				
 		
-		
-		
-		// 좋아요 여부 가져오기
-		model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(id, boardno));
+
 		
 		return "/boards/board/togetherDetail";
 	}
