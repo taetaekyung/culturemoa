@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>회원가입</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet">  
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/signup.css}"/>
+<style>
+.resultCheck{
+	visibility: hidden;
+}	
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	var idCheck=0 ; //아이디 중복 확인 받으면 1
+	var pwdCheck=0; //비밀번호 확인 받으면 1
+	var pwdDouble=0; //비밀번호 더블확인 받으면 1
+	var nickCheck=0; //닉네임 중복 확인 받으면 1
+	var sendMail=0; //인증번호 보내면 1
+	var mailCheck=0; //이메일 인증 받으면 1
+	
+	$(function(){
+		//아이디 중복확인
+		$(".check_txt").click(function(){
+			 //작성한 아이디
+		      var id = $(".inputid").val();
+		      if(id===""){ //아이디를 입력하지 않았을 때
+				  idCheck=0;
+				  const resultCheck=document.getElementsByClassName("resultCheck");  
+				  resultCheck[0].innerHTML="아이디를 입력해주세요";
+				  resultCheck[0].style.color="gray";
+   				  resultCheck[0].style.visibility="visible";
+			  }else{
+				   //아이디 중복확인
+			      $.ajax({
+					  url:"/checkId",
+					  data:{id:id},
+					  success:function(data){
+						  if(data==1){ //사용 가능 
+							  idCheck=1; //중복확인함
+							  const resultCheck=document.getElementsByClassName("resultCheck");  
+							  resultCheck[0].innerHTML="사용 가능한 아이디 입니다";
+							  resultCheck[0].style.color="#018bf8";
+			   				  resultCheck[0].style.visibility="visible";
+	
+						  }else{ //사용 불가능
+							  idCheck=0;
+							  const resultCheck=document.getElementsByClassName("resultCheck");  
+							  resultCheck[0].innerHTML="사용 불가능한 아이디 입니다";
+							  resultCheck[0].style.color="red";
+			   				  resultCheck[0].style.visibility="visible";
+						  }
+					  }
+				  });
+			  }
+		}); 
+		
+		//닉네임 중복확인
+		const nicknameBtn=$(".nicknameCheck"); //닉네임 중복확인 버튼
+		const resultNickname=$(".resultNickname"); //닉네임 중복확인 결과
+		
+		nicknameBtn.on("click",function(){
+			const nickname=$("#nickname").val(); //작성한 닉네임
+			if(nickname===""){ //닉네임을 작성하지 않았을 때
+				resultNickname.text("닉네임을 작성해주세요");
+				resultNickname.css("color","gray");
+				nickCheck=0;
+			}else{
+				//닉네임 중복 여부 확인
+				$.ajax({
+					url:"/checkNickname",
+					data:{nickname:nickname},
+					success:function(data){
+						if(data==1){ //닉네임 사용 가능
+							resultNickname.text("사용 가능한 닉네임입니다");
+							resultNickname.css("color","#018bf8");
+							nickCheck=1; //닉네임 중복 확인 받음
+						}else{ //닉네임 불사용 가능
+							resultNickname.text("사용 불가능한 닉네임입니다");
+							resultNickname.css("color","red");
+							nickCheck=0;
+						}
+					}
+				});
+			}
+		});
+		//비밀번호 확인 
+	    const passwordInput = $("#password");
+	    const passwordStatus = $("#password-status");  //비밀번호 작성 결과
+		const pwdDoubleCheck=$("#pwdDoubleCheck");
+		const resultCheckPwd=$(".resultCheckPwd");  //비밀번호 재확인 결과
+		var pwd;
+		//비밀번호 체크
+	    passwordInput.on("input", function() {
+	        const password = $(this).val();
+	        pwd=password;
+	        const isValid = checkPasswordValidity(password);
+			
+	        if (isValid) {
+	            passwordStatus.text("암호로 사용 가능합니다");
+	            passwordStatus.css("color", "#018bf8");
+	            pwdCheck=1;
+	        } else {
+	            passwordStatus.text("암호로 사용 불가능합니다");
+	            passwordStatus.css("color", "red");
+	            pwdCheck=0;
+	        }
+	    });
+	
+		// 비밀번호 규칙 체크를 수행하고 결과를 반환하는 함수
+	    function checkPasswordValidity(password) {
+	        const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+	        return regex.test(password);
+	    }
+	    
+	    //비밀번호 확인 
+	    pwdDoubleCheck.on("click",function(){
+			if(pwdCheck==1){  //비밀번호 규칙 준수 여부 확인
+				const doublePassword = $(".inputchkpwd").val(); //비밀번호 재 작성
+				if(pwd===doublePassword){
+					resultCheckPwd.text("암호가 일치합니다");
+					resultCheckPwd.css("color","#018bf8");
+					pwdDouble=1; //비밀 번호 더블 체크 확인
+				}else{
+					resultCheckPwd.text("암호가 일치하지 않습니다");
+					resultCheckPwd.css("color","red");
+					pwdDouble=0;
+				}
+			}
+		})
+		
+		var sendNUM; //보낸 인증번호
+		var userNUM; //사용자가 작성한 인증번호
+		const sendAuthNum=$(".sendAuthNum"); //인증번호 전송
+		const chkAuthNum=$(".chkAuthNum"); //인증번호 일치 여부 확인
+		
+		//이메일 발송
+		$(".emailCheck").on("click",function(){
+			sendAuthNum.text("인증번호가 발송되었습니다");
+			sendAuthNum.css("color","gray");
+			
+			sendMail=1; // 이메일을 보내기
+			
+			var data = {
+				email: $("#email").val()
+			};
+			//이메일 인증번호 발송
+			$.ajax({
+				url:"/vaildEmail",
+				data: data,
+				success:function(n) {
+					sendNUM = eval(n); // 숫자로 변환
+				}
+			});	
+		});
+		
+		//인증번호 일치여부 확인
+		$(".btncheckemail").on("click",function(){
+			userNUM = eval($("#authnum").val());
+			if(sendMail==1){
+				if(userNUM == sendNUM) {
+					chkAuthNum.text("인증되었습니다");
+					chkAuthNum.css("color","#018bf8");
+					mailCheck=1;
+				}else {
+				$("#email").val("");
+					chkAuthNum.text("인증번호가 일치하지 않습니다");
+					chkAuthNum.css("color","red");
+					$("#authnum").val("");
+					mailCheck=0;
+					sendMail=0;
+				}
+			}
+			
+		});
+		
+		//회원가입
+		$(".btnsignup").on("click",function(){
+			
+			console.log(idCheck);
+			console.log(pwdCheck);
+			console.log(pwdDouble);
+			console.log(nickCheck);
+			console.log(mailCheck);
+			
+			if(idCheck!=1||pwdCheck!=1||pwdDouble!=1||nickCheck!=1||mailCheck!=1){
+				alert("인증을 완료해주세요");
+			}else{
+				 $("form").submit(); // 폼 전송
+				 alert("회원가입에 성공하셨습니다");
+			}
+		});
+	});
+	
+
+</script>
+</head>
+<body>
+<!-- signup 시작 -->
+<div class="signup" layout:fragment="content">
+  
+  <div class="title">회원 가입</div>
+  
+  <!-- div_main 시작 -->
+  <div class="div_main">
+	<form  action="/sign" method="post">
+    <!-- div_idToPhone 시작 -->
+    <div class="div_idToPhone">
+
+      <!--아이디 -->
+      <div class="userid">
+        <div class="userid_txt">아이디</div>
+        <div class="chkid">
+			<input type="text" class="inputid" name="id" id="userid" required/> 
+			<div class="check_txt">중복확인</div>
+		</div>
+        <div class="resultCheck">사용 가능한 아이디입니다.</div>
+      </div>
+      
+      <div class="userpwd">
+        <div class="pwd_txt">비밀번호</div>
+        <div class="chkpwd">
+			<input type="password" class="inputpwd " name="pwd" id="password" required placeholder="영어, 숫자, 특문 포함 8자 이상"/> 
+		</div>
+		<!--비밀번호 규칙 준수여부 확인 -->
+		<div class="password-status" id="password-status"></div>
+      </div>
+     
+      <div class="pwdCheck">
+        <div class="pwdCheck_txt">비밀번호 확인</div>
+        <div class="chkchkpwd">
+			<input type="password" class="inputchkpwd" name="chkpwd" id="chkpwd" required placeholder="영어, 숫자, 특문 포함 8자 이상"/>
+			<div class="check_txt" id="pwdDoubleCheck">확인</div> 
+		</div>
+		<!--비밀번호 일치여부 확인 -->
+        <div class="resultCheckPwd"></div>
+      </div>
+     
+      
+      <div class="username">
+        <div class="name_txt">이름</div>
+        <div class="chkname">
+			<input type="text" class="inputname" name="name" id="name" required/>
+        </div>
+      </div>
+      
+      <div class="nickname">
+        <div class="nickname_txt">닉네임</div>
+        <div class="chknickname">
+			<input type="text" class="inputnickname" name="nickname" id="nickname" required/>
+			<div class="nicknameCheck">중복확인</div>
+		</div>
+		<!--닉네임 중복확인 -->
+        <div class="resultNickname"></div>
+      </div>
+      
+      <div class="gender">
+        <div class="gender_txt">성별</div>
+        <div class="btnradio_w">
+          <input type="radio" class="inputgender_m" name="gender" value="남성" checked>남성</input> 
+          <input type="radio" class="inputgender_w" name="gender" value="여성" >여성</input> 
+        </div>
+      </div>
+      
+      
+      <div class="birth">
+        <div class="birth_txt">생년월일</div>
+        <input class="inputbirth" type="date" name="birth" required>
+      </div>
+      
+      
+      <div class="phonenumber">
+        <div class="phone_txt">휴대전화번호</div>
+        <div class="chkphone">
+        	<input type="tel" class="inputphone" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required/>
+        </div>
+      </div>
+      
+    </div>
+    <!-- div_idToPhone -->
+    
+    
+    <div class="email">
+      <div class="useremail">
+        <div class="email_txt">이메일</div>
+        <div class="chkemail">
+	        <input type="email" class="inputemail" name="email"  id="email" required></input>
+	        <div class="emailCheck">확인</div>
+        </div>
+        <!--이메일 발송 안내 -->
+        <div class="sendAuthNum"></div>
+      </div>
+      
+      <div class="checkemail">
+		<div class="chkchkemail">
+			<input type="text" class="inputcheckemail"  name="authnum" id="authnum" required placeholder="인증번호 4자리 입력"/>
+	        <div class="btncheckemail">확인</div>
+        </div>
+        <!--인증번호 일치여부 -->
+        <div class="chkAuthNum"></div>
+      </div>
+    </div>
+    
+    
+   <!-- <div class="top-line"></div> -->
+    <div class="buttons">
+      <div class="btnsignup" >회원가입</div>
+      <a class="btnback" th:href="@{/mainPage}">
+      <div class="btnback">메인으로 가기</div>
+      </a>
+    </div>
+    
+    </form>  
+   <!-- <div class="bottom-line"></div> -->
+  </div>
+  <!-- div_main 끝 -->
+</div>
+<!-- signup 끝 -->
+</body>
