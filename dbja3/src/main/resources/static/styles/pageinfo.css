@@ -401,6 +401,7 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 .pageinfo-SK3 .main-Fhj .teammember-iW5 .teammember-gC1 .auto-group-x9qb-2Fs {
   box-sizing: border-box;
@@ -684,8 +685,8 @@ body {
   white-space: nowrap;
 }
 .pageinfo-SK3 .main-Fhj .teammember-iW5 .image-cWD {
-  width: 191.9357rem;
-  height: 86.4754rem;
+  /*width: 191.9357rem;*/
+  height: 95.4754rem;
   position: absolute;
   left: 0;
   top: 13.1748rem;

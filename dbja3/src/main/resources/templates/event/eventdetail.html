@@ -20,7 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f2916fe9be7d4973e1955c2e2aeff14"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f2916fe9be7d4973e1955c2e2aeff14"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>	
 	//현재 url 변수로 가져오기
@@ -190,12 +190,13 @@
             <button type="button" class="divway-v2D" id="find_txt" data-bs-toggle="modal" data-bs-target="#myModal">길찾기</button>
           </div>
           <div class="divmap-Byj" id="map">
+
           <script>
 			  var container = document.getElementById('map');
 			  var options = {
 			  	center: new kakao.maps.LatLng('[[${event.eventlat}]]', '[[${event.eventlong}]]'),
 			  	level: 2
-		  	};
+		  		};
 		  	  var markerPosition  = new kakao.maps.LatLng('[[${event.eventlat}]]', '[[${event.eventlong}]]'); 
 			  var map = new kakao.maps.Map(container, options);
 			  var marker = new kakao.maps.Marker({
@@ -203,6 +204,7 @@
     		  })
     		  marker.setMap(map);
 		  </script>
+      
 		  </div>
         </div>
       </div>

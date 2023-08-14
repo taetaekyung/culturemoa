@@ -638,6 +638,9 @@ public class BoardController {
 		Member m = (Member)session.getAttribute("m");
 		model.addAttribute("m", m);
 		
+		String id = ((Member)session.getAttribute("m")).getId();
+		model.addAttribute("id", id);
+		
 		//게시물 댓글 가져오기 (반복문 돌리면서 cvo로 바꾸기)
 		List<Comments> comlist = commentsdao_jpa.findByBoardNo(boardno);
 		List<CommentsVO> comvolist = new ArrayList<CommentsVO>();
