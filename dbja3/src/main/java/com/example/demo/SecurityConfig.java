@@ -40,7 +40,7 @@ public class SecurityConfig {
 		http.csrf().ignoringRequestMatchers("/sign", "/searchresult");
 		
 		http.formLogin().loginPage("/login/login").permitAll() //로그인은 여기서해
-		.defaultSuccessUrl("/mainPage"); //성공하면 main으로 갈게
+		.defaultSuccessUrl("/mainPageAfterLogin"); //성공하면 main으로 갈게
 		
 		http.logout() //패턴 링크만 적어주면 알아서 로그아웃을 해줄거야
 		.logoutRequestMatcher(new AntPathRequestMatcher("/login/logout")) //패턴이름 logout

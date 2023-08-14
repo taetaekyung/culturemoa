@@ -26,7 +26,6 @@ public class SignupController {
 	//회원가입
 	@PostMapping("/sign")
 	public ModelAndView sign(Member m) {
-		System.out.println("controller : "+m);
 		ModelAndView mav=new ModelAndView("redirect:/login/login");
 		m.setFname("profile.png");
 		m.setRole("user");

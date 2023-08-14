@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,11 +32,22 @@ public class LoginController {
 	}
 	
 	//로그인 화면
-	@PostMapping("/login/login")
+	@GetMapping("/mainPageAfterLogin")
 	public ModelAndView login(HttpSession session, String id, String password) {
-		System.out.println("controller id: "+id);
-		ModelAndView mav = new ModelAndView("redirect:/mainPage");
-
+		
+		// 로그인된 회원의 정보를 가져오기 위하여 
+		// 시큐리티의 인증 객체 필요
+		  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		  // 위의 인증 객체를 통해 로그인된 user 객체를 받아옴
+		  User user = (User) authentication.getPrincipal();
+		  
+		  // user를 통해 로그인한 회원의 id 가져옴
+		  String userid = user.getUsername();
+		  Member m = memberdao_jpa.findByUserId(userid);
+		  session.setAttribute("m", m);
+		  ModelAndView mav = new ModelAndView("redirect:/mainPage");
+/*
 		if(memberdao_jpa.findByUserId(id) == null || memberdao_jpa.findByUserId(id).equals("")) {
 			mav.addObject("msg", "존재하지 않는 아이디입니다.");
 			mav.setViewName("/login/login");
@@ -48,7 +62,7 @@ public class LoginController {
 				System.out.println("세션 넘겨주러 왔음.");
 				session.setAttribute("m", (Member)memberdao_jpa.findById(id).get());
 			}
-		}
+		} */
 		return mav;
 	}
 	
