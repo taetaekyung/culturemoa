@@ -24,7 +24,7 @@ public class SecurityConfig {
 		.requestMatchers("", "/", "/mainPage", "/calendarEvent", "/calendarTicket", "selectArea", "main_insertTalk", 
 				"main_updateTalk", "/searchresult" // 여기까지 mainPage 관련 mapping 
 				, "/layout/default_layout", // 여기까지 layout 관련 mapping 
-				"/login/login", "/signup", "/login/findid", "/login/findidcomplete", "/checkInfo", "/login/findpassword"
+				 "/sign", "/login/findid", "/login/findidcomplete", "/checkInfo", "/login/findpassword"
 				, "/login/passwordreset", "/changePwd", "/login/passwordresetcomplete" // 여기까지 login 관련 mapping 
 				, "/signup",  "/checkId","/vaildEmail",  "/checkNickname" // 여기까지 회원가입 관련 mapping
 				, "/event/domesticconcertlist", "/event/festivallist", "/event/koreaconcertlist", "/event/musicallist", "/event/playlist"
