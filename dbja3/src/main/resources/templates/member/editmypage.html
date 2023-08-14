@@ -94,6 +94,7 @@
 				if(n == 1) {
 					$("#resultchk").text("사용 가능한 닉네임입니다.");
 					$("#resultchk").css("color", "black");
+					$("#chknickname").val(n);
 				}
 				else {
 					$("#resultchk").text("이미 존재하는 닉네임입니다.");
@@ -118,6 +119,23 @@
 			top.alert("[[${msg}]]");
 		</script>
 	</th:block>
+	
+		
+	
+	<th:block th:if="${nicknamemsg}!=null">
+		<script>
+			top.alert("[[${nicknamemsg}]]");
+		</script>
+	</th:block>
+	
+	<th:block th:if="${emailmsg}!=null">
+		<script>
+			top.alert("[[${emailmsg}]]");
+		</script>
+	</th:block>
+
+	
+	
 	<th:block th:if="${pagehref}!=null">
 		<script>
 			top.location.href = '[[${pagehref}]]';
@@ -191,6 +209,7 @@
           <div class="nickname_text">닉네임</div>
           <input type="text" name="nickname" id="nickname" class="usernickname" th:value="${session.m.nickname}"/>
           <div class="btnchecknickname" onclick="chknickname()">중복확인</div><br>
+          <input type="hidden" name="chknickname" id="chknickname" value="0">
         </div>
         <!--div_nickname 끝-->
         <div class="resultchk" id="resultchk"></div>

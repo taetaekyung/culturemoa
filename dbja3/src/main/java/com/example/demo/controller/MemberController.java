@@ -528,33 +528,56 @@ public class MemberController {
 	
 	// 마이페이지 닉네임과 이메일 변경 시
 	@PostMapping("/member/editmypage")
-	public ModelAndView editmypage(HttpSession session, String nickname, String email, int chkemail) {
+	public ModelAndView editmypage(HttpSession session, String nickname, String email, int chkemail, int chknickname) {
 		ModelAndView mav = new ModelAndView();
 		
 		Member m = (Member)session.getAttribute("m");
 		
 		// 닉네임이 바뀌었다면 수정
 		if(nickname != null && !nickname.equals("")) {
-			m.setNickname(nickname);
+			if(!nickname.equals(m.getNickname())) {
+				if(chknickname == 1) {
+					m.setNickname(nickname);
+				}
+			}
+			// 바뀐 값이 전과 같음
+			else {
+				chknickname = 1;
+			}
 		}
 		
-		// 이메일이 바뀌었다면 수정
+		// 이메일 수정
 		if(email != null && !email.equals("")) {
+			// 바뀐 값이 전과 다름
 			if(!email.equals(m.getEmail())) {
+				// 이메일 인증을 완료 함
 				if(chkemail == 1) {
 					m.setEmail(email);
-					mav.addObject("msg", "회원정보 수정이 완료되었습니다.");
-					mav.addObject("pagehref", "/member/mypage");
-				}
-				else {
-					mav.addObject("msg", "이메일 인증이 되지 않았습니다.");
-					mav.addObject("pagehref", "/member/editmypage");
 				}
 			}
+			// 바뀐 값이 전과 같음
 			else {
-				mav.addObject("msg", "회원정보 수정이 완료되었습니다.");
-				mav.addObject("pagehref", "/member/mypage");
+				chkemail = 1;
 			}
+		}
+		
+		
+		if(chknickname == 1 && chkemail == 1) {
+			mav.addObject("msg", "회원정보 수정이 완료되었습니다.");
+			mav.addObject("pagehref", "/member/mypage");
+		}
+		else if(chknickname != 1){
+			mav.addObject("nicknamemsg", "닉네임 중복확인이 되지 않았습니다.");
+			if(chkemail != 1) {
+				mav.addObject("emailmsg", "이메일 인증이 되지 않았습니다.");
+			}
+			mav.addObject("pagehref", "/member/editmypage");
+		}
+		else {
+			if(chkemail != 1) {
+				mav.addObject("emailmsg", "이메일 인증이 되지 않았습니다.");
+			}
+			mav.addObject("pagehref", "/member/editmypage");
 		}
 		mav.setViewName("/member/editmypage");
 		memberdao_jpa.save(m);

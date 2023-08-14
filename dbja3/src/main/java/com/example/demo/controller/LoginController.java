@@ -29,7 +29,6 @@ public class LoginController {
 	@PostMapping("/login/login")
 	public ModelAndView login(HttpSession session, String id, String password) {
 		ModelAndView mav = new ModelAndView("redirect:/mainPage");
-		System.out.println(password);
 
 		if(memberdao_jpa.findByUserId(id) == null || memberdao_jpa.findByUserId(id).equals("")) {
 			mav.addObject("msg", "존재하지 않는 아이디입니다.");
