@@ -16,13 +16,23 @@
 <body>
 <div class="findidcomplete-bVs" layout:fragment="content">
   <div class="title-oNH">아이디 찾기 완료</div>
-  <div class="item--8fT">고객님의 정보와 일치하는 아이디입니다.</div>
-  <img class="checkcircle-Qss" src="/assets/checkcircle-hAh.png"/>
+  <!-- 일치하는 아이디가 있다면 -->
+  <div th:if="${findId ne null}" class="item--8fT">고객님의 정보와 일치하는 아이디입니다.</div>
+  <img th:if="${findId ne null}" class="checkcircle-Qss" src="/assets/checkcircle-hAh.png"/>
+  <!-- 일치하는 아이디가 없다면 -->
+  <div  th:if="${findId eq null}" class="item--8fT">고객님의 정보와 일치하는 아이디가 없습니다.</div>
+   
   <div class="auto-group-vb4m-Yz5">
-    <div class="frame-330-G9P">
+	<!-- 일치하는 아이디가 있다면 -->
+    <div class="frame-330-G9P" th:if="${findId ne null}">
       <div class="item--C33">아이디</div>
-      <div class="nameid1234-7Qu">name_id1234</div>
+      <div class="nameid1234-7Qu" th:text="${findId}"></div>
     </div>
+    <!-- 일치하는 아이디가 없다면 -->
+    <div class="frame-330-G9P" th:if="${findId eq null}">
+	  <div class="item--C33">이름과 이메일을 확인해주세요</div>
+	</div>
+	
     <div class="group-43-M4M">
       <div class="item--Uuf">비밀번호가 기억나지 않는다면?</div>
       <a th:href="@{/login/findpassword}">

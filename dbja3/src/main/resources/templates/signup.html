@@ -136,8 +136,8 @@
 			}
 		})
 		
-		var sendNUM;
-		var userNUM;
+		var sendNUM; //보낸 인증번호
+		var userNUM; //사용자가 작성한 인증번호
 		const sendAuthNum=$(".sendAuthNum"); //인증번호 전송
 		const chkAuthNum=$(".chkAuthNum"); //인증번호 일치 여부 확인
 		
@@ -312,7 +312,9 @@
    <!-- <div class="top-line"></div> -->
     <div class="buttons">
       <div class="btnsignup" >회원가입</div>
+      <a class="btnback" th:href="@{/mainPage}">
       <div class="btnback">메인으로 가기</div>
+      </a>
     </div>
     
     </form>  

@@ -18,6 +18,10 @@ input::placeholder{
 body {
   width: 192rem;
 }
+input:focus{
+	outline: none;
+	border: none;
+}
 .findid-XtD {
   width: 100%;
   align-items: center;

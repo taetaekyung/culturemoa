@@ -12,30 +12,79 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Source+Sans+3&display=swap" rel="stylesheet"> 
 <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
 <link rel="stylesheet" th:href="@{/styles/findid.css}"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+	
+	$(function(){
+		//이메일 발송
+		var sendNUM; //보낸 인증번호
+		var userNUM; //사용자가 작성한 인증번호
+		$(".emailCheckBtn").on("click",function(){
+			var data = {
+				email: $("#email").val()
+			};
+			//이메일 인증번호 발송
+			$.ajax({
+				url:"/vaildEmail",
+				data: data,
+				success:function(n) {
+					sendNUM = eval(n); // 숫자로 변환
+				}
+			});	
+		});
+		//인증번호 일치여부 확인
+		$(".btnfindid-nwB").on("click",function(){
+			userNUM = eval($("#authnum").val());
+			if(userNUM==null){
+				alert("인증번호를 입력해주세요");
+			}else{
+				if(userNUM == sendNUM) { //인증번호가 일치할 때 
+					var name=$("#name").val();
+					var email=$("#email").val();
+					if(name===""){
+						alert("정보를 입력해주세요");
+					}else{
+						url="/login/findidcomplete?name="+name+"&email="+email;
+						location.href=url;
+					}
+					
+			
+				}else { //일치하지 않을 때
+					$("#email").val("");
+						alert("인증번호가 일치하지 않습니다");
+						$("#authnum").val("");
+			    }
+			}
+			
+			
+		});
+	});
+	
+	
+</script>
 </head>
 <body>
 <div class="findid-XtD" layout:fragment="content">
   <div class="title-Mdb">아이디 찾기</div>
   <div class="auto-group-nk73-5pV">
-	 
 	<!--이름 -->  
     <div class="new-password-Q65">
       <div class="item--Yxy">이름</div>
-      <input class="rectangle-144-3eq"  placeholder="이름을 입력해주세요" required></input>
+      <input class="rectangle-144-3eq" type="text" name="name" id="name" placeholder="이름을 입력해주세요" required></input>
     </div>
     
     <!-- 이메일 -->  
     <div class="new-passwordconfirm-ZdB">
       <div class="item--WoK">이메일</div>
       <div class="auto-group-fs1o-2Wm">
-		  <input class="inputEmail" placeholder="이메일을 입력해주세요" required>
+		  <input type="email" class="inputEmail" placeholder="이메일을 입력해주세요"  name="email"  id="email"  required>
 		  <div class="emailCheckBtn">확인</div>
 	  </div>
     </div>
     <!-- 인증번호 -->  
     <div class="inputverificationcode-VQM">
       <div class="item--3Ay">인증번호 입력</div>
-      <input class="inputverificationcode-YNd"  placeholder="인증번호를 입력해주세요" required></input>
+      <input class="inputverificationcode-YNd" type="text" id="authnum" placeholder="인증번호를 입력해주세요" required></input>
     </div>
     <div class="questionfindpassword-Hb7">
       <div class="item--22u">비밀번호가 기억나지 않는다면?</div>
@@ -43,10 +92,11 @@
       	<div class="item--u6h">비밀번호 찾기</div>
       </a>
     </div>
-    <a th:href="@{/login/findidcomplete}" class="btnfindid-nwB">
-    	<div class="btnfindid-nwB">아이디 찾기</div>
+
+    <div class="btnfindid-nwB" >아이디 찾기</div>
+    <a class="btnback-V4u" th:href="@{/login/login}">
+    	<div class="btnback-V4u">뒤로가기</div>
     </a>
-    <div class="btnback-V4u">뒤로가기</div>
   </div>
 </div>
 </body>

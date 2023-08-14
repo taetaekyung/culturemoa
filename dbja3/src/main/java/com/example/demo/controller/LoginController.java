@@ -2,8 +2,11 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.MemberDAO_jpa;
@@ -61,9 +64,23 @@ public class LoginController {
 	}
 	//아이디 찾기 결과
 	@GetMapping("/login/findidcomplete")
-	public void findidcomplete() {
+	public void findidcomplete(@RequestParam("name") String name, @RequestParam("email") String email,Model model) {
+		String findId= memberdao_jpa.findIdByNameAndEmail(name, email);
+		model.addAttribute("findId",findId);
 		
 	}
+	//비밀번호 찾기 ajax
+	@GetMapping("/checkInfo")
+	@ResponseBody
+	public String checkInfo(String name,String id,String email) {
+		String pwd="";
+		pwd=memberdao_jpa.findPwdByNameAndEmailAndId(name, email, id);
+		if(pwd==null) {
+			id="";
+		}
+		return id;
+	}
+	
 	//비밀번호 찾기
 	@GetMapping("/login/findpassword")
 	public void findpassword() {
@@ -71,9 +88,17 @@ public class LoginController {
 	}
 	//비밀번호 재설정
 	@GetMapping("/login/passwordreset")
-	public void passwordreset() {
-		
+	public void passwordreset(Model model,@RequestParam("id")String id) {
+		model.addAttribute("id", id);
 	}
+	
+	//비밀번호 재설정하기
+	@GetMapping("/changePwd")
+	@ResponseBody
+	public void changePwd(String id,String newPwd) {
+		memberdao_jpa.updatePwdById(id, newPwd);
+	}
+	
 	//비밀번호 재설정 결과
 	@GetMapping("/login/passwordresetcomplete")
 	public void passwordresetcomplete() {

@@ -319,6 +319,7 @@ input::placeholder{
   margin: 0rem 10.1rem 7.7rem 10.95rem;
   width: calc(100% - 21.05rem);
   display: flex;
+  justify-content: center;
   align-items: flex-start;
   flex-shrink: 0;
 }
