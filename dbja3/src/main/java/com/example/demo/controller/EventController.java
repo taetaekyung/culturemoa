@@ -101,7 +101,22 @@ public class EventController {
     @Transactional // 추가: 조회수 업데이트를 위해 트랜잭션을 사용
     public String eventDetail(HttpSession session, @RequestParam int eventno, Model model) {
     	
-    	String id = ((Member)session.getAttribute("m")).getId();
+    	if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
+			String id = ((Member)session.getAttribute("m")).getId();
+			// 찜 여부 가져오기
+	        int cnt = wishlistdao_jpa.countByIdAndEventno(id, eventno);
+	        model.addAttribute("cnt", cnt);
+		}
+		else {
+			Member m = new Member();
+			m.setId("null");
+			m.setNickname("null");
+			model.addAttribute("m", m);
+			model.addAttribute("id", m.getId());
+			model.addAttribute("likeboard", 0);
+	        model.addAttribute("cnt", 0);
+		}
+    	
     	
     	//시간 생략을 위한 Formatter
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -138,10 +153,8 @@ public class EventController {
         event.setEventhit(event.getEventhit() + 1); // 이벤트의 조회수를 1 증가시킵니다.
         eventdao_jpa.save(event); // 변경된 이벤트 엔티티를 저장합니다.
         
-        int cnt = wishlistdao_jpa.countByIdAndEventno(id, eventno);
         
         
-        model.addAttribute("cnt", cnt);
         model.addAttribute("event", event);
         model.addAttribute("state", state);
         return "/event/eventdetail"; // "/event/eventdetail" 페이지로 이동하도록 반환합니다.

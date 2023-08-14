@@ -96,7 +96,7 @@
 		const btn1 = document.querySelector(".updatebtn-Jf3"); 
 		//삭제버튼
         const btn2 = document.querySelector(".deletebtn-kG9");
-		if(nickname==nickname){
+		if(nickname==writer){
 		   
 	        btn1.style.visibility = 'visible';
 	        btn2.style.visibility = 'visible';
@@ -140,8 +140,7 @@
 					alert("좋아요 취소하였습니다.")
 					window.location.href = '/boards/review/reviewDetail?reviewno='+reviewno;
 				}
-				
-				
+
 			}
 		});
 	}
@@ -327,7 +326,7 @@
     <!--main -->
     <!-- 회원 id -->
     <input type="hidden" id="id" th:value="${id}"> 
-    <input type="hidden" id="nickname" th:value="${session.m.nickname}"> 
+    <input type="hidden" id="nickname" th:value="${m.nickname}"> 
     <input type="hidden" id="reviewno" th:value="${r.reviewno}">
     <div class="divmain-bZ3">
       <div class="divtitle-uJq">

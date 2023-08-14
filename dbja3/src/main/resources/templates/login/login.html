@@ -39,9 +39,12 @@
     </div>
     <!--아이디 입력 -->
     <form action="/login/login" method="post">
+
 	    <div class="auto-group-8m69-1Vb">
 	      <img class="user-WhF" src="/assets/user-KJR.png"/>
 	      <input class="item--SL1" type="text" name="id" required placeholder="아이디"></input>
+    		<input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }">		
+
 	    </div>
 	    <!--비밀번호 입력 -->
 	    <div class="auto-group-gbqs-8Tj">
