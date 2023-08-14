@@ -31,6 +31,7 @@ public class LoginController {
 	//로그인 화면
 	@PostMapping("/login/login")
 	public ModelAndView login(HttpSession session, String id, String password) {
+		System.out.println("controller id: "+id);
 		ModelAndView mav = new ModelAndView("redirect:/mainPage");
 
 		if(memberdao_jpa.findByUserId(id) == null || memberdao_jpa.findByUserId(id).equals("")) {
@@ -44,6 +45,7 @@ public class LoginController {
 				mav.setViewName("/login/login");
 			}
 			else {
+				System.out.println("세션 넘겨주러 왔음.");
 				session.setAttribute("m", (Member)memberdao_jpa.findById(id).get());
 			}
 		}

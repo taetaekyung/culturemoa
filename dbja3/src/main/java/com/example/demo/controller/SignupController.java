@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +26,12 @@ public class SignupController {
 	//회원가입
 	@PostMapping("/sign")
 	public ModelAndView sign(Member m) {
-		System.out.println(m);
+		System.out.println("controller : "+m);
 		ModelAndView mav=new ModelAndView("redirect:/login/login");
+		m.setFname("profile.png");
 		m.setRole("user");
+		String pwd=m.getPwd();
+	    m.setPwd(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(pwd));
 		//회원가입
 		memberdao_jpa.save(m);
 		return mav;
