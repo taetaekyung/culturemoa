@@ -307,6 +307,26 @@ body {
   flex-shrink: 0;
   cursor: pointer;
 }
+.gnb-EhX .divmessage-aaM .message-trigger{
+	display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.gnb-EhX .divmessage-aaM .message-dropdown{
+	display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    z-index: 100;
+    padding: 10px;
+    top: 202px;
+    left: 1500px;
+}
+.gnb-EhX .divmessage-aaM .message-dropdown .dropdown-option{
+	cursor: pointer;
+    padding: 5px;
+}
 .gnb-EhX .divmessage-aaM .iconmessage-VBX {
   margin-right: 0.5rem;
   width: 1.7rem;
