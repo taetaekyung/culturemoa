@@ -26,20 +26,20 @@ public class MemberService implements UserDetailsService {
 	// UserDetails 객체를 생성하여 반환하도록 만들어야 함.
 	
 	@Override
-	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails user=null;
 		// 비밀번호 암호화
-		System.out.println("로그인 m "+id);
-		Member m = memberdao.findById(id).get();
+		System.out.println("로그인 m "+username);
+		Member m = memberdao.findById(username).get();
 		if(m == null) {
 			try {
-				throw new UsernameNotFoundException(id);				
+				throw new UsernameNotFoundException(username);				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		else {
-			user = User.builder().username(id)
+			user = User.builder().username(username)
 					.password(m.getPwd()).roles(m.getRole()).build();
 		}
 		
