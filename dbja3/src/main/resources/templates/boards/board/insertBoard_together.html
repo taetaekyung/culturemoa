@@ -34,6 +34,49 @@ input[type="radio"], input[type="checkbox"] {
 }
 </style>
 <script>
+	//쪽지 보내기 팝업 열기 함수
+	function openSendMessagePopup() {
+		var id="";
+	    // 팝업창을 여는 코드를 작성합니다.
+	    window.open('/member/messagesend?id='+id, 'messagePopup', 'width=510,height=430');
+	}
+	
+	//쪽지 버튼 클릭하면 드롭다운
+	$(document).ready(function() {
+	  var messageDropdown = $("#messageDropdown");
+	  
+	  // 초기에 드롭다운 숨기기
+	  messageDropdown.hide();
+	  
+	  // 클릭하면 드롭다운 토글
+	  $("#messageDropdownTrigger").click(function() {
+	    messageDropdown.toggle();
+	  });
+	
+	  // 다른 영역을 클릭하면 드롭다운 숨기기
+	  $(document).click(function(event) {
+	    if (!$(event.target).closest("#messageDropdownTrigger").length &&
+	        !$(event.target).closest(".message-dropdown").length) {
+	      messageDropdown.hide();
+	    }
+	  });
+	});
+	//--------gnb드롭다운
+	//마우스가 올라오면 드롭다운
+	function showDropDown() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'visible';
+	}
+	//gnb에 마우스가 벗어나면 드롭다운 없애기
+	function hideDropDown() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'hidden';
+	}
+	//gnb에 마우스가 벗어나도 드롭다운에 마우스가 올라오면 드롭다운 그대로 유지
+	function cancelHide() {
+		const gnbDropdown = document.getElementById('gnbDropdown');
+		gnbDropdown.style.visibility = 'visible';
+	}
 	//--------------오픈톡
 	//버튼 선택시 오픈톡 새창 띄우기
 	function opentalk(){
@@ -169,9 +212,22 @@ input[type="radio"], input[type="checkbox"] {
     </div>
     <!--searchbar div 끝-->
     
-    <div class="div_login" style="cursor: pointer;" onclick="location.href='/login'">로그인</div>
-    <div class="div_signup"  style="cursor: pointer;" onclick="location.href='/signup'">회원가입</div>
+    <th:block th:if="${session.m == null}">
+    	<div class="div_login" style="cursor: pointer;" onclick="location.href='/login/login'">로그인</div>
+	</th:block>
+	
+	<th:block th:if="${session.m != null}">
+    	<div class="div_login" style="cursor: pointer;" onclick="location.href='/login/logout'">로그아웃</div>
+	</th:block>
+	
+	<th:block th:if="${session.m == null}">
+    	<div class="div_signup"  style="cursor: pointer;" onclick="location.href='/signup'">회원가입</div>
+    </th:block>
     
+    <th:block th:if="${session.m != null}">
+		<div class="div_signup"  style="cursor: pointer;" onclick="location.href='/member/mypage'">마이페이지</div>
+    </th:block>
+
   </div>
   <!-- header_top div 끝 -->
     <!--gnb -->
@@ -185,9 +241,18 @@ input[type="radio"], input[type="checkbox"] {
         <img class="iconopentalk-vEu" src="/assets/iconopentalk-2m7.png"/>
         <div class="opentalk-GJm" onclick="opentalk()">오픈톡</div>
       </div>
-      <div class="divmessage-aaM">
-        <img class="iconmessage-VBX" src="/assets/iconmessage-2Bj.png"/>
-        <div class="message-Rqs" onclick="location.href=''">쪽지</div>
+      <!--쪽지 관련-->
+      <div class="divmessage-aaM" id="messageDropdownTrigger">
+        <div class="message-trigger">
+	      <img class="iconmessage-VBX" src="/assets/iconmessage-2Bj.png"/>
+	      <div class="message-Rqs">쪽지</div>
+	    </div>
+	    <!-- 쪽지 드롭다운 -->
+	    <div class="message-dropdown" id="messageDropdown">
+	      <div class="dropdown-option" onclick="openSendMessagePopup()">쪽지보내기</div>
+	      <div class="dropdown-option" onclick="location.href='/member/mypagemessage'">수신함</div>
+	      <div class="dropdown-option" onclick="location.href='/member/mypagemessagesend'">발신함</div>
+	    </div>
       </div>
     </div>
 

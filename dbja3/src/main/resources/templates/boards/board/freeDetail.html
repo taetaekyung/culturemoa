@@ -242,10 +242,21 @@
     </form>
     </div>
     <!--searchbar div 끝-->
+  	<th:block th:if="${session.m == null}">
+    	<div class="div_login" style="cursor: pointer;" onclick="location.href='/login/login'">로그인</div>
+	</th:block>
+	
+	<th:block th:if="${session.m != null}">
+    	<div class="div_login" style="cursor: pointer;" onclick="location.href='/login/logout'">로그아웃</div>
+	</th:block>
+	
+	<th:block th:if="${session.m == null}">
+    	<div class="div_signup"  style="cursor: pointer;" onclick="location.href='/signup'">회원가입</div>
+    </th:block>
     
-    <div class="div_login" style="cursor: pointer;" onclick="location.href='/login'">로그인</div>
-    <div class="div_signup"  style="cursor: pointer;" onclick="location.href='/signup'">회원가입</div>
-    
+    <th:block th:if="${session.m != null}">
+		<div class="div_signup"  style="cursor: pointer;" onclick="location.href='/member/mypage'">마이페이지</div>
+    </th:block>
   </div>
   <!-- header_top div 끝 -->
     <!--gnb -->
