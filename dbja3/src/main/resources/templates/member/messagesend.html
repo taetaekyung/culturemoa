@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.parameterName}" />
 <title>쪽지 쓰기</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
@@ -23,7 +24,7 @@
 
     $.ajax({
       type: 'GET',
-      url: '/member/checkNickname', // 실제 서버 경로로 변경해야 함
+      url: '/member/checkNickname',
       data: {
         nickname: nickname
       },
@@ -44,12 +45,12 @@
   // 변수를 사용하여 작성한 내용이 있는지 추적
   let isUnsavedChanges = false; 
   
-  // 글자 수 체크 및 최대 글자 수 제한
+  // 글자 수 체크 
   function updateCharCount(textarea) {
     const charCount = textarea.value.length;
     document.getElementById('charCount').innerText = `(${charCount} / 900자)`;
   }
-  
+  // 최대 글자 수 제한
   function checkMaxChar(textarea, maxChar) {
     if (textarea.value.length > maxChar) {
       textarea.value = textarea.value.substring(0, maxChar);
@@ -69,28 +70,39 @@
     
     // 입력한 내용이 없으면 전송 안됨
     if (!content) {
+	  //alert('쪽지보내기 버튼 작동2');
       alert('내용을 입력해주세요.');
       return;
     }
     
+    // CSRF 토큰을 얻어옴
+	const csrfToken = $("meta[name='_csrf']").attr("content");
+	const csrfHeader = $("meta[name='_csrf_header']").attr("content");
+	alert("csrf1 :"+csrfToken)
+	alert("csrf 2: "+csrfHeader)
+    
     // AJAX를 이용해 쪽지 보내기 요청 전송
-    $.ajax({
-      type: 'POST',
-      url: '/member/sendmessage',
-      data: {
-        nickname: nickname,
-        content: content
-      },
-      success: function (data) {
-        // 서버 응답이 성공일 경우 팝업 닫고 내용 초기화
-        alert(data);
-        window.close();
-      },
-      error: function () {
-        // 서버 응답이 실패일 경우 알림만 띄우고 팝업 닫지 않음
-        alert('쪽지 보내기에 실패하였습니다.');
-      }
-    });
+$.ajax({
+  type: 'POST',
+  url: '/member/sendmessage',
+  data: {
+    nickname: nickname,
+    content: content
+  },
+  beforeSend: function(xhr) {
+    xhr.setRequestHeader(csrfHeader, csrfToken);
+  },
+  success: function (data) {
+    // 서버 응답이 성공일 경우 팝업 닫고 내용 초기화
+    alert(data);
+    window.close(); 
+  },
+  error: function () {
+    // 서버 응답이 실패일 경우 알림만 띄우고 팝업 닫지 않음
+    alert('쪽지 보내기에 실패하였습니다.2');
+  }
+});
+
   }
 
   // 팝업 닫기

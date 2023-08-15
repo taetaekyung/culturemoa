@@ -133,10 +133,9 @@ public class MemberController {
 	@PostMapping("/member/sendmessage")
 	@ResponseBody
 	public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
+		System.out.println("쪽지보내기 메소드 작동");
 	    // 세션에서 로그인된 사용자의 ID 가져오기
-		System.out.println("쪽지 닉네임: "+nickname);
 	    String senderId = ((Member) session.getAttribute("m")).getId();
-	    System.out.println("쪽지: "+senderId);
 	    // 발신 아이디, 닉네임을 가져와 Member 엔티티 조회
 	    Member sender = memberdao_jpa.findById(senderId).orElse(null);
 	    
@@ -165,7 +164,7 @@ public class MemberController {
 	        
 	        return "쪽지가 성공적으로 보내졌습니다.";
 	    } else {
-	        return "쪽지 보내기에 실패하였습니다.";
+	        return "쪽지 보내기에 실패하였습니다.1";
 	    }
 	}
 	
