@@ -134,8 +134,9 @@ public class MemberController {
 	@ResponseBody
 	public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
 	    // 세션에서 로그인된 사용자의 ID 가져오기
+		System.out.println("쪽지 닉네임: "+nickname);
 	    String senderId = ((Member) session.getAttribute("m")).getId();
-	    
+	    System.out.println("쪽지: "+senderId);
 	    // 발신 아이디, 닉네임을 가져와 Member 엔티티 조회
 	    Member sender = memberdao_jpa.findById(senderId).orElse(null);
 	    
