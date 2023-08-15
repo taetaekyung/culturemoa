@@ -271,7 +271,9 @@ input[type="radio"], input[type="checkbox"] {
     </div>
     
     <div class="divmain-QPs">
-		<form id="board" role="form" action="/free" method="post"> 
+		<form id="board" role="form" action="/boards/board/freelist" method="post"> 
+		<input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }">		
+
 		<div class="auto-group-zphp-V5s">
 		<!-- 작성자 -->	
         <div class="divwriter-RVK">

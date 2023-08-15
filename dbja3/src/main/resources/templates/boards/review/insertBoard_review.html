@@ -320,7 +320,8 @@
     </div>
     <div class="divmain-uK7">
 		
-	<form id="board" role="form" action="/board" method="post">
+	<form id="board" role="form" action="/boards/review/reviewlist" method="post">
+	<input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }">		
 
       <div class="auto-group-kd3o-pws">
 		<!-- 작성자 아이디-->

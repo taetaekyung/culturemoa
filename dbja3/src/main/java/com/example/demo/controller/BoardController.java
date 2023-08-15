@@ -231,7 +231,7 @@ public class BoardController {
     }
     
     //댓글 추가하기
-    @PostMapping("/reviewInsertComment")
+    @PostMapping("/boards/review/reviewDetail")
     public ModelAndView reviewInsertComment(Reviewcomment c,int reviewno,HttpSession session) {
     	//게시글 번호
     	Reviewboard rb=new Reviewboard();
@@ -373,10 +373,10 @@ public class BoardController {
 		model.addAttribute("r", rvo);
 		//아이디
 		if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
-			String id = ((Member)session.getAttribute("m")).getId();
-			model.addAttribute("id", id);
+			Member m = (Member)session.getAttribute("m");
+			model.addAttribute("m", m);
 			// 좋아요 여부 가져오기
-			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(id, reviewno));
+			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(m.getId(), reviewno));
 		}
 		else {
 			Member m = new Member();
@@ -432,7 +432,7 @@ public class BoardController {
 	}
 	
 	//후기 게시글 작성
-	@PostMapping("/board")
+	@PostMapping("/boards/review/reviewlist")
 	public ModelAndView board(HttpSession session, Reviewboard r,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewlist");
 		//게시물 작성하기
@@ -693,10 +693,12 @@ public class BoardController {
 	@GetMapping("/boards/board/insertBoard_free")
 	public void free(HttpSession session, Model model) {
 		String id = ((Member)session.getAttribute("m")).getId();
+		System.out.println(id);
 		model.addAttribute("id", id);
 	}
-	//게시글 저장
-	@PostMapping("/free")
+	
+	//게시글 등록
+	@PostMapping("/boards/board/freelist")
 	public ModelAndView free(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/freelist");
 		b.setBoardno(boarddao_jpa.findNextNo());
@@ -728,7 +730,7 @@ public class BoardController {
     }
     
     //댓글 추가하기
-    @PostMapping("/freeInsertComment")
+    @PostMapping("/boards/board/freeDetail")
     public ModelAndView freeInsertComment(Comments c,int boardno,HttpSession session) {
     	//게시글 번호
     	Board board=new Board();
@@ -849,7 +851,7 @@ public class BoardController {
 	
 	
 	//게시글 추가
-	@PostMapping("/together")
+	@PostMapping("/boards/board/togetherlist")
 	public ModelAndView together(HttpSession session, Board b,String Contents) {
 		ModelAndView mav=new ModelAndView("redirect:/boards/board/togetherlist");
 		b.setBoardno(boarddao_jpa.findNextNo());
@@ -970,7 +972,7 @@ public class BoardController {
     }
     
     //댓글 추가하기
-    @PostMapping("/togetherInsertComment")
+    @PostMapping("/boards/board/togetherDetail")
     public ModelAndView togetherInsertComment(Comments c,int boardno,HttpSession session) {
     	//게시글 번호
     	Board board=new Board();
