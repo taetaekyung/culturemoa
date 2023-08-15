@@ -44,14 +44,14 @@ public interface BoardDAO_jpa extends JpaRepository<Board, Integer> {
 	 @Query("select nvl(Max(b.boardno),0)+1 from Board b ")
 	 public int findNextNo();
 	 
-	 @Query(value = "select b from Board b where b.bcategory=?1 and (b.boardtitle like CONCAT(CONCAT('%', ?2), '%') or b.boardcontent like CONCAT(CONCAT('%', ?2), '%') or id like CONCAT(CONCAT('%', ?2), '%'))")
+	 @Query(value = "select b from Board b where b.bcategory=?1 and (b.boardtitle like CONCAT(CONCAT('%', ?2), '%') or b.boardcontent like CONCAT(CONCAT('%', ?2), '%') or b.member.id like CONCAT(CONCAT('%', ?2), '%'))")
 	 public Page<Board> findByBcategory(String bcategory, String keyword, Pageable pageable);
 
 
 	@Query(value = "select count(*) from Board where bcategory=?1", nativeQuery = true)
 	public int getTotalRecord(String bcategory);
 	
-	@Query(value = "select count(*) from Board where bcategory=?1 and (boardtitle like '%?2%' or boardcontent like '%?2%')" , nativeQuery = true)
+	@Query(value = "select count(*) from Board where bcategory=?1 and (boardtitle like '%?2%' or boardcontent like '%?2%' or id like '%?2%' )" , nativeQuery = true)
 	public int getTotalRecord(String bcategory, String keyword);
 	
 	//전체 게시물에서 최신순 10개

@@ -495,7 +495,6 @@ public class BoardController {
 	public ModelAndView freelist(HttpSession session, @PathVariable(required=false) String keyword, 
 			@PathVariable(required=false) String orderby, HttpServletRequest request, @PathVariable(required = false) Integer page) {
 		ModelAndView mav = new ModelAndView("/boards/board/freelist");
-
 		if(orderby == null) {
 			if(session.getAttribute("orderby") != null && !session.getAttribute("orderby").equals("")) {
 				orderby = (String) session.getAttribute("orderby");
@@ -540,7 +539,7 @@ public class BoardController {
 			    pageable = PageRequest.of(page-1, pageSIZE, Sort.by("boardhit").descending());
 			}
 			list = boarddao_jpa.findByBcategory("자유", keyword, pageable);
-
+		
 		}
 		
 	    List<List<BoardVO>> rows = new ArrayList<>();
