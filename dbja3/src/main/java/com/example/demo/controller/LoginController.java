@@ -35,6 +35,7 @@ public class LoginController {
 	@GetMapping("/mainPageAfterLogin")
 	public ModelAndView login(HttpSession session, String id, String password) {
 		
+		if(session.getAttribute("m") == null) {
 		// 로그인된 회원의 정보를 가져오기 위하여 
 		// 시큐리티의 인증 객체 필요
 		  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -46,7 +47,9 @@ public class LoginController {
 		  String userid = user.getUsername();
 		  Member m = memberdao_jpa.findByUserId(userid);
 		  session.setAttribute("m", m);
-		  ModelAndView mav = new ModelAndView("redirect:/mainPage");
+		}
+		ModelAndView mav = new ModelAndView("redirect:/mainPage");
+
 /*
 		if(memberdao_jpa.findByUserId(id) == null || memberdao_jpa.findByUserId(id).equals("")) {
 			mav.addObject("msg", "존재하지 않는 아이디입니다.");

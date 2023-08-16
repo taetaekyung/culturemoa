@@ -114,18 +114,23 @@ public class MainController {
 	  
 	  
 	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
-		// 로그인된 회원의 정보를 가져오기 위하여 
-			// 시큐리티의 인증 객체 필요
-		  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		  // 위의 인증 객체를 통해 로그인된 user 객체를 받아옴
-		  User user = (User) authentication.getPrincipal();
-		  
-		  // user를 통해 로그인한 회원의 id 가져옴
-		  String userid = user.getUsername();
-		  Member m = memberdao_jpa.findByUserId(userid);
-		  session.setAttribute("m", m);
+		  Member m = (Member) session.getAttribute("m");
+		  if(m.getKakao() == null) {
+			// 로그인된 회원의 정보를 가져오기 위하여 
+				// 시큐리티의 인증 객체 필요
+			  
+			  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			
+			  // 위의 인증 객체를 통해 로그인된 user 객체를 받아옴
+			  User user = (User) authentication.getPrincipal();
+			  
+			  // user를 통해 로그인한 회원의 id 가져옴
+			  String userid = user.getUsername();
+			  m = memberdao_jpa.findByUserId(userid);
+			  session.setAttribute("m", m);
+		  }
 		  model.addAttribute("log", "complete");
+
 	  };
 	   
 	  //최신 10개 게시물
