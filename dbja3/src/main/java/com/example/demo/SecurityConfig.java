@@ -8,6 +8,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.demo.service.KakaoUserService;
+import com.example.demo.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-	private final KakaoUserService kakaoUserService;
+	private final UserService userService;
 	
 	@Bean
 	public SecurityFilterChain filerChain(HttpSecurity http) throws Exception {
@@ -59,7 +60,7 @@ public class SecurityConfig {
 		 .defaultSuccessUrl("/mainPage")
 		 .failureUrl("/login/login")
 		 .userInfoEndpoint()
-		 .userService(kakaoUserService);
+		 .userService(userService);
 		
 		http.httpBasic(); //나머지는 기본 설정에 따라라
 		

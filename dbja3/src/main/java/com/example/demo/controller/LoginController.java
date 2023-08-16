@@ -35,6 +35,8 @@ public class LoginController {
 	@GetMapping("/mainPageAfterLogin")
 	public ModelAndView login(HttpSession session, String id, String password) {
 		
+		// 카카오 로그인이 아닌 경우는 아직 session으로 값을 넘겨주지 않음
+		// 카카오 로그인의 경우 로그인하면서 따로 넘겨줌.
 		if(session.getAttribute("m") == null) {
 		// 로그인된 회원의 정보를 가져오기 위하여 
 		// 시큐리티의 인증 객체 필요
@@ -48,6 +50,7 @@ public class LoginController {
 		  Member m = memberdao_jpa.findByUserId(userid);
 		  session.setAttribute("m", m);
 		}
+		
 		ModelAndView mav = new ModelAndView("redirect:/mainPage");
 
 /*

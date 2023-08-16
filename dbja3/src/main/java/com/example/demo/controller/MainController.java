@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -115,12 +116,31 @@ public class MainController {
 	  
 	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
 		  Member m = (Member) session.getAttribute("m");
+		  
+		  // 카카오 로그인이 아닌 경우
 		  if(m.getKakao() == null) {
 			// 로그인된 회원의 정보를 가져오기 위하여 
 				// 시큐리티의 인증 객체 필요
 			  
 			  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			
+			  if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
+			        // 네이버 로그인 사용자 정보 처리
+			        DefaultOAuth2User oauth2User = (DefaultOAuth2User) authentication.getPrincipal();
+			        // 네이버 사용자 정보 가져오기
+			        String userid = oauth2User.getAttribute("nickname"); 
+			        m = memberdao_jpa.findByUserId(userid);
+			        session.setAttribute("m", m);
+			        model.addAttribute("log", "complete");
+			        
+			    } else if (authentication.getPrincipal() instanceof User) {
+			        // 일반 회원가입 사용자 정보 처리
+			        User user = (User) authentication.getPrincipal();
+			        String userid = user.getUsername();
+			        m = memberdao_jpa.findByUserId(userid);
+			        session.setAttribute("m", m);
+			    }
+			  
 			  // 위의 인증 객체를 통해 로그인된 user 객체를 받아옴
 			  User user = (User) authentication.getPrincipal();
 			  
@@ -129,6 +149,8 @@ public class MainController {
 			  m = memberdao_jpa.findByUserId(userid);
 			  session.setAttribute("m", m);
 		  }
+		  
+		  
 		  model.addAttribute("log", "complete");
 
 	  };

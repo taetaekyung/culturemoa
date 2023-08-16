@@ -58,6 +58,11 @@
 			}
 		});	
 	}
+	
+	function sleep(ms) {
+	  const loopTime = Date.now() + ms;
+	  while (Date.now() < loopTime) {}
+	}
 		
 	
 	$(function() {
@@ -75,16 +80,25 @@
 			$("#map_txt").css("color", "#000000");
 			$("#map_txt").css("background-color", "#ececec");
 			
+			gotoFindload();
+			
+			
 		})
-		
-		$("#modal_show").click(function() {
-			$("#map_txt").css("color", "#07b47f");
-			$("#map_txt").css("background-color", "#ffffff");
-			$("#find_txt").css("color", "#000000");
-			$("#find_txt").css("background-color", "#ececec");
-		})
-		
 	})
+	
+	function gotoFindload(){ 
+	   var windowFeatures = 'width=800px,height=900px';
+	   var place = $("#place").val();
+	   var lat = $("#lat").val();
+	   var long = $("#long").val();
+	   var href = "https://map.kakao.com/link/to/"+place+","+lat+","+long;
+        // 새 창 열기
+        var newWindow = window.open(href, '_blank', windowFeatures);
+        // 새 창이 차단되었을 경우 알림
+        if (!newWindow) {
+            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+        }
+	}
 	
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -186,7 +200,11 @@
         <div class="divmap-jyK">
           <div class="auto-group-zqmt-tbK">
             <div class="divlocationinfo-3UD" id="map_txt">위치 안내</div>
-            <button type="button" class="divway-v2D" id="find_txt" data-bs-toggle="modal" data-bs-target="#myModal">길찾기</button>
+            <input type="hidden" id="place" th:value="${event.eventplace}">
+            <input type="hidden" id="lat" th:value="${event.eventlat}">
+            <input type="hidden" id="long" th:value="${event.eventlong}">
+            
+            <button type="button" class="divway-v2D" id="find_txt" >길찾기</button>
           </div>
           <div class="divmap-Byj" id="map">
 
@@ -233,7 +251,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal
 <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" id="dialog" role="document">
     <div class="modal-content">
@@ -262,5 +280,5 @@
                 $("#myModal").fadeOut();
             });
         });
-    </script>
+    </script> -->
 </body>
