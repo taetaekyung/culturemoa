@@ -655,7 +655,7 @@ public class BoardController {
 			model.addAttribute("m", m);
 			model.addAttribute("id", m.getId());
 			// 좋아요 여부 가져오기
-			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(m.getId(), boardno));
+			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(m.getId(), boardno));
 		}
 		else {
 			Member m = new Member();
@@ -918,7 +918,7 @@ public class BoardController {
 			model.addAttribute("m", m);
 			model.addAttribute("id", m.getId());
 			// 좋아요 여부 가져오기
-			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(m.getId(), boardno));
+			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndBoardno(m.getId(), boardno));
 		}
 		else {
 			Member m = new Member();
