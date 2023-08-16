@@ -39,7 +39,7 @@ public class SecurityConfig {
 				, "/boards/board/freelist/**",  "/boards/board/togetherlist/**", "/boards/review/reviewlist/**" 
 				, "/updateHit", "/boards/review/reviewDetail", "/updatefreeHit", "/boards/board/freeDetail" // 여기까지 board 관련 mapping
 				, "/teaminfo", "/pageinfo" // 여기까지 사이트소개 관련 mapping
-				, "/opentalk", "updateTalk" // 여기까지 오픈톡 관련 mapping
+				, "/opentalk", "/member/sendmessage", "updateTalk" // 여기까지 오픈톡 관련 mapping
 				, "/FAQ/**").permitAll() //이 요청은 모두 사용가능
 		.anyRequest().authenticated(); //나머지는 인증 필요
 		

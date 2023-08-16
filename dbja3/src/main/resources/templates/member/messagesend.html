@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
+<link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<meta name="_csrf" th:content="${_csrf.token}" />
-<meta name="_csrf_header" th:content="${_csrf.parameterName}" />
 <title>쪽지 쓰기</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR%3A400%2C700"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
@@ -61,48 +60,66 @@
   function trackUnsavedChanges() {
     isUnsavedChanges = true;
   }
-
-  // 쪽지 보내기
+  
+  //--2번 방법(=1번 되는거를 alert 쓰려고 보완한거
   function sendMessage() {
+	    const content = $('.frame-332-iQ1').val();
+	
+	    if (!content) {
+	        alert('내용을 입력해주세요.');
+	        return;
+	    }
+	    let data = $("#f").serializeArray();
+	
+	    $.ajax({
+	        type: 'POST',
+	        url: '/member/sendmessage',
+	        data: data,
+	        success: function (data) {
+	            alert(data); // 서버에서 반환한 메시지를 알림으로 표시
+	
+	            if (data === '쪽지가 성공적으로 보내졌습니다.') {
+	                window.close(); // 성공 시 창 닫기
+	            }
+	        },
+	        error: function () {
+	            alert('쪽지 보내기에 실패하였습니다.2'); // 실패 시 알림 표시
+	        },
+	    });
+	}
+
+
+  // 3번 방법 쪽지 보내기(폼에서 서버로 안보내고 Ajax 쓰는데, sendMessage()로 Get은 됨/post 가 안됨.)
+  function sendMessage1() {
+	alert("쪽지보내기 작동")
     // 쪽지 내용과 받는 사람 닉네임 가져오기
     const content = document.querySelector('.frame-332-iQ1').value;
     const nickname = document.querySelector('.id1234--tvm').value;
     
     // 입력한 내용이 없으면 전송 안됨
     if (!content) {
-	  //alert('쪽지보내기 버튼 작동2');
       alert('내용을 입력해주세요.');
       return;
     }
     
-    // CSRF 토큰을 얻어옴
-	const csrfToken = $("meta[name='_csrf']").attr("content");
-	const csrfHeader = $("meta[name='_csrf_header']").attr("content");
-	alert("csrf1 :"+csrfToken)
-	alert("csrf 2: "+csrfHeader)
-    
     // AJAX를 이용해 쪽지 보내기 요청 전송
-$.ajax({
-  type: 'POST',
-  url: '/member/sendmessage',
-  data: {
-    nickname: nickname,
-    content: content
-  },
-  beforeSend: function(xhr) {
-    xhr.setRequestHeader(csrfHeader, csrfToken);
-  },
-  success: function (data) {
-    // 서버 응답이 성공일 경우 팝업 닫고 내용 초기화
-    alert(data);
-    window.close(); 
-  },
-  error: function () {
-    // 서버 응답이 실패일 경우 알림만 띄우고 팝업 닫지 않음
-    alert('쪽지 보내기에 실패하였습니다.2');
-  }
-});
-
+    $.ajax({
+      type: 'POST',
+      url: '/member/sendmessage',
+      data: {
+        nickname: nickname,
+        content: content
+      },
+      success: function (data) {
+        // 서버 응답이 성공일 경우 팝업 닫고 내용 초기화
+        alert(data);
+        window.close();
+      },
+      error: function () {
+        // 서버 응답이 실패일 경우 알림만 띄우고 팝업 닫지 않음
+        alert('쪽지 보내기에 실패하였습니다.2');
+      }
+    });
   }
 
   // 팝업 닫기
@@ -124,15 +141,55 @@ $.ajax({
   <div class="line-29-M8D">
   </div>
   <div class="item--qZB">쪽지쓰기</div>
-  <div class="item--CKB">받는사람</div>
-  <input type="text" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${nickname}">
-  <div class="btnconfirm" onclick="checkNickname()">확인</div>
-  <div class="nicknameCheckResult"></div>
-  <textarea class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;"></textarea>
-  <div class="frame-48-RSq">
-    <div class="btnsend-MbP" onclick="sendMessage()">보내기</div>
-    <div class="btnback-3UD" onclick="closePopup()">취소</div>
-  </div>
+  
+  <!--1번 방법/POST(O)/문제:메세지가 return 됨. ajax 써서 alert 뜨게 바꾸고싶음 .-->
+  <!--
+  <form action="/member/sendmessage" method="POST">
+	    <input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }">
+	    <div class="item--CKB">받는사람</div>
+	    <input type="text" name="nickname" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${nickname}" required>
+	    <div class="btnconfirm" onclick="checkNickname()">확인</div>
+	    <div class="nicknameCheckResult"></div>
+	    <textarea name="content" class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;" required></textarea>
+	    <div class="frame-48-RSq">
+			<input type="submit" class="btnsend-MbP" value="보내기"/>
+	        <div class="btnback-3UD" onclick="closePopup()">취소</div>
+	    </div>
+	</form>
+	-->
+	
+	<!--2번 방법(=1번되는거를 alert 쓰려고 보완한거). 안됨.-->
+	<!--
+	<form id="sendMessageForm">
+	    <input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }">
+	    <div class="item--CKB">받는사람</div>
+	    <input type="text" name="nickname" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${nickname}" required>
+	    <div class="btnconfirm" onclick="checkNickname()">확인</div>
+	    <div class="nicknameCheckResult"></div>
+	    <textarea name="content" class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;" required></textarea>
+	    <div class="frame-48-RSq">
+	        <button type="button" class="btnsend-MbP" onclick="sendMessage()">보내기</button>
+	        <div class="btnback-3UD" onclick="closePopup()">취소</div>
+	    </div>
+	</form>
+	-->
+
+	<!--3번 방법/Get방식(O).Post방식(O)-->
+    <form onsubmit="sendMessage(); return false;" method="POST" id="f">
+	    <input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }">
+	    <div class="item--CKB">받는사람</div>
+	    <input type="text" name="nickname" class="id1234--tvm" placeholder="닉네임을 입력하세요." th:value="${nickname}" required>
+	    <div class="btnconfirm" onclick="checkNickname()">확인</div>
+	    <div class="nicknameCheckResult"></div>
+	    <textarea name="content" class="frame-332-iQ1" placeholder="내용을 입력하세요." oninput="updateCharCount(this); checkMaxChar(this, 900); trackUnsavedChanges();" style="white-space: pre-wrap;" required></textarea>
+	    <div class="frame-48-RSq">
+			<input type="submit" class="btnsend-MbP" th:value="보내기"/>
+	        <!--<button class="btnsend-MbP" onclick="sendMessage()"/>보내기</button>-->
+	        <div class="btnback-3UD" onclick="closePopup()">취소</div>
+	    </div>
+	</form>
+	
+	
   <!-- 글자 수 표시 -->
   <div class="item-0-1000-jrq" id="charCount">(0 / 900자)</div>
 </div>

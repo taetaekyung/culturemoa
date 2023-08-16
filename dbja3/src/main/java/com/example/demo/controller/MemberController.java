@@ -130,44 +130,43 @@ public class MemberController {
     }
 	
 	//마이페이지-쪽지 보내기
-	@PostMapping("/member/sendmessage")
-	@ResponseBody
-	public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
-		System.out.println("쪽지보내기 메소드 작동");
-	    // 세션에서 로그인된 사용자의 ID 가져오기
-	    String senderId = ((Member) session.getAttribute("m")).getId();
-	    // 발신 아이디, 닉네임을 가져와 Member 엔티티 조회
-	    Member sender = memberdao_jpa.findById(senderId).orElse(null);
-	    
-	    if (sender != null) {
-	        // 받는 사람 닉네임으로 Member 엔티티 조회
-	        Member receiver = memberdao_jpa.findByNickname(nickname).orElse(null);
-	        if (receiver == null) {
-	            return "닉네임이 존재하지 않습니다. 쪽지 수신자 닉네임을 확인해 주세요.";
-	        }
-	        
-	        // Message 엔티티 생성 및 설정
-	        Message message = new Message();
-	        message.setMid(senderId);
-	        message.setMcontent(content);
-	        message.setMember(receiver); // 수신자 설정
-	        message.setRegdate(new Date()); // 현재 시각 설정
-	        message.setDeletedBySender(false);
-	        message.setDeletedByReceiver(false);
-	        
-	        // mno 설정 (mno 최대값 + 1)
-	        int maxMno = messagedao_jpa.findMaxMno();
-	        message.setMno(maxMno + 1);
+    @PostMapping("/member/sendmessage")
+    @ResponseBody
+    public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
+        // 세션에서 로그인된 사용자의 ID 가져오기
+        String senderId = ((Member) session.getAttribute("m")).getId();
+        // 발신 아이디, 닉네임을 가져와 Member 엔티티 조회
+        Member sender = memberdao_jpa.findById(senderId).orElse(null);
+        
+        if (sender != null) {
+            // 받는 사람 닉네임으로 Member 엔티티 조회
+            Member receiver = memberdao_jpa.findByNickname(nickname).orElse(null);
+            if (receiver == null) {
+                return "닉네임이 존재하지 않습니다. 쪽지 수신자 닉네임을 확인해 주세요.";
+            }
+            
+            // Message 엔티티 생성 및 설정
+            Message message = new Message();
+            message.setMid(senderId);
+            message.setMcontent(content);
+            message.setMember(receiver); // 수신자 설정
+            message.setRegdate(new Date()); // 현재 시각 설정
+            message.setDeletedBySender(false);
+            message.setDeletedByReceiver(false);
+            
+            // mno 설정 (mno 최대값 + 1)
+            int maxMno = messagedao_jpa.findMaxMno();
+            message.setMno(maxMno + 1);
 
-	        // 메시지 저장
-	        messagedao_jpa.save(message);
-	        
-	        return "쪽지가 성공적으로 보내졌습니다.";
-	    } else {
-	        return "쪽지 보내기에 실패하였습니다.1";
-	    }
-	}
-	
+            // 메시지 저장
+            messagedao_jpa.save(message);
+            
+            return "쪽지가 성공적으로 보내졌습니다.";
+        } else {
+            return "쪽지 보내기에 실패하였습니다.1";
+        }
+    }
+    
 	//마이페이지-쪽지쓰기 팝업
 	@GetMapping("/member/messagesend")
 	public void sendMessage(@RequestParam String id,Model model) {
