@@ -119,6 +119,8 @@
 	$(function(){
 		var nickname=$("#nickname").val();
 		var writer=$(".inputwriter-Y8q").text();
+		console.log(nickname);
+		console.log(writer);
 		//수정버튼
 		const btn1 = document.querySelector(".updatebtn-Jf3"); 
 		//삭제버튼
@@ -449,7 +451,7 @@
 		      <!--제목 -->
 		      <div class="commentRegdate" th:text="${c.regdate}"></div>
 		      <!-- 만약 댓글 작성자라면 -->
-		      <div class="comBtn" th:if="${c.id eq id}">
+		      <div class="comBtn" th:if="${c.id eq m.id}">
 				  <div class="commnetUpdate" th:attr="onclick='commentEdit(\'' + ${c.rcomno} + '\', \'' + ${c.rcomcontent} + '\')'" th:data-comment-id="${c.rcomno}">수정하기</div>
 				  <div class="commnetUpdateComplete" style="display: none;" th:attr="onclick='commentEditComplete(\'' + ${c.rcomno} + '\')'" th:data-comment-id="${c.rcomno}">수정완료</div>
 			      <div class="commentDelete"><a href="#" th:attr="onclick='commentDelete(\'' + ${c.rcomno} + '\' , \'' + ${r.reviewno} + '\')'">삭제하기</a></div>

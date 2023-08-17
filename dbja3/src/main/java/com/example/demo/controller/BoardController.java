@@ -254,9 +254,8 @@ public class BoardController {
         reviewcommentdao_jpa.save(c);
         
     //    System.out.println("c:"+c);
-        
+
     	ModelAndView mav=new ModelAndView("redirect:/boards/review/reviewDetail?reviewno="+reviewno);
-    	
     	
     	return mav;
     }
@@ -375,6 +374,7 @@ public class BoardController {
 		if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
 			Member m = (Member)session.getAttribute("m");
 			model.addAttribute("m", m);
+			
 			// 좋아요 여부 가져오기
 			model.addAttribute("likeboard", likeboarddao_jpa.countByIdAndReviewno(m.getId(), reviewno));
 		}
