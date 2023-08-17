@@ -49,8 +49,8 @@ public class LoginController {
 		  String userid = user.getUsername();
 		  Member m = memberdao_jpa.findByUserId(userid);
 		  session.setAttribute("m", m);
+		  System.out.println(m.getWhere());
 		}
-		
 		ModelAndView mav = new ModelAndView("redirect:/mainPage");
 
 /*
