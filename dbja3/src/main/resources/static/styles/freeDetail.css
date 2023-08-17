@@ -14,6 +14,8 @@ input {
 }
 body {
   width: 192rem;
+    overflow-x: hidden;
+
 }
 
 a {
@@ -1026,6 +1028,7 @@ a {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  margin-bottom: 5rem;
 }
 .main-QuX .auto-group-hjvh-aZ7 {
   margin-bottom: 7.8rem;

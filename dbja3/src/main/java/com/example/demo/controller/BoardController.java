@@ -439,10 +439,8 @@ public class BoardController {
 		r.setReviewno(reviewboarddao_jpa.findNextNo());	
 		// Member 객체 생성 및 설정
 		String id = ((Member)session.getAttribute("m")).getId();
-		Member member = new Member();
-		member.setId(id);
 		// Reviewboard 객체에 Member 객체 설정
-		r.setMember(member);
+		r.setId(id);
 		r.setReviewlike(0);
 		r.setRegdate(new Date());
 		r.setReviewhit(1);

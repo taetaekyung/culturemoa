@@ -35,15 +35,22 @@ public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2U
         
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         
+        Member m = new Member();
+        
         if(registrationId.equals("kakao")) {
         	// OAuth2 로그인 진행 시 키가 되는 필드 값(PK) // id
             String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
             // OAuth2UserService
             KakaoUserInfo attributes = KakaoUserInfo.ofKakao(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-
-            Member m = saveOrUpdateKakao(attributes);
-            httpSession.setAttribute("m", m); 
-
+            if(memberdao_jpa.countByNameAndEmail(attributes.getWhere(), attributes.getName(), attributes.getEmail()) == 0) {
+            	m = saveOrUpdateKakao(attributes);
+                httpSession.setAttribute("m", m); 
+            }
+            
+            else {
+            	m = memberdao_jpa.findByNameAndEmail(attributes.getWhere(), attributes.getName(), attributes.getEmail());
+            	httpSession.setAttribute("m", m);
+            }
             return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(m.getRole())),
                     attributes.getAttributes(),
                     attributes.getNameAttributeKey());
@@ -55,10 +62,16 @@ public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2U
                     .getUserInfoEndpoint().getUserNameAttributeName();
     		// naver, kakao 로그인 구분
             OAuthAttributes attributes = OAuthAttributes.ofNaver(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-            System.out.println("attributes "+attributes.getName());
-
-            Member m = saveOrUpdateNaver(attributes);
-            httpSession.setAttribute("m", m); 
+            
+            if(memberdao_jpa.countByNameAndEmail(attributes.getWhere(), attributes.getName(), attributes.getEmail())  == 0) {
+            	m = saveOrUpdateNaver(attributes);
+                httpSession.setAttribute("m", m); 
+            }
+            
+            else {
+            	m = memberdao_jpa.findByNameAndEmail(attributes.getWhere(), attributes.getName(), attributes.getEmail());
+            	httpSession.setAttribute("m", m);
+            }
 
             return new DefaultOAuth2User(
                     Collections.singleton(new SimpleGrantedAuthority(m.getRole())),

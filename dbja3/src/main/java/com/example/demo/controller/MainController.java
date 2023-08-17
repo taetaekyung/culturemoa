@@ -116,8 +116,9 @@ public class MainController {
 	  
 	  if(session.getAttribute("m") != null && !session.getAttribute("m").equals("")) {
 		  Member m = (Member) session.getAttribute("m");
+		  System.out.println(m.getId());
 		  // 카카오, 네이버 로그인이 아닌 경우
-		  if(m.getWhere() == null) {
+		  if(!m.getPwd().contains("dbja2023")) {
 			// 로그인된 회원의 정보를 가져오기 위하여 
 				// 시큐리티의 인증 객체 필요
 			  
