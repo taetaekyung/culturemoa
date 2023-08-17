@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Getter
+@Builder
+@AllArgsConstructor
 @Table(name="member")
 public class Member {
 	@Id
@@ -35,7 +38,7 @@ public class Member {
 	private String fname; // id.jpg
 	
 	@Transient
-	private String kakao;
+	private String where; // kakao, naver, google
 	
 	
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
@@ -53,11 +56,14 @@ public class Member {
 	@OneToMany(mappedBy = "member", cascade=CascadeType.REMOVE)
 	private List<Wishlist> wishLists = new ArrayList<>();
 	
-	@Builder
-    public Member(String id, String email, String gender, String birth, String kakao) {
-        String userid = email.substring(0, email.indexOf("@"));
+	
+	//카카오
+	@Builder(builderMethodName = "builderKakao")
+    public Member(String id, String email, String gender, String birth, String where) {
+        System.out.println("카카오로옴");
+		String userid = email.substring(0, email.indexOf("@"))+"_kakao";
 		this.id = userid;
-        this.pwd = "dbja2023";
+        this.pwd = "Kdbja2023";
         this.email = email;
         this.name = id;
         this.nickname = id;
@@ -70,9 +76,42 @@ public class Member {
         else {
         	this.gender = "남성";
         }
-        birth = birth.substring(0, 2)+"-"+birth.substring(2, 4);
+        if(birth != null) {
+            birth = birth.substring(0, 2)+"-"+birth.substring(2, 4);
+        }
+        else {
+        	birth = "해당 정보가 없습니다.";
+        }
         this.birth = birth;
-        this.kakao = kakao;
+        this.where = where;
+    }
+	
+	//네이버
+	@Builder(builderMethodName = "builderNaver")
+    public Member(String id, String name, String email, String gender, String nickname, String mobile, String birthyear, String birthday,String where) {
+        System.out.println("네이버로옴");
+		String userid = email.substring(0, email.indexOf("@"))+"_naver";
+		this.id = userid;
+        this.pwd = "Ndbja2023";
+        this.email = email;
+        if(name != null) {
+        	this.name = name;
+        }
+        else {
+        	this.name = userid;
+        }
+        this.nickname = nickname;
+        this.phone = mobile;
+        this.fname = "profile.png";
+        this.role = "user";
+        if(gender.equals("F")) {
+        	this.gender = "여성";
+        }
+        else {
+        	this.gender = "남성";
+        }
+        this.birth = birthyear+"-"+birthday;
+        this.where = where;
     }
 	
 }

@@ -36,14 +36,19 @@
 	}	
 	
 	function chkpwd(){
-		// 새 창을 띄우기 위한 옵션 설정
-        var windowFeatures = 'width=450px,height=270px';
-        // 새 창 열기
-        var newWindow = window.open('/member/changepwd', '_blank', windowFeatures);
-        // 새 창이 차단되었을 경우 알림
-        if (!newWindow) {
-            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
-        }
+		if($("#where").val() == null) {
+			// 새 창을 띄우기 위한 옵션 설정
+	        var windowFeatures = 'width=450px,height=270px';
+	        // 새 창 열기
+	        var newWindow = window.open('/member/changepwd', '_blank', windowFeatures);
+	        // 새 창이 차단되었을 경우 알림
+	        if (!newWindow) {
+	            alert('팝업 차단 기능이 활성화되어 있습니다. 새 창이 열리지 않을 수 있습니다.');
+	        }
+		}
+		else {
+			alert("SNS 로그인으로 가입한 회원은 비밀번호를 수정할 수 없습니다.");
+		}
 	}	
 	
 	function getAuthNum(){
@@ -266,6 +271,7 @@
       <!--div_btns 시작-->
       <div class="div_btns">
         <div class="btnchangepwd" onclick="chkpwd()">비밀번호 변경</div>
+        <input type="hidden" id="where" th:value="${session.m.where}">
         <input type="submit" value="회원정보 수정" class="updateinfobtn"/>
         <input type="hidden" name="chkemail" id="chkemail" value="0">
 

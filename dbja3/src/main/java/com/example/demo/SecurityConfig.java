@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.example.demo.service.KakaoUserService;
 import com.example.demo.service.UserService;
 
 import lombok.RequiredArgsConstructor;
