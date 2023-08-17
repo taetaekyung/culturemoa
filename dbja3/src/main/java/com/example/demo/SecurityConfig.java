@@ -43,7 +43,7 @@ public class SecurityConfig {
 		.anyRequest().authenticated(); //나머지는 인증 필요
 		
 		// form post 방식이지만 login이 필요없는 searchresult의 경우, csrf 무시함.
-		http.csrf().ignoringRequestMatchers("boardUpdate", "togetherUpdate", "freeUpdate", "/sign", "/searchresult","/member/editmypage");http.csrf().ignoringRequestMatchers("/sign", "/searchresult");
+		http.csrf().ignoringRequestMatchers("/uploadSummernoteImageFile","boardUpdate", "togetherUpdate", "freeUpdate", "/sign", "/searchresult","/member/editmypage");http.csrf().ignoringRequestMatchers("/sign", "/searchresult");
 		
 		http.formLogin().loginPage("/login/login").permitAll() //로그인은 여기서해
 		.defaultSuccessUrl("/mainPageAfterLogin"); //성공하면 main으로 갈게

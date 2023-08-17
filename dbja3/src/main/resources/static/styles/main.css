@@ -107,7 +107,7 @@ body {
 
 .main-mVB {
   box-sizing: border-box;
-  padding-bottom: 24.5rem;
+	height: 97%;
   width: 100%;
   align-items: center;
   display: flex;
