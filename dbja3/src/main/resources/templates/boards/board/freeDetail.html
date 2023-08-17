@@ -198,7 +198,7 @@
 	// 수정 버튼 클릭시 댓글 input이 변경되는 함수
 	  function commentEdit(comno, comcontent) {
 	    var updateInput = $("#c_content_" + comno);
-
+		updateInput.css("border", "0.1rem #D9D9D9 solid");
 	    updateInput.removeAttr('readonly');
 	    //수정 버튼 사라지게 하기
 	    $(".commnetUpdate[data-comment-id='" + comno + "']").hide();
@@ -222,6 +222,9 @@
 	
 	        // "수정완료" 버튼 숨기기
 	        $(".commnetUpdateComplete[data-comment-id='" + comno + "']").hide();
+	        
+       		$("#c_content_" + comno).css("border", "none");
+
 	      },
 	      error: function (error) {
 	        console.error("댓글 업데이트 실패");
