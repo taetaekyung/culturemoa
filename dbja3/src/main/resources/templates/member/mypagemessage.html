@@ -39,7 +39,7 @@
 	    if (selectedMessageIds.length > 0 && confirm('선택한 쪽지를 삭제하시겠습니까?')) {
 	        // 선택한 쪽지 ID를 AJAX를 통해 서버로 전송하여 삭제합니다.
 	        $.ajax({
-	            type: 'POST',
+	            type: 'GET',
 	            url: '/member/deletemessages',
 	            data: {
 	                messageIds: selectedMessageIds // messageIds를 올바르게 설정해야 합니다.
@@ -60,7 +60,7 @@
     function deleteMessage(mno) {
         if (confirm('쪽지를 삭제하시겠습니까?')) {
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '/member/deletemessage',
                 data: {
                     mno: mno

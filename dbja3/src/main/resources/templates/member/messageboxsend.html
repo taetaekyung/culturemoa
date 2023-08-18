@@ -15,7 +15,7 @@
 	function deleteMessage(mno) {
 	    if (confirm('쪽지를 삭제하시겠습니까?')) {
 	        $.ajax({
-	            type: 'POST',
+	            type: 'GET',
 	            url: '/member/deletemessage',
 	            data: {
 	                mno: mno

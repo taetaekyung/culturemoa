@@ -130,7 +130,7 @@ public class MemberController {
     }
 	
 	//마이페이지-쪽지 보내기
-    @PostMapping("/member/sendmessage")
+    @GetMapping("/member/sendmessage")
     @ResponseBody
     public String sendMessage(@RequestParam("nickname") String nickname, @RequestParam("content") String content, HttpSession session, RedirectAttributes redirectAttributes){
         // 세션에서 로그인된 사용자의 ID 가져오기
@@ -188,7 +188,7 @@ public class MemberController {
     }
 	
 	//마이페이지-쪽지 삭제(체크박스 통해서 삭제)
-	@PostMapping("/member/deletemessages")
+	@GetMapping("/member/deletemessages")
 	@ResponseBody
 	public String deleteMessages(@RequestParam("messageIds") List<Integer> messageIds, HttpSession session) {
 	    Member loggedInMember = (Member) session.getAttribute("m");
@@ -209,7 +209,7 @@ public class MemberController {
 	}
 
 	//마이페이지-쪽지 삭제(휴지통 이미지 클릭해서 1개 삭제)
-	@PostMapping("/member/deletemessage")
+	@GetMapping("/member/deletemessage")
 	@ResponseBody
 	public String deleteMessage(@RequestParam("mno") int mno, HttpSession session) {
 	    Message message = messagedao_jpa.findById(mno).orElse(null);

@@ -72,7 +72,7 @@
 	    let data = $("#f").serializeArray();
 	
 	    $.ajax({
-	        type: 'POST',
+	        type: 'GET',
 	        url: '/member/sendmessage',
 	        data: data,
 	        success: function (data) {
