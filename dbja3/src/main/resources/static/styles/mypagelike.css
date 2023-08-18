@@ -92,7 +92,7 @@ body {
 .row1-dt5 {
   margin-bottom: 5rem;
   width: 100%;
-  height: 44.2rem;
+  /*height: 44.2rem;*/
   overflow: hidden;
   position: relative;
   display: flex;
@@ -109,7 +109,6 @@ body {
   margin-bottom: 1rem;
   width: 100%;
   height: 37.3rem;
-  background-color: #c4c4c4;
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
