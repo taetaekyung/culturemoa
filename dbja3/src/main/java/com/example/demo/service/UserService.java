@@ -77,6 +77,7 @@ public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2U
                     Collections.singleton(new SimpleGrantedAuthority(m.getRole())),
                     attributes.getAttributes(),
                     attributes.getNameAttributeKey());
+            
         }else if (registrationId.equals("google")) {  // 구글 로그인 처리 추가
             String userNameAttributeName = userRequest.getClientRegistration()
                     .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();

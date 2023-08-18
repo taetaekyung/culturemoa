@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import java.util.Map;
+import java.util.Random;
 
 import com.example.demo.auth.KakaoUserInfo;
 import com.example.demo.entity.Member;
@@ -55,7 +56,6 @@ public class OAuthAttributes {
     
     public Member toEntity() {
     	Member m = new Member();
-        System.out.println("네이버로옴OAuthAttributes.java");
 		String userid = email.substring(0, email.indexOf("@"))+"_naver";
 		m.setId(userid);
         m.setPwd("Ndbja2023");
@@ -66,7 +66,18 @@ public class OAuthAttributes {
         else {
         	m.setName(userid);
         }
-        m.setNickname(nickname);
+        
+        String newnickname = nickname;
+        
+        if(name.equals(nickname)) {
+        	Random r = new Random();
+        	int a = r.nextInt(10);
+        	int b = r.nextInt(10);
+        	int c = r.nextInt(10);
+        	int d = r.nextInt(10);
+        	newnickname += a+""+b+""+c+""+d+"";
+        }
+        m.setNickname(newnickname);
         m.setPhone(mobile);
         m.setFname("profile.png");
         m.setRole("user");
@@ -82,15 +93,29 @@ public class OAuthAttributes {
         return m;
     }
     public Member toEntity1() {
-    	System.out.println("구글로옴OAuthAttributes.java");
-        return Member.builder()
-                .id(email.substring(0, email.indexOf("@")) + "_" + where)
-                .email(email)
-                .name(name)
-                .nickname(name) // 이름을 닉네임으로 설정 (수정 가능)
-                .fname("profile.png")
-                .role("user")
-                .gender(gender != null ? gender : "알 수 없음") // gender가 null일 때 기본값 설정
-                .build();
+    	Member m = new Member();
+        m.setId(email.substring(0, email.indexOf("@")) + "_google");
+        m.setPwd("Gdbja2023");
+        m.setEmail(email);
+        m.setName(name);
+        m.setBirth("해당 정보가 없습니다.");
+        
+        String newnickname = name;
+
+    	Random r = new Random();
+    	int a = r.nextInt(10);
+    	int b = r.nextInt(10);
+    	int c = r.nextInt(10);
+    	int d = r.nextInt(10);
+    	newnickname += a+""+b+""+c+""+d+"";
+        m.setNickname(newnickname);
+
+        m.setFname("profile.png");
+        m.setPhone("01000000000");
+        m.setRole("user");
+        m.setGender("해당 정보가 없습니다.");
+        m.setWhere(where);
+    	return m;
+
     }
 }

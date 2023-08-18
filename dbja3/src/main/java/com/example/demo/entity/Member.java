@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -66,7 +66,16 @@ public class Member {
         this.pwd = "Kdbja2023";
         this.email = email;
         this.name = id;
-        this.nickname = id;
+        
+        String newnickname = nickname;
+
+        Random r = new Random();
+        int a = r.nextInt(10);
+        int b = r.nextInt(10);
+        int c = r.nextInt(10);
+        int d = r.nextInt(10);
+        newnickname += a+""+b+""+c+""+d+"";
+        this.nickname = newnickname;
         this.phone = "01000000000";
         this.fname = "profile.png";
         this.role = "user";
@@ -86,32 +95,19 @@ public class Member {
         this.where = where;
     }
 	
-	//네이버
-	@Builder(builderMethodName = "builderNaver")
-    public Member(String id, String name, String email, String gender, String nickname, String mobile, String birthyear, String birthday,String where) {
-        System.out.println("네이버로옴Member.java");
-		String userid = email.substring(0, email.indexOf("@"))+"_naver";
-		this.id = userid;
-        this.pwd = "Ndbja2023";
-        this.email = email;
-        if(name != null) {
-        	this.name = name;
-        }
-        else {
-        	this.name = userid;
-        }
-        this.nickname = nickname;
-        this.phone = mobile;
-        this.fname = "profile.png";
-        this.role = "user";
-        if(gender.equals("F")) {
-        	this.gender = "여성";
-        }
-        else {
-        	this.gender = "남성";
-        }
-        this.birth = birthyear+"-"+birthday;
-        this.where = where;
-    }
+	/*
+	 * //네이버
+	 * 
+	 * @Builder(builderMethodName = "builderNaver") public Member(String id, String
+	 * name, String email, String gender, String nickname, String mobile, String
+	 * birthyear, String birthday,String where) {
+	 * System.out.println("네이버로옴Member.java"); String userid = email.substring(0,
+	 * email.indexOf("@"))+"_naver"; this.id = userid; this.pwd = "Ndbja2023";
+	 * this.email = email; if(name != null) { this.name = name; } else { this.name =
+	 * userid; } this.nickname = nickname; this.phone = mobile; this.fname =
+	 * "profile.png"; this.role = "user"; if(gender.equals("F")) { this.gender =
+	 * "여성"; } else { this.gender = "남성"; } this.birth = birthyear+"-"+birthday;
+	 * this.where = where; }
+	 */
 	
 }
