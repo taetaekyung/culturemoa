@@ -56,7 +56,7 @@ public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2U
                     attributes.getNameAttributeKey());
         }
         
-        else /*(registrationId.equals("naver"))*/ 
+        else if(registrationId.equals("naver")) 
         {
         	String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                     .getUserInfoEndpoint().getUserNameAttributeName();
@@ -77,8 +77,27 @@ public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2U
                     Collections.singleton(new SimpleGrantedAuthority(m.getRole())),
                     attributes.getAttributes(),
                     attributes.getNameAttributeKey());
+        }else if (registrationId.equals("google")) {  // 구글 로그인 처리 추가
+            String userNameAttributeName = userRequest.getClientRegistration()
+                    .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
+            // Google 로그인은 OAuthAttributes를 활용
+            OAuthAttributes attributes = OAuthAttributes.ofGoogle(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+
+            if (memberdao_jpa.countByNameAndEmail(attributes.getWhere(), attributes.getName(), attributes.getEmail()) == 0) {
+                m = saveOrUpdateGoogle(attributes);
+                httpSession.setAttribute("m", m);
+            } else {
+                m = memberdao_jpa.findByNameAndEmail(attributes.getWhere(), attributes.getName(), attributes.getEmail());
+                httpSession.setAttribute("m", m);
+            }
+
+            return new DefaultOAuth2User(
+                    Collections.singleton(new SimpleGrantedAuthority(m.getRole())),
+                    attributes.getAttributes(),
+                    attributes.getNameAttributeKey());
         }
-        
+     // 기본적으로 null 반환
+        return null;
     }
  // 유저 생성 및 수정 서비스 로직 (네이버)
     private Member saveOrUpdateNaver(OAuthAttributes attributes) {
@@ -90,6 +109,12 @@ public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2U
  // 유저 생성 및 수정 서비스 로직 (카카오)
     private Member saveOrUpdateKakao(KakaoUserInfo attributes){
         Member m = attributes.toEntity();
+        memberdao_jpa.save(m);
+        return m;
+    }
+ // 유저 생성 및 수정 서비스 로직 (Google)
+    private Member saveOrUpdateGoogle(OAuthAttributes attributes) {
+        Member m = attributes.toEntity1();
         memberdao_jpa.save(m);
         return m;
     }

@@ -60,7 +60,7 @@ public class Member {
 	//카카오
 	@Builder(builderMethodName = "builderKakao")
     public Member(String id, String email, String gender, String birth, String where) {
-        System.out.println("카카오로옴");
+        System.out.println("카카오로옴Member.java");
 		String userid = email.substring(0, email.indexOf("@"))+"_kakao";
 		this.id = userid;
         this.pwd = "Kdbja2023";
@@ -89,7 +89,7 @@ public class Member {
 	//네이버
 	@Builder(builderMethodName = "builderNaver")
     public Member(String id, String name, String email, String gender, String nickname, String mobile, String birthyear, String birthday,String where) {
-        System.out.println("네이버로옴");
+        System.out.println("네이버로옴Member.java");
 		String userid = email.substring(0, email.indexOf("@"))+"_naver";
 		this.id = userid;
         this.pwd = "Ndbja2023";

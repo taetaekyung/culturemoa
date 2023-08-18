@@ -42,9 +42,20 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
+    
+    public static OAuthAttributes ofGoogle(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
+        return OAuthAttributes.builder()
+                .attributes(attributes)
+                .name((String) attributes.get("name"))
+                .email((String) attributes.get("email"))
+                .where(registrationId)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+    
     public Member toEntity() {
     	Member m = new Member();
-        System.out.println("네이버로옴");
+        System.out.println("네이버로옴OAuthAttributes.java");
 		String userid = email.substring(0, email.indexOf("@"))+"_naver";
 		m.setId(userid);
         m.setPwd("Ndbja2023");
@@ -70,5 +81,16 @@ public class OAuthAttributes {
         
         return m;
     }
-
+    public Member toEntity1() {
+    	System.out.println("구글로옴OAuthAttributes.java");
+        return Member.builder()
+                .id(email.substring(0, email.indexOf("@")) + "_" + where)
+                .email(email)
+                .name(name)
+                .nickname(name) // 이름을 닉네임으로 설정 (수정 가능)
+                .fname("profile.png")
+                .role("user")
+                .gender(gender != null ? gender : "알 수 없음") // gender가 null일 때 기본값 설정
+                .build();
+    }
 }
