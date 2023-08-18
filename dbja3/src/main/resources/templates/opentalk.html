@@ -40,7 +40,7 @@
 							pro_div.append(img2);
 						}
 						pro_div.append(id);
-		
+
   						var content_div=$("<div></div>").addClass("talkcontent-Npq").html(data[i].talkcontent);
 						var textbox=$("<div></div>").addClass("textbox");
 						var datebox=$("<div></div>").addClass("datebox");
@@ -69,7 +69,7 @@
 		}else{
 			$.ajax({
 				url:"insertTalk",
-				data:{talk:talk},
+				data:{talk:talk, id:id},
 				success:function(){
 					$("#myInput").val("");
 				}
@@ -116,7 +116,7 @@
 <body>
 	
 <!--id  -->
-<input type="hidden" id="id" th:value="${id}">
+<input type="hidden" id="id" th:value="${session.m.id}">
 <!--now no -->
 <input type="hidden" id="now" th:value="${now}">
 
@@ -135,10 +135,9 @@
 		<input type="hidden" th:value="${t.talkno}">
 		<!--talk icon-->
         <div class="profile-Vcd">
-		  <img class="ellipse-8-26m"  th:src="@{'./assets/icon_' + (${t.gender} eq '여성' ? '여성' : '남성') + '.png'}" />
-          <img class="iconprofile-xFK" src="./assets/iconprofile-m69.png"/>
+		  <img class="ellipse-8-26m"  th:src="@{'/profileImage/'+${t.fname}}" />
           <!--talk 아이디 -->
-          <div class="name-VFF" th:text="${t.id != null ? t.id : 'Unknown'}"></div>
+          <div class="name-VFF" th:text="${t.id}"></div>
         </div>
         <div class="textbox" style="display: flex;">
         <!--talk 내용-->
@@ -154,7 +153,12 @@
   <!--채팅 입력 div -->
   <div class="divinputtalk-F9s">
 	<!--프로필 이미지 -->
-    <img class="profile-zdF" src="./assets/profile-nXB.png"/>
+	<th:block th:if="${session.m.fname != null}">
+		<img class="profile-zdF" th:src="@{'/profileImage/'+${session.m.fname}}"/>
+	</th:block>
+	<th:block th:if="${session.m.fname == null}">
+		<img class="profile-zdF" src="/profileImage/profile.png"/>
+	</th:block>
   	 <div class="inputtalk-vmo">
 		 <!--채팅 입력 -->
    		 <textarea id="myInput" placeholder="내용을 입력하세요" onkeydown="handleKeyDown(event)"></textarea>

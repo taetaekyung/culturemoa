@@ -15,11 +15,11 @@ import com.example.demo.entity.Member;
 import com.example.demo.entity.Opentalk;
 import com.example.demo.vo.OpentalkVO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class OpentalkController {
-	//로그인 했을때만 이용가능 
-	//로그인 했을때 아이디
-	private String id="user01";
+
 	private int nowNo; //현재 마지막 채팅 번호
 	
 	@Autowired
@@ -29,14 +29,21 @@ public class OpentalkController {
 	
 	//------------채팅창 열었을 때
 	@GetMapping("/opentalk")
-	public void talk(Model model) {
+	public void talk(Model model, HttpSession session) {
+		if(session.getAttribute("m") != null) {
+			Member m = (Member)session.getAttribute("m");	
+			model.addAttribute("id", m.getId());
+		}
+		else {
+			model.addAttribute("id", null);
+		}
 		int now=opentalkdao_jpa.nextNo()-1;
 		nowNo=now;
 		List<OpentalkVO> list=null;
 		list=opentalkdao_mb.findAllTalk();
 		model.addAttribute("talk", list);
-		model.addAttribute("id", id);
 		model.addAttribute("now", nowNo);
+
 	}
 	
 	//------------채팅창 업데이트
@@ -60,7 +67,7 @@ public class OpentalkController {
 	//------------채팅을 입력했을 때
 	@GetMapping("insertTalk")
 	@ResponseBody
-	public void insertTalk(String talk) {
+	public void insertTalk(String talk, String id) {
 		int next=opentalkdao_jpa.nextNo();
 		nowNo=next;  //현재 마지막 채팅 번호 업데이트
 		Opentalk o=new Opentalk();

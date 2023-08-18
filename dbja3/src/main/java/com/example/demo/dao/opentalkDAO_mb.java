@@ -31,13 +31,7 @@ public class opentalkDAO_mb {
 			vo.setDay(day);
 			
 			String fname=vo.getFname();
-			if(fname==null||fname.equals("")) {
-				if(vo.getGender().equals("여성")) {
-					fname="icon_girl.png";
-				}else {
-					fname="icon_boy.png";
-				}
-			}
+			
 			vo.setFname(fname);
 		}
 		return list;
@@ -60,13 +54,7 @@ public class opentalkDAO_mb {
 			//System.out.println(day);
 			vo.setDay(day);
 			String fname=vo.getFname();
-			if(fname==null||fname.equals("")) {
-				if(vo.getGender().equals("여성")) {
-					fname="icon_girl.png";
-				}else {
-					fname="icon_boy.png";
-				}
-			}
+			
 			vo.setFname(fname);
 		}
 		System.out.println("list"+list);
