@@ -60,7 +60,7 @@ public class JsoupController {
                 }
 
             } catch (Exception e) {
-                System.out.println("크로릴예외발생:" + e.getMessage());
+                System.out.println("크롤링예외발생:" + e.getMessage());
             }
         }
 
